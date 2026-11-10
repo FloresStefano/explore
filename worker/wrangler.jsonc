@@ -6,6 +6,12 @@
   "account_id": "f802fbbb3f0b2d07f3ee949be59d61f1",
   "workers_dev": true,
   "ai": { "binding": "AI" },
+  // Per-IP limits so nobody can burn the free daily AI allowance.
+  // period must be 10 or 60 seconds.
+  "ratelimits": [
+    { "name": "TEXT_LIMITER", "namespace_id": "1001", "simple": { "limit": 20, "period": 60 } },
+    { "name": "IMAGE_LIMITER", "namespace_id": "1002", "simple": { "limit": 3, "period": 60 } }
+  ],
   "vars": {
     "TEXT_MODEL": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
     "IMAGE_MODEL": "@cf/black-forest-labs/flux-1-schnell",

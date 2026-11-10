@@ -27,6 +27,8 @@ export default {
         return json({ ok: true, models: { text: env.TEXT_MODEL, image: env.IMAGE_MODEL } });
       }
       if (request.method !== "POST") return json({ error: "not_found" }, 404);
+      const limited = await rateLimit(env, request, url.pathname);
+      if (limited) return limited;
       const body = await readJson(request);
       switch (url.pathname) {
         case "/v1/interpret": return json(await interpret(env, body));
@@ -184,6 +186,18 @@ function parseJson(text) {
 }
 
 // ---------- plumbing ----------
+
+// Checked before the body is read, so rejected calls cost no AI time.
+async function rateLimit(env, request, path) {
+  const limiter = path === "/v1/image" ? env.IMAGE_LIMITER : env.TEXT_LIMITER;
+  if (!limiter) return null;
+  const ip = request.headers.get("cf-connecting-ip") || "unknown";
+  const { success } = await limiter.limit({ key: `${path}:${ip}` });
+  if (success) return null;
+  const res = json({ error: "rate_limited", message: "Troppe richieste, aspetta un momento." }, 429);
+  res.headers.set("retry-after", "60");
+  return res;
+}
 
 class HttpError extends Error {
   constructor(status, code, message) {
