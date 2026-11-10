@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "explore-api",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  "account_id": "f802fbbb3f0b2d07f3ee949be59d61f1",
+  "workers_dev": true,
+  "ai": { "binding": "AI" },
+  "vars": {
+    "TEXT_MODEL": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "IMAGE_MODEL": "@cf/black-forest-labs/flux-1-schnell",
+    "GUARD_MODEL": "@cf/meta/llama-guard-3-8b"
+  }
+}
