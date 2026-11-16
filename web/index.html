@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekend Break</title>
+<meta name="description" content="Occasioni di volo per weekend e ponti da Verona, Bergamo e Treviso.">
+<style>
+  :root { --bg:#f7f7f4; --fg:#1d2329; --muted:#5f6b76; --card:#fff; --line:#e3e5e8; --accent:#0b6e4f; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#14181c; --fg:#e8eaed; --muted:#9aa4ad; --card:#1d2328; --line:#2c343b; --accent:#5fd3a5; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 20px 16px 48px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  .muted { color: var(--muted); font-size: .9rem; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 12px 0; }
+  .row { display:flex; justify-content:space-between; gap:12px; align-items:baseline; flex-wrap:wrap; }
+  .route { font-weight: 600; font-size: 1.05rem; }
+  .price { font-weight: 700; font-size: 1.2rem; color: var(--accent); white-space: nowrap; }
+  .legs { margin: 6px 0; font-variant-numeric: tabular-nums; }
+  a { color: var(--accent); }
+  .note { border-left: 3px solid var(--accent); padding: 8px 12px; background: var(--card); border-radius: 0 8px 8px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Weekend Break</h1>
+  <p class="muted" id="status">Caricamento…</p>
+  <p class="note">Anteprima provvisoria: l'app Flutter arriverà qui. I prezzi sono tariffe base per un adulto senza bagaglio, rilevate nella data indicata: verifica sempre sul sito del venditore.</p>
+  <div id="offers"></div>
+</main>
+<script>
+const fmtDate = (s) => new Date(s + "T12:00:00").toLocaleDateString("it-IT", { weekday: "short", day: "numeric", month: "short" });
+const fmtTime = (s) => s ? s.slice(11, 16) : "–";
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+async function load(path) {
+  try { const r = await fetch(path, { cache: "no-cache" }); return r.ok ? r.json() : null; } catch { return null; }
+}
+
+(async () => {
+  const [top, meta] = await Promise.all([load("data/top.json"), load("data/meta.json")]);
+  const status = document.getElementById("status");
+  if (!top) { status.textContent = "Nessun dato ancora pubblicato."; return; }
+  status.textContent = `Migliori ${top.offers.length} offerte per prezzo per ora utile · ultimo aggiornamento ${meta ? new Date(meta.run_at).toLocaleString("it-IT") : top.updated}`;
+  document.getElementById("offers").innerHTML = top.offers.map((o) => `
+    <div class="card">
+      <div class="row">
+        <span class="route">${esc(o.origin)} → ${esc(o.city || o.destination)} <span class="muted">(${esc(o.destination)})</span></span>
+        <span class="price">${o.price.toFixed(2)} €</span>
+      </div>
+      <div class="legs">
+        ${fmtDate(o.out_date)} ${fmtTime(o.outbound?.departure)} → ${fmtTime(o.outbound?.arrival)}
+        · ritorno ${fmtDate(o.ret_date)} ${fmtTime(o.inbound?.departure)} → ${fmtTime(o.inbound?.arrival)}
+      </div>
+      <div class="row muted">
+        <span>${o.nights} notti · ${o.leave_days} gg di ferie · ${o.useful_hours} ore utili · ${o.price_per_hour} €/ora · ${esc(o.airlines.join(", "))}</span>
+        <span>rilevato il ${esc(o.observed_at)} · <a href="${esc(o.link)}" target="_blank" rel="noopener">vai al sito</a></span>
+      </div>
+    </div>`).join("");
+})();
+</script>
+</body>
+</html>
