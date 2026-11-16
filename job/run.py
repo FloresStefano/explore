@@ -219,7 +219,7 @@ def run_skiplagged(s: Settings, sk: Skiplagged, cap_disc: int, cap_route: int, t
         disc["destinations"] += len(deals)
         queue.done(u, today, len(deals))
         cands[f"{u.airport}|{u.window.key}"] = {o.destination: o.price for o in deals}
-        time.sleep(s.job["pause_seconds"])
+        time.sleep(s.job["skiplagged_pause_seconds"])
     for code, place in sk.places.items():
         airports.setdefault(code, {"code": code, "name": place["city"], **place})
     write_json(cand_path, cands)
@@ -230,7 +230,8 @@ def run_skiplagged(s: Settings, sk: Skiplagged, cap_disc: int, cap_route: int, t
 
     items = [(f"{ck.split('|')[0]}-{dest}", by_key[ck.split("|")[1]])
              for ck, dests in cands.items() for dest, price in dests.items()
-             if ck.split("|")[0] in store and not ryanair_covers(*ck.split("|"), dest, price)]
+             if ck.split("|")[0] in store and price <= s["JOB-07"]
+             and not ryanair_covers(*ck.split("|"), dest, price)]
     route = {"enabled": True, "cap": cap_route, "calls": 0, "ok": 0, "errors": 0, "offers": 0, "last_error": None,
              "candidates": len(items)}
     streak = 0
@@ -264,6 +265,11 @@ def run_skiplagged(s: Settings, sk: Skiplagged, cap_disc: int, cap_route: int, t
                 discards["SEL-06"] += 1
             else:
                 kept.append(offer_json(s, cal, o, u.window, airports))
+        # Code-shares list the same flights under several names: keep the cheapest of each.
+        kept.sort(key=lambda x: x["price"])
+        seen: set[tuple] = set()
+        kept = [x for x in kept
+                if (t := (x["outbound"]["departure"], x["inbound"]["departure"])) not in seen and not seen.add(t)]
         kept.sort(key=lambda x: x["price_per_hour"])
         kept = kept[:4]
         route["offers"] += len(kept)

@@ -188,9 +188,17 @@ id = "JOB-06"
 name = "Tetto di chiamate giornaliere per fonte"
 # 0 = fonte spenta. skiplagged = scoperta "ovunque", skiplagged_route = orari per rotta.
 # Google Flights resta di riserva: dal runner di GitHub risponde solo in parte.
-value = { ryanair = 160, skiplagged = 80, skiplagged_route = 120, google_flights = 0 }
+value = { ryanair = 160, skiplagged = 60, skiplagged_route = 120, google_flights = 0 }
 unit = "chiamate"
 note = "Valori provvisori, da fissare dopo la prova sul campo"
+editable = "config"
+
+[[setting]]
+id = "JOB-07"
+name = "Fonti a rotta: prezzo massimo di una meta per cercarne gli orari"
+value = 250
+unit = "€"
+note = "Oltre questa cifra un volo non è un'occasione: non si spendono chiamate"
 editable = "config"
 
 # --- Configurazione del job (non sono regole, quindi senza ID) ---
@@ -208,3 +216,5 @@ language = "it"
 currency = "EUR"
 # Pausa tra due chiamate alla stessa fonte, in secondi.
 pause_seconds = 1.5
+# Skiplagged limita le ricerche "ovunque" ravvicinate (errore 429 dopo una quindicina).
+skiplagged_pause_seconds = 8
