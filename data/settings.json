@@ -149,7 +149,7 @@
   {
    "id": "IMP-04",
    "name": "Offerte mostrate in Home",
-   "value": 20,
+   "value": 50,
    "editable": "config"
   },
   {
