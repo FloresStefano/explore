@@ -23,8 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
     'consigliate': 'Consigliate',
     'prezzo_asc': 'Prezzo crescente',
     'prezzo_desc': 'Prezzo decrescente',
-    'notti_asc': 'Durata: più brevi',
-    'notti_desc': 'Durata: più lunghe',
+    'ferie_asc': 'Meno giorni di ferie',
+    'ferie_desc': 'Più giorni di ferie',
     'meta': 'Destinazione A-Z',
   };
 
@@ -36,11 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
         return byPrice;
       case 'prezzo_desc':
         return -byPrice;
-      case 'notti_asc':
-        final c = n(a, 'nights').compareTo(n(b, 'nights'));
+      case 'ferie_asc':
+        final c = n(a, 'leave_days').compareTo(n(b, 'leave_days'));
         return c != 0 ? c : byPrice;
-      case 'notti_desc':
-        final c = n(b, 'nights').compareTo(n(a, 'nights'));
+      case 'ferie_desc':
+        final c = n(b, 'leave_days').compareTo(n(a, 'leave_days'));
         return c != 0 ? c : byPrice;
       case 'meta':
         final c = '${a['city'] ?? a['destination']}'.compareTo('${b['city'] ?? b['destination']}');
