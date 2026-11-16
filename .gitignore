@@ -1,5 +1,6 @@
-node_modules/
+.venv/
+__pycache__/
+*.pyc
 .wrangler/
-.dev.vars*
+node_modules/
 *.log
-worker/scripts/smoke.jpg
