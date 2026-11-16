@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-16T21:51:27+00:00",
+ "run_at": "2026-11-16T22:05:08+00:00",
  "sources": {
   "ryanair": {
    "enabled": true,
@@ -8,12 +8,8 @@
   },
   "skiplagged": {
    "enabled": true,
-   "cap": 34,
-   "calls": 34,
-   "ok": 34,
-   "errors": 0,
-   "destinations": 765,
-   "last_error": null
+   "calls": 0,
+   "note": "tetto giornaliero già raggiunto"
   },
   "skiplagged_route": {
    "enabled": true,
@@ -37,5 +33,5 @@
    "fresh": 54
   }
  },
- "seconds": 377
+ "seconds": 0
 }
