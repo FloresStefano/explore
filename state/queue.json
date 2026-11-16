@@ -639,12 +639,20 @@
 "count": 9,
 "fetched": "2026-11-16"
 },
+"skiplagged_route|TSF-LIS|2026-11-19_2026-11-23": {
+"count": 1,
+"fetched": "2026-11-16"
+},
 "skiplagged_route|TSF-OTP|2026-11-18_2026-11-21": {
 "count": 1,
 "fetched": "2026-11-16"
 },
 "skiplagged_route|TSF-OTP|2026-11-18_2026-11-22": {
 "count": 1,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|TSF-OTP|2026-11-20_2026-11-22": {
+"count": 2,
 "fetched": "2026-11-16"
 },
 "skiplagged_route|TSF-TIA|2026-11-18_2026-11-21": {
@@ -655,11 +663,457 @@
 "count": 2,
 "fetched": "2026-11-16"
 },
+"skiplagged_route|TSF-TIA|2026-11-19_2026-11-22": {
+"count": 3,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|TSF-TIA|2026-11-19_2026-11-23": {
+"count": 3,
+"fetched": "2026-11-16"
+},
 "skiplagged_route|TSF-VIE|2026-11-18_2026-11-21": {
 "count": 1,
 "fetched": "2026-11-16"
 },
+"skiplagged_route|TSF-VIE|2026-11-19_2026-11-23": {
+"count": 1,
+"fetched": "2026-11-16"
+},
 "skiplagged_route|VRN-AMS|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-AMS|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-ASE|2026-11-19_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-ASR|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-ASR|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-ATH|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-ATH|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-AYT|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-AYT|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-BCN|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-BCN|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-BER|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-BER|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-BIO|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-BIO|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-BOI|2026-11-19_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-BUD|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-BUD|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-CDG|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-CDG|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-CGN|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-CGN|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-CUN|2026-11-18_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-DBV|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-DUB|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-DUB|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-EAS|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-EGE|2026-11-19_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-EWR|2026-11-18_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-FAO|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-FAO|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-FCO|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-FCO|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-FLL|2026-11-18_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-FNC|2026-11-18_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-FNC|2026-11-19_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-FNC|2026-11-19_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-FRA|2026-11-18_2026-11-21": {
+"count": 6,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-FRA|2026-11-19_2026-11-23": {
+"count": 6,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-GVA|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-GVA|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-IST|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-IST|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-JAC|2026-11-19_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-JFK|2026-11-19_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-KEF|2026-11-18_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-KEF|2026-11-19_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-KEF|2026-11-19_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-KRK|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-KRK|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-LAX|2026-11-18_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-LHR|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-LIS|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-LIS|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-LYS|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-LYS|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-MAD|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-MAD|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-MAN|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-MAN|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-MRS|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-MRS|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-MSP|2026-11-19_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-MSP|2026-11-19_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-MUC|2026-11-18_2026-11-21": {
+"count": 6,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-MUC|2026-11-19_2026-11-23": {
+"count": 6,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-NCE|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-NCE|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-OKC|2026-11-19_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-OMA|2026-11-19_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-OPO|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-OPO|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-ORD|2026-11-18_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-OTP|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-OTP|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-PDL|2026-11-18_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-PDL|2026-11-19_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-PDL|2026-11-19_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-PMI|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-PMI|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-PMO|2026-11-18_2026-11-21": {
+"count": 1,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-PMO|2026-11-19_2026-11-23": {
+"count": 1,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-PRG|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-PRG|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-RMO|2026-11-18_2026-11-21": {
+"count": 1,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-RMO|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-SFO|2026-11-18_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-SJC|2026-11-19_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-SOF|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-SPU|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-SPU|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-SVQ|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-SZG|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-SZG|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-TFS|2026-11-18_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-TFS|2026-11-19_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-TFS|2026-11-19_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-TUL|2026-11-19_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-VIE|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-VIE|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-VLC|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-VLC|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-WAW|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-WAW|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-ZAG|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-ZAG|2026-11-19_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-ZMB|2026-11-18_2026-11-21": {
+"error": "RuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"The destination was not recognized. Try a city name or a valid airport or city IATA code; ask the user if unsure.\"}]"
+},
+"skiplagged_route|VRN-ZMB|2026-11-19_2026-11-23": {
+"error": "RuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"The destination was not recognized. Try a city name or a valid airport or city IATA code; ask the user if unsure.\"}]"
+},
+"skiplagged_route|VRN-ZRH|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-ZRH|2026-11-19_2026-11-23": {
 "count": 0,
 "fetched": "2026-11-16"
 },
@@ -679,6 +1133,40 @@
 "count": 9,
 "fetched": "2026-11-16"
 },
+"skiplagged|TSF|2026-11-19_2026-11-23": {
+"count": 8,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-20_2026-11-22": {
+"count": 15,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-20_2026-11-23": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-20_2026-11-24": {
+"count": 9,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-21_2026-11-23": {
+"count": 11,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-21_2026-11-24": {
+"count": 10,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-22_2026-11-24": {
+"count": 10,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-25_2026-11-28": {
+"error": "HttpError: HTTP 429: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1015/\",\"title\":\"Error 1015: You are being rate limited\",\"status\":"
+},
+"skiplagged|TSF|2026-11-25_2026-11-29": {
+"error": "HttpError: HTTP 429: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1015/\",\"title\":\"Error 1015: You are being rate limited\",\"status\":"
+},
 "skiplagged|VRN|2026-11-18_2026-11-21": {
 "count": 42,
 "fetched": "2026-11-16"
@@ -686,5 +1174,46 @@
 "skiplagged|VRN|2026-11-18_2026-11-22": {
 "count": 10,
 "fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-19_2026-11-21": {
+"count": 11,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-19_2026-11-22": {
+"count": 8,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-19_2026-11-23": {
+"count": 41,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-20_2026-11-22": {
+"count": 40,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-20_2026-11-23": {
+"count": 38,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-20_2026-11-24": {
+"count": 41,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-21_2026-11-23": {
+"count": 42,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-21_2026-11-24": {
+"count": 43,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-22_2026-11-24": {
+"error": "HttpError: HTTP 429: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1015/\",\"title\":\"Error 1015: You are being rate limited\",\"status\":"
+},
+"skiplagged|VRN|2026-11-25_2026-11-28": {
+"error": "HttpError: HTTP 429: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1015/\",\"title\":\"Error 1015: You are being rate limited\",\"status\":"
+},
+"skiplagged|VRN|2026-11-25_2026-11-29": {
+"error": "HttpError: HTTP 429: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1015/\",\"title\":\"Error 1015: You are being rate limited\",\"status\":"
 }
 }

@@ -139,6 +139,20 @@
    "lon": -6.27007,
    "tz": "Europe/Dublin"
   },
+  "FRA": {
+   "airlines": [
+    "Air Dolomiti",
+    "ITA Airways",
+    "Lufthansa"
+   ],
+   "months": [
+    "2026-11"
+   ],
+   "last_confirmed": "2026-11-16",
+   "name": "Frankfurt am Main",
+   "city": "Frankfurt am Main",
+   "country": "Germany"
+  },
   "MAD": {
    "airlines": [
     "Ryanair"
@@ -171,6 +185,20 @@
    "lat": 53.3537,
    "lon": -2.27495,
    "tz": "Europe/London"
+  },
+  "MUC": {
+   "airlines": [
+    "Air Dolomiti",
+    "ITA Airways",
+    "Lufthansa"
+   ],
+   "months": [
+    "2026-11"
+   ],
+   "last_confirmed": "2026-11-16",
+   "name": "Munich",
+   "city": "Munich",
+   "country": "Germany"
   },
   "NAP": {
    "airlines": [
@@ -234,6 +262,18 @@
    "lat": 38.176,
    "lon": 13.091,
    "tz": "Europe/Rome"
+  },
+  "RMO": {
+   "airlines": [
+    "Wizz Air Malta"
+   ],
+   "months": [
+    "2026-11"
+   ],
+   "last_confirmed": "2026-11-16",
+   "name": "Chişinău",
+   "city": "Chişinău",
+   "country": "Moldova"
   },
   "STN": {
    "airlines": [

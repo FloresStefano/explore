@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-16T21:22:37+00:00",
+ "run_at": "2026-11-16T21:24:54+00:00",
  "sources": {
   "ryanair": {
    "enabled": true,
@@ -8,27 +8,28 @@
   },
   "skiplagged": {
    "enabled": true,
-   "cap": 6,
-   "calls": 6,
-   "ok": 6,
-   "errors": 0,
-   "destinations": 77,
-   "last_error": null
+   "cap": 74,
+   "calls": 20,
+   "ok": 15,
+   "errors": 5,
+   "destinations": 327,
+   "last_error": "HttpError: HTTP 429: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1015/\",\"title\":\"Error 1015: You are being rate limited\",\"status\":429,\"detail\":\"You are",
+   "stopped": "5 errori consecutivi"
   },
   "skiplagged_route": {
    "enabled": true,
-   "cap": 6,
-   "calls": 6,
-   "ok": 6,
-   "errors": 0,
-   "offers": 1,
-   "last_error": null,
-   "candidates": 56
+   "cap": 114,
+   "calls": 114,
+   "ok": 112,
+   "errors": 2,
+   "offers": 21,
+   "last_error": "RuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"The destination was not recognized. Try a city name or a valid airport or city IATA code; ask the user if unsure.\"}]",
+   "candidates": 333
   }
  },
  "warnings": [],
  "discards": {
-  "SEL-01": 4
+  "SEL-01": 2
  },
  "coverage_ryanair": {
   "VRN": {
@@ -44,5 +45,5 @@
    "fresh": 54
   }
  },
- "seconds": 104
+ "seconds": 1508
 }

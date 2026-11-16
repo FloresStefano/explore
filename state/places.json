@@ -118,5 +118,89 @@
   "name": "Cancún",
   "city": "Cancún",
   "country": "Mexico"
+ },
+ "SJC": {
+  "code": "SJC",
+  "name": "San Jose",
+  "city": "San Jose",
+  "country": "United States"
+ },
+ "MSP": {
+  "code": "MSP",
+  "name": "Minneapolis",
+  "city": "Minneapolis",
+  "country": "United States"
+ },
+ "EGE": {
+  "code": "EGE",
+  "name": "Eagle",
+  "city": "Eagle",
+  "country": "United States"
+ },
+ "ASE": {
+  "code": "ASE",
+  "name": "Aspen",
+  "city": "Aspen",
+  "country": "United States"
+ },
+ "OMA": {
+  "code": "OMA",
+  "name": "Omaha",
+  "city": "Omaha",
+  "country": "United States"
+ },
+ "BOI": {
+  "code": "BOI",
+  "name": "Boise",
+  "city": "Boise",
+  "country": "United States"
+ },
+ "JAC": {
+  "code": "JAC",
+  "name": "Jackson",
+  "city": "Jackson",
+  "country": "United States"
+ },
+ "JFK": {
+  "code": "JFK",
+  "name": "New York",
+  "city": "New York",
+  "country": "United States"
+ },
+ "OKC": {
+  "code": "OKC",
+  "name": "Oklahoma City",
+  "city": "Oklahoma City",
+  "country": "United States"
+ },
+ "TUL": {
+  "code": "TUL",
+  "name": "Tulsa",
+  "city": "Tulsa",
+  "country": "United States"
+ },
+ "LHR": {
+  "code": "LHR",
+  "name": "London",
+  "city": "London",
+  "country": "United Kingdom"
+ },
+ "EAS": {
+  "code": "EAS",
+  "name": "Hondarribia",
+  "city": "Hondarribia",
+  "country": "Spain"
+ },
+ "ORY": {
+  "code": "ORY",
+  "name": "Paris",
+  "city": "Paris",
+  "country": "France"
+ },
+ "QKL": {
+  "code": "QKL",
+  "name": "Unknown",
+  "city": "Unknown",
+  "country": "Unknown"
  }
 }
