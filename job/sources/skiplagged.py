@@ -7,6 +7,7 @@ Prices are converted from USD by Skiplagged and are approximate.
 from __future__ import annotations
 
 import json
+import re
 from datetime import date, datetime
 from itertools import count
 
@@ -38,6 +39,10 @@ def call_tool(name: str, arguments: dict, timeout: float = 60) -> dict:
 class Skiplagged(AnywhereSource):
     name = "skiplagged"
 
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        self.places: dict[str, dict] = {}  # code -> city, country, as seen in the deals
+
     def anywhere(self, origin: str, out: date, ret: date, observed_at: str) -> list[Offer]:
         data = call_tool("sk_destinations_anywhere", {
             "from": origin, "depart": out.isoformat(), "return": ret.isoformat(),
@@ -49,6 +54,7 @@ class Skiplagged(AnywhereSource):
             price = (r.get("price") or {}).get("amount")
             if not dest or price is None or r.get("flightType", "Standard") != "Standard":
                 continue  # skip hidden-city / interlining tricks
+            self.places[dest] = {"city": r["destination"].get("city"), "country": r["destination"].get("region")}
             offers.append(Offer(
                 origin=origin, destination=dest, out_date=out.isoformat(), ret_date=ret.isoformat(),
                 price=round(float(price), 2), currency=self.currency, source=self.name,
@@ -66,8 +72,34 @@ class Skiplagged(AnywhereSource):
         return call_tool("sk_flights_search", args)
 
 
+    def route(self, origin: str, dest: str, out: date, ret: date, observed_at: str) -> list[Offer]:
+        """Direct round trips with exact times for one route; either leg may be any carrier."""
+        offers = []
+        for f in self.flights(origin, dest, out, ret).get("flights") or []:
+            back = f.get("returnFlight")
+            price = (f.get("price") or {}).get("amount")
+            if not back or price is None or f.get("layovers") or back.get("layovers"):
+                continue
+            m = re.search(r"trip=([A-Z0-9]+),([A-Z0-9]+)", f.get("id", ""))
+            a_out, a_back = f.get("airlines", ""), back.get("airlines", "")
+            go, home = leg_from_card(f, a_out), leg_from_card(back, a_back)
+            if m:
+                go.flight, home.flight = m.group(1), m.group(2)
+            offers.append(Offer(
+                origin=origin, destination=dest, out_date=out.isoformat(), ret_date=ret.isoformat(),
+                price=round(float(price), 2), currency=self.currency, source=self.name, observed_at=observed_at,
+                link=_clean_link(f.get("deepLink") or ""), outbound=go, inbound=home,
+                airlines=list(dict.fromkeys(x for x in (a_out, a_back) if x)),
+                fare="tariffa minima, prezzo indicativo",
+            ))
+        return offers
+
+
 def _clean_link(url: str) -> str:
-    return url.split("?utm_")[0]
+    """Drop the tracking query, keep the #trip fragment that selects the flights."""
+    base, _, fragment = url.partition("#")
+    base = base.split("?utm_")[0]
+    return f"{base}#{fragment}" if fragment else base
 
 
 def leg_from_card(card: dict, airline: str = "") -> Leg:

@@ -186,8 +186,9 @@ editable = "config"
 [[setting]]
 id = "JOB-06"
 name = "Tetto di chiamate giornaliere per fonte"
-# 0 = fonte spenta. Le fonti non Ryanair restano spente fino alla prova sul campo.
-value = { ryanair = 160, skiplagged = 0, google_flights = 0 }
+# 0 = fonte spenta. skiplagged = scoperta "ovunque", skiplagged_route = orari per rotta.
+# Google Flights resta di riserva: dal runner di GitHub risponde solo in parte.
+value = { ryanair = 160, skiplagged = 80, skiplagged_route = 120, google_flights = 0 }
 unit = "chiamate"
 note = "Valori provvisori, da fissare dopo la prova sul campo"
 editable = "config"
@@ -199,6 +200,8 @@ editable = "config"
 airports = ["VRN", "BGY", "TSF"]
 # Regioni per cui il job produce data/windows/region-<regione>.json.
 regions = ["veneto"]
+# Aeroporti con compagnie oltre a Ryanair, su cui cercare anche con Skiplagged.
+skiplagged_airports = ["VRN", "TSF"]
 market = "it-it"
 country = "IT"
 language = "it"

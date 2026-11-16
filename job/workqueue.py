@@ -37,16 +37,20 @@ class WorkQueue:
     def pick(self, s: Settings, today: date, source: str, airports: list[str], pairs: list[Window],
              cap: int) -> list[Unit]:
         """Up to `cap` due units, most overdue first, nearer departures breaking ties."""
+        return self.pick_items(s, today, source, [(ap, w) for w in pairs for ap in airports], cap)
+
+    def pick_items(self, s: Settings, today: date, source: str, items: list[tuple[str, Window]],
+                   cap: int) -> list[Unit]:
+        """Same as pick, for arbitrary (label, window) items, e.g. label 'VRN-CTA' for a route."""
         scored = []
-        for w in pairs:
+        for ap, w in items:
             interval = self.refresh_days(s, today, w.out)
-            for ap in airports:
-                u = Unit(source, ap, w)
-                last = self.state.get(u.key, {}).get("fetched")
-                age = (today - date.fromisoformat(last)).days if last else 10_000
-                if age < interval:
-                    continue
-                scored.append((-(age / interval), w.out, ap, u))
+            u = Unit(source, ap, w)
+            last = self.state.get(u.key, {}).get("fetched")
+            age = (today - date.fromisoformat(last)).days if last else 10_000
+            if age < interval:
+                continue
+            scored.append((-(age / interval), w.out, ap, u))
         scored.sort(key=lambda x: x[:3])
         return [x[3] for x in scored[:cap]]
 

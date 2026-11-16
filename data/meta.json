@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-16T21:12:09+00:00",
+ "run_at": "2026-11-16T21:22:37+00:00",
  "sources": {
   "ryanair": {
    "enabled": true,
@@ -7,11 +7,29 @@
    "note": "tetto giornaliero già raggiunto"
   },
   "skiplagged": {
-   "enabled": false
+   "enabled": true,
+   "cap": 6,
+   "calls": 6,
+   "ok": 6,
+   "errors": 0,
+   "destinations": 77,
+   "last_error": null
+  },
+  "skiplagged_route": {
+   "enabled": true,
+   "cap": 6,
+   "calls": 6,
+   "ok": 6,
+   "errors": 0,
+   "offers": 1,
+   "last_error": null,
+   "candidates": 56
   }
  },
  "warnings": [],
- "discards": {},
+ "discards": {
+  "SEL-01": 4
+ },
  "coverage_ryanair": {
   "VRN": {
    "pairs": 162,
@@ -26,5 +44,5 @@
    "fresh": 54
   }
  },
- "seconds": 0
+ "seconds": 104
 }

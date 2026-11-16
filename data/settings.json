@@ -191,7 +191,8 @@
    "name": "Tetto di chiamate giornaliere per fonte",
    "value": {
     "ryanair": 160,
-    "skiplagged": 0,
+    "skiplagged": 80,
+    "skiplagged_route": 120,
     "google_flights": 0
    },
    "unit": "chiamate",

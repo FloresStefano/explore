@@ -1,0 +1,122 @@
+{
+ "RMO": {
+  "code": "RMO",
+  "name": "Chişinău",
+  "city": "Chişinău",
+  "country": "Moldova"
+ },
+ "CDG": {
+  "code": "CDG",
+  "name": "Paris",
+  "city": "Paris",
+  "country": "France"
+ },
+ "MUC": {
+  "code": "MUC",
+  "name": "Munich",
+  "city": "Munich",
+  "country": "Germany"
+ },
+ "ZMB": {
+  "code": "ZMB",
+  "name": "Unknown",
+  "city": "Unknown",
+  "country": "Unknown"
+ },
+ "FRA": {
+  "code": "FRA",
+  "name": "Frankfurt am Main",
+  "city": "Frankfurt am Main",
+  "country": "Germany"
+ },
+ "GVA": {
+  "code": "GVA",
+  "name": "Geneva",
+  "city": "Geneva",
+  "country": "Switzerland"
+ },
+ "ZRH": {
+  "code": "ZRH",
+  "name": "Zurich",
+  "city": "Zurich",
+  "country": "Switzerland"
+ },
+ "LYS": {
+  "code": "LYS",
+  "name": "Lyon",
+  "city": "Lyon",
+  "country": "France"
+ },
+ "IST": {
+  "code": "IST",
+  "name": "Istanbul",
+  "city": "Istanbul",
+  "country": "Turkey"
+ },
+ "BIO": {
+  "code": "BIO",
+  "name": "Bilbao",
+  "city": "Bilbao",
+  "country": "Spain"
+ },
+ "ASR": {
+  "code": "ASR",
+  "name": "Kayseri",
+  "city": "Kayseri",
+  "country": "Turkey"
+ },
+ "AYT": {
+  "code": "AYT",
+  "name": "Antalya",
+  "city": "Antalya",
+  "country": "Turkey"
+ },
+ "KEF": {
+  "code": "KEF",
+  "name": "Reykjavík",
+  "city": "Reykjavík",
+  "country": "Iceland"
+ },
+ "PDL": {
+  "code": "PDL",
+  "name": "Ponta Delgada",
+  "city": "Ponta Delgada",
+  "country": "Portugal"
+ },
+ "EWR": {
+  "code": "EWR",
+  "name": "Newark",
+  "city": "Newark",
+  "country": "United States"
+ },
+ "FLL": {
+  "code": "FLL",
+  "name": "Fort Lauderdale",
+  "city": "Fort Lauderdale",
+  "country": "United States"
+ },
+ "SFO": {
+  "code": "SFO",
+  "name": "San Francisco",
+  "city": "San Francisco",
+  "country": "United States"
+ },
+ "ORD": {
+  "code": "ORD",
+  "name": "Chicago",
+  "city": "Chicago",
+  "country": "United States"
+ },
+ "LAX": {
+  "code": "LAX",
+  "name": "Los Angeles",
+  "city": "Los Angeles",
+  "country": "United States"
+ },
+ "CUN": {
+  "code": "CUN",
+  "name": "Cancún",
+  "city": "Cancún",
+  "country": "Mexico"
+ }
+}

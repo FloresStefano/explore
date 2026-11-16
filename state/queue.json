@@ -638,5 +638,53 @@
 "ryanair|VRN|2026-12-17_2026-12-19": {
 "count": 9,
 "fetched": "2026-11-16"
+},
+"skiplagged_route|TSF-OTP|2026-11-18_2026-11-21": {
+"count": 1,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|TSF-OTP|2026-11-18_2026-11-22": {
+"count": 1,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|TSF-TIA|2026-11-18_2026-11-21": {
+"count": 2,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|TSF-TIA|2026-11-18_2026-11-22": {
+"count": 2,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|TSF-VIE|2026-11-18_2026-11-21": {
+"count": 1,
+"fetched": "2026-11-16"
+},
+"skiplagged_route|VRN-AMS|2026-11-18_2026-11-21": {
+"count": 0,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-18_2026-11-21": {
+"count": 8,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-18_2026-11-22": {
+"count": 7,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-19_2026-11-21": {
+"count": 1,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-19_2026-11-22": {
+"count": 9,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-18_2026-11-21": {
+"count": 42,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-18_2026-11-22": {
+"count": 10,
+"fetched": "2026-11-16"
 }
 }

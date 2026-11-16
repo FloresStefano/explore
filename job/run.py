@@ -185,6 +185,96 @@ def run_source(s: Settings, src: AnywhereSource, cap: int, today: date, pairs: l
     return stats
 
 
+def run_skiplagged(s: Settings, sk: Skiplagged, cap_disc: int, cap_route: int, today: date, pairs: list[Window],
+                   queue: WorkQueue, store: dict, history: History, cal: Calendar, airports: dict,
+                   discards: Counter) -> tuple[dict, dict]:
+    """Other carriers (sezione 6, passo 5): "anywhere" discovery, then exact times per route.
+
+    Discovery gives a price per destination but no times. Destinations where Ryanair
+    is not already as cheap become candidates for a route search, which returns
+    direct round trips with times; only those can be selected and published.
+    """
+    observed = today.isoformat()
+    by_key = {w.key: w for w in pairs}
+    cand_path = STATE / "candidates.json"
+    cands: dict[str, dict[str, float]] = {k: v for k, v in read_json(cand_path, {}).items()
+                                          if k.split("|")[1] in by_key}
+    disc = {"enabled": True, "cap": cap_disc, "calls": 0, "ok": 0, "errors": 0, "destinations": 0, "last_error": None}
+    streak = 0
+    for u in queue.pick(s, today, sk.name, s.job["skiplagged_airports"], pairs, max(cap_disc, 0)):
+        disc["calls"] += 1
+        try:
+            deals = sk.anywhere(u.airport, u.window.out, u.window.ret, observed)
+        except Exception as e:
+            disc["errors"] += 1
+            disc["last_error"] = f"{type(e).__name__}: {e}"[:300]
+            queue.failed(u, disc["last_error"])
+            streak += 1
+            if streak >= MAX_CONSECUTIVE_ERRORS:
+                disc["stopped"] = f"{streak} errori consecutivi"
+                break
+            continue
+        streak = 0
+        disc["ok"] += 1
+        disc["destinations"] += len(deals)
+        queue.done(u, today, len(deals))
+        cands[f"{u.airport}|{u.window.key}"] = {o.destination: o.price for o in deals}
+        time.sleep(s.job["pause_seconds"])
+    for code, place in sk.places.items():
+        airports.setdefault(code, {"code": code, "name": place["city"], **place})
+    write_json(cand_path, cands)
+
+    def ryanair_covers(ap: str, key: str, dest: str, price: float) -> bool:
+        offers = store.get(ap, {}).get(key, {}).get("offers", [])
+        return any(o["source"] == "ryanair" and o["destination"] == dest and o["price"] <= price * 1.02 for o in offers)
+
+    items = [(f"{ck.split('|')[0]}-{dest}", by_key[ck.split("|")[1]])
+             for ck, dests in cands.items() for dest, price in dests.items()
+             if ck.split("|")[0] in store and not ryanair_covers(*ck.split("|"), dest, price)]
+    route = {"enabled": True, "cap": cap_route, "calls": 0, "ok": 0, "errors": 0, "offers": 0, "last_error": None,
+             "candidates": len(items)}
+    streak = 0
+    for u in queue.pick_items(s, today, f"{sk.name}_route", items, max(cap_route, 0)):
+        origin, dest = u.airport.split("-")
+        route["calls"] += 1
+        try:
+            found = sk.route(origin, dest, u.window.out, u.window.ret, observed)
+        except Exception as e:
+            route["errors"] += 1
+            route["last_error"] = f"{type(e).__name__}: {e}"[:300]
+            queue.failed(u, route["last_error"])
+            streak += 1
+            if streak >= MAX_CONSECUTIVE_ERRORS:
+                route["stopped"] = f"{streak} errori consecutivi"
+                break
+            continue
+        streak = 0
+        route["ok"] += 1
+        queue.done(u, today, len(found))
+        kept = []
+        for o in found:
+            if set(o.airlines) == {"Ryanair"}:
+                continue  # the Ryanair adapter already has these, with exact prices
+            reason = discard_reason(s, o)
+            history.add(f"{origin}-{dest}", observed, o.out_date, o.ret_date, u.window.nights,
+                        window_type(u.window), o.price, o.source, reason is None)
+            if reason:
+                discards[reason] += 1
+            elif useful_hours(s, o) <= 0:
+                discards["SEL-06"] += 1
+            else:
+                kept.append(offer_json(s, cal, o, u.window, airports))
+        kept.sort(key=lambda x: x["price_per_hour"])
+        kept = kept[:4]
+        route["offers"] += len(kept)
+        pair = store[origin].setdefault(u.window.key, {**u.window.to_json(), "offers": []})
+        pair["offers"] = [x for x in pair["offers"]
+                          if not (x["source"] == sk.name and x["destination"] == dest)] + kept
+        pair["offers"].sort(key=lambda x: (x["price_per_hour"] is None, x["price_per_hour"] or 0, x["price"]))
+        time.sleep(s.job["pause_seconds"])
+    return disc, route
+
+
 def main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--cap", type=int, help="override JOB-06 for every enabled source")
@@ -213,6 +303,10 @@ def main(argv: list[str] | None = None) -> None:
     for a in j["airports"]:
         old = read_json(DATA / "offers" / f"{a}.json", {}).get("pairs", {})
         store[a] = {k: v for k, v in old.items() if k in keys}
+        # Offers of sources that are not re-read every cycle must not linger for ever.
+        oldest = (today - timedelta(days=2 * s["JOB-04"])).isoformat()
+        for pair in store[a].values():
+            pair["offers"] = [o for o in pair["offers"] if o["source"] == "ryanair" or o["observed_at"] >= oldest]
 
     queue = WorkQueue(STATE / "queue.json")
     # JOB-06 is a daily cap: count calls already made today by earlier runs.
@@ -220,20 +314,42 @@ def main(argv: list[str] | None = None) -> None:
     usage = usage_all.setdefault(today.isoformat(), {})
     history = History(ARCHIVE / "observations")
     discards: Counter = Counter()
-    for src in (fr, Skiplagged(**kw)):
-        cap = args.cap if args.cap is not None and s.cap(src.name) > 0 else s.cap(src.name)
-        if cap <= 0:
-            meta["sources"][src.name] = {"enabled": False}
-            continue
-        cap -= usage.get(src.name, 0)
-        if cap <= 0:
-            meta["sources"][src.name] = {"enabled": True, "calls": 0, "note": "tetto giornaliero già raggiunto"}
-            continue
+
+    def cap_left(name: str) -> int:
+        """JOB-06 minus what earlier runs used today; 0 or less means nothing to do."""
+        cap = s.cap(name)
+        if args.cap is not None and cap > 0:
+            cap = args.cap
+        return cap - usage.get(name, 0) if cap > 0 else -1
+
+    def idle(name: str) -> dict:
+        if s.cap(name) <= 0:
+            return {"enabled": False}
+        return {"enabled": True, "calls": 0, "note": "tetto giornaliero già raggiunto"}
+
+    if cap_left(fr.name) > 0:
         try:
-            meta["sources"][src.name] = run_source(s, src, cap, today, pairs, queue, store, history, cal,
-                                                   airports, discards)
+            meta["sources"][fr.name] = run_source(s, fr, cap_left(fr.name), today, pairs, queue, store, history,
+                                                  cal, airports, discards)
         except Exception:
-            meta["sources"][src.name] = {"enabled": True, "crashed": traceback.format_exc()[-800:]}
+            meta["sources"][fr.name] = {"enabled": True, "crashed": traceback.format_exc()[-800:]}
+    else:
+        meta["sources"][fr.name] = idle(fr.name)
+
+    sk = Skiplagged(**kw)
+    airports.update({k: v for k, v in read_json(STATE / "places.json", {}).items() if k not in airports})
+    meta["sources"]["skiplagged"], meta["sources"]["skiplagged_route"] = idle("skiplagged"), idle("skiplagged_route")
+    if cap_left("skiplagged") > 0 or cap_left("skiplagged_route") > 0:
+        try:
+            disc, route = run_skiplagged(s, sk, cap_left("skiplagged"), cap_left("skiplagged_route"), today, pairs,
+                                         queue, store, history, cal, airports, discards)
+            if cap_left("skiplagged") > 0:
+                meta["sources"]["skiplagged"] = disc
+            if cap_left("skiplagged_route") > 0:
+                meta["sources"]["skiplagged_route"] = route
+        except Exception:
+            meta["sources"]["skiplagged"] = {"enabled": True, "crashed": traceback.format_exc()[-800:]}
+    write_json(STATE / "places.json", {k: v for k, v in airports.items() if "lat" not in v})
     for name, st in meta["sources"].items():
         usage[name] = usage.get(name, 0) + st.get("calls", 0)
     write_json(STATE / "usage.json", {k: v for k, v in usage_all.items() if k >= (today - timedelta(days=30)).isoformat()})
