@@ -191,12 +191,20 @@
    "name": "Tetto di chiamate giornaliere per fonte",
    "value": {
     "ryanair": 160,
-    "skiplagged": 80,
+    "skiplagged": 60,
     "skiplagged_route": 120,
     "google_flights": 0
    },
    "unit": "chiamate",
    "note": "Valori provvisori, da fissare dopo la prova sul campo",
+   "editable": "config"
+  },
+  {
+   "id": "JOB-07",
+   "name": "Fonti a rotta: prezzo massimo di una meta per cercarne gli orari",
+   "value": 250,
+   "unit": "€",
+   "note": "Oltre questa cifra un volo non è un'occasione: non si spendono chiamate",
    "editable": "config"
   }
  ],

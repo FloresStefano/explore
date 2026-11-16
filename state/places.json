@@ -202,5 +202,167 @@
   "name": "Unknown",
   "city": "Unknown",
   "country": "Unknown"
+ },
+ "SXB": {
+  "code": "SXB",
+  "name": "Strasbourg",
+  "city": "Strasbourg",
+  "country": "France"
+ },
+ "MEM": {
+  "code": "MEM",
+  "name": "Memphis",
+  "city": "Memphis",
+  "country": "United States"
+ },
+ "GSP": {
+  "code": "GSP",
+  "name": "Greer",
+  "city": "Greer",
+  "country": "United States"
+ },
+ "YWG": {
+  "code": "YWG",
+  "name": "Winnipeg",
+  "city": "Winnipeg",
+  "country": "Canada"
+ },
+ "PIT": {
+  "code": "PIT",
+  "name": "Pittsburgh",
+  "city": "Pittsburgh",
+  "country": "United States"
+ },
+ "CHA": {
+  "code": "CHA",
+  "name": "Chattanooga",
+  "city": "Chattanooga",
+  "country": "United States"
+ },
+ "TYS": {
+  "code": "TYS",
+  "name": "Alcoa",
+  "city": "Alcoa",
+  "country": "United States"
+ },
+ "STL": {
+  "code": "STL",
+  "name": "St Louis",
+  "city": "St Louis",
+  "country": "United States"
+ },
+ "CLE": {
+  "code": "CLE",
+  "name": "Cleveland",
+  "city": "Cleveland",
+  "country": "United States"
+ },
+ "RIC": {
+  "code": "RIC",
+  "name": "Richmond",
+  "city": "Richmond",
+  "country": "United States"
+ },
+ "YEG": {
+  "code": "YEG",
+  "name": "Edmonton",
+  "city": "Edmonton",
+  "country": "Canada"
+ },
+ "MCI": {
+  "code": "MCI",
+  "name": "Kansas City",
+  "city": "Kansas City",
+  "country": "United States"
+ },
+ "GRR": {
+  "code": "GRR",
+  "name": "Grand Rapids",
+  "city": "Grand Rapids",
+  "country": "United States"
+ },
+ "ANC": {
+  "code": "ANC",
+  "name": "Anchorage",
+  "city": "Anchorage",
+  "country": "United States"
+ },
+ "YYJ": {
+  "code": "YYJ",
+  "name": "Victoria",
+  "city": "Victoria",
+  "country": "Canada"
+ },
+ "ABQ": {
+  "code": "ABQ",
+  "name": "Albuquerque",
+  "city": "Albuquerque",
+  "country": "United States"
+ },
+ "SAF": {
+  "code": "SAF",
+  "name": "Santa Fe",
+  "city": "Santa Fe",
+  "country": "United States"
+ },
+ "SLC": {
+  "code": "SLC",
+  "name": "Salt Lake City",
+  "city": "Salt Lake City",
+  "country": "United States"
+ },
+ "CNY": {
+  "code": "CNY",
+  "name": "Moab",
+  "city": "Moab",
+  "country": "United States"
+ },
+ "RAP": {
+  "code": "RAP",
+  "name": "Rapid City",
+  "city": "Rapid City",
+  "country": "United States"
+ },
+ "COS": {
+  "code": "COS",
+  "name": "Colorado Springs",
+  "city": "Colorado Springs",
+  "country": "United States"
+ },
+ "SMF": {
+  "code": "SMF",
+  "name": "Sacramento",
+  "city": "Sacramento",
+  "country": "United States"
+ },
+ "GEG": {
+  "code": "GEG",
+  "name": "Spokane",
+  "city": "Spokane",
+  "country": "United States"
+ },
+ "SAT": {
+  "code": "SAT",
+  "name": "San Antonio",
+  "city": "San Antonio",
+  "country": "United States"
+ },
+ "MSY": {
+  "code": "MSY",
+  "name": "New Orleans",
+  "city": "New Orleans",
+  "country": "United States"
+ },
+ "BNA": {
+  "code": "BNA",
+  "name": "Nashville",
+  "city": "Nashville",
+  "country": "United States"
+ },
+ "BOD": {
+  "code": "BOD",
+  "name": "Bordeaux",
+  "city": "Bordeaux",
+  "country": "France"
  }
 }

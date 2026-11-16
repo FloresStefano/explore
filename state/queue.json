@@ -1162,10 +1162,72 @@
 "fetched": "2026-11-16"
 },
 "skiplagged|TSF|2026-11-25_2026-11-28": {
-"error": "HttpError: HTTP 429: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1015/\",\"title\":\"Error 1015: You are being rate limited\",\"status\":"
+"count": 8,
+"fetched": "2026-11-16"
 },
 "skiplagged|TSF|2026-11-25_2026-11-29": {
-"error": "HttpError: HTTP 429: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1015/\",\"title\":\"Error 1015: You are being rate limited\",\"status\":"
+"count": 1,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-26_2026-11-28": {
+"count": 7,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-26_2026-11-29": {
+"count": 9,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-26_2026-11-30": {
+"count": 8,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-27_2026-11-29": {
+"count": 14,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-27_2026-11-30": {
+"count": 13,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-27_2026-12-01": {
+"count": 10,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-28_2026-11-30": {
+"count": 11,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-28_2026-12-01": {
+"count": 10,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-29_2026-12-01": {
+"count": 10,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-12-02_2026-12-05": {
+"count": 9,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-12-02_2026-12-06": {
+"count": 8,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-12-03_2026-12-05": {
+"count": 6,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-12-03_2026-12-06": {
+"count": 9,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-12-03_2026-12-07": {
+"count": 8,
+"fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-12-04_2026-12-06": {
+"count": 15,
+"fetched": "2026-11-16"
 },
 "skiplagged|VRN|2026-11-18_2026-11-21": {
 "count": 42,
@@ -1208,12 +1270,71 @@
 "fetched": "2026-11-16"
 },
 "skiplagged|VRN|2026-11-22_2026-11-24": {
-"error": "HttpError: HTTP 429: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1015/\",\"title\":\"Error 1015: You are being rate limited\",\"status\":"
+"count": 40,
+"fetched": "2026-11-16"
 },
 "skiplagged|VRN|2026-11-25_2026-11-28": {
-"error": "HttpError: HTTP 429: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1015/\",\"title\":\"Error 1015: You are being rate limited\",\"status\":"
+"count": 27,
+"fetched": "2026-11-16"
 },
 "skiplagged|VRN|2026-11-25_2026-11-29": {
-"error": "HttpError: HTTP 429: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1015/\",\"title\":\"Error 1015: You are being rate limited\",\"status\":"
+"count": 39,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-26_2026-11-28": {
+"count": 38,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-26_2026-11-29": {
+"count": 41,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-26_2026-11-30": {
+"count": 39,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-27_2026-11-29": {
+"count": 16,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-27_2026-11-30": {
+"count": 41,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-27_2026-12-01": {
+"count": 39,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-28_2026-11-30": {
+"count": 42,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-28_2026-12-01": {
+"count": 43,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-29_2026-12-01": {
+"count": 4,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-12-02_2026-12-05": {
+"count": 38,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-12-02_2026-12-06": {
+"count": 40,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-12-03_2026-12-05": {
+"count": 41,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-12-03_2026-12-06": {
+"count": 42,
+"fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-12-03_2026-12-07": {
+"count": 39,
+"fetched": "2026-11-16"
 }
 }
