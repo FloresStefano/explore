@@ -1,0 +1,213 @@
+{
+ "settings": [
+  {
+   "id": "USR-01",
+   "name": "Comune di residenza",
+   "value": "Verona",
+   "editable": "user"
+  },
+  {
+   "id": "USR-02",
+   "name": "Regione per il calendario scolastico",
+   "value": "veneto",
+   "note": "Ricavata da USR-01",
+   "editable": "user"
+  },
+  {
+   "id": "USR-03",
+   "name": "Festa del patrono",
+   "value": "05-21",
+   "unit": "MM-GG",
+   "note": "Ricavata da USR-01 (San Zeno per Verona)",
+   "editable": "user"
+  },
+  {
+   "id": "USR-04",
+   "name": "Aeroporti di partenza",
+   "value": [
+    "VRN",
+    "BGY",
+    "TSF"
+   ],
+   "editable": "user"
+  },
+  {
+   "id": "FIN-01",
+   "name": "Notti minime",
+   "value": 2,
+   "unit": "notti",
+   "editable": "config"
+  },
+  {
+   "id": "FIN-02",
+   "name": "Notti massime",
+   "value": 4,
+   "unit": "notti",
+   "editable": "config"
+  },
+  {
+   "id": "FIN-03",
+   "name": "Giorni di ferie massimi per un ponte",
+   "value": 2,
+   "unit": "giorni",
+   "editable": "config"
+  },
+  {
+   "id": "FIN-04",
+   "name": "Partenza in giorno lavorativo senza ferie a partire dalle",
+   "value": "17:00",
+   "unit": "ora",
+   "note": "Prima di quest'ora la partenza costa mezza giornata",
+   "editable": "config"
+  },
+  {
+   "id": "FIN-05",
+   "name": "Chiusure scolastiche in giorni lavorativi",
+   "value": true,
+   "note": "Generano una finestra marcata \"richiede ferie dei genitori\"",
+   "editable": "config"
+  },
+  {
+   "id": "FIN-06",
+   "name": "Orizzonte di calcolo delle finestre",
+   "value": 365,
+   "unit": "giorni",
+   "editable": "config"
+  },
+  {
+   "id": "SEL-01",
+   "name": "Ritorno: decollo non prima delle",
+   "value": "07:00",
+   "unit": "ora",
+   "editable": "config"
+  },
+  {
+   "id": "SEL-02",
+   "name": "Andata: atterraggio non oltre le",
+   "value": "24:00",
+   "unit": "ora",
+   "editable": "config"
+  },
+  {
+   "id": "SEL-03",
+   "name": "Scali massimi",
+   "value": 0,
+   "editable": "config"
+  },
+  {
+   "id": "SEL-04",
+   "name": "Ritorno sullo stesso aeroporto di partenza",
+   "value": true,
+   "editable": "config"
+  },
+  {
+   "id": "SEL-05",
+   "name": "Prezzo mostrato",
+   "value": "Tariffa minima per adulto, senza bagaglio",
+   "editable": "config"
+  },
+  {
+   "id": "SEL-06",
+   "name": "Ore utili: fascia diurna conteggiata",
+   "value": [
+    "08:00",
+    "22:00"
+   ],
+   "unit": "ora",
+   "editable": "config"
+  },
+  {
+   "id": "SEL-07",
+   "name": "Ore utili: margine dopo l'atterraggio e prima del decollo",
+   "value": [
+    1,
+    2
+   ],
+   "unit": "ore",
+   "editable": "config"
+  },
+  {
+   "id": "IMP-01",
+   "name": "Sconto minimo rispetto al riferimento per il bollino",
+   "value": 30,
+   "unit": "%",
+   "editable": "config"
+  },
+  {
+   "id": "IMP-02",
+   "name": "Prezzo di riferimento",
+   "value": "Mediana dei viaggi confrontabili: stessa tratta, stesso tipo di finestra, stessa durata",
+   "editable": "config"
+  },
+  {
+   "id": "IMP-03",
+   "name": "Storico minimo per mostrare lo sconto",
+   "value": 6,
+   "unit": "settimane",
+   "editable": "config"
+  },
+  {
+   "id": "IMP-04",
+   "name": "Offerte mostrate in Home",
+   "value": 20,
+   "editable": "config"
+  },
+  {
+   "id": "JOB-01",
+   "name": "Orizzonte di ricerca delle offerte",
+   "value": 90,
+   "unit": "giorni",
+   "editable": "config"
+  },
+  {
+   "id": "JOB-02",
+   "name": "Esecuzione",
+   "value": "Giornaliera, a coda di priorità",
+   "editable": "config"
+  },
+  {
+   "id": "JOB-03",
+   "name": "Riaggiornamento delle partenze entro 4 settimane",
+   "value": 3,
+   "unit": "giorni",
+   "editable": "config"
+  },
+  {
+   "id": "JOB-04",
+   "name": "Riaggiornamento delle partenze più lontane",
+   "value": 7,
+   "unit": "giorni",
+   "editable": "config"
+  },
+  {
+   "id": "JOB-05",
+   "name": "Aggiornamento della mappa delle rotte",
+   "value": 30,
+   "unit": "giorni",
+   "editable": "config"
+  },
+  {
+   "id": "JOB-06",
+   "name": "Tetto di chiamate giornaliere per fonte",
+   "value": {
+    "ryanair": 160,
+    "skiplagged": 0,
+    "google_flights": 0
+   },
+   "unit": "chiamate",
+   "note": "Valori provvisori, da fissare dopo la prova sul campo",
+   "editable": "config"
+  }
+ ],
+ "job": {
+  "airports": [
+   "VRN",
+   "BGY",
+   "TSF"
+  ],
+  "regions": [
+   "veneto"
+  ],
+  "currency": "EUR"
+ }
+}

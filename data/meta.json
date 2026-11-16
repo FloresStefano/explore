@@ -1,0 +1,38 @@
+{
+ "run_at": "2026-11-16T17:41:25+00:00",
+ "sources": {
+  "ryanair": {
+   "enabled": true,
+   "cap": 160,
+   "calls": 160,
+   "ok": 160,
+   "errors": 0,
+   "offers": 2929,
+   "last_error": null,
+   "due_not_picked": "possibile arretrato"
+  },
+  "skiplagged": {
+   "enabled": false
+  }
+ },
+ "warnings": [],
+ "discards": {
+  "SEL-01": 525,
+  "SEL-02": 80
+ },
+ "coverage_ryanair": {
+  "VRN": {
+   "pairs": 162,
+   "fresh": 52
+  },
+  "BGY": {
+   "pairs": 162,
+   "fresh": 54
+  },
+  "TSF": {
+   "pairs": 162,
+   "fresh": 54
+  }
+ },
+ "seconds": 292
+}

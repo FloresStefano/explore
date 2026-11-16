@@ -1,0 +1,328 @@
+{
+ "airport": "VRN",
+ "destinations": {
+  "BDS": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Brindisi",
+   "city": "Brindisi",
+   "country": "Italia",
+   "country_code": "it",
+   "lat": 40.6576,
+   "lon": 17.947,
+   "tz": "Europe/Rome"
+  },
+  "BHX": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Birmingham",
+   "city": "Birmingham",
+   "country": "Regno Unito",
+   "country_code": "gb",
+   "lat": 52.4539,
+   "lon": -1.74803,
+   "tz": "Europe/London"
+  },
+  "BRI": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Bari",
+   "city": "Bari",
+   "country": "Italia",
+   "country_code": "it",
+   "lat": 41.1389,
+   "lon": 16.7606,
+   "tz": "Europe/Rome"
+  },
+  "CAG": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Cagliari",
+   "city": "Cagliari",
+   "country": "Italia",
+   "country_code": "it",
+   "lat": 39.2515,
+   "lon": 9.05428,
+   "tz": "Europe/Rome"
+  },
+  "CFU": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Corfù",
+   "city": "Corfù",
+   "country": "Grecia",
+   "country_code": "gr",
+   "lat": 39.6019,
+   "lon": 19.9117,
+   "tz": "Europe/Athens"
+  },
+  "CRL": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Bruxelles (Charleroi)",
+   "city": "Charleroi",
+   "country": "Belgio",
+   "country_code": "be",
+   "lat": 50.4592,
+   "lon": 4.45382,
+   "tz": "Europe/Brussels"
+  },
+  "CTA": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Catania",
+   "city": "Catania",
+   "country": "Italia",
+   "country_code": "it",
+   "lat": 37.4668,
+   "lon": 15.0664,
+   "tz": "Europe/Rome"
+  },
+  "DUB": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Dublino",
+   "city": "Dublino",
+   "country": "Irlanda",
+   "country_code": "ie",
+   "lat": 53.4213,
+   "lon": -6.27007,
+   "tz": "Europe/Dublin"
+  },
+  "MAD": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Madrid",
+   "city": "Madrid",
+   "country": "Spagna",
+   "country_code": "es",
+   "lat": 40.4722,
+   "lon": -3.5608,
+   "tz": "Europe/Madrid"
+  },
+  "MAN": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Manchester",
+   "city": "Manchester",
+   "country": "Regno Unito",
+   "country_code": "gb",
+   "lat": 53.3537,
+   "lon": -2.27495,
+   "tz": "Europe/London"
+  },
+  "NAP": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Napoli",
+   "city": "Napoli",
+   "country": "Italia",
+   "country_code": "it",
+   "lat": 40.8844,
+   "lon": 14.2908,
+   "tz": "Europe/Rome"
+  },
+  "OPO": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Porto",
+   "city": "Porto",
+   "country": "Portogallo",
+   "country_code": "pt",
+   "lat": 41.2481,
+   "lon": -8.68139,
+   "tz": "Europe/Lisbon"
+  },
+  "PMI": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Palma",
+   "city": "Palma",
+   "country": "Spagna",
+   "country_code": "es",
+   "lat": 39.5517,
+   "lon": 2.73881,
+   "tz": "Europe/Madrid"
+  },
+  "PMO": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Palermo",
+   "city": "Palermo",
+   "country": "Italia",
+   "country_code": "it",
+   "lat": 38.176,
+   "lon": 13.091,
+   "tz": "Europe/Rome"
+  },
+  "STN": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Londra (Stansted)",
+   "city": "Londra",
+   "country": "Regno Unito",
+   "country_code": "gb",
+   "lat": 51.885,
+   "lon": 0.235,
+   "tz": "Europe/London"
+  },
+  "SUF": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Lamezia",
+   "city": "Lamezia",
+   "country": "Italia",
+   "country_code": "it",
+   "lat": 38.9054,
+   "lon": 16.2423,
+   "tz": "Europe/Rome"
+  },
+  "TIA": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Tirana",
+   "city": "Tirana",
+   "country": "Albania",
+   "country_code": "al",
+   "lat": 41.4147,
+   "lon": 19.7206,
+   "tz": "Europe/Tirane"
+  },
+  "TPS": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Trapani-Marsala",
+   "city": "Trapani",
+   "country": "Italia",
+   "country_code": "it",
+   "lat": 37.9114,
+   "lon": 12.488,
+   "tz": "Europe/Rome"
+  },
+  "VLC": {
+   "airlines": [
+    "Ryanair"
+   ],
+   "months": [],
+   "seasonal": false,
+   "last_confirmed": "2026-11-16",
+   "name": "Valencia",
+   "city": "Valencia",
+   "country": "Spagna",
+   "country_code": "es",
+   "lat": 39.4893,
+   "lon": -0.481625,
+   "tz": "Europe/Madrid"
+  }
+ },
+ "ryanair_updated": "2026-11-16",
+ "updated": "2026-11-16"
+}

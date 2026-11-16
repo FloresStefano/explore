@@ -1,0 +1,12 @@
+{
+ "Verona": {
+  "region": "veneto",
+  "patron": "05-21",
+  "saint": "San Zeno",
+  "airports": [
+   "VRN",
+   "BGY",
+   "TSF"
+  ]
+ }
+}
