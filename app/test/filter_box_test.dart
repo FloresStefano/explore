@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:weekend_break/common.dart';
+import 'package:weekend_break/data.dart';
 
 void main() {
   setUpAll(() => initializeDateFormatting('it'));
@@ -42,5 +43,26 @@ void main() {
     await tester.tap(find.text('Tutti i tipi').last);
     await tester.pumpAndSettle();
     expect(type, isNull);
+  });
+
+  testWidgets('a choice in one section shows up in the others', (tester) async {
+    Widget bar() => ListenableBuilder(
+          listenable: App.filter,
+          builder: (_, _) => FilterBar(
+            type: App.filter.type,
+            month: App.filter.month,
+            months: const ['2026-11', '2026-12'],
+            onType: App.filter.setType,
+            onMonth: App.filter.setMonth,
+          ),
+        );
+    // Two sections built at the same time, as in the app's IndexedStack.
+    await tester.pumpWidget(MaterialApp(home: Scaffold(body: Column(children: [bar(), bar()]))));
+    await tester.tap(find.text('Tutti i tipi').first);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Weekend').last);
+    await tester.pumpAndSettle();
+    expect(App.filter.type, 'weekend');
+    expect(find.text('Weekend'), findsNWidgets(2));
   });
 }

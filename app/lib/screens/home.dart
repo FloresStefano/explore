@@ -14,13 +14,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String? _type;
-  String? _month;
+  String? get _type => App.filter.type;
+  String? get _month => App.filter.month;
 
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
-      listenable: App.prefs,
+      listenable: App.changes,
       builder: (context, _) {
         final airports = App.prefs.airports;
         return PageShell(
@@ -51,8 +51,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       type: _type,
                       month: _month,
                       months: months,
-                      onType: (v) => setState(() => _type = v),
-                      onMonth: (v) => setState(() => _month = v),
+                      onType: App.filter.setType,
+                      onMonth: App.filter.setMonth,
                     ),
                     const SizedBox(height: 12),
                     Padding(

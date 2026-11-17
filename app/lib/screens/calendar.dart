@@ -5,8 +5,7 @@ import '../data.dart';
 import 'offers.dart';
 import 'settings.dart';
 
-/// Area 2: offers grouped by month, then country, then offer, with Ponti as the
-/// default kind of break.
+/// Area 2: offers grouped by month, then country, then offer.
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
 
@@ -15,19 +14,14 @@ class CalendarScreen extends StatefulWidget {
 }
 
 class _CalendarScreenState extends State<CalendarScreen> {
-  String? _type = 'ponte';
-  // ?mese=2026-12 opens the section on that month.
-  String? _month = _initialMonth();
-
-  static String? _initialMonth() {
-    final m = Uri.base.queryParameters['mese'];
-    return m != null && RegExp(r'^\d{4}-\d{2}$').hasMatch(m) ? m : null;
-  }
+  // The choice is shared with Home and Map.
+  String? get _type => App.filter.type;
+  String? get _month => App.filter.month;
 
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
-      listenable: App.prefs,
+      listenable: App.changes,
       builder: (context, _) => PageShell(
         header: HeaderTitle(
           kicker: 'Weekend, weekend+ e ponti',
@@ -49,8 +43,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   month: _month,
                   months: monthsOf(all),
                   reversed: true,
-                  onType: (v) => setState(() => _type = v),
-                  onMonth: (v) => setState(() => _month = v),
+                  onType: App.filter.setType,
+                  onMonth: App.filter.setMonth,
                 ),
                 const SizedBox(height: 12),
                 Padding(

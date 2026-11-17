@@ -145,11 +145,38 @@ class Prefs extends ChangeNotifier {
   }
 }
 
+/// Kind of break and month chosen in the combo boxes: one choice shared by
+/// Home, Calendar and Map while the app is open.
+class SharedFilter extends ChangeNotifier {
+  SharedFilter() {
+    // ?mese=2026-12 opens the app on that month.
+    final m = Uri.base.queryParameters['mese'];
+    if (m != null && RegExp(r'^\d{4}-\d{2}$').hasMatch(m)) month = m;
+  }
+
+  String? type;
+  String? month;
+
+  void setType(String? v) {
+    type = v;
+    notifyListeners();
+  }
+
+  void setMonth(String? v) {
+    month = v;
+    notifyListeners();
+  }
+}
+
 class App {
   App._();
   static final repo = Repo();
   static final prefs = Prefs();
   static final ai = Ai();
+  static final filter = SharedFilter();
+
+  /// Rebuild on device settings or on the shared filter.
+  static final changes = Listenable.merge([prefs, filter]);
 }
 
 /// Filters shared by Home, Calendar and Map.

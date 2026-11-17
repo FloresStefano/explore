@@ -32,9 +32,12 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   static Future<List<List<Offset>>>? _land;
-  String? _type;
-  String? _monthFilter;
+  // The choice is shared with Home and Calendar.
+  String? get _type => App.filter.type;
+  String? get _monthFilter => App.filter.month;
   String? _selected;
+  String? _loadedFor;
+  Future<(List<List<Offset>>, Map<String, Json>, List<Json>)>? _loading;
 
   static Future<List<List<Offset>>> _loadLand() async {
     final rings = jsonDecode(await rootBundle.loadString('assets/europe_land.json')) as List;
@@ -65,9 +68,14 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
-      listenable: App.prefs,
+      listenable: App.changes,
       builder: (context, _) {
         final prefs = App.prefs;
+        final airportsKey = prefs.airports.join();
+        if (_loadedFor != airportsKey) {
+          _loadedFor = airportsKey;
+          _loading = _load(prefs.airports);
+        }
         return PageShell(
           headerHeight: 150,
           header: HeaderTitle(
@@ -77,7 +85,7 @@ class _MapScreenState extends State<MapScreen> {
           ),
           child: FutureBuilder(
             key: ValueKey(prefs.airports.join()),
-            future: _load(prefs.airports),
+            future: _loading,
             builder: (context, snap) {
               if (snap.connectionState != ConnectionState.done) {
                 return const Center(child: CircularProgressIndicator(color: Colors.white));
@@ -90,8 +98,8 @@ class _MapScreenState extends State<MapScreen> {
                 type: _type,
                 month: _monthFilter,
                 months: months,
-                onType: (v) => setState(() => _type = v),
-                onMonth: (v) => setState(() => _monthFilter = v),
+                onType: App.filter.setType,
+                onMonth: App.filter.setMonth,
               );
               final byDest = <String, List<Json>>{};
               for (final o in offers) {
