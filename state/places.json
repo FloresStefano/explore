@@ -364,5 +364,71 @@
   "name": "Bordeaux",
   "city": "Bordeaux",
   "country": "France"
+ },
+ "GRX": {
+  "code": "GRX",
+  "name": "Granada",
+  "city": "Granada",
+  "country": "Spain"
+ },
+ "RTM": {
+  "code": "RTM",
+  "name": "Rotterdam",
+  "city": "Rotterdam",
+  "country": "Netherlands"
+ },
+ "SEA": {
+  "code": "SEA",
+  "name": "Seattle",
+  "city": "Seattle",
+  "country": "United States"
+ },
+ "PDX": {
+  "code": "PDX",
+  "name": "Portland",
+  "city": "Portland",
+  "country": "United States"
+ },
+ "DSM": {
+  "code": "DSM",
+  "name": "Des Moines",
+  "city": "Des Moines",
+  "country": "United States"
+ },
+ "MRY": {
+  "code": "MRY",
+  "name": "Monterey",
+  "city": "Monterey",
+  "country": "United States"
+ },
+ "YZF": {
+  "code": "YZF",
+  "name": "Yellowknife",
+  "city": "Yellowknife",
+  "country": "Canada"
+ },
+ "MIA": {
+  "code": "MIA",
+  "name": "Miami",
+  "city": "Miami",
+  "country": "United States"
+ },
+ "PHX": {
+  "code": "PHX",
+  "name": "Phoenix",
+  "city": "Phoenix",
+  "country": "United States"
+ },
+ "PVR": {
+  "code": "PVR",
+  "name": "Puerto Vallarta",
+  "city": "Puerto Vallarta",
+  "country": "Mexico"
+ },
+ "LGA": {
+  "code": "LGA",
+  "name": "New York",
+  "city": "New York",
+  "country": "United States"
  }
 }
