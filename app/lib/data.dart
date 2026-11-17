@@ -156,6 +156,12 @@ class SharedFilter extends ChangeNotifier {
 
   String? type;
   String? month;
+  String? price; // key of priceBands, e.g. "50-100"
+
+  void setPrice(String? v) {
+    price = v;
+    notifyListeners();
+  }
 
   void setType(String? v) {
     type = v;
@@ -179,9 +185,13 @@ class App {
   static final changes = Listenable.merge([prefs, filter]);
 }
 
+/// Price bands of the combo box: key -> (lowest excluded, highest included), in euro.
+const priceBands = {'0-50': (-1, 50), '50-100': (50, 100), '100-150': (100, 150)};
+
 /// Filters shared by Home, Calendar and Map.
 class OfferFilter {
-  const OfferFilter({this.type, this.month, this.day, this.from, this.to, this.country, this.destination});
+  const OfferFilter({this.type, this.month, this.price, this.day, this.from, this.to, this.country, this.destination});
+  final String? price; // key of priceBands
   final String? type;
   final String? month; // yyyy-mm of the departure
   final DateTime? day; // the trip contains this day
@@ -192,6 +202,11 @@ class OfferFilter {
 
   bool test(Json o) {
     if (type != null && o['type'] != type) return false;
+    final band = priceBands[price];
+    if (band != null) {
+      final p = o['price'] as num;
+      if (p <= band.$1 || p > band.$2) return false;
+    }
     final out = o['out_date'] as String;
     if (month != null && !out.startsWith(month!)) return false;
     if (country != null && o['country'] != country) return false;
@@ -208,6 +223,7 @@ class OfferFilter {
 
   OfferFilter copyWith({String? country, String? destination, String? month}) => OfferFilter(
         type: type,
+        price: price,
         month: month ?? this.month,
         day: day,
         from: from,

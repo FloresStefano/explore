@@ -14,9 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String? get _type => App.filter.type;
-  String? get _month => App.filter.month;
-
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
@@ -36,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
               if (snap.connectionState != ConnectionState.done) return const Loading();
               final all = snap.data ?? const <Json>[];
               final months = monthsOf(all);
-              final offers = OfferFilter(type: _type, month: _month).apply(all);
+              final offers = OfferFilter(type: App.filter.type, month: App.filter.month, price: App.filter.price).apply(all);
               final groups = groupOffers(offers, (o) => o['country'] as String? ?? '');
               return RefreshIndicator(
                 onRefresh: () async {
@@ -47,13 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   header: [
                     const RecapCard(),
                     const SizedBox(height: 14),
-                    FilterBar(
-                      type: _type,
-                      month: _month,
-                      months: months,
-                      onType: App.filter.setType,
-                      onMonth: App.filter.setMonth,
-                    ),
+                    FilterBar(months: months),
                     const SizedBox(height: 12),
                     Padding(
                       padding: const EdgeInsets.only(left: 4, bottom: 10),
@@ -74,10 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     context,
                     groups[i].$1,
                     groups[i].$2,
-                    kicker: [
-                      if (_type != null) typePlural[_type],
-                      if (_month != null) fmtMonthKey(_month!),
-                    ].join(' · ').ifEmpty('Tutte le offerte'),
+                    kicker: filterLabel(),
                   ),
                 ),
               );

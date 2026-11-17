@@ -79,7 +79,8 @@ class _MapScreenState extends State<MapScreen> {
         return PageShell(
           headerHeight: 150,
           header: HeaderTitle(
-            kicker: 'Mete dirette',
+            // Departure airports come from the settings (USR-04).
+            kicker: 'Mete dirette da ${prefs.airports.map((a) => airportCity[a] ?? a).join(' · ')}',
             title: 'Mappa',
             action: isWide(context) ? null : RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
           ),
@@ -93,14 +94,8 @@ class _MapScreenState extends State<MapScreen> {
               final (land, all, catalog) = snap.data!;
               // Months come from the offers in hand: the scan depth decides the choice.
               final months = monthsOf(catalog);
-              final offers = OfferFilter(type: _type, month: _monthFilter).apply(catalog);
-              final filters = FilterBar(
-                type: _type,
-                month: _monthFilter,
-                months: months,
-                onType: App.filter.setType,
-                onMonth: App.filter.setMonth,
-              );
+              final offers = OfferFilter(type: _type, month: _monthFilter, price: App.filter.price).apply(catalog);
+              final filters = FilterBar(months: months);
               final byDest = <String, List<Json>>{};
               for (final o in offers) {
                 (byDest[o['destination'] as String] ??= []).add(o);
@@ -113,14 +108,6 @@ class _MapScreenState extends State<MapScreen> {
               final mapCard = WhiteCard(
                     padding: const EdgeInsets.fromLTRB(14, 14, 14, 12),
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(children: [
-                          for (final a in const ['VRN', 'BGY', 'TSF'])
-                            Pill(airportCity[a]!, selected: prefs.airports.contains(a), onTap: () => prefs.toggleAirport(a)),
-                        ]),
-                      ),
-                      const SizedBox(height: 12),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(14),
                         child: AspectRatio(
@@ -161,10 +148,7 @@ class _MapScreenState extends State<MapScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (_) => OffersScreen(
-                          kicker: [
-                            if (_type != null) typePlural[_type],
-                            if (_monthFilter != null) fmtMonthKey(_monthFilter!),
-                          ].join(' · ').ifEmpty('Tutte le offerte'),
+                          kicker: filterLabel(),
                           title: '${sel['city'] ?? _selected}',
                           offers: selOffers,
                         ),

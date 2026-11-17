@@ -48,13 +48,7 @@ void main() {
   testWidgets('a choice in one section shows up in the others', (tester) async {
     Widget bar() => ListenableBuilder(
           listenable: App.filter,
-          builder: (_, _) => FilterBar(
-            type: App.filter.type,
-            month: App.filter.month,
-            months: const ['2026-11', '2026-12'],
-            onType: App.filter.setType,
-            onMonth: App.filter.setMonth,
-          ),
+          builder: (_, _) => const FilterBar(months: ['2026-11', '2026-12']),
         );
     // Two sections built at the same time, as in the app's IndexedStack.
     await tester.pumpWidget(MaterialApp(home: Scaffold(body: Column(children: [bar(), bar()]))));
@@ -64,5 +58,22 @@ void main() {
     await tester.pumpAndSettle();
     expect(App.filter.type, 'weekend');
     expect(find.text('Weekend'), findsNWidgets(2));
+
+    await tester.tap(find.text('Tutti i prezzi').first);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('50–100 €').last);
+    await tester.pumpAndSettle();
+    expect(App.filter.price, '50-100');
+    expect(find.text('50–100 €'), findsNWidgets(2));
+  });
+
+  test('price bands: lower bound excluded, upper bound included', () {
+    bool keeps(String band, num price) =>
+        OfferFilter(price: band).test({'price': price, 'out_date': '2026-12-05', 'ret_date': '2026-12-07'});
+    expect(keeps('0-50', 50), isTrue);
+    expect(keeps('50-100', 50), isFalse);
+    expect(keeps('50-100', 50.01), isTrue);
+    expect(keeps('100-150', 150), isTrue);
+    expect(keeps('100-150', 150.5), isFalse);
   });
 }

@@ -14,10 +14,6 @@ class CalendarScreen extends StatefulWidget {
 }
 
 class _CalendarScreenState extends State<CalendarScreen> {
-  // The choice is shared with Home and Map.
-  String? get _type => App.filter.type;
-  String? get _month => App.filter.month;
-
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
@@ -34,18 +30,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
           builder: (context, snap) {
             if (snap.connectionState != ConnectionState.done) return const Loading();
             final all = snap.data ?? const <Json>[];
-            final offers = OfferFilter(type: _type, month: _month).apply(all);
+            final offers = OfferFilter(type: App.filter.type, month: App.filter.month, price: App.filter.price).apply(all);
             final byMonth = groupOffers(offers, (o) => (o['out_date'] as String).substring(0, 7), byKey: true);
             return ResponsiveList(
               header: [
-                FilterBar(
-                  type: _type,
-                  month: _month,
-                  months: monthsOf(all),
-                  reversed: true,
-                  onType: App.filter.setType,
-                  onMonth: App.filter.setMonth,
-                ),
+                FilterBar(months: monthsOf(all), reversed: true),
                 const SizedBox(height: 12),
                 Padding(
                   padding: const EdgeInsets.only(left: 4, bottom: 10),
@@ -68,7 +57,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (_) => CountriesScreen(
-                        kicker: _type == null ? 'Tutte le offerte' : typePlural[_type]!,
+                        kicker: filterLabel(),
                         title: fmtMonthKey(ym),
                         offers: items,
                       ),

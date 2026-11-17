@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'data.dart';
+
 // Palette taken from the reference template: night-blue header, indigo actions,
 // lavender page, white cards.
 const navy = Color(0xFF15164A);
@@ -228,34 +230,69 @@ class TypeBox extends StatelessWidget {
   }
 }
 
-/// The two combo boxes side by side: kind of break and departure month.
+/// Price band as a combo box.
+class PriceBox extends StatelessWidget {
+  const PriceBox({super.key, required this.value, required this.onChanged});
+  final String? value;
+  final ValueChanged<String?> onChanged;
+
+  @override
+  Widget build(BuildContext context) => FilterBox<String>(
+        label: 'Fascia di prezzo',
+        icon: Icons.euro,
+        value: value,
+        items: [
+          (null, 'Tutti i prezzi', null),
+          for (final e in priceBands.entries) (e.key, '${e.value.$1 < 0 ? 0 : e.value.$1}–${e.value.$2} €', null),
+        ],
+        onChanged: onChanged,
+      );
+}
+
+/// The three combo boxes (kind of break, departure month, price band). They edit
+/// App.filter, so the choice is the same in Home, Calendar and Map.
 class FilterBar extends StatelessWidget {
-  const FilterBar({
-    super.key,
-    required this.type,
-    required this.month,
-    required this.months,
-    required this.onType,
-    required this.onMonth,
-    this.reversed = false,
-  });
-  final String? type, month;
+  const FilterBar({super.key, required this.months, this.reversed = false});
   final List<String> months;
-  final ValueChanged<String?> onType, onMonth;
   final bool reversed;
 
   @override
-  Widget build(BuildContext context) => Align(
-        alignment: Alignment.centerLeft,
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 640),
-          child: Row(children: [
-            Expanded(child: TypeBox(value: type, reversed: reversed, onChanged: onType)),
-            const SizedBox(width: 10),
-            Expanded(child: MonthBox(months: months, value: month, onChanged: onMonth)),
-          ]),
+  Widget build(BuildContext context) => ListenableBuilder(listenable: App.filter, builder: (context, _) => _bar());
+
+  Widget _bar() {
+    final f = App.filter;
+    final type = TypeBox(value: f.type, reversed: reversed, onChanged: f.setType);
+    final month = MonthBox(months: months, value: f.month, onChanged: f.setMonth);
+    final price = PriceBox(value: f.price, onChanged: f.setPrice);
+    const gap = SizedBox(width: 10, height: 10);
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 900),
+        child: LayoutBuilder(
+          builder: (context, box) => box.maxWidth >= 620
+              ? Row(children: [Expanded(child: type), gap, Expanded(child: month), gap, Expanded(child: price)])
+              // Phones: two boxes on the first row, the price below.
+              : Column(children: [
+                  Row(children: [Expanded(child: type), gap, Expanded(child: month)]),
+                  gap,
+                  Row(children: [Expanded(child: price), gap, const Spacer()]),
+                ]),
         ),
-      );
+      ),
+    );
+  }
+}
+
+/// "Ponti · Dicembre 2026 · 50–100 €" for the shared filter, or [fallback].
+String filterLabel([String fallback = 'Tutte le offerte']) {
+  final f = App.filter;
+  final band = priceBands[f.price];
+  return [
+    if (f.type != null) typePlural[f.type],
+    if (f.month != null) fmtMonthKey(f.month!),
+    if (band != null) '${band.$1 < 0 ? 0 : band.$1}–${band.$2} €',
+  ].join(' · ').ifEmpty(fallback);
 }
 
 /// Departure month as a combo box.
