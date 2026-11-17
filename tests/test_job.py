@@ -101,6 +101,13 @@ class SelectionTest(unittest.TestCase):
         o = offer("2026-12-11T18:00", "2026-12-11T19:45", "2026-12-13T20:00", "2026-12-13T21:45", ret_to="BGY")
         self.assertEqual(discard_reason(S, o), "SEL-04")
 
+    def test_price_cap(self):
+        o = offer("2026-12-11T18:00", "2026-12-11T19:45", "2026-12-13T20:00", "2026-12-13T21:45")
+        o.price = S["JOB-09"]
+        self.assertIsNone(discard_reason(S, o))  # exactly at the cap is kept
+        o.price = S["JOB-09"] + 0.01
+        self.assertEqual(discard_reason(S, o), "JOB-09")
+
 
 class ConfigTest(unittest.TestCase):
     def test_ids_unique_and_present(self):

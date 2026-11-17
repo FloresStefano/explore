@@ -20,6 +20,8 @@ def discard_reason(s: Settings, o: Offer) -> str | None:
     Offers without times (e.g. Skiplagged deals) cannot be judged and are not
     discarded here; they are never ranked either (see useful_hours).
     """
+    if o.price > s["JOB-09"]:
+        return "JOB-09"
     nights = (date.fromisoformat(o.ret_date) - date.fromisoformat(o.out_date)).days
     if not s["FIN-01"] <= nights <= s["FIN-02"]:
         return "FIN-01" if nights < s["FIN-01"] else "FIN-02"

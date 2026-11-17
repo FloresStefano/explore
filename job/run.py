@@ -153,6 +153,8 @@ def enrich(o: dict, airports: dict) -> dict:
 
 def reclassify(s: Settings, cal: Calendar, o: dict) -> dict | None:
     """Re-derive kind and leave of a stored offer (rules or calendar may have changed)."""
+    if o["price"] > s["JOB-09"]:
+        return None
     def t(leg, k):
         return datetime.fromisoformat(leg[k][:16]) if leg and leg.get(k) else None
     trip = classify(s, cal, date.fromisoformat(o["out_date"]), date.fromisoformat(o["ret_date"]),

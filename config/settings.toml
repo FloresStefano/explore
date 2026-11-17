@@ -249,9 +249,9 @@ editable = "config"
 [[setting]]
 id = "JOB-07"
 name = "Fonti a rotta: prezzo massimo di una meta per cercarne gli orari"
-value = 250
+value = 150
 unit = "€"
-note = "Oltre questa cifra un volo non è un'occasione: non si spendono chiamate"
+note = "Oltre questa cifra un volo non è un'occasione: non si spendono chiamate (allineato a JOB-09)"
 editable = "config"
 
 [[setting]]
@@ -260,6 +260,14 @@ name = "Orario del job"
 value = "23 5 * * *"
 unit = "cron UTC"
 note = "Ogni giorno alle 05:23 UTC (06:23 ora italiana, 07:23 con l'ora legale); deve coincidere con .github/workflows/daily.yml"
+editable = "config"
+
+[[setting]]
+id = "JOB-09"
+name = "Prezzo massimo delle offerte"
+value = 150
+unit = "€"
+note = "Andata e ritorno per un adulto: il job scarta le offerte più care, anche quelle già pubblicate"
 editable = "config"
 
 # --- Configurazione del job (non sono regole, quindi senza ID) ---
