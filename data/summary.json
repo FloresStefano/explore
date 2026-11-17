@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-17T18:26:34+00:00",
+ "run_at": "2026-11-17T18:30:22+00:00",
  "generated": "2026-11-17",
  "offers": 3004,
  "destinations": 82,
@@ -68,7 +68,16 @@
    "country": "Italia",
    "offers": 563,
    "min_price": 29.98,
-   "cities": 14,
+   "cities": [
+    "Lamezia",
+    "Pescara",
+    "Cagliari",
+    "Crotone",
+    "Trapani",
+    "Napoli",
+    "Bari",
+    "Reggio Calabria"
+   ],
    "types": {
     "weekend+": 169,
     "weekend": 3,
@@ -79,7 +88,9 @@
    "country": "Albania",
    "offers": 131,
    "min_price": 29.98,
-   "cities": 1,
+   "cities": [
+    "Tirana"
+   ],
    "types": {
     "weekend": 2,
     "weekend+": 35,
@@ -90,7 +101,12 @@
    "country": "Francia",
    "offers": 107,
    "min_price": 29.98,
-   "cities": 4,
+   "cities": [
+    "Marsiglia",
+    "Tolosa",
+    "Parigi",
+    "Paris (Orly, Val-de-Marne)"
+   ],
    "types": {
     "weekend+": 42,
     "ponte": 65
@@ -100,7 +116,9 @@
    "country": "Malta",
    "offers": 67,
    "min_price": 31.98,
-   "cities": 1,
+   "cities": [
+    "Malta"
+   ],
    "types": {
     "weekend+": 27,
     "ponte": 40
@@ -110,7 +128,16 @@
    "country": "Spagna",
    "offers": 512,
    "min_price": 34.98,
-   "cities": 13,
+   "cities": [
+    "Valencia",
+    "Barcellona",
+    "Alicante",
+    "Palma",
+    "Saragozza",
+    "Malaga",
+    "Madrid",
+    "Siviglia"
+   ],
    "types": {
     "ponte": 352,
     "weekend+": 134,
@@ -121,7 +148,15 @@
    "country": "Polonia",
    "offers": 168,
    "min_price": 35.98,
-   "cities": 7,
+   "cities": [
+    "Varsavia",
+    "Lodz",
+    "Breslavia",
+    "Katowice",
+    "Cracovia",
+    "Poznań",
+    "Danzica"
+   ],
    "types": {
     "weekend+": 53,
     "weekend": 3,
@@ -132,7 +167,15 @@
    "country": "Regno Unito",
    "offers": 216,
    "min_price": 37.18,
-   "cities": 7,
+   "cities": [
+    "Newcastle",
+    "Londra",
+    "Liverpool",
+    "Birmingham",
+    "Bristol",
+    "Manchester",
+    "Edimburgo"
+   ],
    "types": {
     "weekend+": 52,
     "ponte": 163,
@@ -143,7 +186,9 @@
    "country": "Belgio",
    "offers": 97,
    "min_price": 37.98,
-   "cities": 1,
+   "cities": [
+    "Charleroi"
+   ],
    "types": {
     "weekend+": 36,
     "ponte": 59,
@@ -154,7 +199,9 @@
    "country": "Ungheria",
    "offers": 69,
    "min_price": 39.98,
-   "cities": 1,
+   "cities": [
+    "Budapest"
+   ],
    "types": {
     "weekend+": 18,
     "ponte": 44,
@@ -165,7 +212,9 @@
    "country": "Austria",
    "offers": 94,
    "min_price": 39.98,
-   "cities": 1,
+   "cities": [
+    "Vienna"
+   ],
    "types": {
     "weekend": 5,
     "weekend+": 23,
