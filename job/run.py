@@ -321,14 +321,15 @@ def summarize(store: dict, top: list[dict], meta: dict, today: date) -> dict:
         t["offers"] += 1
         if t["min_price"] is None or o["price"] < t["min_price"]:
             t["min_price"], t["cheapest"] = o["price"], brief(o)
-        c = by_country.setdefault(o["country"] or "?", {"offers": 0, "min_price": None, "cities": set(),
+        c = by_country.setdefault(o["country"] or "?", {"offers": 0, "min_price": None, "cities": {},
                                                         "types": {}})
         c["offers"] += 1
-        c["cities"].add(o["city"])
+        c["cities"][o["city"]] = min(c["cities"].get(o["city"], o["price"]), o["price"])
         c["types"][o["type"]] = c["types"].get(o["type"], 0) + 1
         if c["min_price"] is None or o["price"] < c["min_price"]:
             c["min_price"] = o["price"]
-    countries = sorted(({"country": k, **v, "cities": len(v["cities"])} for k, v in by_country.items()),
+    countries = sorted(({"country": k, **v, "cities": [c for c, _ in sorted(v["cities"].items(), key=lambda x: x[1])][:8]}
+                        for k, v in by_country.items()),
                        key=lambda c: c["min_price"])
     cheapest = sorted(offers, key=lambda o: o["price"])[:12]
     airlines: dict[str, int] = {}

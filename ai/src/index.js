@@ -45,13 +45,14 @@ Tono vivace ma preciso, italiano corretto, nessun elenco puntato nel corpo.
 Rispondi SOLO con un oggetto JSON con chiavi:
 "headline" (titolo di massimo 10 parole),
 "lead" (2 frasi di sintesi),
-"body" (4-6 paragrafi separati da una riga vuota: le mete più economiche, la composizione delle migliori offerte per tipo e per paese, le compagnie, un consiglio finale).`;
-  const out = await chatJson(env, system, `Dati dell'ultima raccolta:\n${JSON.stringify(summary)}`, 1400);
+"paragraphs" (elenco di 4-6 paragrafi: le mete più economiche, la composizione delle migliori offerte per tipo e per paese, le compagnie, un consiglio finale).`;
+  const out = await chatJson(env, system, `Dati dell'ultima raccolta:\n${JSON.stringify(summary)}`, 2000);
+  const paragraphs = Array.isArray(out.paragraphs) ? out.paragraphs.map(text) : [String(out.body || "")];
   const result = {
     run_at: summary.run_at,
     headline: String(out.headline || "Le occasioni di oggi"),
     lead: String(out.lead || ""),
-    body: String(out.body || ""),
+    body: paragraphs.filter((p) => p.trim()).join("\n\n"),
   };
   await env.CACHE.put(key, JSON.stringify(result), { expirationTtl: 7 * DAY });
   return result;
@@ -116,11 +117,33 @@ async function chatJson(env, system, user, maxTokens) {
     : res?.choices?.[0]?.message?.content ?? "";
   const start = text.indexOf("{"), end = text.lastIndexOf("}");
   if (start < 0 || end <= start) throw httpError(502, "bad_ai_output", text.slice(0, 200));
+  const raw = text.slice(start, end + 1);
   try {
-    return JSON.parse(text.slice(start, end + 1));
+    return JSON.parse(raw);
   } catch {
-    throw httpError(502, "bad_ai_output", text.slice(0, 200));
+    try {
+      return JSON.parse(escapeNewlinesInStrings(raw));
+    } catch {
+      throw httpError(502, "bad_ai_output", text.slice(0, 200));
+    }
   }
+}
+
+// Models sometimes put raw line breaks inside JSON strings: escape them.
+export function escapeNewlinesInStrings(s) {
+  let out = "";
+  let inString = false;
+  let escaped = false;
+  for (const c of s) {
+    if (inString && !escaped && (c === "\n" || c === "\r")) {
+      if (c === "\n") out += "\\n";
+      continue;
+    }
+    if (c === '"' && !escaped) inString = !inString;
+    escaped = c === "\\" && !escaped;
+    out += c;
+  }
+  return out;
 }
 
 async function limit(env, request, what) {
