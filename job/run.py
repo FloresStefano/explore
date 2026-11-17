@@ -15,10 +15,11 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from .calendar_it import Calendar, Window, search_pairs, windows
+from . import places
+from .calendar_it import Calendar, Window, bridges, classify, day_marks, load_patrons, search_pairs
 from .history import History
 from .model import Leg, Offer
-from .selection import discard_reason, offer_leave_days, useful_hours
+from .selection import discard_reason, trip_of, useful_hours
 from .settings import ROOT, Settings, load
 from .sources.base import AnywhereSource
 from .sources.ryanair import Ryanair
@@ -30,10 +31,6 @@ STATE = ROOT / "state"
 ARCHIVE = ROOT / "archive"
 MAX_CONSECUTIVE_ERRORS = 5  # a source failing this often in a row is probably blocked: stop it for today
 
-PATRONS = {
-    # Tabella comune-patrono (sezione 4). Per ora solo Verona, inserita a mano.
-    "Verona": {"region": "veneto", "patron": "05-21", "saint": "San Zeno", "airports": ["VRN", "BGY", "TSF"]},
-}
 
 
 def write_json(path: Path, payload, compact: bool = False) -> None:
@@ -119,20 +116,14 @@ def leg_json(leg: Leg, airports: dict) -> dict:
     }
 
 
-def window_type(w: Window) -> str:
-    """Comparable trips (IMP-02): plain weekends vs everything around a holiday or with leave."""
-    return "weekend" if w.reason == "weekend" else "ponte"
-
-
-def offer_json(s: Settings, cal: Calendar, o: Offer, w: Window, airports: dict) -> dict:
+def offer_json(s: Settings, o: Offer, trip, airports: dict) -> dict:
+    """Published offer record (sezione 10). Optional fields are left out when unknown."""
     hours = useful_hours(s, o)
-    dest = airports.get(o.destination, {})
-    return {
+    record = {
         "origin": o.origin, "destination": o.destination,
-        "destination_name": dest.get("name"), "city": dest.get("city"), "country": dest.get("country"),
-        "out_date": o.out_date, "ret_date": o.ret_date, "nights": w.nights,
-        "window": window_type(w), "window_reason": w.reason,
-        "leave_days": offer_leave_days(s, cal, o, w.leave_days),
+        "out_date": o.out_date, "ret_date": o.ret_date, "nights": trip.nights,
+        "type": trip.kind, "leave_days": trip.leave, "leave_dates": [d.isoformat() for d in trip.leave_dates],
+        "holidays": trip.holidays, "needs_parent_leave": trip.needs_parent_leave,
         "outbound": leg_json(o.outbound, airports) if o.outbound else None,
         "inbound": leg_json(o.inbound, airports) if o.inbound else None,
         "airlines": o.airlines, "price": o.price, "currency": o.currency, "fare": o.fare,
@@ -141,6 +132,37 @@ def offer_json(s: Settings, cal: Calendar, o: Offer, w: Window, airports: dict) 
         "reference_price": None, "discount_pct": None, "lowest_since": None, "unmissable": False,
         "source": o.source, "observed_at": o.observed_at, "link": o.link,
     }
+    return enrich(record, airports)
+
+
+def enrich(o: dict, airports: dict) -> dict:
+    """Destination names, country and slimming: drop empty optional fields."""
+    dest = airports.get(o["destination"], {})
+    o["city"] = dest.get("city") or o.get("city") or o["destination"]
+    o["country"] = dest.get("country") or o.get("country") or ""
+    o["country_code"] = dest.get("country_code") or o.get("country_code") or ""
+    for k in ("destination_name", "window", "window_reason"):
+        o.pop(k, None)
+    for k in ("reference_price", "discount_pct", "lowest_since", "holidays", "leave_dates"):
+        if o.get(k) in (None, []):
+            o.pop(k, None)
+    if not o.get("needs_parent_leave"):
+        o.pop("needs_parent_leave", None)
+    return o
+
+
+def reclassify(s: Settings, cal: Calendar, o: dict) -> dict | None:
+    """Re-derive kind and leave of a stored offer (rules or calendar may have changed)."""
+    def t(leg, k):
+        return datetime.fromisoformat(leg[k][:16]) if leg and leg.get(k) else None
+    trip = classify(s, cal, date.fromisoformat(o["out_date"]), date.fromisoformat(o["ret_date"]),
+                    t(o.get("outbound"), "departure"), t(o.get("inbound"), "arrival"))
+    if not trip.kind:
+        return None
+    o.update({"type": trip.kind, "leave_days": trip.leave, "nights": trip.nights,
+              "leave_dates": [d.isoformat() for d in trip.leave_dates], "holidays": trip.holidays,
+              "needs_parent_leave": trip.needs_parent_leave})
+    return o
 
 
 def run_source(s: Settings, src: AnywhereSource, cap: int, today: date, pairs: list[Window], queue: WorkQueue,
@@ -169,16 +191,20 @@ def run_source(s: Settings, src: AnywhereSource, cap: int, today: date, pairs: l
         kept = []
         for o in offers:
             reason = discard_reason(s, o)
-            history.add(f"{o.origin}-{o.destination}", observed, o.out_date, o.ret_date, u.window.nights,
-                        window_type(u.window), o.price, o.source, reason is None)
+            trip = trip_of(s, cal, o)
+            if not reason and not trip.kind:
+                reason = "FIN-12"  # not a weekend, weekend+ or ponte with these flight times
+            history.add(f"{o.origin}-{o.destination}", observed, o.out_date, o.ret_date, trip.nights,
+                        trip.kind or "-", o.price, o.source, reason is None)
             if reason:
                 discards[reason] += 1
             elif o.has_times and useful_hours(s, o) <= 0:
                 discards["SEL-06"] += 1
             else:
-                kept.append(offer_json(s, cal, o, u.window, airports))
+                kept.append(offer_json(s, o, trip, airports))
         stats["offers"] += len(kept)
-        pair = store[u.airport].setdefault(u.window.key, {**u.window.to_json(), "offers": []})
+        pair = store[u.airport].setdefault(u.window.key, {"out": u.window.out.isoformat(),
+                                                           "ret": u.window.ret.isoformat(), "offers": []})
         pair["offers"] = [x for x in pair["offers"] if x["source"] != src.name] + kept
         pair["offers"].sort(key=lambda x: (x["price_per_hour"] is None, x["price_per_hour"] or 0, x["price"]))
         time.sleep(s.job["pause_seconds"])
@@ -257,14 +283,17 @@ def run_skiplagged(s: Settings, sk: Skiplagged, cap_disc: int, cap_route: int, t
             if set(o.airlines) == {"Ryanair"}:
                 continue  # the Ryanair adapter already has these, with exact prices
             reason = discard_reason(s, o)
-            history.add(f"{origin}-{dest}", observed, o.out_date, o.ret_date, u.window.nights,
-                        window_type(u.window), o.price, o.source, reason is None)
+            trip = trip_of(s, cal, o)
+            if not reason and not trip.kind:
+                reason = "FIN-12"
+            history.add(f"{origin}-{dest}", observed, o.out_date, o.ret_date, trip.nights,
+                        trip.kind or "-", o.price, o.source, reason is None)
             if reason:
                 discards[reason] += 1
             elif useful_hours(s, o) <= 0:
                 discards["SEL-06"] += 1
             else:
-                kept.append(offer_json(s, cal, o, u.window, airports))
+                kept.append(offer_json(s, o, trip, airports))
         # Code-shares list the same flights under several names: keep the cheapest of each.
         kept.sort(key=lambda x: x["price"])
         seen: set[tuple] = set()
@@ -273,12 +302,53 @@ def run_skiplagged(s: Settings, sk: Skiplagged, cap_disc: int, cap_route: int, t
         kept.sort(key=lambda x: x["price_per_hour"])
         kept = kept[:4]
         route["offers"] += len(kept)
-        pair = store[origin].setdefault(u.window.key, {**u.window.to_json(), "offers": []})
+        pair = store[origin].setdefault(u.window.key, {"out": u.window.out.isoformat(),
+                                                       "ret": u.window.ret.isoformat(), "offers": []})
         pair["offers"] = [x for x in pair["offers"]
                           if not (x["source"] == sk.name and x["destination"] == dest)] + kept
         pair["offers"].sort(key=lambda x: (x["price_per_hour"] is None, x["price_per_hour"] or 0, x["price"]))
         time.sleep(s.job["pause_seconds"])
     return disc, route
+
+
+def summarize(store: dict, top: list[dict], meta: dict, today: date) -> dict:
+    """Compact facts for the AI news recap (7.2): the Worker only narrates them."""
+    offers = [o for m in store.values() for p in m.values() for o in p["offers"]]
+    by_type: dict[str, dict] = {}
+    by_country: dict[str, dict] = {}
+    for o in offers:
+        t = by_type.setdefault(o["type"], {"offers": 0, "min_price": None, "cheapest": None})
+        t["offers"] += 1
+        if t["min_price"] is None or o["price"] < t["min_price"]:
+            t["min_price"], t["cheapest"] = o["price"], brief(o)
+        c = by_country.setdefault(o["country"] or "?", {"offers": 0, "min_price": None, "cities": set(),
+                                                        "types": {}})
+        c["offers"] += 1
+        c["cities"].add(o["city"])
+        c["types"][o["type"]] = c["types"].get(o["type"], 0) + 1
+        if c["min_price"] is None or o["price"] < c["min_price"]:
+            c["min_price"] = o["price"]
+    countries = sorted(({"country": k, **v, "cities": len(v["cities"])} for k, v in by_country.items()),
+                       key=lambda c: c["min_price"])
+    cheapest = sorted(offers, key=lambda o: o["price"])[:12]
+    airlines: dict[str, int] = {}
+    for o in offers:
+        for a in o["airlines"]:
+            airlines[a] = airlines.get(a, 0) + 1
+    return {
+        "run_at": meta["run_at"], "generated": today.isoformat(), "offers": len(offers),
+        "destinations": len({o["destination"] for o in offers}), "countries": len(by_country),
+        "by_type": by_type, "top_countries": countries[:10], "cheapest": [brief(o) for o in cheapest],
+        "best_value": [brief(o) for o in top[:10]],
+        "airlines": dict(sorted(airlines.items(), key=lambda x: -x[1])[:8]),
+        "sources": {k: {x: v.get(x) for x in ("calls", "ok", "errors") if x in v} for k, v in meta["sources"].items()},
+    }
+
+
+def brief(o: dict) -> dict:
+    return {"from": o["origin"], "to": o["city"], "country": o["country"], "out": o["out_date"], "ret": o["ret_date"],
+            "nights": o["nights"], "type": o["type"], "leave_days": o["leave_days"], "price": o["price"],
+            "airlines": o["airlines"], "useful_hours": o["useful_hours"]}
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -292,16 +362,23 @@ def main(argv: list[str] | None = None) -> None:
     j = s.job
     kw = dict(market=j["market"], currency=j["currency"], language=j["language"], country=j["country"])
     meta: dict = {"run_at": started.isoformat(timespec="seconds"), "sources": {}, "warnings": []}
-    cal = Calendar()
+    # Kinds of break depend on holidays, patron and school closures: the job classifies
+    # every offer for the configured comune (job.context).
+    patrons = load_patrons()
+    context = patrons.get(j["context"], {})
+    cal = Calendar.for_context(j["context"])
 
     fr = Ryanair(**kw)
     airports = airport_info(s, fr, today, meta)
 
-    # Windows (national) and the date pairs we search.
-    nat = windows(s, today, s["FIN-06"], cal)
-    write_json(DATA / "windows" / "national.json",
-               {"generated": today.isoformat(), "windows": [w.to_json() for w in nat]})
-    pairs = search_pairs(s, today)
+    write_json(DATA / "calendar.json", {
+        "generated": today.isoformat(),
+        "context": {"comune": j["context"], **context},
+        "marks": day_marks(today, s["FIN-06"], cal),
+        "bridges": bridges(s, today, s["FIN-06"], cal),
+    })
+    (DATA / "windows" / "national.json").unlink(missing_ok=True)
+    pairs = search_pairs(s, today, cal)
     keys = {w.key for w in pairs}
 
     # Offers store: keep yesterday's pairs that are still in range.
@@ -312,7 +389,11 @@ def main(argv: list[str] | None = None) -> None:
         # Offers of sources that are not re-read every cycle must not linger for ever.
         oldest = (today - timedelta(days=2 * s["JOB-04"])).isoformat()
         for pair in store[a].values():
-            pair["offers"] = [o for o in pair["offers"] if o["source"] == "ryanair" or o["observed_at"] >= oldest]
+            pair["offers"] = [r for o in pair["offers"]
+                              if (o["source"] == "ryanair" or o["observed_at"] >= oldest)
+                              and (r := reclassify(s, cal, o))]
+            for k in [k for k in pair if k not in ("out", "ret", "offers")]:
+                pair.pop(k)
 
     queue = WorkQueue(STATE / "queue.json")
     # JOB-06 is a daily cap: count calls already made today by earlier runs.
@@ -356,6 +437,12 @@ def main(argv: list[str] | None = None) -> None:
         except Exception:
             meta["sources"]["skiplagged"] = {"enabled": True, "crashed": traceback.format_exc()[-800:]}
     write_json(STATE / "places.json", {k: v for k, v in airports.items() if "lat" not in v})
+    codes = {o["destination"] for m in store.values() for p in m.values() for o in p["offers"]}
+    oa = places.complete(airports, codes, read_json(STATE / "ourairports.json", {}), today, meta["warnings"])
+    write_json(STATE / "ourairports.json", oa)
+    for m in store.values():
+        for p in m.values():
+            p["offers"] = [enrich(o, airports) for o in p["offers"]]
     for name, st in meta["sources"].items():
         usage[name] = usage.get(name, 0) + st.get("calls", 0)
     write_json(STATE / "usage.json", {k: v for k, v in usage_all.items() if k >= (today - timedelta(days=30)).isoformat()})
@@ -379,10 +466,11 @@ def main(argv: list[str] | None = None) -> None:
                     best[route] = o
     top = sorted(best.values(), key=lambda o: o["price_per_hour"])[: s["IMP-04"]]
     write_json(DATA / "top.json", {"updated": today.isoformat(), "offers": top})
+    write_json(DATA / "summary.json", summarize(store, top, meta, today))
 
     publish_routes(s, fr, today, airports, store, meta)
     write_json(DATA / "settings.json", s.published())
-    write_json(DATA / "patrons.json", PATRONS)
+    write_json(DATA / "patrons.json", patrons)
 
     coverage = {}
     for a in j["airports"]:

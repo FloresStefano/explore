@@ -1,0 +1,419 @@
+{
+ "generated": "2026-11-17",
+ "context": {
+  "comune": "Verona",
+  "region": "veneto",
+  "patron": "05-21",
+  "saint": "San Zeno",
+  "airports": [
+   "VRN",
+   "BGY",
+   "TSF"
+  ]
+ },
+ "marks": {
+  "2026-12-07": {
+   "kind": "scuola",
+   "name": "Ponte dell'Immacolata (scuole)"
+  },
+  "2026-12-08": {
+   "kind": "festivita",
+   "name": "Immacolata"
+  },
+  "2026-12-24": {
+   "kind": "scuola",
+   "name": "Vacanze di Natale (scuole)"
+  },
+  "2026-12-25": {
+   "kind": "festivita",
+   "name": "Natale"
+  },
+  "2026-12-26": {
+   "kind": "festivita",
+   "name": "Santo Stefano"
+  },
+  "2026-12-27": {
+   "kind": "scuola",
+   "name": "Vacanze di Natale (scuole)"
+  },
+  "2026-12-28": {
+   "kind": "scuola",
+   "name": "Vacanze di Natale (scuole)"
+  },
+  "2026-12-29": {
+   "kind": "scuola",
+   "name": "Vacanze di Natale (scuole)"
+  },
+  "2026-12-30": {
+   "kind": "scuola",
+   "name": "Vacanze di Natale (scuole)"
+  },
+  "2026-12-31": {
+   "kind": "scuola",
+   "name": "Vacanze di Natale (scuole)"
+  },
+  "2027-01-01": {
+   "kind": "festivita",
+   "name": "Capodanno"
+  },
+  "2027-01-02": {
+   "kind": "scuola",
+   "name": "Vacanze di Natale (scuole)"
+  },
+  "2027-01-03": {
+   "kind": "scuola",
+   "name": "Vacanze di Natale (scuole)"
+  },
+  "2027-01-04": {
+   "kind": "scuola",
+   "name": "Vacanze di Natale (scuole)"
+  },
+  "2027-01-05": {
+   "kind": "scuola",
+   "name": "Vacanze di Natale (scuole)"
+  },
+  "2027-01-06": {
+   "kind": "festivita",
+   "name": "Epifania"
+  },
+  "2027-02-08": {
+   "kind": "scuola",
+   "name": "Carnevale (scuole)"
+  },
+  "2027-02-09": {
+   "kind": "scuola",
+   "name": "Carnevale (scuole)"
+  },
+  "2027-02-10": {
+   "kind": "scuola",
+   "name": "Carnevale (scuole)"
+  },
+  "2027-03-25": {
+   "kind": "scuola",
+   "name": "Vacanze di Pasqua (scuole)"
+  },
+  "2027-03-26": {
+   "kind": "scuola",
+   "name": "Vacanze di Pasqua (scuole)"
+  },
+  "2027-03-27": {
+   "kind": "scuola",
+   "name": "Vacanze di Pasqua (scuole)"
+  },
+  "2027-03-28": {
+   "kind": "festivita",
+   "name": "Pasqua"
+  },
+  "2027-03-29": {
+   "kind": "festivita",
+   "name": "Lunedì dell'Angelo"
+  },
+  "2027-03-30": {
+   "kind": "scuola",
+   "name": "Vacanze di Pasqua (scuole)"
+  },
+  "2027-04-25": {
+   "kind": "festivita",
+   "name": "Festa della Liberazione"
+  },
+  "2027-04-29": {
+   "kind": "scuola",
+   "name": "Ponte del Primo maggio (scuole)"
+  },
+  "2027-04-30": {
+   "kind": "scuola",
+   "name": "Ponte del Primo maggio (scuole)"
+  },
+  "2027-05-01": {
+   "kind": "festivita",
+   "name": "Festa dei Lavoratori"
+  },
+  "2027-05-21": {
+   "kind": "festivita",
+   "name": "San Zeno"
+  },
+  "2027-06-02": {
+   "kind": "festivita",
+   "name": "Festa della Repubblica"
+  },
+  "2027-08-15": {
+   "kind": "festivita",
+   "name": "Ferragosto"
+  },
+  "2027-10-04": {
+   "kind": "festivita",
+   "name": "San Francesco"
+  },
+  "2027-11-01": {
+   "kind": "festivita",
+   "name": "Ognissanti"
+  }
+ },
+ "bridges": [
+  {
+   "out": "2026-12-04",
+   "ret": "2026-12-08",
+   "nights": 4,
+   "type": "ponte",
+   "leave_days": 1,
+   "leave_dates": [
+    "2026-12-07"
+   ],
+   "holidays": [
+    "Ponte dell'Immacolata (scuole)",
+    "Immacolata"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2026-12-24",
+   "ret": "2026-12-27",
+   "nights": 3,
+   "type": "ponte",
+   "leave_days": 0,
+   "leave_dates": [],
+   "holidays": [
+    "Natale"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2026-12-24",
+   "ret": "2026-12-28",
+   "nights": 4,
+   "type": "ponte",
+   "leave_days": 1,
+   "leave_dates": [
+    "2026-12-28"
+   ],
+   "holidays": [
+    "Natale",
+    "Vacanze di Natale (scuole)"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2026-12-24",
+   "ret": "2026-12-29",
+   "nights": 5,
+   "type": "ponte",
+   "leave_days": 2,
+   "leave_dates": [
+    "2026-12-28",
+    "2026-12-29"
+   ],
+   "holidays": [
+    "Natale",
+    "Vacanze di Natale (scuole)"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2026-12-30",
+   "ret": "2027-01-03",
+   "nights": 4,
+   "type": "ponte",
+   "leave_days": 1,
+   "leave_dates": [
+    "2026-12-31"
+   ],
+   "holidays": [
+    "Vacanze di Natale (scuole)",
+    "Capodanno"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2026-12-31",
+   "ret": "2027-01-03",
+   "nights": 3,
+   "type": "ponte",
+   "leave_days": 0,
+   "leave_dates": [],
+   "holidays": [
+    "Capodanno"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2026-12-31",
+   "ret": "2027-01-04",
+   "nights": 4,
+   "type": "ponte",
+   "leave_days": 1,
+   "leave_dates": [
+    "2027-01-04"
+   ],
+   "holidays": [
+    "Capodanno",
+    "Vacanze di Natale (scuole)"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2027-01-04",
+   "ret": "2027-01-06",
+   "nights": 2,
+   "type": "ponte",
+   "leave_days": 1,
+   "leave_dates": [
+    "2027-01-05"
+   ],
+   "holidays": [
+    "Vacanze di Natale (scuole)",
+    "Epifania"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2027-02-05",
+   "ret": "2027-02-08",
+   "nights": 3,
+   "type": "ponte",
+   "leave_days": 1,
+   "leave_dates": [
+    "2027-02-08"
+   ],
+   "holidays": [
+    "Carnevale (scuole)"
+   ],
+   "needs_parent_leave": true
+  },
+  {
+   "out": "2027-02-05",
+   "ret": "2027-02-09",
+   "nights": 4,
+   "type": "ponte",
+   "leave_days": 2,
+   "leave_dates": [
+    "2027-02-08",
+    "2027-02-09"
+   ],
+   "holidays": [
+    "Carnevale (scuole)"
+   ],
+   "needs_parent_leave": true
+  },
+  {
+   "out": "2027-02-08",
+   "ret": "2027-02-10",
+   "nights": 2,
+   "type": "ponte",
+   "leave_days": 2,
+   "leave_dates": [
+    "2027-02-09",
+    "2027-02-10"
+   ],
+   "holidays": [
+    "Carnevale (scuole)"
+   ],
+   "needs_parent_leave": true
+  },
+  {
+   "out": "2027-03-25",
+   "ret": "2027-03-29",
+   "nights": 4,
+   "type": "ponte",
+   "leave_days": 1,
+   "leave_dates": [
+    "2027-03-26"
+   ],
+   "holidays": [
+    "Vacanze di Pasqua (scuole)",
+    "Lunedì dell'Angelo"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2027-03-26",
+   "ret": "2027-03-29",
+   "nights": 3,
+   "type": "ponte",
+   "leave_days": 0,
+   "leave_dates": [],
+   "holidays": [
+    "Lunedì dell'Angelo"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2027-03-26",
+   "ret": "2027-03-30",
+   "nights": 4,
+   "type": "ponte",
+   "leave_days": 1,
+   "leave_dates": [
+    "2027-03-30"
+   ],
+   "holidays": [
+    "Lunedì dell'Angelo",
+    "Vacanze di Pasqua (scuole)"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2027-04-29",
+   "ret": "2027-05-02",
+   "nights": 3,
+   "type": "ponte",
+   "leave_days": 1,
+   "leave_dates": [
+    "2027-04-30"
+   ],
+   "holidays": [
+    "Ponte del Primo maggio (scuole)"
+   ],
+   "needs_parent_leave": true
+  },
+  {
+   "out": "2027-05-20",
+   "ret": "2027-05-23",
+   "nights": 3,
+   "type": "ponte",
+   "leave_days": 0,
+   "leave_dates": [],
+   "holidays": [
+    "San Zeno"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2027-05-31",
+   "ret": "2027-06-02",
+   "nights": 2,
+   "type": "ponte",
+   "leave_days": 1,
+   "leave_dates": [
+    "2027-06-01"
+   ],
+   "holidays": [
+    "Festa della Repubblica"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2027-10-01",
+   "ret": "2027-10-04",
+   "nights": 3,
+   "type": "ponte",
+   "leave_days": 0,
+   "leave_dates": [],
+   "holidays": [
+    "San Francesco"
+   ],
+   "needs_parent_leave": false
+  },
+  {
+   "out": "2027-10-29",
+   "ret": "2027-11-01",
+   "nights": 3,
+   "type": "ponte",
+   "leave_days": 0,
+   "leave_dates": [],
+   "holidays": [
+    "Ognissanti"
+   ],
+   "needs_parent_leave": false
+  }
+ ]
+}

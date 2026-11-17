@@ -1,0 +1,533 @@
+{
+ "run_at": "2026-11-17T18:01:56+00:00",
+ "generated": "2026-11-17",
+ "offers": 3004,
+ "destinations": 82,
+ "countries": 28,
+ "by_type": {
+  "weekend+": {
+   "offers": 873,
+   "min_price": 29.98,
+   "cheapest": {
+    "from": "BGY",
+    "to": "Marsiglia",
+    "country": "Francia",
+    "out": "2026-12-11",
+    "ret": "2026-12-13",
+    "nights": 2,
+    "type": "weekend+",
+    "leave_days": 1,
+    "price": 29.98,
+    "airlines": [
+     "Ryanair"
+    ],
+    "useful_hours": 38.8
+   }
+  },
+  "weekend": {
+   "offers": 91,
+   "min_price": 37.98,
+   "cheapest": {
+    "from": "BGY",
+    "to": "Charleroi",
+    "country": "Belgio",
+    "out": "2027-01-08",
+    "ret": "2027-01-10",
+    "nights": 2,
+    "type": "weekend",
+    "leave_days": 0,
+    "price": 37.98,
+    "airlines": [
+     "Ryanair"
+    ],
+    "useful_hours": 14.0
+   }
+  },
+  "ponte": {
+   "offers": 2040,
+   "min_price": 29.98,
+   "cheapest": {
+    "from": "VRN",
+    "to": "Tirana",
+    "country": "Albania",
+    "out": "2026-12-08",
+    "ret": "2026-12-10",
+    "nights": 2,
+    "type": "ponte",
+    "leave_days": 2,
+    "price": 29.98,
+    "airlines": [
+     "Ryanair"
+    ],
+    "useful_hours": 28.8
+   }
+  }
+ },
+ "top_countries": [
+  {
+   "country": "Italia",
+   "offers": 563,
+   "min_price": 29.98,
+   "cities": 14,
+   "types": {
+    "weekend+": 169,
+    "weekend": 3,
+    "ponte": 391
+   }
+  },
+  {
+   "country": "Francia",
+   "offers": 107,
+   "min_price": 29.98,
+   "cities": 4,
+   "types": {
+    "weekend+": 42,
+    "ponte": 65
+   }
+  },
+  {
+   "country": "Albania",
+   "offers": 131,
+   "min_price": 29.98,
+   "cities": 1,
+   "types": {
+    "weekend+": 35,
+    "ponte": 94,
+    "weekend": 2
+   }
+  },
+  {
+   "country": "Malta",
+   "offers": 67,
+   "min_price": 31.98,
+   "cities": 1,
+   "types": {
+    "weekend+": 27,
+    "ponte": 40
+   }
+  },
+  {
+   "country": "Spagna",
+   "offers": 512,
+   "min_price": 34.98,
+   "cities": 13,
+   "types": {
+    "ponte": 352,
+    "weekend+": 134,
+    "weekend": 26
+   }
+  },
+  {
+   "country": "Polonia",
+   "offers": 168,
+   "min_price": 35.98,
+   "cities": 7,
+   "types": {
+    "weekend+": 53,
+    "weekend": 3,
+    "ponte": 112
+   }
+  },
+  {
+   "country": "Regno Unito",
+   "offers": 216,
+   "min_price": 37.18,
+   "cities": 7,
+   "types": {
+    "weekend+": 52,
+    "ponte": 163,
+    "weekend": 1
+   }
+  },
+  {
+   "country": "Belgio",
+   "offers": 97,
+   "min_price": 37.98,
+   "cities": 1,
+   "types": {
+    "weekend+": 36,
+    "ponte": 59,
+    "weekend": 2
+   }
+  },
+  {
+   "country": "Austria",
+   "offers": 94,
+   "min_price": 39.98,
+   "cities": 1,
+   "types": {
+    "weekend": 5,
+    "weekend+": 23,
+    "ponte": 66
+   }
+  },
+  {
+   "country": "Ungheria",
+   "offers": 69,
+   "min_price": 39.98,
+   "cities": 1,
+   "types": {
+    "weekend+": 18,
+    "ponte": 44,
+    "weekend": 7
+   }
+  }
+ ],
+ "cheapest": [
+  {
+   "from": "VRN",
+   "to": "Tirana",
+   "country": "Albania",
+   "out": "2026-12-08",
+   "ret": "2026-12-10",
+   "nights": 2,
+   "type": "ponte",
+   "leave_days": 2,
+   "price": 29.98,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 28.8
+  },
+  {
+   "from": "BGY",
+   "to": "Marsiglia",
+   "country": "Francia",
+   "out": "2026-12-11",
+   "ret": "2026-12-13",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 29.98,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 38.8
+  },
+  {
+   "from": "BGY",
+   "to": "Lamezia",
+   "country": "Italia",
+   "out": "2026-12-12",
+   "ret": "2026-12-14",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 29.98,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 25.1
+  },
+  {
+   "from": "TSF",
+   "to": "Tirana",
+   "country": "Albania",
+   "out": "2026-12-10",
+   "ret": "2026-12-12",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 29.98,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 25.5
+  },
+  {
+   "from": "TSF",
+   "to": "Tirana",
+   "country": "Albania",
+   "out": "2026-12-12",
+   "ret": "2026-12-14",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 29.98,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 24.9
+  },
+  {
+   "from": "BGY",
+   "to": "Pescara",
+   "country": "Italia",
+   "out": "2026-12-18",
+   "ret": "2026-12-20",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 30.79,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 33.4
+  },
+  {
+   "from": "TSF",
+   "to": "Tirana",
+   "country": "Albania",
+   "out": "2026-12-10",
+   "ret": "2026-12-13",
+   "nights": 3,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 30.98,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 29.4
+  },
+  {
+   "from": "TSF",
+   "to": "Tirana",
+   "country": "Albania",
+   "out": "2026-12-11",
+   "ret": "2026-12-13",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 30.98,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 16.8
+  },
+  {
+   "from": "TSF",
+   "to": "Malta",
+   "country": "Malta",
+   "out": "2026-12-12",
+   "ret": "2026-12-14",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 31.98,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 25.2
+  },
+  {
+   "from": "BGY",
+   "to": "Malta",
+   "country": "Malta",
+   "out": "2026-12-17",
+   "ret": "2026-12-19",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 32.11,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 24.2
+  },
+  {
+   "from": "BGY",
+   "to": "Cagliari",
+   "country": "Italia",
+   "out": "2026-12-12",
+   "ret": "2026-12-14",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 32.53,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 38.0
+  },
+  {
+   "from": "VRN",
+   "to": "Tirana",
+   "country": "Albania",
+   "out": "2026-12-12",
+   "ret": "2026-12-14",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 32.98,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 27.6
+  }
+ ],
+ "best_value": [
+  {
+   "from": "BGY",
+   "to": "Marsiglia",
+   "country": "Francia",
+   "out": "2026-12-11",
+   "ret": "2026-12-13",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 29.98,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 38.8
+  },
+  {
+   "from": "BGY",
+   "to": "Cagliari",
+   "country": "Italia",
+   "out": "2026-12-12",
+   "ret": "2026-12-14",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 32.53,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 38.0
+  },
+  {
+   "from": "BGY",
+   "to": "Manchester",
+   "country": "Regno Unito",
+   "out": "2026-12-22",
+   "ret": "2026-12-26",
+   "nights": 4,
+   "type": "ponte",
+   "leave_days": 2,
+   "price": 49.34,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 53.7
+  },
+  {
+   "from": "BGY",
+   "to": "Pescara",
+   "country": "Italia",
+   "out": "2026-12-18",
+   "ret": "2026-12-20",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 30.79,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 33.4
+  },
+  {
+   "from": "VRN",
+   "to": "Tirana",
+   "country": "Albania",
+   "out": "2026-12-06",
+   "ret": "2026-12-09",
+   "nights": 3,
+   "type": "ponte",
+   "leave_days": 2,
+   "price": 47.53,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 49.2
+  },
+  {
+   "from": "BGY",
+   "to": "Varsavia",
+   "country": "Polonia",
+   "out": "2026-12-22",
+   "ret": "2026-12-26",
+   "nights": 4,
+   "type": "ponte",
+   "leave_days": 2,
+   "price": 49.98,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 51.3
+  },
+  {
+   "from": "BGY",
+   "to": "Alicante",
+   "country": "Spagna",
+   "out": "2026-12-17",
+   "ret": "2026-12-20",
+   "nights": 3,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 39.11,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 39.9
+  },
+  {
+   "from": "BGY",
+   "to": "Lodz",
+   "country": "Polonia",
+   "out": "2026-12-04",
+   "ret": "2026-12-07",
+   "nights": 3,
+   "type": "ponte",
+   "leave_days": 2,
+   "price": 38.98,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 39.7
+  },
+  {
+   "from": "TSF",
+   "to": "Marsiglia",
+   "country": "Francia",
+   "out": "2026-12-04",
+   "ret": "2026-12-07",
+   "nights": 3,
+   "type": "ponte",
+   "leave_days": 2,
+   "price": 40.99,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 40.0
+  },
+  {
+   "from": "TSF",
+   "to": "Tirana",
+   "country": "Albania",
+   "out": "2026-12-10",
+   "ret": "2026-12-13",
+   "nights": 3,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 30.98,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 29.4
+  }
+ ],
+ "airlines": {
+  "Ryanair": 3002,
+  "Wizz Air Malta": 5,
+  "Volotea Airlines": 1,
+  "easyJet": 1
+ },
+ "sources": {
+  "ryanair": {
+   "calls": 3,
+   "ok": 3,
+   "errors": 0
+  },
+  "skiplagged": {
+   "calls": 3,
+   "ok": 3,
+   "errors": 0
+  },
+  "skiplagged_route": {
+   "calls": 3,
+   "ok": 3,
+   "errors": 0
+  }
+ }
+}

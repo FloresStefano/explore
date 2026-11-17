@@ -1,0 +1,33 @@
+# Chiusure scolastiche del Veneto (FIN-05): valgono come una festività per qualificare un ponte.
+# Fonte: DGR n. 712 del 07/07/2026, che modifica la DGR n. 239 del 14/04/2026.
+# Le vacanze estive non sono elencate: farebbero di ogni viaggio estivo un "ponte".
+# Da aggiornare ogni anno con la nuova delibera regionale.
+
+region = "veneto"
+school_year = "2026-2027"
+source = "DGR Veneto n. 712 del 07/07/2026"
+
+[[closure]]
+from = "2026-12-07"
+to = "2026-12-07"
+name = "Ponte dell'Immacolata (scuole)"
+
+[[closure]]
+from = "2026-12-24"
+to = "2027-01-05"
+name = "Vacanze di Natale (scuole)"
+
+[[closure]]
+from = "2027-02-08"
+to = "2027-02-10"
+name = "Carnevale (scuole)"
+
+[[closure]]
+from = "2027-03-25"
+to = "2027-03-30"
+name = "Vacanze di Pasqua (scuole)"
+
+[[closure]]
+from = "2027-04-29"
+to = "2027-04-30"
+name = "Ponte del Primo maggio (scuole)"

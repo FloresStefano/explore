@@ -1,0 +1,19 @@
+{
+  // AI per Weekend Break (7.1 scheda turistica, 7.2 resoconto del job).
+  // Gratis su Workers AI (10.000 neuroni al giorno); le risposte restano in cache su KV.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "weekend-ai",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  "account_id": "f802fbbb3f0b2d07f3ee949be59d61f1",
+  "workers_dev": true,
+  "ai": { "binding": "AI" },
+  "kv_namespaces": [{ "binding": "CACHE", "id": "1b9e34a6c5de4926935e391d29e788da" }],
+  "ratelimits": [
+    { "name": "LIMITER", "namespace_id": "2001", "simple": { "limit": 12, "period": 60 } }
+  ],
+  "vars": {
+    "MODEL": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+    "DATA_URL": "https://floresstefano.github.io/explore/data/"
+  }
+}

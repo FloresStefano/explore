@@ -19,6 +19,10 @@
 "count": 54,
 "fetched": "2026-11-16"
 },
+"ryanair|BGY|2026-11-20_2026-11-21": {
+"count": 50,
+"fetched": "2026-11-17"
+},
 "ryanair|BGY|2026-11-20_2026-11-22": {
 "count": 55,
 "fetched": "2026-11-16"
@@ -446,6 +450,10 @@
 "ryanair|TSF|2026-11-19_2026-11-23": {
 "count": 11,
 "fetched": "2026-11-16"
+},
+"ryanair|TSF|2026-11-20_2026-11-21": {
+"count": 11,
+"fetched": "2026-11-17"
 },
 "ryanair|TSF|2026-11-20_2026-11-22": {
 "count": 18,
@@ -875,6 +883,10 @@
 "count": 5,
 "fetched": "2026-11-16"
 },
+"ryanair|VRN|2026-11-20_2026-11-21": {
+"count": 7,
+"fetched": "2026-11-17"
+},
 "ryanair|VRN|2026-11-20_2026-11-22": {
 "count": 8,
 "fetched": "2026-11-16"
@@ -1283,6 +1295,10 @@
 "count": 1,
 "fetched": "2026-11-17"
 },
+"skiplagged_route|TSF-CRL|2026-11-19_2026-11-22": {
+"count": 2,
+"fetched": "2026-11-17"
+},
 "skiplagged_route|TSF-LIS|2026-11-19_2026-11-23": {
 "count": 1,
 "fetched": "2026-11-16"
@@ -1391,6 +1407,10 @@
 "count": 1,
 "fetched": "2026-11-16"
 },
+"skiplagged_route|TSF-VIE|2026-11-19_2026-11-22": {
+"count": 1,
+"fetched": "2026-11-17"
+},
 "skiplagged_route|TSF-VIE|2026-11-19_2026-11-23": {
 "count": 1,
 "fetched": "2026-11-16"
@@ -1401,6 +1421,10 @@
 },
 "skiplagged_route|TSF-VIE|2026-11-27_2026-11-29": {
 "count": 1,
+"fetched": "2026-11-17"
+},
+"skiplagged_route|TSF-VLC|2026-11-19_2026-11-22": {
+"count": 2,
 "fetched": "2026-11-17"
 },
 "skiplagged_route|TSF-VLC|2026-11-28_2026-11-30": {
@@ -2257,6 +2281,10 @@
 "count": 8,
 "fetched": "2026-11-16"
 },
+"skiplagged|TSF|2026-11-20_2026-11-21": {
+"count": 9,
+"fetched": "2026-11-17"
+},
 "skiplagged|TSF|2026-11-20_2026-11-22": {
 "count": 15,
 "fetched": "2026-11-16"
@@ -2268,6 +2296,10 @@
 "skiplagged|TSF|2026-11-20_2026-11-24": {
 "count": 9,
 "fetched": "2026-11-16"
+},
+"skiplagged|TSF|2026-11-21_2026-11-22": {
+"count": 10,
+"fetched": "2026-11-17"
 },
 "skiplagged|TSF|2026-11-21_2026-11-23": {
 "count": 11,
@@ -2488,6 +2520,10 @@
 "skiplagged|VRN|2026-11-19_2026-11-23": {
 "count": 41,
 "fetched": "2026-11-16"
+},
+"skiplagged|VRN|2026-11-20_2026-11-21": {
+"count": 4,
+"fetched": "2026-11-17"
 },
 "skiplagged|VRN|2026-11-20_2026-11-22": {
 "count": 40,

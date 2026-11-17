@@ -1,0 +1,13 @@
+{
+ "updated": "2026-11-17",
+ "airports": {
+  "ORY": {
+   "code": "ORY",
+   "name": "Paris-Orly Airport",
+   "city": "Paris (Orly, Val-de-Marne)",
+   "country_code": "fr",
+   "lat": 48.7295,
+   "lon": 2.359
+  }
+ }
+}

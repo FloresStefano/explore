@@ -1,0 +1,8 @@
+# Tabella comune-patrono (sezione 4). Il patrono è un giorno libero e qualifica un ponte.
+# Per ora solo Verona, inserita a mano.
+
+[Verona]
+region = "veneto"
+patron = "05-21"
+saint = "San Zeno"
+airports = ["VRN", "BGY", "TSF"]

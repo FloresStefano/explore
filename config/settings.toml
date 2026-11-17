@@ -37,20 +37,20 @@ editable = "user"
 [[setting]]
 id = "FIN-01"
 name = "Notti minime"
-value = 2
+value = 1
 unit = "notti"
 editable = "config"
 
 [[setting]]
 id = "FIN-02"
 name = "Notti massime"
-value = 4
+value = 5
 unit = "notti"
 editable = "config"
 
 [[setting]]
 id = "FIN-03"
-name = "Giorni di ferie massimi per un ponte"
+name = "Ponte: giorni di ferie massimi"
 value = 2
 unit = "giorni"
 editable = "config"
@@ -58,16 +58,16 @@ editable = "config"
 [[setting]]
 id = "FIN-04"
 name = "Partenza in giorno lavorativo senza ferie a partire dalle"
-value = "17:00"
+value = "18:00"
 unit = "ora"
-note = "Prima di quest'ora la partenza costa mezza giornata"
+note = "Prima di quest'ora la partenza costa il giorno intero: venerdì-domenica diventa un weekend+"
 editable = "config"
 
 [[setting]]
 id = "FIN-05"
-name = "Chiusure scolastiche in giorni lavorativi"
+name = "Chiusure scolastiche"
 value = true
-note = "Generano una finestra marcata \"richiede ferie dei genitori\""
+note = "Valgono come una festività per qualificare un ponte (vacanze estive escluse); il ponte è marcato \"richiede ferie dei genitori\" se si regge solo su di esse"
 editable = "config"
 
 [[setting]]
@@ -75,6 +75,59 @@ id = "FIN-06"
 name = "Orizzonte di calcolo delle finestre"
 value = 365
 unit = "giorni"
+editable = "config"
+
+[[setting]]
+id = "FIN-07"
+name = "Weekend: notti massime"
+value = 2
+unit = "notti"
+note = "Senza ferie: venerdì dalle 18:00, sabato, domenica"
+editable = "config"
+
+[[setting]]
+id = "FIN-08"
+name = "Weekend+: giorni di ferie"
+value = 1
+unit = "giorni"
+note = "Speso di venerdì oppure di lunedì, non entrambi; ammessa la partenza del giovedì sera"
+editable = "config"
+
+[[setting]]
+id = "FIN-09"
+name = "Weekend+: notti massime"
+value = 3
+unit = "notti"
+editable = "config"
+
+[[setting]]
+id = "FIN-10"
+name = "Ponte: notti minime"
+value = 2
+unit = "notti"
+note = "Il ponte contiene almeno una festività in un giorno feriale: nazionale, patrono o chiusura scolastica"
+editable = "config"
+
+[[setting]]
+id = "FIN-11"
+name = "Ponte: notti massime"
+value = 5
+unit = "notti"
+note = "Fino a 5 notti anticipando la partenza alle 18:00 del giorno prima"
+editable = "config"
+
+[[setting]]
+id = "FIN-12"
+name = "Precedenza tra i tipi di break"
+value = ["ponte", "weekend+", "weekend"]
+note = "Se un viaggio rientra in più tipi prevale il primo; senza tipo l'offerta è scartata"
+editable = "config"
+
+[[setting]]
+id = "FIN-13"
+name = "Rientro: conta il giorno di atterraggio"
+value = true
+note = "Un rientro in un giorno lavorativo, anche dopo mezzanotte, costa un giorno di ferie"
 editable = "config"
 
 [[setting]]
@@ -145,7 +198,7 @@ editable = "config"
 
 [[setting]]
 id = "IMP-04"
-name = "Offerte mostrate in Home"
+name = "Migliori offerte nell'albo e nel resoconto AI"
 value = 50
 editable = "config"
 
@@ -201,13 +254,23 @@ unit = "€"
 note = "Oltre questa cifra un volo non è un'occasione: non si spendono chiamate"
 editable = "config"
 
+[[setting]]
+id = "JOB-08"
+name = "Orario del job"
+value = "23 5 * * *"
+unit = "cron UTC"
+note = "Ogni giorno alle 05:23 UTC (06:23 ora italiana, 07:23 con l'ora legale); deve coincidere con .github/workflows/daily.yml"
+editable = "config"
+
 # --- Configurazione del job (non sono regole, quindi senza ID) ---
 
 [job]
 # Aeroporti per cui il job produce data/offers/<aeroporto>.json.
 airports = ["VRN", "BGY", "TSF"]
-# Regioni per cui il job produce data/windows/region-<regione>.json.
+# Regioni con calendario scolastico in config/school/<regione>.toml.
 regions = ["veneto"]
+# Comune con cui il job classifica le offerte (weekend, weekend+, ponte): vedi config/patrons.toml.
+context = "Verona"
 # Aeroporti con compagnie oltre a Ryanair, su cui cercare anche con Skiplagged.
 skiplagged_airports = ["VRN", "TSF"]
 market = "it-it"

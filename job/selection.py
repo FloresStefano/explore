@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import date, datetime, timedelta
 
-from .calendar_it import Calendar
+from .calendar_it import Calendar, Trip, classify
 from .model import Offer
 from .settings import Settings
 
@@ -37,6 +37,12 @@ def discard_reason(s: Settings, o: Offer) -> str | None:
     return None
 
 
+def trip_of(s: Settings, cal: Calendar, o: Offer) -> Trip:
+    """Kind of break and leave days of this offer, from its actual flight times."""
+    return classify(s, cal, date.fromisoformat(o.out_date), date.fromisoformat(o.ret_date),
+                    o.outbound.departure if o.outbound else None, o.inbound.arrival if o.inbound else None)
+
+
 def useful_hours(s: Settings, o: Offer) -> float:
     """Ore utili: hours between landing+margin and take-off-margin falling in the daytime band.
 
@@ -59,11 +65,3 @@ def useful_hours(s: Settings, o: Offer) -> float:
             total += hi - lo
         d += timedelta(days=1)
     return round(total.total_seconds() / 3600, 1)
-
-
-def offer_leave_days(s: Settings, cal: Calendar, o: Offer, window_leave: int) -> float:
-    """Window leave plus half a day when the outbound leaves a workday before FIN-04."""
-    out = date.fromisoformat(o.out_date)
-    if o.has_times and cal.is_workday(out) and o.outbound.departure.time() < s.time("FIN-04"):
-        return window_leave + 0.5
-    return float(window_leave)
