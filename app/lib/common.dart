@@ -158,6 +158,96 @@ class MonthFilter extends StatelessWidget {
       ]);
 }
 
+/// Labelled drop-down (combo box) on a white rounded field.
+class FilterBox<T> extends StatelessWidget {
+  const FilterBox({super.key, required this.label, required this.icon, required this.value, required this.items, required this.onChanged});
+  final String label;
+  final IconData icon;
+  final T? value;
+  final List<(T?, String, Color?)> items;
+  final ValueChanged<T?> onChanged;
+
+  static Widget _entry(String text, Color? color, {bool bold = false}) => Row(children: [
+        if (color != null) ...[
+          Container(width: 10, height: 10, decoration: BoxDecoration(color: color, shape: BoxShape.circle)),
+          const SizedBox(width: 8),
+        ],
+        Flexible(
+          child: Text(text,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(fontSize: 14, fontWeight: bold ? FontWeight.w700 : FontWeight.w600, color: ink)),
+        ),
+      ]);
+
+  @override
+  Widget build(BuildContext context) {
+    final current = items.firstWhere((e) => e.$1 == value, orElse: () => items.first);
+    return LayoutBuilder(
+      builder: (context, box) => PopupMenuButton<int>(
+        tooltip: label,
+        position: PopupMenuPosition.under,
+        color: Colors.white,
+        constraints: BoxConstraints(minWidth: box.maxWidth, maxWidth: box.maxWidth),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        onSelected: (i) => onChanged(items[i].$1),
+        itemBuilder: (_) => [
+          for (var i = 0; i < items.length; i++)
+            PopupMenuItem<int>(value: i, child: _entry(items[i].$2, items[i].$3, bold: items[i].$1 == value)),
+        ],
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(12, 8, 8, 8),
+          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14)),
+          child: Row(children: [
+            Icon(icon, size: 20, color: indigo),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
+                Text(label, style: const TextStyle(fontSize: 11, color: muted, fontWeight: FontWeight.w600)),
+                const SizedBox(height: 2),
+                _entry(current.$2, current.$3),
+              ]),
+            ),
+            const Icon(Icons.expand_more, color: indigo),
+          ]),
+        ),
+      ),
+    );
+  }
+}
+
+/// Kind of break as a combo box.
+class TypeBox extends StatelessWidget {
+  const TypeBox({super.key, required this.value, required this.onChanged});
+  final String? value;
+  final ValueChanged<String?> onChanged;
+
+  @override
+  Widget build(BuildContext context) => FilterBox<String>(
+        label: 'Tipo di viaggio',
+        icon: Icons.luggage_outlined,
+        value: value,
+        items: [(null, 'Tutti i tipi', null), for (final t in breakTypes) (t, typePlural[t]!, typeColor[t])],
+        onChanged: onChanged,
+      );
+}
+
+/// Departure month as a combo box.
+class MonthBox extends StatelessWidget {
+  const MonthBox({super.key, required this.months, required this.value, required this.onChanged});
+  final List<String> months;
+  final String? value;
+  final ValueChanged<String?> onChanged;
+
+  @override
+  Widget build(BuildContext context) => FilterBox<String>(
+        label: 'Mese di partenza',
+        icon: Icons.event_outlined,
+        value: months.contains(value) ? value : null,
+        items: [(null, 'Tutti i mesi', null), for (final m in months) (m, fmtMonthKey(m), null)],
+        onChanged: onChanged,
+      );
+}
+
 class Tag extends StatelessWidget {
   const Tag(this.label, {super.key, this.color = indigo, this.bg = chipBg});
   final String label;

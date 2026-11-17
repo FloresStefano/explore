@@ -47,10 +47,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   header: [
                     const RecapCard(),
                     const SizedBox(height: 14),
-                    TypeFilter(value: _type, light: true, onChanged: (v) => setState(() => _type = v)),
-                    const SizedBox(height: 8),
-                    MonthFilter(
-                        months: months, value: _month, light: true, onChanged: (v) => setState(() => _month = v)),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 640),
+                        child: Row(children: [
+                          Expanded(child: TypeBox(value: _type, onChanged: (v) => setState(() => _type = v))),
+                          const SizedBox(width: 10),
+                          Expanded(
+                              child: MonthBox(
+                                  months: months, value: _month, onChanged: (v) => setState(() => _month = v))),
+                        ]),
+                      ),
+                    ),
                     const SizedBox(height: 12),
                     Padding(
                       padding: const EdgeInsets.only(left: 4, bottom: 10),
