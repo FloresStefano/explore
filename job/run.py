@@ -30,6 +30,7 @@ DATA = ROOT / "data"
 STATE = ROOT / "state"
 ARCHIVE = ROOT / "archive"
 MAX_CONSECUTIVE_ERRORS = 5  # a source failing this often in a row is probably blocked: stop it for today
+NO_DIRECT_AFTER = 2  # empty route searches (on different dates) before a route is skipped
 
 
 
@@ -256,12 +257,20 @@ def run_skiplagged(s: Settings, sk: Skiplagged, cap_disc: int, cap_route: int, t
         offers = store.get(ap, {}).get(key, {}).get("offers", [])
         return any(o["source"] == "ryanair" and o["destination"] == dest and o["price"] <= price * 1.02 for o in offers)
 
+    # Discovery also lists destinations reached with a connection: routes where searches
+    # keep finding no direct flight of another carrier are skipped for JOB-10 days.
+    nd_path = STATE / "no_direct.json"
+    no_direct: dict[str, dict] = read_json(nd_path, {})
+    nd_since = (today - timedelta(days=s["JOB-10"])).isoformat()
+    skipped = {r for r, v in no_direct.items() if v["empty"] >= NO_DIRECT_AFTER and v["checked"] >= nd_since}
+
     items = [(f"{ck.split('|')[0]}-{dest}", by_key[ck.split("|")[1]])
              for ck, dests in cands.items() for dest, price in dests.items()
              if ck.split("|")[0] in store and price <= s["JOB-07"]
+             and f"{ck.split('|')[0]}-{dest}" not in skipped
              and not ryanair_covers(*ck.split("|"), dest, price)]
     route = {"enabled": True, "cap": cap_route, "calls": 0, "ok": 0, "errors": 0, "offers": 0, "last_error": None,
-             "candidates": len(items)}
+             "candidates": len(items), "routes_without_direct": len(skipped)}
     streak = 0
     for u in queue.pick_items(s, today, f"{sk.name}_route", items, max(cap_route, 0)):
         origin, dest = u.airport.split("-")
@@ -280,6 +289,13 @@ def run_skiplagged(s: Settings, sk: Skiplagged, cap_disc: int, cap_route: int, t
         streak = 0
         route["ok"] += 1
         queue.done(u, today, len(found))
+        others = [o for o in found if set(o.airlines) != {"Ryanair"}]
+        if others:
+            no_direct.pop(u.airport, None)
+        else:
+            e = no_direct.setdefault(u.airport, {"empty": 0})
+            e["empty"] += 1
+            e["checked"] = observed
         kept = []
         for o in found:
             if set(o.airlines) == {"Ryanair"}:
@@ -310,6 +326,8 @@ def run_skiplagged(s: Settings, sk: Skiplagged, cap_disc: int, cap_route: int, t
                           if not (x["source"] == sk.name and x["destination"] == dest)] + kept
         pair["offers"].sort(key=lambda x: (x["price_per_hour"] is None, x["price_per_hour"] or 0, x["price"]))
         time.sleep(s.job["pause_seconds"])
+    # Forget routes not checked for a while: they get a new chance.
+    write_json(nd_path, {r: v for r, v in sorted(no_direct.items()) if v["checked"] >= nd_since})
     return disc, route
 
 

@@ -270,6 +270,14 @@ unit = "€"
 note = "Andata e ritorno per un adulto: il job scarta le offerte più care, anche quelle già pubblicate"
 editable = "config"
 
+[[setting]]
+id = "JOB-10"
+name = "Fonti a rotta: pausa per le rotte senza voli diretti"
+value = 30
+unit = "giorni"
+note = "Dopo 2 ricerche senza voli diretti di altre compagnie la rotta non si cerca più per questo periodo"
+editable = "config"
+
 # --- Configurazione del job (non sono regole, quindi senza ID) ---
 
 [job]
@@ -280,7 +288,7 @@ regions = ["veneto"]
 # Comune con cui il job classifica le offerte (weekend, weekend+, ponte): vedi config/patrons.toml.
 context = "Verona"
 # Aeroporti con compagnie oltre a Ryanair, su cui cercare anche con Skiplagged.
-skiplagged_airports = ["VRN", "TSF"]
+skiplagged_airports = ["VRN", "BGY", "TSF"]
 market = "it-it"
 country = "IT"
 language = "it"
