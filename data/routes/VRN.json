@@ -278,9 +278,9 @@
     "2026-11"
    ],
    "last_confirmed": "2026-11-17",
-   "name": "Paris-Orly Airport",
-   "city": "Paris (Orly, Val-de-Marne)",
-   "country": "Francia",
+   "name": "Paris",
+   "city": "Paris",
+   "country": "France",
    "country_code": "fr",
    "lat": 48.7295,
    "lon": 2.359

@@ -1,12 +1,12 @@
 {
- "run_at": "2026-11-17T21:08:28+00:00",
+ "run_at": "2026-11-17T21:35:59+00:00",
  "generated": "2026-11-17",
- "offers": 3004,
- "destinations": 82,
+ "offers": 1544,
+ "destinations": 76,
  "countries": 28,
  "by_type": {
   "weekend+": {
-   "offers": 873,
+   "offers": 658,
    "min_price": 29.98,
    "cheapest": {
     "from": "BGY",
@@ -25,7 +25,7 @@
    }
   },
   "weekend": {
-   "offers": 91,
+   "offers": 61,
    "min_price": 37.98,
    "cheapest": {
     "from": "BGY",
@@ -44,7 +44,7 @@
    }
   },
   "ponte": {
-   "offers": 2040,
+   "offers": 825,
    "min_price": 29.98,
    "cheapest": {
     "from": "VRN",
@@ -66,7 +66,7 @@
  "top_countries": [
   {
    "country": "Italia",
-   "offers": 563,
+   "offers": 341,
    "min_price": 29.98,
    "cities": [
     "Lamezia",
@@ -79,14 +79,14 @@
     "Reggio Calabria"
    ],
    "types": {
-    "weekend+": 169,
-    "weekend": 3,
-    "ponte": 391
+    "weekend+": 144,
+    "ponte": 196,
+    "weekend": 1
    }
   },
   {
    "country": "Albania",
-   "offers": 131,
+   "offers": 101,
    "min_price": 29.98,
    "cities": [
     "Tirana"
@@ -94,39 +94,38 @@
    "types": {
     "weekend": 2,
     "weekend+": 35,
-    "ponte": 94
+    "ponte": 64
    }
   },
   {
    "country": "Francia",
-   "offers": 107,
+   "offers": 62,
    "min_price": 29.98,
    "cities": [
     "Marsiglia",
     "Tolosa",
-    "Parigi",
-    "Paris (Orly, Val-de-Marne)"
+    "Parigi"
    ],
    "types": {
-    "weekend+": 42,
-    "ponte": 65
+    "weekend+": 33,
+    "ponte": 29
    }
   },
   {
    "country": "Malta",
-   "offers": 67,
+   "offers": 47,
    "min_price": 31.98,
    "cities": [
     "Malta"
    ],
    "types": {
-    "weekend+": 27,
-    "ponte": 40
+    "weekend+": 24,
+    "ponte": 23
    }
   },
   {
    "country": "Spagna",
-   "offers": 512,
+   "offers": 187,
    "min_price": 34.98,
    "cities": [
     "Valencia",
@@ -139,14 +138,14 @@
     "Siviglia"
    ],
    "types": {
-    "ponte": 352,
-    "weekend+": 134,
-    "weekend": 26
+    "ponte": 77,
+    "weekend": 19,
+    "weekend+": 91
    }
   },
   {
    "country": "Polonia",
-   "offers": 168,
+   "offers": 135,
    "min_price": 35.98,
    "cities": [
     "Varsavia",
@@ -158,14 +157,14 @@
     "Danzica"
    ],
    "types": {
-    "weekend+": 53,
+    "weekend+": 48,
     "weekend": 3,
-    "ponte": 112
+    "ponte": 84
    }
   },
   {
    "country": "Regno Unito",
-   "offers": 216,
+   "offers": 126,
    "min_price": 37.18,
    "cities": [
     "Newcastle",
@@ -177,48 +176,47 @@
     "Edimburgo"
    ],
    "types": {
-    "weekend+": 52,
-    "ponte": 163,
-    "weekend": 1
+    "weekend+": 43,
+    "ponte": 83
    }
   },
   {
    "country": "Belgio",
-   "offers": 97,
+   "offers": 78,
    "min_price": 37.98,
    "cities": [
     "Charleroi"
    ],
    "types": {
-    "weekend+": 36,
-    "ponte": 59,
+    "weekend+": 35,
+    "ponte": 41,
     "weekend": 2
    }
   },
   {
-   "country": "Ungheria",
-   "offers": 69,
-   "min_price": 39.98,
-   "cities": [
-    "Budapest"
-   ],
-   "types": {
-    "weekend+": 18,
-    "ponte": 44,
-    "weekend": 7
-   }
-  },
-  {
    "country": "Austria",
-   "offers": 94,
+   "offers": 48,
    "min_price": 39.98,
    "cities": [
     "Vienna"
    ],
    "types": {
-    "weekend": 5,
-    "weekend+": 23,
-    "ponte": 66
+    "weekend": 4,
+    "weekend+": 13,
+    "ponte": 31
+   }
+  },
+  {
+   "country": "Ungheria",
+   "offers": 38,
+   "min_price": 39.98,
+   "cities": [
+    "Budapest"
+   ],
+   "types": {
+    "weekend+": 14,
+    "ponte": 19,
+    "weekend": 5
    }
   }
  ],
@@ -557,10 +555,8 @@
   }
  ],
  "airlines": {
-  "Ryanair": 3002,
-  "Wizz Air Malta": 5,
-  "Volotea Airlines": 1,
-  "easyJet": 1
+  "Ryanair": 1544,
+  "Wizz Air Malta": 5
  },
  "sources": {
   "ryanair": {
