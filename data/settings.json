@@ -279,6 +279,14 @@
    "unit": "€",
    "note": "Andata e ritorno per un adulto: il job scarta le offerte più care, anche quelle già pubblicate",
    "editable": "config"
+  },
+  {
+   "id": "JOB-10",
+   "name": "Fonti a rotta: pausa per le rotte senza voli diretti",
+   "value": 30,
+   "unit": "giorni",
+   "note": "Dopo 2 ricerche senza voli diretti di altre compagnie la rotta non si cerca più per questo periodo",
+   "editable": "config"
   }
  ],
  "job": {
