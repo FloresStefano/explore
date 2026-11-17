@@ -906,6 +906,54 @@
   },
   {
    "origin": "BGY",
+   "destination": "DUB",
+   "city": "Dublino",
+   "country": "Irlanda",
+   "out_date": "2026-12-24",
+   "ret_date": "2026-12-28",
+   "nights": 4,
+   "leave_days": 2,
+   "outbound": {
+    "from": "BGY",
+    "to": "DUB",
+    "flight": "FR6125",
+    "airline": "Ryanair",
+    "departure": "2026-12-24T12:55+01:00",
+    "arrival": "2026-12-24T14:30+00:00"
+   },
+   "inbound": {
+    "from": "DUB",
+    "to": "BGY",
+    "flight": "FR4844",
+    "airline": "Ryanair",
+    "departure": "2026-12-28T19:10+00:00",
+    "arrival": "2026-12-28T22:40+01:00"
+   },
+   "airlines": [
+    "Ryanair"
+   ],
+   "price": 72.56,
+   "currency": "EUR",
+   "fare": "base, senza bagaglio",
+   "useful_hours": 57.7,
+   "price_per_hour": 1.26,
+   "unmissable": false,
+   "source": "ryanair",
+   "observed_at": "2026-11-17",
+   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-24&dateIn=2026-12-28&isReturn=true&originIata=BGY&destinationIata=DUB",
+   "type": "ponte",
+   "leave_dates": [
+    "2026-12-24",
+    "2026-12-28"
+   ],
+   "holidays": [
+    "Vacanze di Natale (scuole)",
+    "Natale"
+   ],
+   "country_code": "ie"
+  },
+  {
+   "origin": "BGY",
    "destination": "OLB",
    "city": "Olbia",
    "country": "Italia",
@@ -1032,54 +1080,6 @@
     "2026-12-11"
    ],
    "country_code": "es"
-  },
-  {
-   "origin": "BGY",
-   "destination": "DUB",
-   "city": "Dublino",
-   "country": "Irlanda",
-   "out_date": "2026-12-24",
-   "ret_date": "2026-12-28",
-   "nights": 4,
-   "leave_days": 2,
-   "outbound": {
-    "from": "BGY",
-    "to": "DUB",
-    "flight": "FR6125",
-    "airline": "Ryanair",
-    "departure": "2026-12-24T12:55+01:00",
-    "arrival": "2026-12-24T14:30+00:00"
-   },
-   "inbound": {
-    "from": "DUB",
-    "to": "BGY",
-    "flight": "FR4844",
-    "airline": "Ryanair",
-    "departure": "2026-12-28T19:10+00:00",
-    "arrival": "2026-12-28T22:40+01:00"
-   },
-   "airlines": [
-    "Ryanair"
-   ],
-   "price": 72.56,
-   "currency": "EUR",
-   "fare": "base, senza bagaglio",
-   "useful_hours": 57.7,
-   "price_per_hour": 1.26,
-   "unmissable": false,
-   "source": "ryanair",
-   "observed_at": "2026-11-17",
-   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-24&dateIn=2026-12-28&isReturn=true&originIata=BGY&destinationIata=DUB",
-   "type": "ponte",
-   "leave_dates": [
-    "2026-12-24",
-    "2026-12-28"
-   ],
-   "holidays": [
-    "Vacanze di Natale (scuole)",
-    "Natale"
-   ],
-   "country_code": "ie"
   },
   {
    "origin": "TSF",

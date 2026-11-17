@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-17T18:01:56+00:00",
+ "run_at": "2026-11-17T18:26:34+00:00",
  "generated": "2026-11-17",
  "offers": 3004,
  "destinations": 82,
@@ -76,6 +76,17 @@
    }
   },
   {
+   "country": "Albania",
+   "offers": 131,
+   "min_price": 29.98,
+   "cities": 1,
+   "types": {
+    "weekend": 2,
+    "weekend+": 35,
+    "ponte": 94
+   }
+  },
+  {
    "country": "Francia",
    "offers": 107,
    "min_price": 29.98,
@@ -83,17 +94,6 @@
    "types": {
     "weekend+": 42,
     "ponte": 65
-   }
-  },
-  {
-   "country": "Albania",
-   "offers": 131,
-   "min_price": 29.98,
-   "cities": 1,
-   "types": {
-    "weekend+": 35,
-    "ponte": 94,
-    "weekend": 2
    }
   },
   {
@@ -151,17 +151,6 @@
    }
   },
   {
-   "country": "Austria",
-   "offers": 94,
-   "min_price": 39.98,
-   "cities": 1,
-   "types": {
-    "weekend": 5,
-    "weekend+": 23,
-    "ponte": 66
-   }
-  },
-  {
    "country": "Ungheria",
    "offers": 69,
    "min_price": 39.98,
@@ -170,6 +159,17 @@
     "weekend+": 18,
     "ponte": 44,
     "weekend": 7
+   }
+  },
+  {
+   "country": "Austria",
+   "offers": 94,
+   "min_price": 39.98,
+   "cities": 1,
+   "types": {
+    "weekend": 5,
+    "weekend+": 23,
+    "ponte": 66
    }
   }
  ],
@@ -515,19 +515,13 @@
  },
  "sources": {
   "ryanair": {
-   "calls": 3,
-   "ok": 3,
-   "errors": 0
+   "calls": 0
   },
   "skiplagged": {
-   "calls": 3,
-   "ok": 3,
-   "errors": 0
+   "calls": 0
   },
   "skiplagged_route": {
-   "calls": 3,
-   "ok": 3,
-   "errors": 0
+   "calls": 0
   }
  }
 }
