@@ -19,8 +19,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
     return ListenableBuilder(
       listenable: App.changes,
       builder: (context, _) => PageShell(
+        headerHeight: sectionHeaderHeight,
         header: HeaderTitle(
-          kicker: 'Weekend, weekend+ e ponti',
+          kicker: 'Offerte per mese',
           title: 'Calendario',
           action: isWide(context) ? null : RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
         ),
@@ -36,11 +37,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               header: [
                 FilterBar(months: monthsOf(all), reversed: true),
                 const SizedBox(height: 12),
-                Padding(
-                  padding: const EdgeInsets.only(left: 4, bottom: 10),
-                  child: Text('${byMonth.length} mesi · ${offers.length} offerte',
-                      style: const TextStyle(fontSize: 12.5, color: muted, fontWeight: FontWeight.w500)),
-                ),
+                CountLine('${byMonth.length} mesi · ${offers.length} offerte'),
                 if (offers.isEmpty)
                   const EmptyNote('Nessuna offerta con questi filtri.', icon: Icons.event_busy_outlined),
               ],

@@ -80,6 +80,3 @@ jobs:
           path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
-      - name: Prepara il resoconto AI
-        # The Worker writes the recap of this run once and keeps it in its cache.
-        run: sleep 60 && curl -s --max-time 120 https://weekend-ai.explore-ai.workers.dev/recap -o /dev/null || true

@@ -77,12 +77,6 @@ class Repo {
 /// Calls to the AI Worker (Cloudflare Workers AI, free tier).
 class Ai {
   final _guides = <String, Future<Json>>{};
-  Future<Json>? _recap;
-
-  Future<Json> recap() => _recap ??= _call(http.get(Uri.parse('$aiBase/recap'))).then((v) {
-        if (v.containsKey('error')) _recap = null;
-        return v;
-      });
 
   Future<Json> guide(Json o) {
     final key = '${o['destination']}:${(o['out_date'] as String).substring(0, 7)}';

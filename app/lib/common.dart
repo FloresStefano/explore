@@ -591,6 +591,21 @@ class HeaderTitle extends StatelessWidget {
       ]);
 }
 
+/// Header height of Home, Calendar and Map: the navy band ends behind the filters.
+const sectionHeaderHeight = 150.0;
+
+/// "28 paesi · 1544 offerte" under the filters of Home, Calendar and Map.
+class CountLine extends StatelessWidget {
+  const CountLine(this.text, {super.key});
+  final String text;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(left: 4, bottom: 10),
+        child: Text(text, style: const TextStyle(fontSize: 12.5, color: muted, fontWeight: FontWeight.w500)),
+      );
+}
+
 class EmptyNote extends StatelessWidget {
   const EmptyNote(this.text, {super.key, this.icon = Icons.cloud_off_outlined});
   final String text;

@@ -77,10 +77,10 @@ class _MapScreenState extends State<MapScreen> {
           _loading = _load(prefs.airports);
         }
         return PageShell(
-          headerHeight: 150,
+          headerHeight: sectionHeaderHeight,
           header: HeaderTitle(
             // Departure airports come from the settings (USR-04).
-            kicker: 'Mete dirette da ${prefs.airports.map((a) => airportCity[a] ?? a).join(' · ')}',
+            kicker: 'Offerte per meta',
             title: 'Mappa',
             action: isWide(context) ? null : RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
           ),
@@ -100,6 +100,7 @@ class _MapScreenState extends State<MapScreen> {
               for (final o in offers) {
                 (byDest[o['destination'] as String] ??= []).add(o);
               }
+              final count = CountLine('${byDest.length} mete · ${offers.length} offerte');
               final dests = {for (final e in all.entries) if (byDest.containsKey(e.key)) e.key: e.value};
               final others = {for (final e in all.entries) if (!byDest.containsKey(e.key)) e.key: e.value};
               final sel = _selected == null ? null : dests[_selected];
@@ -131,7 +132,7 @@ class _MapScreenState extends State<MapScreen> {
                       Text(
                         dests.isEmpty
                             ? 'Nessuna meta con offerte in questo periodo.'
-                            : '${dests.length} mete con offerte · tocca un punto, pizzica per ingrandire',
+                            : 'Tocca un punto per vederne le offerte, pizzica per ingrandire',
                         style: const TextStyle(fontSize: 12, color: muted),
                       ),
                     ]),
@@ -165,6 +166,7 @@ class _MapScreenState extends State<MapScreen> {
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                     filters,
                     const SizedBox(height: 12),
+                    count,
                     Expanded(
                       child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                         Expanded(flex: 3, child: SingleChildScrollView(child: mapCard)),
@@ -177,7 +179,7 @@ class _MapScreenState extends State<MapScreen> {
               }
               return ListView(
                 padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
-                children: [filters, const SizedBox(height: 12), mapCard, const SizedBox(height: 12), ...side],
+                children: [filters, const SizedBox(height: 12), count, mapCard, const SizedBox(height: 12), ...side],
               );
             },
           ),
