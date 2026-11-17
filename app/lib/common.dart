@@ -75,6 +75,7 @@ class Stats {
       dests.add(o['destination'] as String);
       final p = o['price'] as num;
       if (minPrice == null || p < minPrice!) minPrice = p;
+      if (maxPrice == null || p > maxPrice!) maxPrice = p;
       final t = o['type'] as String? ?? '';
       byType[t] = (byType[t] ?? 0) + 1;
     }
@@ -84,7 +85,74 @@ class Stats {
   int n = 0;
   int destinations = 0;
   num? minPrice;
+  num? maxPrice;
   final byType = <String, int>{};
+}
+
+/// Head of a detail list: the choice just made, highlighted as a path
+/// (e.g. Dicembre 2026 › Italia), the shared filters in force, then what the list holds.
+class ChoiceRecap extends StatelessWidget {
+  const ChoiceRecap({super.key, required this.path, required this.offers});
+  final List<String> path;
+  final List<Map<String, dynamic>> offers;
+
+  @override
+  Widget build(BuildContext context) {
+    final stats = Stats(offers);
+    final countries = {for (final o in offers) o['country']}.length;
+    final filters = filterLabel('');
+    String n(int v, String one, String many) => '$v ${v == 1 ? one : many}';
+    final facts = [
+      if (countries > 1) n(countries, 'paese', 'paesi'),
+      n(stats.destinations, 'meta', 'mete'),
+      n(stats.n, 'offerta', 'offerte'),
+    ].join(' · ');
+    final range = stats.minPrice == null
+        ? '–'
+        : stats.minPrice == stats.maxPrice
+            ? euro(stats.minPrice!)
+            : '${euro(stats.minPrice!)} – ${euro(stats.maxPrice!)}';
+    return WhiteCard(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        const Text('LA TUA SCELTA',
+            style: TextStyle(fontSize: 11, letterSpacing: 0.8, color: muted, fontWeight: FontWeight.w700)),
+        const SizedBox(height: 8),
+        Wrap(spacing: 6, runSpacing: 6, crossAxisAlignment: WrapCrossAlignment.center, children: [
+          for (var i = 0; i < path.length; i++) ...[
+            if (i > 0) const Icon(Icons.chevron_right, size: 18, color: muted),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: i == path.length - 1 ? indigo : const Color(0xFFE8EAFB),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(path[i],
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: i == path.length - 1 ? Colors.white : indigo)),
+            ),
+          ],
+        ]),
+        if (filters.isNotEmpty) ...[
+          const SizedBox(height: 8),
+          Row(children: [
+            const Icon(Icons.filter_alt_outlined, size: 15, color: muted),
+            const SizedBox(width: 4),
+            Expanded(child: Text(filters, style: const TextStyle(fontSize: 12.5, color: muted))),
+          ]),
+        ],
+        const Divider(height: 22),
+        Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+          Expanded(child: Text(facts, style: const TextStyle(fontSize: 13.5, color: ink, fontWeight: FontWeight.w500))),
+          Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+            const Text('prezzi', style: TextStyle(fontSize: 11, color: muted)),
+            Text(range, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700, color: indigo)),
+          ]),
+        ]),
+      ]),
+    );
+  }
 }
 
 // ---------- widgets ----------

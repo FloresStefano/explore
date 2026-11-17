@@ -25,60 +25,48 @@ String countryBadge(List<Json> offers) {
   return cc.isEmpty ? '?' : cc;
 }
 
-AggregateCard countryCard(BuildContext context, String country, List<Json> offers, {String? kicker}) {
+AggregateCard countryCard(BuildContext context, String country, List<Json> offers,
+    {required String section, List<String> path = const []}) {
   final stats = Stats(offers);
   final cities = {for (final o in offers) o['city']}.length;
+  final name = country.isEmpty ? 'Altro' : country;
   return AggregateCard(
     badge: countryBadge(offers),
-    title: country.isEmpty ? 'Altro' : country,
+    title: name,
     subtitle: '$cities ${cities == 1 ? 'meta' : 'mete'} · ${stats.n} ${stats.n == 1 ? 'offerta' : 'offerte'}',
     stats: stats,
     onTap: () => Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => OffersScreen(kicker: kicker ?? 'Offerte', title: country, offers: offers)),
+      MaterialPageRoute(builder: (_) => OffersScreen(section: section, path: [...path, name], offers: offers)),
     ),
   );
 }
 
-/// Second level: the countries inside one month.
+/// Header of a detail page: back button, the section as kicker, the last choice as title.
+Widget _detailHeader(BuildContext context, String section, List<String> path) => HeaderTitle(
+      leading: RoundIcon(Icons.arrow_back, tooltip: 'Indietro', onTap: () => Navigator.pop(context)),
+      kicker: section,
+      title: path.last,
+    );
+
+/// Second level: the countries inside one choice (e.g. a month).
 class CountriesScreen extends StatelessWidget {
-  const CountriesScreen({super.key, required this.kicker, required this.title, required this.offers});
-  final String kicker;
-  final String title;
+  const CountriesScreen({super.key, required this.section, required this.path, required this.offers});
+  final String section; // Home, Calendario, Mappa
+  final List<String> path; // the hierarchical choice, e.g. ["Dicembre 2026"]
   final List<Json> offers;
 
   @override
   Widget build(BuildContext context) {
     final groups = groupOffers(offers, (o) => o['country'] as String? ?? '');
-    final stats = Stats(offers);
     return Scaffold(
       body: PageShell(
-        headerHeight: 170,
-        header: HeaderTitle(
-          leading: RoundIcon(Icons.arrow_back, tooltip: 'Indietro', onTap: () => Navigator.pop(context)),
-          kicker: kicker,
-          title: title,
-        ),
+        headerHeight: sectionHeaderHeight,
+        header: _detailHeader(context, section, path),
         child: ResponsiveList(
-          header: [
-            WhiteCard(
-              child: Row(children: [
-                Expanded(
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Text('${groups.length} paesi · ${stats.destinations} mete · ${stats.n} offerte',
-                        style: const TextStyle(fontSize: 13, color: muted)),
-                    const SizedBox(height: 8),
-                    TypeCounters(stats),
-                  ]),
-                ),
-                Text('da ${euro(stats.minPrice ?? 0)}',
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: indigo)),
-              ]),
-            ),
-            const SizedBox(height: 14),
-          ],
+          header: [ChoiceRecap(path: path, offers: offers), const SizedBox(height: 14)],
           itemCount: groups.length,
-          itemBuilder: (context, i) => countryCard(context, groups[i].$1, groups[i].$2, kicker: title),
+          itemBuilder: (context, i) => countryCard(context, groups[i].$1, groups[i].$2, section: section, path: path),
         ),
       ),
     );
@@ -87,9 +75,9 @@ class CountriesScreen extends StatelessWidget {
 
 /// Last level: the offers, with the sort menu.
 class OffersScreen extends StatefulWidget {
-  const OffersScreen({super.key, required this.kicker, required this.title, required this.offers});
-  final String kicker;
-  final String title;
+  const OffersScreen({super.key, required this.section, required this.path, required this.offers});
+  final String section;
+  final List<String> path;
   final List<Json> offers;
 
   @override
@@ -98,7 +86,6 @@ class OffersScreen extends StatefulWidget {
 
 class _OffersScreenState extends State<OffersScreen> {
   String _sort = 'prezzo_asc';
-  String? _type;
 
   static const _sorts = {
     'prezzo_asc': 'Prezzo crescente',
@@ -127,44 +114,23 @@ class _OffersScreenState extends State<OffersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final offers = widget.offers.where((o) => _type == null || o['type'] == _type).toList()..sort(_compare);
-    final stats = Stats(widget.offers);
+    final offers = [...widget.offers]..sort(_compare);
     return Scaffold(
       body: PageShell(
-        headerHeight: 170,
-        header: HeaderTitle(
-          leading: RoundIcon(Icons.arrow_back, tooltip: 'Indietro', onTap: () => Navigator.pop(context)),
-          kicker: widget.kicker,
-          title: widget.title,
-        ),
+        headerHeight: sectionHeaderHeight,
+        header: _detailHeader(context, widget.section, widget.path),
         child: ResponsiveList(
           minItemWidth: 430,
           spacing: 14,
           header: [
-            WhiteCard(
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Row(children: [
-                  Expanded(
-                    child: Text('${stats.destinations} mete · ${stats.n} offerte',
-                        style: const TextStyle(fontSize: 13, color: muted)),
-                  ),
-                  Text('da ${euro(stats.minPrice ?? 0)}',
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: indigo)),
-                ]),
-                const SizedBox(height: 10),
-                TypeFilter(value: _type, onChanged: (v) => setState(() => _type = v)),
-              ]),
+            ChoiceRecap(path: widget.path, offers: widget.offers),
+            const SizedBox(height: 12),
+            Align(
+              alignment: Alignment.centerRight,
+              child: SortMenu(value: _sort, options: _sorts, onChanged: (v) => setState(() => _sort = v)),
             ),
             const SizedBox(height: 12),
-            Row(children: [
-              Expanded(
-                child: Text('${offers.length} offerte',
-                    style: const TextStyle(fontSize: 12.5, color: muted, fontWeight: FontWeight.w500)),
-              ),
-              SortMenu(value: _sort, options: _sorts, onChanged: (v) => setState(() => _sort = v)),
-            ]),
-            const SizedBox(height: 12),
-            if (offers.isEmpty) const EmptyNote('Nessuna offerta con questi filtri.', icon: Icons.filter_alt_off_outlined),
+            if (offers.isEmpty) const EmptyNote('Nessuna offerta.', icon: Icons.filter_alt_off_outlined),
           ],
           itemCount: offers.length,
           itemBuilder: (context, i) => TicketCard(offers[i]),

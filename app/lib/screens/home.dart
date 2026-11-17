@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     context,
                     groups[i].$1,
                     groups[i].$2,
-                    kicker: filterLabel(),
+                    section: 'Home',
                   ),
                 ),
               );

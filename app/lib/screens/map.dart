@@ -146,8 +146,11 @@ class _MapScreenState extends State<MapScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (_) => OffersScreen(
-                          kicker: filterLabel(),
-                          title: '${sel['city'] ?? _selected}',
+                          section: 'Mappa',
+                          path: [
+                            if ('${sel['country'] ?? ''}'.isNotEmpty) '${sel['country']}',
+                            '${sel['city'] ?? _selected}',
+                          ],
                           offers: selOffers,
                         ),
                       ),

@@ -53,11 +53,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => CountriesScreen(
-                        kicker: filterLabel(),
-                        title: fmtMonthKey(ym),
-                        offers: items,
-                      ),
+                      builder: (_) => CountriesScreen(section: 'Calendario', path: [fmtMonthKey(ym)], offers: items),
                     ),
                   ),
                 );
