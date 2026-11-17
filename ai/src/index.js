@@ -28,7 +28,9 @@ export default {
 // ---------- 7.2 recap ----------
 
 async function recap(env, request, refresh) {
-  const summary = await (await fetch(env.DATA_URL + "summary.json", { cf: { cacheTtl: 300 } })).json();
+  const res = await fetch(env.DATA_URL + "summary.json", { cf: { cacheTtl: 300 } });
+  if (!res.ok) throw httpError(503, "no_data", "Il resoconto sarà disponibile dopo la prossima raccolta.");
+  const summary = await res.json();
   const key = `recap:${summary.run_at}`;
   if (!refresh) {
     const cached = await env.CACHE.get(key, "json");

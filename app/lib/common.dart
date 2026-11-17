@@ -13,47 +13,149 @@ const green = Color(0xFF2E9B5B);
 const greenBg = Color(0xFFE6F6EC);
 const orange = Color(0xFFE08A2B);
 const orangeBg = Color(0xFFFFF1E2);
+const violet = Color(0xFF6A3FC4);
+const violetBg = Color(0xFFEFE8FB);
+
+/// Wide layout (side menu, multi-column lists) from this width on.
+const wideBreakpoint = 900.0;
+bool isWide(BuildContext context) => MediaQuery.sizeOf(context).width >= wideBreakpoint;
 
 const airportCity = {'VRN': 'Verona', 'BGY': 'Bergamo', 'TSF': 'Treviso'};
 
+// ---------- kinds of break ----------
+
+/// Weekend: no leave. Weekend+: one leave day (Friday or Monday). Ponte: around a holiday.
+const breakTypes = ['weekend', 'weekend+', 'ponte'];
+const typeLabel = {'weekend': 'Weekend', 'weekend+': 'Weekend+', 'ponte': 'Ponte'};
+const typePlural = {'weekend': 'Weekend', 'weekend+': 'Weekend+', 'ponte': 'Ponti'};
+const typeColor = {'weekend': green, 'weekend+': indigo, 'ponte': orange};
+const typeBg = {'weekend': greenBg, 'weekend+': Color(0xFFE8EAFB), 'ponte': orangeBg};
+
+// ---------- formatting ----------
+
 final _dayFmt = DateFormat('EEE d MMM', 'it');
 final _monthFmt = DateFormat('MMMM yyyy', 'it');
+final _monthShort = DateFormat('MMM', 'it');
+final _dateTimeFmt = DateFormat("EEE d MMM 'alle' HH:mm", 'it');
 
 DateTime day(String iso) => DateTime.parse(iso.substring(0, 10));
 String fmtDay(String iso) => _dayFmt.format(day(iso));
-String fmtMonth(DateTime d) {
-  final s = _monthFmt.format(d);
-  return s[0].toUpperCase() + s.substring(1);
-}
+String fmtDate(DateTime d) => _dayFmt.format(d);
+String fmtDateTime(DateTime d) => _dateTimeFmt.format(d);
+String cap(String s) => s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
+String fmtMonth(DateTime d) => cap(_monthFmt.format(d));
+String fmtMonthKey(String ym) => fmtMonth(DateTime.parse('$ym-01'));
+String fmtMonthShort(String ym) => cap(_monthShort.format(DateTime.parse('$ym-01')));
 
 String hm(String? iso) => iso == null || iso.length < 16 ? '–' : iso.substring(11, 16);
 String num1(num v) => v == v.roundToDouble() ? v.toInt().toString() : v.toStringAsFixed(1).replaceAll('.', ',');
 String euro(num v) => '${v.toStringAsFixed(v == v.roundToDouble() ? 0 : 2).replaceAll('.', ',')} €';
-String leaveLabel(num v) => v == 0 ? 'Senza ferie' : '${num1(v)} gg ferie';
+String leaveLabel(num v) => v == 0 ? 'Senza ferie' : v == 1 ? '1 giorno di ferie' : '${num1(v)} giorni di ferie';
+String ago(DateTime t) {
+  final d = DateTime.now().difference(t);
+  if (d.inMinutes < 60) return '${d.inMinutes} min fa';
+  if (d.inHours < 24) return '${d.inHours} ore fa';
+  return '${d.inDays} giorni fa';
+}
+
+// ---------- aggregation ----------
+
+/// Minimum price and counters by kind of break over a set of offers.
+class Stats {
+  Stats(Iterable<Map<String, dynamic>> offers) {
+    final dests = <String>{};
+    for (final o in offers) {
+      n++;
+      dests.add(o['destination'] as String);
+      final p = o['price'] as num;
+      if (minPrice == null || p < minPrice!) minPrice = p;
+      final t = o['type'] as String? ?? '';
+      byType[t] = (byType[t] ?? 0) + 1;
+    }
+    destinations = dests.length;
+  }
+
+  int n = 0;
+  int destinations = 0;
+  num? minPrice;
+  final byType = <String, int>{};
+}
+
+// ---------- widgets ----------
 
 class Pill extends StatelessWidget {
-  const Pill(this.label, {super.key, required this.selected, required this.onTap});
+  const Pill(this.label, {super.key, required this.selected, required this.onTap, this.light = false, this.color});
   final String label;
   final bool selected;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
+  final bool light; // on the lavender page instead of inside a white card
+  final Color? color;
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(right: 8),
-        child: Material(
-          color: selected ? indigo : chipBg,
+  Widget build(BuildContext context) {
+    final on = color ?? indigo;
+    return Padding(
+      padding: const EdgeInsets.only(right: 8),
+      child: Material(
+        color: selected ? on : (light ? Colors.white : chipBg),
+        borderRadius: BorderRadius.circular(22),
+        child: InkWell(
           borderRadius: BorderRadius.circular(22),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(22),
-            onTap: onTap,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
-              child: Text(label,
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: selected ? Colors.white : ink)),
-            ),
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 9),
+            child: Text(label,
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: onTap == null ? muted : (selected ? Colors.white : ink))),
           ),
         ),
-      );
+      ),
+    );
+  }
+}
+
+/// Horizontal row of pills that scrolls on narrow screens.
+class PillRow extends StatelessWidget {
+  const PillRow({super.key, required this.children});
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) =>
+      SingleChildScrollView(scrollDirection: Axis.horizontal, child: Row(children: children));
+}
+
+/// "Tutti, Weekend, Weekend+, Ponti" filter; `reversed` puts Ponti first (calendar).
+class TypeFilter extends StatelessWidget {
+  const TypeFilter({super.key, required this.value, required this.onChanged, this.reversed = false, this.light = false});
+  final String? value;
+  final ValueChanged<String?> onChanged;
+  final bool reversed;
+  final bool light;
+
+  @override
+  Widget build(BuildContext context) {
+    final items = <(String?, String)>[(null, 'Tutti'), for (final t in breakTypes) (t, typePlural[t]!)];
+    return PillRow(children: [
+      for (final (v, label) in reversed ? items.reversed : items)
+        Pill(label, selected: value == v, light: light, color: v == null ? null : typeColor[v], onTap: () => onChanged(v)),
+    ]);
+  }
+}
+
+class MonthFilter extends StatelessWidget {
+  const MonthFilter({super.key, required this.months, required this.value, required this.onChanged, this.light = false});
+  final List<String> months; // yyyy-mm
+  final String? value;
+  final ValueChanged<String?> onChanged;
+  final bool light;
+
+  @override
+  Widget build(BuildContext context) => PillRow(children: [
+        Pill('Tutti i mesi', selected: value == null, light: light, onTap: () => onChanged(null)),
+        for (final m in months) Pill(fmtMonthKey(m), selected: value == m, light: light, onTap: () => onChanged(m)),
+      ]);
 }
 
 class Tag extends StatelessWidget {
@@ -70,9 +172,139 @@ class Tag extends StatelessWidget {
       );
 }
 
+Widget typeTag(String? type) =>
+    Tag(typeLabel[type] ?? '?', color: typeColor[type] ?? muted, bg: typeBg[type] ?? chipBg);
+
 Widget leaveTag(num leave) => leave == 0
     ? const Tag('Senza ferie', color: green, bg: greenBg)
-    : Tag(leaveLabel(leave), color: indigo, bg: const Color(0xFFE8EAFB));
+    : Tag(leave == 1 ? '1 g ferie' : '${num1(leave)} gg ferie', color: ink, bg: chipBg);
+
+/// The three counters (weekend, weekend+, ponti) shown on every aggregate card.
+class TypeCounters extends StatelessWidget {
+  const TypeCounters(this.stats, {super.key});
+  final Stats stats;
+
+  @override
+  Widget build(BuildContext context) => Wrap(spacing: 6, runSpacing: 6, children: [
+        for (final t in breakTypes)
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+            decoration: BoxDecoration(
+              color: (stats.byType[t] ?? 0) > 0 ? typeBg[t] : chipBg,
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Text('${typePlural[t]} ${stats.byType[t] ?? 0}',
+                style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: (stats.byType[t] ?? 0) > 0 ? typeColor[t] : muted)),
+          ),
+      ]);
+}
+
+/// Card of an aggregate (country, month, destination): name, counters, minimum price.
+class AggregateCard extends StatelessWidget {
+  const AggregateCard({
+    super.key,
+    required this.badge,
+    required this.title,
+    required this.subtitle,
+    required this.stats,
+    required this.onTap,
+  });
+  final String badge;
+  final String title;
+  final String subtitle;
+  final Stats stats;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) => Material(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        elevation: 0,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(18),
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(14),
+            child: Row(children: [
+              Container(
+                width: 48,
+                height: 48,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(color: navy, borderRadius: BorderRadius.circular(14)),
+                child: Text(badge,
+                    style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 14, letterSpacing: .5)),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text(title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w700, color: ink)),
+                  const SizedBox(height: 2),
+                  Text(subtitle, style: const TextStyle(fontSize: 12, color: muted)),
+                  const SizedBox(height: 7),
+                  TypeCounters(stats),
+                ]),
+              ),
+              const SizedBox(width: 8),
+              Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+                const Text('da', style: TextStyle(fontSize: 11, color: muted)),
+                Text(stats.minPrice == null ? '–' : euro(stats.minPrice!),
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: indigo)),
+                const Icon(Icons.chevron_right, color: muted, size: 20),
+              ]),
+            ]),
+          ),
+        ),
+      );
+}
+
+/// Lazy list that lays items out in 1, 2 or 3 columns depending on the width.
+class ResponsiveList extends StatelessWidget {
+  const ResponsiveList({
+    super.key,
+    required this.itemCount,
+    required this.itemBuilder,
+    this.header = const [],
+    this.minItemWidth = 360,
+    this.padding = const EdgeInsets.fromLTRB(16, 4, 16, 24),
+    this.spacing = 12,
+  });
+  final int itemCount;
+  final IndexedWidgetBuilder itemBuilder;
+  final List<Widget> header;
+  final double minItemWidth;
+  final EdgeInsets padding;
+  final double spacing;
+
+  @override
+  Widget build(BuildContext context) => LayoutBuilder(builder: (context, box) {
+        final width = box.maxWidth - padding.horizontal;
+        final cols = (width / minItemWidth).floor().clamp(1, 3);
+        final rows = (itemCount / cols).ceil();
+        return ListView.builder(
+          padding: padding,
+          itemCount: header.length + rows,
+          itemBuilder: (context, i) {
+            if (i < header.length) return header[i];
+            final r = i - header.length;
+            return Padding(
+              padding: EdgeInsets.only(bottom: spacing),
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                for (var c = 0; c < cols; c++) ...[
+                  if (c > 0) SizedBox(width: spacing),
+                  Expanded(child: r * cols + c < itemCount ? itemBuilder(context, r * cols + c) : const SizedBox()),
+                ],
+              ]),
+            );
+          },
+        );
+      });
+}
 
 class WhiteCard extends StatelessWidget {
   const WhiteCard({super.key, required this.child, this.padding = const EdgeInsets.all(16)});
@@ -118,23 +350,32 @@ class RoundIcon extends StatelessWidget {
 }
 
 /// Night-blue dotted header with the page content sliding over its lower edge.
+/// On wide screens the content uses up to [maxWidth].
 class PageShell extends StatelessWidget {
-  const PageShell({super.key, required this.header, required this.child, this.headerHeight = 190});
+  const PageShell({
+    super.key,
+    required this.header,
+    required this.child,
+    this.headerHeight = 190,
+    this.maxWidth = 1240,
+  });
   final Widget header;
   final Widget child;
   final double headerHeight;
+  final double maxWidth;
 
   @override
   Widget build(BuildContext context) {
     final top = MediaQuery.paddingOf(context).top;
+    final wide = isWide(context);
     return ColoredBox(
       color: pageBg,
       child: Stack(children: [
         Container(
-          height: headerHeight + top,
-          decoration: const BoxDecoration(
+          height: (wide ? headerHeight - 30 : headerHeight) + top,
+          decoration: BoxDecoration(
             color: navy,
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(28)),
+            borderRadius: wide ? null : const BorderRadius.vertical(bottom: Radius.circular(28)),
           ),
           clipBehavior: Clip.antiAlias,
           child: const CustomPaint(painter: _Dots(), size: Size.infinite),
@@ -143,9 +384,9 @@ class PageShell extends StatelessWidget {
           bottom: false,
           child: Center(
             child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 560),
+              constraints: BoxConstraints(maxWidth: maxWidth),
               child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                Padding(padding: const EdgeInsets.fromLTRB(20, 14, 20, 14), child: header),
+                Padding(padding: EdgeInsets.fromLTRB(wide ? 24 : 20, wide ? 20 : 14, wide ? 24 : 20, 14), child: header),
                 Expanded(child: child),
               ]),
             ),
@@ -209,4 +450,13 @@ class EmptyNote extends StatelessWidget {
           Text(text, textAlign: TextAlign.center, style: const TextStyle(color: muted)),
         ]),
       );
+}
+
+class Loading extends StatelessWidget {
+  const Loading({super.key, this.onDark = true});
+  final bool onDark;
+
+  @override
+  Widget build(BuildContext context) =>
+      Center(child: CircularProgressIndicator(color: onDark ? Colors.white : indigo));
 }

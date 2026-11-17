@@ -3,10 +3,12 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'common.dart';
 import 'data.dart';
+import 'guide.dart';
 
-const _stubHeight = 58.0;
+const _stubHeight = 104.0;
 
 /// Offer card shaped like a boarding pass: notches and a dashed tear line.
+/// Actions live in the stub: open the seller, send on WhatsApp, AI tourist card.
 class TicketCard extends StatelessWidget {
   const TicketCard(this.o, {super.key});
   final Json o;
@@ -17,83 +19,96 @@ class TicketCard extends StatelessWidget {
     final leave = (o['leave_days'] as num?) ?? 0;
     final hours = (o['useful_hours'] as num?) ?? 0;
     final discount = o['discount_pct'] as num?;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 14),
-      child: PhysicalShape(
-        clipper: const _TicketClipper(),
-        color: Colors.white,
-        elevation: 3,
-        shadowColor: navy.withValues(alpha: 0.35),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: () => _open(o['link'] as String?),
+    final holidays = (o['holidays'] as List?)?.join(', ');
+    return PhysicalShape(
+      clipper: const _TicketClipper(),
+      color: Colors.white,
+      elevation: 3,
+      shadowColor: navy.withValues(alpha: 0.35),
+      clipBehavior: Clip.antiAlias,
+      child: Column(children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),
           child: Column(children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),
-              child: Column(children: [
-                Row(children: [
-                  CircleAvatar(
-                    radius: 12,
-                    backgroundColor: indigo,
-                    child: Text(airlines.isEmpty ? '?' : airlines[0],
-                        style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700)),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(airlines,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: ink)),
-                  ),
-                  if (o['unmissable'] == true) ...[
-                    const Tag('Imperdibile', color: orange, bg: orangeBg),
-                    const SizedBox(width: 6),
-                  ],
-                  if (discount != null) ...[
-                    Tag('-${discount.round()}%', color: orange, bg: orangeBg),
-                    const SizedBox(width: 6),
-                  ],
-                  leaveTag(leave),
-                ]),
-                const SizedBox(height: 14),
-                _Leg(o['outbound'] as Json?, o['out_date'] as String, o['origin'], o['destination'],
-                    airportCity[o['origin']] ?? o['origin'], o['city'] ?? o['destination']),
-                const SizedBox(height: 12),
-                _Leg(o['inbound'] as Json?, o['ret_date'] as String, o['destination'], o['origin'],
-                    o['city'] ?? o['destination'], airportCity[o['origin']] ?? o['origin']),
-              ]),
-            ),
-            const SizedBox(
-              height: 1,
-              width: double.infinity,
-              child: CustomPaint(painter: _Dashes()),
-            ),
-            SizedBox(
-              height: _stubHeight - 1,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(children: [
-                  const Icon(Icons.wb_sunny_outlined, size: 18, color: muted),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('${o['nights']} notti · ${num1(hours)} ore utili',
-                            style: const TextStyle(fontSize: 13, color: ink, fontWeight: FontWeight.w500)),
-                        Text('Rilevato ${fmtDay(o['observed_at'] as String)} · senza bagaglio',
-                            overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11, color: muted)),
-                      ],
-                    ),
-                  ),
-                  Text(euro(o['price'] as num),
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: indigo)),
-                ]),
+            Row(children: [
+              CircleAvatar(
+                radius: 12,
+                backgroundColor: indigo,
+                child: Text(airlines.isEmpty ? '?' : airlines[0],
+                    style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700)),
               ),
-            ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(airlines,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: ink)),
+              ),
+              if (o['unmissable'] == true) ...[
+                const Tag('Imperdibile', color: orange, bg: orangeBg),
+                const SizedBox(width: 6),
+              ],
+              if (discount != null) ...[
+                Tag('-${discount.round()}%', color: orange, bg: orangeBg),
+                const SizedBox(width: 6),
+              ],
+              typeTag(o['type'] as String?),
+              const SizedBox(width: 6),
+              leaveTag(leave),
+            ]),
+            const SizedBox(height: 14),
+            _Leg(o['outbound'] as Json?, o['out_date'] as String, o['origin'], o['destination'],
+                airportCity[o['origin']] ?? o['origin'], o['city'] ?? o['destination']),
+            const SizedBox(height: 12),
+            _Leg(o['inbound'] as Json?, o['ret_date'] as String, o['destination'], o['origin'],
+                o['city'] ?? o['destination'], airportCity[o['origin']] ?? o['origin']),
+            if (holidays != null && holidays.isNotEmpty) ...[
+              const SizedBox(height: 10),
+              Row(children: [
+                const Icon(Icons.celebration_outlined, size: 15, color: orange),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    holidays + (o['needs_parent_leave'] == true ? ' · richiede ferie dei genitori' : ''),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 11.5, color: ink),
+                  ),
+                ),
+              ]),
+            ],
           ]),
         ),
-      ),
+        const SizedBox(height: 1, width: double.infinity, child: CustomPaint(painter: _Dashes())),
+        SizedBox(
+          height: _stubHeight - 1,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 10, 4),
+            child: Column(children: [
+              Row(children: [
+                Expanded(
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text('${o['nights']} notti · ${num1(hours)} ore utili',
+                        style: const TextStyle(fontSize: 13, color: ink, fontWeight: FontWeight.w500)),
+                    Text('Rilevato ${fmtDay(o['observed_at'] as String)} · senza bagaglio',
+                        overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11, color: muted)),
+                  ]),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: Text(euro(o['price'] as num),
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: indigo)),
+                ),
+              ]),
+              const Spacer(),
+              Row(children: [
+                _Action(Icons.open_in_new, 'Prenota', () => _open(o['link'] as String?), primary: true),
+                _Action(Icons.chat_outlined, 'WhatsApp', () => _whatsApp(o)),
+                _Action(Icons.auto_awesome_outlined, 'Cosa vedere', () => showGuide(context, o)),
+              ]),
+            ]),
+          ),
+        ),
+      ]),
     );
   }
 
@@ -101,6 +116,54 @@ class TicketCard extends StatelessWidget {
     if (link == null || link.isEmpty) return;
     await launchUrl(Uri.parse(link), mode: LaunchMode.externalApplication);
   }
+
+  static Future<void> _whatsApp(Json o) async {
+    final from = airportCity[o['origin']] ?? o['origin'];
+    final to = o['city'] ?? o['destination'];
+    String leg(Json? l) => l == null ? '' : ' ${hm(l['departure'])} → ${hm(l['arrival'])}';
+    final text = [
+      '✈️ $from → $to (${o['country'] ?? ''})',
+      'Andata ${fmtDay(o['out_date'])}${leg(o['outbound'])}',
+      'Ritorno ${fmtDay(o['ret_date'])}${leg(o['inbound'])}',
+      '${typeLabel[o['type']] ?? ''} · ${o['nights']} notti · ${leaveLabel(o['leave_days'] as num)}',
+      '${euro(o['price'] as num)} a persona, ${(o['airlines'] as List).join(', ')} '
+          '(tariffa base senza bagaglio, rilevata ${fmtDay(o['observed_at'])})',
+      o['link'],
+    ].join('\n');
+    await launchUrl(Uri.parse('https://wa.me/?text=${Uri.encodeComponent(text)}'),
+        mode: LaunchMode.externalApplication);
+  }
+}
+
+class _Action extends StatelessWidget {
+  const _Action(this.icon, this.label, this.onTap, {this.primary = false});
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+  final bool primary;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(right: 6),
+        child: Material(
+          color: primary ? indigo : chipBg,
+          borderRadius: BorderRadius.circular(18),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(18),
+            onTap: onTap,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 7),
+              child: Row(mainAxisSize: MainAxisSize.min, children: [
+                Icon(icon, size: 15, color: primary ? Colors.white : indigo),
+                const SizedBox(width: 5),
+                Text(label,
+                    style: TextStyle(
+                        fontSize: 12, fontWeight: FontWeight.w600, color: primary ? Colors.white : ink)),
+              ]),
+            ),
+          ),
+        ),
+      );
 }
 
 class _Leg extends StatelessWidget {
@@ -112,7 +175,7 @@ class _Leg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget side(String code, String city, String? time, CrossAxisAlignment align) => SizedBox(
-          width: 86,
+          width: 92,
           child: Column(crossAxisAlignment: align, children: [
             Text(code, style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w700, color: ink, height: 1.1)),
             Text(city, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11, color: muted)),
@@ -136,7 +199,8 @@ class _Leg extends StatelessWidget {
             ),
           ]),
           const SizedBox(height: 2),
-          const Text('Diretto', style: TextStyle(fontSize: 10.5, color: muted)),
+          Text(leg?['flight'] is String && (leg!['flight'] as String).isNotEmpty ? leg!['flight'] : 'Diretto',
+              style: const TextStyle(fontSize: 10.5, color: muted)),
         ]),
       ),
       side(to, toCity, leg?['arrival'], CrossAxisAlignment.end),

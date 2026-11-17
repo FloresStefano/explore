@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 
 import '../common.dart';
 import '../data.dart';
+import 'offers.dart';
 import 'settings.dart';
 
 // View of Europe and its surroundings, in degrees.
@@ -42,10 +43,10 @@ class _MapScreenState extends State<MapScreen> {
     ];
   }
 
-  Future<(List<List<Offset>>, Map<String, Json>, Map<String, Json>)> _load(List<String> airports) async {
+  Future<(List<List<Offset>>, Map<String, Json>, List<Json>)> _load(List<String> airports) async {
     final land = await (_land ??= _loadLand());
     final dests = <String, Json>{};
-    final origins = <String, Json>{};
+    final catalog = await App.repo.catalog(airports);
     final all = await Future.wait(airports.map(App.repo.routes));
     for (var i = 0; i < airports.length; i++) {
       all[i].forEach((code, v) {
@@ -57,7 +58,7 @@ class _MapScreenState extends State<MapScreen> {
         (e['airlines'] as Set).addAll((d['airlines'] as List? ?? const []).cast<String>());
       });
     }
-    return (land, dests, origins);
+    return (land, dests, catalog);
   }
 
   @override
@@ -71,7 +72,7 @@ class _MapScreenState extends State<MapScreen> {
           header: HeaderTitle(
             kicker: 'Mete dirette',
             title: 'Mappa',
-            action: RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
+            action: isWide(context) ? null : RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
           ),
           child: FutureBuilder(
             key: ValueKey(prefs.airports.join()),
@@ -80,17 +81,20 @@ class _MapScreenState extends State<MapScreen> {
               if (snap.connectionState != ConnectionState.done) {
                 return const Center(child: CircularProgressIndicator(color: Colors.white));
               }
-              final (land, all, _) = snap.data!;
-              final months = <String>{for (final d in all.values) ...(d['months'] as Set).cast<String>()}.toList()..sort();
-              final dests = {
-                for (final e in all.entries)
-                  if (_monthFilter == null || (e.value['months'] as Set).contains(_monthFilter)) e.key: e.value,
-              };
+              final (land, all, catalog) = snap.data!;
+              // Months come from the offers in hand: the scan depth decides the choice.
+              final months = monthsOf(catalog);
+              final offers = OfferFilter(month: _monthFilter).apply(catalog);
+              final byDest = <String, List<Json>>{};
+              for (final o in offers) {
+                (byDest[o['destination'] as String] ??= []).add(o);
+              }
+              final dests = {for (final e in all.entries) if (byDest.containsKey(e.key)) e.key: e.value};
+              final others = {for (final e in all.entries) if (!byDest.containsKey(e.key)) e.key: e.value};
               final sel = _selected == null ? null : dests[_selected];
-              return ListView(
-                padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
-                children: [
-                  WhiteCard(
+              final selOffers = _selected == null ? const <Json>[] : (byDest[_selected] ?? const <Json>[]);
+              final wide = MediaQuery.sizeOf(context).width >= 1100;
+              final mapCard = WhiteCard(
                     padding: const EdgeInsets.fromLTRB(14, 14, 14, 12),
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                       SingleChildScrollView(
@@ -113,7 +117,7 @@ class _MapScreenState extends State<MapScreen> {
                                 final size = box.biggest;
                                 return GestureDetector(
                                   onTapUp: (t) => setState(() => _selected = _nearest(dests, t.localPosition, size)),
-                                  child: CustomPaint(size: size, painter: _MapPainter(land, dests, _selected)),
+                                  child: CustomPaint(size: size, painter: _MapPainter(land, dests, others, _selected)),
                                 );
                               }),
                             ),
@@ -123,50 +127,51 @@ class _MapScreenState extends State<MapScreen> {
                       const SizedBox(height: 10),
                       Text(
                         dests.isEmpty
-                            ? 'Nessuna rotta disponibile al momento.'
-                            : '${dests.length} mete dirette · tocca un punto, pizzica per ingrandire',
+                            ? 'Nessuna meta con offerte in questo periodo.'
+                            : '${dests.length} mete con offerte · tocca un punto, pizzica per ingrandire',
                         style: const TextStyle(fontSize: 12, color: muted),
                       ),
                     ]),
-                  ),
-                  const SizedBox(height: 12),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(children: [
-                      _monthPill('Tutto l\'anno', null),
-                      for (final m in months) _monthPill(fmtMonth(DateTime.parse('$m-01')), m),
-                    ]),
-                  ),
-                  const SizedBox(height: 12),
-                  if (sel != null)
-                    WhiteCard(
-                      child: Row(children: [
-                        Container(
-                          width: 52,
-                          height: 52,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(color: chipBg, borderRadius: BorderRadius.circular(12)),
-                          child: Text(_selected!, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)),
+                  );
+              final side = <Widget>[
+                MonthFilter(months: months, value: _monthFilter, light: true,
+                    onChanged: (v) => setState(() => _monthFilter = v)),
+                const SizedBox(height: 12),
+                if (sel != null && selOffers.isNotEmpty)
+                  AggregateCard(
+                    badge: _selected!,
+                    title: '${sel['city'] ?? sel['name']}, ${sel['country'] ?? ''}',
+                    subtitle: 'Da ${(sel['from'] as List).map((a) => airportCity[a] ?? a).join(', ')} · '
+                        '${selOffers.length} offerte · ${(sel['airlines'] as Set).join(', ')}',
+                    stats: Stats(selOffers),
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => OffersScreen(
+                          kicker: _monthFilter == null ? 'Tutte le date' : fmtMonthKey(_monthFilter!),
+                          title: '${sel['city'] ?? _selected}',
+                          offers: selOffers,
                         ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                            Text('${sel['city'] ?? sel['name']}, ${sel['country'] ?? ''}',
-                                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
-                            const SizedBox(height: 2),
-                            Text(
-                              'Da ${(sel['from'] as List).map((a) => airportCity[a] ?? a).join(', ')} · '
-                              '${(sel['airlines'] as Set).join(', ')}',
-                              style: const TextStyle(fontSize: 12.5, color: muted),
-                            ),
-                            if (sel['last_confirmed'] != null)
-                              Text('Ultima conferma ${fmtDay(sel['last_confirmed'] as String)}',
-                                  style: const TextStyle(fontSize: 11.5, color: muted)),
-                          ]),
-                        ),
-                      ]),
+                      ),
                     ),
-                ],
+                  )
+                else
+                  const EmptyNote('Tocca una meta sulla mappa per vedere prezzo minimo e offerte.',
+                      icon: Icons.touch_app_outlined),
+              ];
+              if (wide) {
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
+                  child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Expanded(flex: 3, child: SingleChildScrollView(child: mapCard)),
+                    const SizedBox(width: 16),
+                    Expanded(flex: 2, child: ListView(children: side)),
+                  ]),
+                );
+              }
+              return ListView(
+                padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
+                children: [mapCard, const SizedBox(height: 12), ...side],
               );
             },
           ),
@@ -174,24 +179,6 @@ class _MapScreenState extends State<MapScreen> {
       },
     );
   }
-
-  Widget _monthPill(String label, String? m) => Padding(
-        padding: const EdgeInsets.only(right: 8),
-        child: Material(
-          color: _monthFilter == m ? indigo : Colors.white,
-          borderRadius: BorderRadius.circular(22),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(22),
-            onTap: () => setState(() => _monthFilter = m),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
-              child: Text(label,
-                  style: TextStyle(
-                      fontSize: 13, fontWeight: FontWeight.w600, color: _monthFilter == m ? Colors.white : ink)),
-            ),
-          ),
-        ),
-      );
 
   static String? _nearest(Map<String, Json> dests, Offset p, Size size) {
     String? best;
@@ -209,9 +196,10 @@ class _MapScreenState extends State<MapScreen> {
 }
 
 class _MapPainter extends CustomPainter {
-  _MapPainter(this.land, this.dests, this.selected);
+  _MapPainter(this.land, this.dests, this.others, this.selected);
   final List<List<Offset>> land;
-  final Map<String, Json> dests;
+  final Map<String, Json> dests; // with offers in the chosen period
+  final Map<String, Json> others; // routes without offers right now
   final String? selected;
 
   static const _origins = {'VRN': Offset(10.888, 45.396), 'BGY': Offset(9.704, 45.674), 'TSF': Offset(12.194, 45.648)};
@@ -237,6 +225,10 @@ class _MapPainter extends CustomPainter {
       canvas.drawPath(path, stroke);
     }
 
+    final faint = Paint()..color = muted.withValues(alpha: 0.45);
+    others.forEach((code, d) {
+      canvas.drawCircle(_project((d['lon'] as num).toDouble(), (d['lat'] as num).toDouble(), size), 1.8, faint);
+    });
     final dot = Paint()..color = indigo;
     final halo = Paint()..color = indigo.withValues(alpha: 0.18);
     dests.forEach((code, d) {
