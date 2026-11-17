@@ -31,11 +31,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
           builder: (context, snap) {
             if (snap.connectionState != ConnectionState.done) return const Loading();
             final all = snap.data ?? const <Json>[];
-            final offers = OfferFilter(type: App.filter.type, month: App.filter.month, price: App.filter.price).apply(all);
+            final offers = OfferFilter.shared().apply(all);
             final byMonth = groupOffers(offers, (o) => (o['out_date'] as String).substring(0, 7), byKey: true);
             return ResponsiveList(
               header: [
-                FilterBar(months: monthsOf(all), reversed: true),
+                FilterBar(months: monthsOf(all), airlines: airlinesOf(all), reversed: true),
                 const SizedBox(height: 12),
                 CountLine('${byMonth.length} mesi · ${offers.length} offerte'),
                 if (offers.isEmpty)

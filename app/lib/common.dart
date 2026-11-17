@@ -249,11 +249,33 @@ class PriceBox extends StatelessWidget {
       );
 }
 
-/// The three combo boxes (kind of break, departure month, price band). They edit
-/// App.filter, so the choice is the same in Home, Calendar and Map.
+/// Airline as a combo box.
+class AirlineBox extends StatelessWidget {
+  const AirlineBox({super.key, required this.airlines, required this.value, required this.onChanged});
+  final List<String> airlines;
+  final String? value;
+  final ValueChanged<String?> onChanged;
+
+  @override
+  Widget build(BuildContext context) => FilterBox<String>(
+        label: 'Compagnia aerea',
+        icon: Icons.airlines,
+        // Keep a choice made elsewhere even if these offers do not have it.
+        value: value,
+        items: [
+          (null, 'Tutte le compagnie', null),
+          for (final a in {...airlines, ?value}.toList()..sort()) (a, a, null),
+        ],
+        onChanged: onChanged,
+      );
+}
+
+/// The four combo boxes (kind of break, departure month, price band, airline). They
+/// edit App.filter, so the choice is the same in Home, Calendar and Map.
 class FilterBar extends StatelessWidget {
-  const FilterBar({super.key, required this.months, this.reversed = false});
+  const FilterBar({super.key, required this.months, this.airlines = const [], this.reversed = false});
   final List<String> months;
+  final List<String> airlines;
   final bool reversed;
 
   @override
@@ -264,22 +286,20 @@ class FilterBar extends StatelessWidget {
     final type = TypeBox(value: f.type, reversed: reversed, onChanged: f.setType);
     final month = MonthBox(months: months, value: f.month, onChanged: f.setMonth);
     final price = PriceBox(value: f.price, onChanged: f.setPrice);
+    final airline = AirlineBox(airlines: airlines, value: f.airline, onChanged: f.setAirline);
     const gap = SizedBox(width: 10, height: 10);
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 900),
-        child: LayoutBuilder(
-          builder: (context, box) => box.maxWidth >= 620
-              ? Row(children: [Expanded(child: type), gap, Expanded(child: month), gap, Expanded(child: price)])
-              // Phones: two boxes on the first row, the price below.
-              : Column(children: [
-                  Row(children: [Expanded(child: type), gap, Expanded(child: month)]),
-                  gap,
-                  Row(children: [Expanded(child: price), gap, const Spacer()]),
-                ]),
-        ),
-      ),
+    return LayoutBuilder(
+      builder: (context, box) => box.maxWidth >= 860
+          ? Row(children: [
+              Expanded(child: type), gap, Expanded(child: month), gap, Expanded(child: price), gap,
+              Expanded(child: airline),
+            ])
+          // Narrower screens: two rows of two.
+          : Column(children: [
+              Row(children: [Expanded(child: type), gap, Expanded(child: month)]),
+              gap,
+              Row(children: [Expanded(child: price), gap, Expanded(child: airline)]),
+            ]),
     );
   }
 }
@@ -292,6 +312,7 @@ String filterLabel([String fallback = 'Tutte le offerte']) {
     if (f.type != null) typePlural[f.type],
     if (f.month != null) fmtMonthKey(f.month!),
     if (band != null) '${band.$1 < 0 ? 0 : band.$1}–${band.$2} €',
+    ?f.airline,
   ].join(' · ').ifEmpty(fallback);
 }
 

@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
               if (snap.connectionState != ConnectionState.done) return const Loading();
               final all = snap.data ?? const <Json>[];
               final months = monthsOf(all);
-              final offers = OfferFilter(type: App.filter.type, month: App.filter.month, price: App.filter.price).apply(all);
+              final offers = OfferFilter.shared().apply(all);
               final groups = groupOffers(offers, (o) => o['country'] as String? ?? '');
               return RefreshIndicator(
                 onRefresh: () async {
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 child: ResponsiveList(
                   header: [
-                    FilterBar(months: months),
+                    FilterBar(months: months, airlines: airlinesOf(all)),
                     const SizedBox(height: 12),
                     CountLine(all.isEmpty ? '' : '${groups.length} paesi · ${offers.length} offerte'),
                     if (all.isEmpty)

@@ -67,6 +67,14 @@ void main() {
     expect(find.text('50–100 €'), findsNWidgets(2));
   });
 
+  test('airline filter matches any carrier of the trip', () {
+    final o = {'price': 40, 'out_date': '2026-12-05', 'ret_date': '2026-12-07', 'airlines': ['Wizz Air Malta', 'Ryanair']};
+    expect(const OfferFilter(airline: 'Wizz Air Malta').test(o), isTrue);
+    expect(const OfferFilter(airline: 'Ryanair').test(o), isTrue);
+    expect(const OfferFilter(airline: 'Lufthansa').test(o), isFalse);
+    expect(airlinesOf([o]), ['Ryanair', 'Wizz Air Malta']);
+  });
+
   test('price bands: lower bound excluded, upper bound included', () {
     bool keeps(String band, num price) =>
         OfferFilter(price: band).test({'price': price, 'out_date': '2026-12-05', 'ret_date': '2026-12-07'});

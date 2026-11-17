@@ -32,9 +32,6 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   static Future<List<List<Offset>>>? _land;
-  // The choice is shared with Home and Calendar.
-  String? get _type => App.filter.type;
-  String? get _monthFilter => App.filter.month;
   String? _selected;
   String? _loadedFor;
   Future<(List<List<Offset>>, Map<String, Json>, List<Json>)>? _loading;
@@ -94,8 +91,8 @@ class _MapScreenState extends State<MapScreen> {
               final (land, all, catalog) = snap.data!;
               // Months come from the offers in hand: the scan depth decides the choice.
               final months = monthsOf(catalog);
-              final offers = OfferFilter(type: _type, month: _monthFilter, price: App.filter.price).apply(catalog);
-              final filters = FilterBar(months: months);
+              final offers = OfferFilter.shared().apply(catalog);
+              final filters = FilterBar(months: months, airlines: airlinesOf(catalog));
               final byDest = <String, List<Json>>{};
               for (final o in offers) {
                 (byDest[o['destination'] as String] ??= []).add(o);

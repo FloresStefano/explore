@@ -151,6 +151,12 @@ class SharedFilter extends ChangeNotifier {
   String? type;
   String? month;
   String? price; // key of priceBands, e.g. "50-100"
+  String? airline;
+
+  void setAirline(String? v) {
+    airline = v;
+    notifyListeners();
+  }
 
   void setPrice(String? v) {
     price = v;
@@ -184,8 +190,17 @@ const priceBands = {'0-50': (-1, 50), '50-100': (50, 100), '100-150': (100, 150)
 
 /// Filters shared by Home, Calendar and Map.
 class OfferFilter {
-  const OfferFilter({this.type, this.month, this.price, this.day, this.from, this.to, this.country, this.destination});
+  const OfferFilter(
+      {this.type, this.month, this.price, this.airline, this.day, this.from, this.to, this.country, this.destination});
+
+  /// The choice made in the shared combo boxes.
+  factory OfferFilter.shared() {
+    final f = App.filter;
+    return OfferFilter(type: f.type, month: f.month, price: f.price, airline: f.airline);
+  }
+
   final String? price; // key of priceBands
+  final String? airline; // one of the offer's airlines
   final String? type;
   final String? month; // yyyy-mm of the departure
   final DateTime? day; // the trip contains this day
@@ -196,6 +211,7 @@ class OfferFilter {
 
   bool test(Json o) {
     if (type != null && o['type'] != type) return false;
+    if (airline != null && !((o['airlines'] as List?) ?? const []).contains(airline)) return false;
     final band = priceBands[price];
     if (band != null) {
       final p = o['price'] as num;
@@ -218,6 +234,7 @@ class OfferFilter {
   OfferFilter copyWith({String? country, String? destination, String? month}) => OfferFilter(
         type: type,
         price: price,
+        airline: airline,
         month: month ?? this.month,
         day: day,
         from: from,
@@ -230,3 +247,7 @@ class OfferFilter {
 /// Months (yyyy-mm) covered by the offers: the scan depth decides the choice.
 List<String> monthsOf(List<Json> offers) =>
     {for (final o in offers) (o['out_date'] as String).substring(0, 7)}.toList()..sort();
+
+/// Airlines flying the offers, alphabetical.
+List<String> airlinesOf(List<Json> offers) =>
+    {for (final o in offers) ...((o['airlines'] as List?) ?? const []).cast<String>()}.toList()..sort();
