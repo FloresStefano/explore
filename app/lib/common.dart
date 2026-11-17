@@ -42,6 +42,10 @@ DateTime day(String iso) => DateTime.parse(iso.substring(0, 10));
 String fmtDay(String iso) => _dayFmt.format(day(iso));
 String fmtDate(DateTime d) => _dayFmt.format(d);
 String fmtDateTime(DateTime d) => _dateTimeFmt.format(d);
+extension IfEmpty on String {
+  String ifEmpty(String other) => isEmpty ? other : this;
+}
+
 String cap(String s) => s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
 String fmtMonth(DateTime d) => cap(_monthFmt.format(d));
 String fmtMonthKey(String ym) => fmtMonth(DateTime.parse('$ym-01'));
@@ -144,20 +148,6 @@ class TypeFilter extends StatelessWidget {
   }
 }
 
-class MonthFilter extends StatelessWidget {
-  const MonthFilter({super.key, required this.months, required this.value, required this.onChanged, this.light = false});
-  final List<String> months; // yyyy-mm
-  final String? value;
-  final ValueChanged<String?> onChanged;
-  final bool light;
-
-  @override
-  Widget build(BuildContext context) => PillRow(children: [
-        Pill('Tutti i mesi', selected: value == null, light: light, onTap: () => onChanged(null)),
-        for (final m in months) Pill(fmtMonthKey(m), selected: value == m, light: light, onTap: () => onChanged(m)),
-      ]);
-}
-
 /// Labelled drop-down (combo box) on a white rounded field.
 class FilterBox<T> extends StatelessWidget {
   const FilterBox({super.key, required this.label, required this.icon, required this.value, required this.items, required this.onChanged});
@@ -217,17 +207,54 @@ class FilterBox<T> extends StatelessWidget {
 
 /// Kind of break as a combo box.
 class TypeBox extends StatelessWidget {
-  const TypeBox({super.key, required this.value, required this.onChanged});
+  const TypeBox({super.key, required this.value, required this.onChanged, this.reversed = false});
   final String? value;
   final ValueChanged<String?> onChanged;
+  final bool reversed; // Ponti first (calendar)
 
   @override
-  Widget build(BuildContext context) => FilterBox<String>(
-        label: 'Tipo di viaggio',
-        icon: Icons.luggage_outlined,
-        value: value,
-        items: [(null, 'Tutti i tipi', null), for (final t in breakTypes) (t, typePlural[t]!, typeColor[t])],
-        onChanged: onChanged,
+  Widget build(BuildContext context) {
+    final items = <(String?, String, Color?)>[
+      (null, 'Tutti i tipi', null),
+      for (final t in breakTypes) (t, typePlural[t]!, typeColor[t]),
+    ];
+    return FilterBox<String>(
+      label: 'Tipo di viaggio',
+      icon: Icons.luggage_outlined,
+      value: value,
+      items: reversed ? items.reversed.toList() : items,
+      onChanged: onChanged,
+    );
+  }
+}
+
+/// The two combo boxes side by side: kind of break and departure month.
+class FilterBar extends StatelessWidget {
+  const FilterBar({
+    super.key,
+    required this.type,
+    required this.month,
+    required this.months,
+    required this.onType,
+    required this.onMonth,
+    this.reversed = false,
+  });
+  final String? type, month;
+  final List<String> months;
+  final ValueChanged<String?> onType, onMonth;
+  final bool reversed;
+
+  @override
+  Widget build(BuildContext context) => Align(
+        alignment: Alignment.centerLeft,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 640),
+          child: Row(children: [
+            Expanded(child: TypeBox(value: type, reversed: reversed, onChanged: onType)),
+            const SizedBox(width: 10),
+            Expanded(child: MonthBox(months: months, value: month, onChanged: onMonth)),
+          ]),
+        ),
       );
 }
 

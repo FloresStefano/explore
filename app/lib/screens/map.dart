@@ -32,6 +32,7 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   static Future<List<List<Offset>>>? _land;
+  String? _type;
   String? _monthFilter;
   String? _selected;
 
@@ -84,7 +85,14 @@ class _MapScreenState extends State<MapScreen> {
               final (land, all, catalog) = snap.data!;
               // Months come from the offers in hand: the scan depth decides the choice.
               final months = monthsOf(catalog);
-              final offers = OfferFilter(month: _monthFilter).apply(catalog);
+              final offers = OfferFilter(type: _type, month: _monthFilter).apply(catalog);
+              final filters = FilterBar(
+                type: _type,
+                month: _monthFilter,
+                months: months,
+                onType: (v) => setState(() => _type = v),
+                onMonth: (v) => setState(() => _monthFilter = v),
+              );
               final byDest = <String, List<Json>>{};
               for (final o in offers) {
                 (byDest[o['destination'] as String] ??= []).add(o);
@@ -134,9 +142,6 @@ class _MapScreenState extends State<MapScreen> {
                     ]),
                   );
               final side = <Widget>[
-                MonthFilter(months: months, value: _monthFilter, light: true,
-                    onChanged: (v) => setState(() => _monthFilter = v)),
-                const SizedBox(height: 12),
                 if (sel != null && selOffers.isNotEmpty)
                   AggregateCard(
                     badge: _selected!,
@@ -148,7 +153,10 @@ class _MapScreenState extends State<MapScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (_) => OffersScreen(
-                          kicker: _monthFilter == null ? 'Tutte le date' : fmtMonthKey(_monthFilter!),
+                          kicker: [
+                            if (_type != null) typePlural[_type],
+                            if (_monthFilter != null) fmtMonthKey(_monthFilter!),
+                          ].join(' · ').ifEmpty('Tutte le offerte'),
                           title: '${sel['city'] ?? _selected}',
                           offers: selOffers,
                         ),
@@ -162,16 +170,22 @@ class _MapScreenState extends State<MapScreen> {
               if (wide) {
                 return Padding(
                   padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
-                  child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Expanded(flex: 3, child: SingleChildScrollView(child: mapCard)),
-                    const SizedBox(width: 16),
-                    Expanded(flex: 2, child: ListView(children: side)),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    filters,
+                    const SizedBox(height: 12),
+                    Expanded(
+                      child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        Expanded(flex: 3, child: SingleChildScrollView(child: mapCard)),
+                        const SizedBox(width: 16),
+                        Expanded(flex: 2, child: ListView(children: side)),
+                      ]),
+                    ),
                   ]),
                 );
               }
               return ListView(
                 padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
-                children: [mapCard, const SizedBox(height: 12), ...side],
+                children: [filters, const SizedBox(height: 12), mapCard, const SizedBox(height: 12), ...side],
               );
             },
           ),

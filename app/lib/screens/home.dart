@@ -47,18 +47,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   header: [
                     const RecapCard(),
                     const SizedBox(height: 14),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 640),
-                        child: Row(children: [
-                          Expanded(child: TypeBox(value: _type, onChanged: (v) => setState(() => _type = v))),
-                          const SizedBox(width: 10),
-                          Expanded(
-                              child: MonthBox(
-                                  months: months, value: _month, onChanged: (v) => setState(() => _month = v))),
-                        ]),
-                      ),
+                    FilterBar(
+                      type: _type,
+                      month: _month,
+                      months: months,
+                      onType: (v) => setState(() => _type = v),
+                      onMonth: (v) => setState(() => _month = v),
                     ),
                     const SizedBox(height: 12),
                     Padding(
@@ -93,10 +87,6 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
-}
-
-extension on String {
-  String ifEmpty(String other) => isEmpty ? other : this;
 }
 
 /// "Le migliori occasioni": AI news recap of the latest run (7.2), collapsible.
