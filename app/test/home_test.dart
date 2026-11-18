@@ -16,7 +16,8 @@ void main() {
     var opened = false;
     await tester.pumpWidget(MaterialApp(home: Scaffold(body: HomeScreen(onExplore: () => opened = true))));
     await tester.pump(const Duration(seconds: 1));
-    expect(find.text('Il mondo è troppo piccolo per non girarlo tutto.'), findsOneWidget);
+    expect(find.text('IL MONDO È TROPPO PICCOLO'), findsOneWidget);
+    expect(find.text('PER NON GIRARLO TUTTO'), findsOneWidget);
     expect(find.text('Non hai più scuse!'), findsOneWidget);
     expect(find.text('Il prossimo weekend inizia tra'), findsAny);
     await tester.ensureVisible(find.text('Scopri le destinazioni'));

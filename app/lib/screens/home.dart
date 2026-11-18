@@ -6,9 +6,10 @@ import 'package:intl/intl.dart' show DateFormat, NumberFormat;
 import '../common.dart';
 import '../data.dart';
 import 'home_bits.dart';
+import 'home_hero.dart';
 import 'settings.dart';
 
-/// Home: the idea behind the app in a few lines, with a plane flying around the world.
+/// Home: the idea behind the app in a few lines, under a plane flying over a paper-cut world.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.onExplore});
 
@@ -67,66 +68,76 @@ class HomeScreen extends StatelessWidget {
           final when = _when(summary?['run_at'] as String?);
           return SingleChildScrollView(
             child: Column(children: [
-              // Hero: brand bar, the drawing, the slogan and three live figures.
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.fromLTRB(Sp.lg + 4, top + Sp.md, Sp.lg + 4, Sp.xxl),
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [navy, navySoft],
+              // Hero: the plane over the paper-cut landscape, the brand bar on the sky (phones).
+              HomeHero(
+                height: wide ? 440 : (MediaQuery.sizeOf(context).height * 0.5).clamp(340.0, 480.0) + top,
+                top: wide
+                    ? null
+                    : Padding(
+                        padding: EdgeInsets.fromLTRB(Sp.lg + 4, top + Sp.md, Sp.lg, 0),
+                        child: Row(children: [
+                          Container(
+                            width: 34,
+                            height: 34,
+                            decoration: BoxDecoration(
+                              color: Colors.white.withValues(alpha: 0.16),
+                              borderRadius: BorderRadius.circular(Rd.sm + 2),
+                              border: Border.all(color: Colors.white.withValues(alpha: 0.25)),
+                            ),
+                            child: const Icon(Icons.flight_takeoff_rounded, color: Colors.white, size: 18),
+                          ),
+                          const SizedBox(width: Sp.sm + 2),
+                          const Expanded(
+                            child: Text('Weekend Break',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: Fs.title,
+                                    fontWeight: FontWeight.w800,
+                                    shadows: [Shadow(color: Color(0x55000000), blurRadius: 8)])),
+                          ),
+                          RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
+                        ]),
+                      ),
+              ),
+              // The slogan on the white page, right under the hill: a light spaced line and a bold one.
+              Padding(
+                padding: const EdgeInsets.fromLTRB(Sp.lg + 4, Sp.sm, Sp.lg + 4, 0),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 560),
+                  child: Reveal(
+                    key: const ValueKey('slogan'),
+                    child: Column(children: [
+                      const FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text('IL MONDO È TROPPO PICCOLO',
+                            style: TextStyle(
+                                color: navy, fontSize: Fs.title, fontWeight: FontWeight.w500, letterSpacing: 4.5)),
+                      ),
+                      const SizedBox(height: Sp.xs),
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text('PER NON GIRARLO TUTTO',
+                            style: TextStyle(
+                                color: const Color(0xFF214A8C),
+                                fontSize: wide ? 46 : 36,
+                                height: 1.05,
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: -0.5)),
+                      ),
+                      if (summary != null) ...[
+                        const SizedBox(height: Sp.lg),
+                        Wrap(alignment: WrapAlignment.center, spacing: Sp.sm, runSpacing: Sp.sm, children: [
+                          _Stat('${n.format(summary['offers'] ?? 0)} offerte'),
+                          _Stat('${places.isNotEmpty ? places.length : summary['destinations'] ?? 0} mete'),
+                          if (when.isNotEmpty) _Stat('aggiornate $when', icon: Icons.schedule),
+                        ]),
+                      ],
+                    ]),
                   ),
-                  borderRadius: wide ? null : const BorderRadius.vertical(bottom: Radius.circular(Rd.xxl)),
                 ),
-                child: Column(children: [
-                  if (!wide)
-                    Row(children: [
-                      Container(
-                        width: 34,
-                        height: 34,
-                        decoration: BoxDecoration(color: indigo, borderRadius: BorderRadius.circular(Rd.sm + 2)),
-                        child: const Icon(Icons.flight_takeoff, color: Colors.white, size: 18),
-                      ),
-                      const SizedBox(width: Sp.sm + 2),
-                      const Expanded(
-                        child: Text('Weekend Break',
-                            style: TextStyle(color: Colors.white, fontSize: Fs.title, fontWeight: FontWeight.w700)),
-                      ),
-                      RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
-                    ]),
-                  SizedBox(
-                    width: wide ? 340 : 280,
-                    height: wide ? 250 : 210,
-                    child: const PlaneAroundTheWorld(),
-                  ),
-                  const SizedBox(height: Sp.sm),
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 560),
-                    child: Text(
-                      'Il mondo è troppo piccolo per non girarlo tutto.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: wide ? 38 : Fs.display - 2,
-                        height: 1.15,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: -0.8,
-                      ),
-                    ),
-                  ),
-                  if (summary != null) ...[
-                    const SizedBox(height: Sp.lg + 4),
-                    Wrap(alignment: WrapAlignment.center, spacing: Sp.sm, runSpacing: Sp.sm, children: [
-                      _Stat('${n.format(summary['offers'] ?? 0)} offerte'),
-                      _Stat('${places.isNotEmpty ? places.length : summary['destinations'] ?? 0} mete'),
-                      if (when.isNotEmpty) _Stat('aggiornate $when', icon: Icons.schedule),
-                    ]),
-                  ],
-                ]),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(Sp.lg, Sp.xl, Sp.lg, 0),
+                padding: const EdgeInsets.fromLTRB(Sp.lg, Sp.xl + 4, Sp.lg, 0),
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 600),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
@@ -283,7 +294,7 @@ class _StickerState extends State<_Sticker> with SingleTickerProviderStateMixin 
       );
 }
 
-/// A live figure under the slogan, on a translucent pill.
+/// A live figure under the slogan, on a soft pill.
 class _Stat extends StatelessWidget {
   const _Stat(this.text, {this.icon});
   final String text;
@@ -293,15 +304,14 @@ class _Stat extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         padding: const EdgeInsets.symmetric(horizontal: Sp.md, vertical: 6),
         decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.1),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(99),
-          border: Border.all(color: Colors.white.withValues(alpha: 0.16)),
+          border: Border.all(color: border),
         ),
         child: Row(mainAxisSize: MainAxisSize.min, children: [
-          if (icon != null) ...[Icon(icon, size: 14, color: Colors.white70), const SizedBox(width: 6)],
+          if (icon != null) ...[Icon(icon, size: 14, color: muted), const SizedBox(width: 6)],
           Text(text,
-              style: const TextStyle(
-                  color: Colors.white, fontSize: Fs.label, fontWeight: FontWeight.w600, fontFeatures: tabular)),
+              style: const TextStyle(color: ink, fontSize: Fs.label, fontWeight: FontWeight.w600, fontFeatures: tabular)),
         ]),
       );
 }
@@ -339,194 +349,4 @@ class _Line extends StatelessWidget {
       ),
     );
   }
-}
-
-/// A small plane that keeps flying around a cartoon globe.
-class PlaneAroundTheWorld extends StatefulWidget {
-  const PlaneAroundTheWorld({super.key});
-
-  @override
-  State<PlaneAroundTheWorld> createState() => _PlaneAroundTheWorldState();
-}
-
-class _PlaneAroundTheWorldState extends State<PlaneAroundTheWorld> with SingleTickerProviderStateMixin {
-  late final _c = AnimationController(vsync: this, duration: const Duration(seconds: 9))..repeat();
-
-  @override
-  void dispose() {
-    _c.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return RepaintBoundary(
-      child: AnimatedBuilder(
-        animation: _c,
-        builder: (context, _) => CustomPaint(painter: _GlobePainter(_c.value), size: Size.infinite),
-      ),
-    );
-  }
-}
-
-class _GlobePainter extends CustomPainter {
-  _GlobePainter(this.t);
-  final double t; // 0..1 along the orbit
-
-  static const _tilt = -0.32;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final c = size.center(Offset.zero);
-    final r = math.min(size.width, size.height) * 0.33;
-    final a = r * 1.55, b = r * 0.42; // orbit radii
-    final theta = t * 2 * math.pi;
-    final behind = math.sin(theta) < 0; // upper half of the ellipse is the far side
-
-    Offset orbit(double th) {
-      final x = a * math.cos(th), y = b * math.sin(th);
-      return c + Offset(x * math.cos(_tilt) - y * math.sin(_tilt), x * math.sin(_tilt) + y * math.cos(_tilt));
-    }
-
-    Path orbitPath(double from, double to) {
-      final p = Path();
-      const n = 60;
-      for (var i = 0; i <= n; i++) {
-        final o = orbit(from + (to - from) * i / n);
-        i == 0 ? p.moveTo(o.dx, o.dy) : p.lineTo(o.dx, o.dy);
-      }
-      return p;
-    }
-
-    final orbitPaint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 2
-      ..strokeCap = StrokeCap.round
-      ..color = Colors.white.withValues(alpha: 0.35);
-
-    _stars(canvas, size);
-    // A far cloud drifts behind the globe, a near one passes in front, slower.
-    _cloud(canvas, size, speed: 1, y: 0.22, scale: 0.75, alpha: 0.35);
-    // Far half of the orbit, then the plane if it is behind the globe.
-    _dashed(canvas, orbitPath(math.pi, 2 * math.pi), orbitPaint);
-    if (behind) _plane(canvas, orbit, theta, a, b, 0.75);
-    _globe(canvas, c, r);
-    _dashed(canvas, orbitPath(0, math.pi), orbitPaint..color = Colors.white.withValues(alpha: 0.6));
-    if (!behind) _plane(canvas, orbit, theta, a, b, 1);
-    _cloud(canvas, size, speed: -1, y: 0.8, scale: 1, alpha: 0.9, phase: 0.4);
-  }
-
-  /// A soft cartoon cloud crossing the drawing once per orbit (speed ±1), wrapping around.
-  void _cloud(Canvas canvas, Size size,
-      {required double speed, required double y, required double scale, required double alpha, double phase = 0}) {
-    final w = 54 * scale, span = size.width + 2 * w;
-    final x = ((t * speed + phase) % 1) * span - w;
-    final base = Offset(x, size.height * y);
-    final p = Paint()..color = Colors.white.withValues(alpha: alpha);
-    canvas.drawRRect(
-        RRect.fromRectAndRadius(Rect.fromLTWH(base.dx, base.dy, w, 14 * scale), Radius.circular(7 * scale)), p);
-    canvas.drawCircle(base + Offset(w * 0.32, 2 * scale), 11 * scale, p);
-    canvas.drawCircle(base + Offset(w * 0.6, 0), 14 * scale, p);
-  }
-
-  void _stars(Canvas canvas, Size size) {
-    final p = Paint()..color = Colors.white.withValues(alpha: 0.5);
-    const spots = [(0.08, 0.15), (0.9, 0.12), (0.15, 0.85), (0.86, 0.8), (0.5, 0.04), (0.97, 0.5), (0.03, 0.5)];
-    for (final (i, (x, y)) in spots.indexed) {
-      final twinkle = 0.6 + 0.4 * math.sin(t * 2 * math.pi * 2 + i);
-      canvas.drawCircle(Offset(x * size.width, y * size.height), 1.6 + twinkle, p);
-    }
-  }
-
-  void _globe(Canvas canvas, Offset c, double r) {
-    final rect = Rect.fromCircle(center: c, radius: r);
-    // Soft glow.
-    canvas.drawCircle(c, r * 1.12, Paint()..color = const Color(0xFF5B8DEF).withValues(alpha: 0.18));
-    canvas.drawCircle(
-      c,
-      r,
-      Paint()
-        ..shader = const RadialGradient(
-          center: Alignment(-0.35, -0.4),
-          colors: [Color(0xFF7FC4F5), Color(0xFF3A7BD5), Color(0xFF24489E)],
-          stops: [0, 0.6, 1],
-        ).createShader(rect),
-    );
-    canvas.save();
-    canvas.clipPath(Path()..addOval(rect));
-    // Continents drift slowly: the world turns while the plane flies.
-    final shift = (t * 2 * r) % (2 * r);
-    final land = Paint()..color = const Color(0xFF6CC48A);
-    for (final dx in [-2 * r, 0.0]) {
-      canvas.save();
-      canvas.translate(dx + shift, 0);
-      _blob(canvas, c + Offset(-r * 0.45, -r * 0.35), r * 0.42, r * 0.3, land);
-      _blob(canvas, c + Offset(-r * 0.25, r * 0.25), r * 0.22, r * 0.4, land);
-      _blob(canvas, c + Offset(r * 0.4, -r * 0.2), r * 0.35, r * 0.24, land);
-      _blob(canvas, c + Offset(r * 0.55, r * 0.45), r * 0.24, r * 0.16, land);
-      _blob(canvas, c + Offset(r * 0.95, -r * 0.55), r * 0.2, r * 0.14, land);
-      canvas.restore();
-    }
-    // Parallels and a meridian, then a light from the top left.
-    final grid = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1
-      ..color = Colors.white.withValues(alpha: 0.18);
-    for (final k in [-0.5, 0.0, 0.5]) {
-      canvas.drawOval(Rect.fromCenter(center: c + Offset(0, k * r), width: 2 * r, height: r * 0.35), grid);
-    }
-    canvas.drawOval(Rect.fromCenter(center: c, width: r * 0.9, height: 2 * r), grid);
-    canvas.drawCircle(
-      c,
-      r,
-      Paint()
-        ..shader = RadialGradient(
-          center: const Alignment(0.6, 0.7),
-          radius: 1.1,
-          colors: [Colors.black.withValues(alpha: 0.25), Colors.transparent],
-        ).createShader(rect),
-    );
-    canvas.restore();
-  }
-
-  void _blob(Canvas canvas, Offset center, double w, double h, Paint p) {
-    canvas.drawOval(Rect.fromCenter(center: center, width: w * 2, height: h * 2), p);
-    canvas.drawOval(Rect.fromCenter(center: center + Offset(w * 0.6, h * 0.5), width: w * 1.1, height: h * 1.1), p);
-  }
-
-  void _plane(Canvas canvas, Offset Function(double) orbit, double theta, double a, double b, double scale) {
-    final pos = orbit(theta);
-    final dx = -a * math.sin(theta), dy = b * math.cos(theta);
-    final dir = math.atan2(dx * math.sin(_tilt) + dy * math.cos(_tilt), dx * math.cos(_tilt) - dy * math.sin(_tilt));
-    final icon = Icons.flight;
-    final tp = TextPainter(
-      text: TextSpan(
-        text: String.fromCharCode(icon.codePoint),
-        style: TextStyle(
-          fontFamily: icon.fontFamily,
-          package: icon.fontPackage,
-          fontSize: Fs.display * scale,
-          color: Color.lerp(const Color(0xFFFFB45C), Colors.white, scale == 1 ? 0 : 0.3),
-          shadows: const [Shadow(color: Color(0x55000000), blurRadius: 6, offset: Offset(0, 3))],
-        ),
-      ),
-      textDirection: TextDirection.ltr,
-    )..layout();
-    canvas.save();
-    canvas.translate(pos.dx, pos.dy);
-    canvas.rotate(dir - math.pi / 2); // nose along the direction of flight
-    tp.paint(canvas, Offset(-tp.width / 2, -tp.height / 2));
-    canvas.restore();
-  }
-
-  void _dashed(Canvas canvas, Path path, Paint paint) {
-    for (final m in path.computeMetrics()) {
-      for (double d = 0; d < m.length; d += 12) {
-        canvas.drawPath(m.extractPath(d, math.min(d + 6, m.length)), paint);
-      }
-    }
-  }
-
-  @override
-  bool shouldRepaint(_GlobePainter old) => old.t != t;
 }
