@@ -37,19 +37,34 @@ def needed(offers: list[dict], airports: list[str]) -> list[dict]:
     return sorted(seen.values(), key=lambda o: (o["out_date"], o["price"]))
 
 
+VERSION = 2  # bump when the texts must say something new: older texts are written again
+
+
+def _time(leg: dict | None, key: str) -> str:
+    """Local "HH:MM" of a leg's departure or arrival ("" when unknown)."""
+    t = (leg or {}).get(key) or ""
+    return t[11:16] if len(t) >= 16 else ""
+
+
+def request_item(o: dict) -> dict:
+    """What the Worker needs to write one entry (same fields as the app sends)."""
+    return {
+        "id": offer_id(o), "city": o.get("city") or o["destination"], "country": o.get("country", ""),
+        "from": CITY.get(o["origin"], o["origin"]), "out": o["out_date"], "ret": o["ret_date"],
+        "price": o["price"], "hours": o.get("useful_hours"),
+        "dep": _time(o.get("outbound"), "departure"), "arr": _time(o.get("inbound"), "arrival"),
+    }
+
+
 def publish(offers: list[dict], airports: list[str], previous: dict, ai_url: str, warnings: list[str]) -> dict:
     """{"items": {id: {"title", "text"}}} for every offer the rankings can show."""
-    old = previous.get("items", {})
+    old = previous.get("items", {}) if previous.get("version") == VERSION else {}
     want = needed(offers, airports)
     items = {offer_id(o): old[offer_id(o)] for o in want if offer_id(o) in old}
     todo = [o for o in want if offer_id(o) not in items]
     for i in range(0, len(todo), COUNT):
         batch = todo[i:i + COUNT]
-        body = {"items": [{
-            "id": offer_id(o), "city": o.get("city") or o["destination"], "country": o.get("country", ""),
-            "from": CITY.get(o["origin"], o["origin"]), "out": o["out_date"], "ret": o["ret_date"],
-            "price": o["price"],
-        } for o in batch]}
+        body = {"items": [request_item(o) for o in batch]}
         try:
             res = net.get_json(f"{ai_url}/crazy", body=body, timeout=120, retries=1)
         except Exception as e:  # the app falls back to a plain sentence, or asks the Worker itself
@@ -58,4 +73,4 @@ def publish(offers: list[dict], airports: list[str], previous: dict, ai_url: str
         for x in res.get("items", []):
             if x.get("title") and x.get("text"):
                 items[x["id"]] = {"title": x["title"], "text": x["text"]}
-    return {"items": items, "model": "Cloudflare Workers AI"}
+    return {"version": VERSION, "items": items, "model": "Cloudflare Workers AI"}

@@ -149,3 +149,17 @@ class CrazyTest(unittest.TestCase):
         ids = {crazy.offer_id(x) for x in crazy.needed(offers, ["VRN", "BGY", "TSF"])}
         self.assertIn("VRN-BCN-2026-12-31-2026-12-31", ids)  # top of the Verona-only ranking
         self.assertEqual(len(ids), 31)  # over 50 euro and non-weekends never appear
+
+    def test_request_has_times_and_net_hours(self):
+        from job import crazy
+        o = {"origin": "VRN", "destination": "BCN", "city": "Barcellona", "out_date": "2026-12-04",
+             "ret_date": "2026-12-06", "price": 39.98, "useful_hours": 25.2,
+             "outbound": {"departure": "2026-12-04T19:10+01:00", "arrival": "2026-12-04T21:00+01:00"},
+             "inbound": {"departure": "2026-12-06T20:40+01:00", "arrival": "2026-12-06T22:30+01:00"}}
+        r = crazy.request_item(o)
+        self.assertEqual((r["from"], r["dep"], r["arr"], r["hours"]), ("Verona", "19:10", "22:30", 25.2))
+        self.assertEqual(crazy.request_item({**o, "outbound": None})["dep"], "")
+        # Texts written by an older version are not reused.
+        prev = {"items": {crazy.offer_id(o): {"title": "t", "text": "x"}}}
+        res = crazy.publish([], ["VRN"], prev, "http://unused", [])
+        self.assertEqual((res["version"], res["items"]), (crazy.VERSION, {}))

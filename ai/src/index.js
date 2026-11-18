@@ -115,6 +115,7 @@ Date del viaggio: dal ${out} al ${ret}.`;
 async function crazy(env, request, body) {
   const raw = Array.isArray(body?.items) ? body.items.slice(0, 30) : [];
   const date = /^\d{4}-\d{2}-\d{2}$/;
+  const hhmm = (v) => (typeof v === "string" && /^\d{2}:\d{2}$/.test(v) ? v : "");
   const items = raw.map((x, i) => ({
     id: str(x.id, 40, "id"),
     city: str(x.city, 60, "city"),
@@ -123,12 +124,15 @@ async function crazy(env, request, body) {
     out: str(x.out, 10, "out"),
     ret: str(x.ret, 10, "ret"),
     price: Number(x.price),
+    hours: Number(x.hours) > 0 && Number(x.hours) < 200 ? Math.round(Number(x.hours)) : 0,
+    dep: hhmm(x.dep),
+    arr: hhmm(x.arr),
     rank: i + 1,
   })).filter((x) => date.test(x.out) && date.test(x.ret) && x.price > 0 && x.price < 1000);
   if (!items.length) throw httpError(400, "bad_input", "items is required");
 
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(JSON.stringify(items)));
-  const key = "crazy:v3:" + [...new Uint8Array(digest)].slice(0, 12).map((b) => b.toString(16).padStart(2, "0")).join("");
+  const key = "crazy:v4:" + [...new Uint8Array(digest)].slice(0, 12).map((b) => b.toString(16).padStart(2, "0")).join("");
   const cached = await env.CACHE.get(key, "json");
   if (cached) return { ...cached, cached: true };
   await limit(env, request, "crazy");
@@ -136,13 +140,16 @@ async function crazy(env, request, body) {
   const system = `Sei un conduttore radiofonico italiano simpatico che presenta una classifica di "pazzie":
 weekend low cost in aereo sotto i 50 euro andata e ritorno, dal più vicino nel tempo al più lontano.
 Per OGNI voce dell'elenco scrivi un titolo brevissimo (massimo 6 parole, evocativo, che richiami il carattere
-della città, senza prezzo e senza date) e una frase di 20-30 parole, in italiano naturale e colloquiale, che dica
-la città, la nazione, l'aeroporto di partenza, le date di andata e ritorno ESATTAMENTE come le ricevi
-(giorno della settimana compreso, es. "da sabato 5 a domenica 6 dicembre") e il prezzo esattamente come lo ricevi.
+della città, senza prezzo e senza date) e una frase di 30-45 parole, in italiano naturale e colloquiale, che dica
+la città, la nazione, l'aeroporto di partenza, la partenza (giorno e ora del volo di andata) e l'arrivo
+(giorno e ora in cui si atterra di nuovo a casa) ESATTAMENTE come li ricevi (es. "si parte venerdì 4 dicembre
+alle 19:10 e si torna a casa domenica 6 dicembre alle 22:30"), le ore nette sfruttabili sul posto
+(es. "26 ore nette da godersi") e il prezzo esattamente come lo ricevi.
+Se un orario manca, scrivi solo il giorno; se mancano le ore nette, non citarle.
 Sono weekend: non chiamarli mai "ponte".
 Varia l'inizio delle frasi: non cominciare mai due frasi allo stesso modo e non iniziare con "Un weekend".
 Puoi aggiungere un tocco di colore generico e sicuro sulla città (es. tapas, mare, castelli), ma non
-inventare eventi, orari, compagnie o confronti tra le voci (niente "il più vicino", "il più economico").
+inventare eventi, altri orari, compagnie o confronti tra le voci (niente "il più vicino", "il più economico").
 Niente elenchi puntati.
 Rispondi SOLO con un oggetto JSON {"items":[{"id": "...", "title": "...", "text": "..."}]} con lo stesso id
 di ogni voce ricevuta, nello stesso ordine.`;
@@ -150,9 +157,14 @@ di ogni voce ricevuta, nello stesso ordine.`;
   const day = (iso) => new Date(iso + "T12:00:00Z").toLocaleDateString("it-IT",
     { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" });
   const euro = (p) => p.toFixed(2).replace(".", ",") + " euro";
-  const user = "Voci della classifica:\n" + JSON.stringify(items.map(({ id, rank, city, country, from, out, ret, price }) =>
-    ({ id, rank, city, country, partenza_da: from, andata: day(out), ritorno: day(ret), prezzo: euro(price) })));
-  const out = await chatJson(env, system, user, 3000);
+  const at = (d, t) => (t ? `${d} alle ${t}` : d);
+  const user = "Voci della classifica:\n" + JSON.stringify(items.map(({ id, rank, city, country, from, out, ret, price, hours, dep, arr }) =>
+    ({
+      id, rank, city, country, aeroporto_di_partenza: from,
+      partenza: at(day(out), dep), arrivo_a_casa: at(day(ret), arr),
+      ore_nette: hours ? `${hours} ore nette` : "", prezzo: euro(price),
+    })));
+  const out = await chatJson(env, system, user, 4000);
   const byId = new Map(arr(out.items).map((x) => [String(x?.id ?? ""), x]));
   const result = {
     items: items.map((x) => {

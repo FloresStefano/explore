@@ -10,7 +10,33 @@ import 'settings.dart';
 const crazyMaxPrice = 50;
 const crazyCount = 30;
 
+/// Version of the texts in crazy.json (job/crazy.py VERSION): older texts are not used.
+const crazyTextVersion = 2;
+
 String offerId(Json o) => '${o['origin']}-${o['destination']}-${o['out_date']}-${o['ret_date']}';
+
+/// Net hours at the destination, rounded as the AI text says them (0 when unknown).
+int netHours(Json o) => ((o['useful_hours'] as num?) ?? 0).round();
+
+/// Local "HH:MM" of a leg's departure or arrival.
+String legTime(Object? leg, String key) {
+  final t = '${(leg as Json?)?[key] ?? ''}';
+  return t.length >= 16 ? t.substring(11, 16) : '';
+}
+
+/// What the Worker needs for one entry (same fields as job/crazy.py request_item).
+Json crazyRequest(Json o) => {
+      'id': offerId(o),
+      'city': o['city'] ?? o['destination'],
+      'country': o['country'] ?? '',
+      'from': airportCity[o['origin']] ?? o['origin'],
+      'out': o['out_date'],
+      'ret': o['ret_date'],
+      'price': o['price'],
+      'hours': o['useful_hours'],
+      'dep': legTime(o['outbound'], 'departure'),
+      'arr': legTime(o['inbound'], 'arrival'),
+    };
 
 /// Weekends under 50 euro, from the nearest to the furthest, at most 30.
 List<Json> crazyOffers(List<Json> catalog) {
@@ -66,25 +92,16 @@ class CrazyScreen extends StatelessWidget {
             if (snap.connectionState != ConnectionState.done) return const Loading();
             final catalog = (snap.data?[0] as List<Json>?) ?? const <Json>[];
             // Texts written ahead by the daily job: usually nothing to wait for.
-            final ready = ((snap.data?[1] as Json?)?['items'] as Json?) ?? const <String, dynamic>{};
+            final file = snap.data?[1] as Json?;
+            final ready = (file?['version'] == crazyTextVersion ? file!['items'] as Json? : null) ??
+                const <String, dynamic>{};
             final list = crazyOffers(catalog);
             if (list.isEmpty) {
               return ListView(padding: const EdgeInsets.fromLTRB(16, 4, 16, 24), children: const [
                 EmptyNote('Nessuna offerta weekend sotto i 50 € al momento.', icon: Icons.local_fire_department_outlined),
               ]);
             }
-            final request = [
-              for (final o in list)
-                {
-                  'id': offerId(o),
-                  'city': o['city'] ?? o['destination'],
-                  'country': o['country'] ?? '',
-                  'from': airportCity[o['origin']] ?? o['origin'],
-                  'out': o['out_date'],
-                  'ret': o['ret_date'],
-                  'price': o['price'],
-                },
-            ];
+            final request = [for (final o in list) crazyRequest(o)];
             final allReady = list.every((o) => ready.containsKey(offerId(o)));
             return FutureBuilder(
               // Only when the job has not written some text yet (e.g. new offers) ask the Worker.
@@ -163,9 +180,14 @@ class _CrazyCard extends StatelessWidget {
     final o = offer;
     final city = '${o['city'] ?? o['destination']}';
     final title = (ai?['title'] as String?)?.trim().isNotEmpty == true ? ai!['title'] as String : '$city, ${o['country'] ?? ''}';
+    final hours = netHours(o);
+    final dep = legTime(o['outbound'], 'departure'), arr = legTime(o['inbound'], 'arrival');
     final text = (ai?['text'] as String?)?.trim().isNotEmpty == true
         ? ai!['text'] as String
-        : 'Da ${airportCity[o['origin']] ?? o['origin']} a $city, ${_period(o)}.';
+        : 'Da ${airportCity[o['origin']] ?? o['origin']} a $city, ${_period(o)}'
+            '${dep.isNotEmpty ? ': partenza alle $dep' : ''}'
+            '${arr.isNotEmpty ? ', a casa alle $arr' : ''}'
+            '${hours > 0 ? ', $hours ore nette sul posto' : ''}.';
     return Material(
       color: Colors.white,
       borderRadius: BorderRadius.circular(20),
@@ -195,6 +217,7 @@ class _CrazyCard extends StatelessWidget {
                 Wrap(spacing: 6, runSpacing: 6, crossAxisAlignment: WrapCrossAlignment.center, children: [
                   Tag('${'${o['country_code'] ?? ''}'.toUpperCase()} · $city'.replaceFirst(RegExp(r'^ · '), '')),
                   Tag(_period(o), color: green, bg: greenBg),
+                  if (hours > 0) Tag('$hours ore nette', color: violet, bg: violetBg),
                   Tag('da ${airportCity[o['origin']] ?? o['origin']}', color: muted),
                 ]),
               ]),
