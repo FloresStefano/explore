@@ -158,6 +158,11 @@ class BridgesCard extends StatelessWidget {
     final marks = (cal['marks'] as Json?) ?? const <String, dynamic>{};
     final f = App.filter;
     final pool = OfferFilter(type: f.type, price: f.price, airline: f.airline).apply(offers);
+    // All bridges are computed; only those with offers are shown.
+    final shown = [
+      for (final b in bridges)
+        if (b.offersIn(pool, marks) case final o when o.isNotEmpty) (b, o),
+    ];
     return WhiteCard(
       padding: const EdgeInsets.fromLTRB(14, 14, 14, 8),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -178,12 +183,12 @@ class BridgesCard extends StatelessWidget {
           ),
         ]),
         const SizedBox(height: 10),
-        if (bridges.isEmpty)
+        if (shown.isEmpty)
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 10),
-            child: Text('Nessun ponte nei prossimi mesi.', style: TextStyle(color: muted)),
+            child: Text('Nessun ponte con offerte per questi filtri.', style: TextStyle(color: muted)),
           ),
-        for (final b in bridges) _BridgeRow(bridge: b, offers: b.offersIn(pool, marks)),
+        for (final (b, o) in shown) _BridgeRow(bridge: b, offers: o),
       ]),
     );
   }
