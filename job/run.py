@@ -22,6 +22,7 @@ from .model import Leg, Offer
 from .selection import discard_reason, trip_of, useful_hours
 from .settings import ROOT, Settings, load
 from .sources.base import AnywhereSource
+from .sources.kiwi import REGIONS as KIWI_REGIONS, Kiwi
 from .sources.ryanair import Ryanair
 from .sources.skiplagged import Skiplagged
 from .workqueue import WorkQueue
@@ -336,6 +337,141 @@ def run_skiplagged(s: Settings, sk: Skiplagged, cap_disc: int, cap_route: int, t
     return disc, route
 
 
+def week_blocks(pairs: list[Window]) -> dict[str, tuple[Window, list[Window]]]:
+    """Pairs grouped by the week of departure: one Kiwi call covers a whole block."""
+    blocks: dict[tuple, list[Window]] = {}
+    for w in pairs:
+        blocks.setdefault(w.out.isocalendar()[:2], []).append(w)
+    out = {}
+    for ws in blocks.values():
+        ws.sort(key=lambda w: (w.out, w.ret))
+        out[ws[0].key] = (ws[0], ws)
+    return out
+
+
+def keep_offers(s: Settings, cal: Calendar, found: list[Offer], history: History, airports: dict,
+                discards: Counter, observed: str) -> list[dict]:
+    """Selection rules (sezione 7) on route results; code-shares keep their cheapest copy."""
+    kept = []
+    for o in found:
+        reason = discard_reason(s, o)
+        trip = trip_of(s, cal, o)
+        if not reason and not trip.kind:
+            reason = "FIN-12"
+        history.add(f"{o.origin}-{o.destination}", observed, o.out_date, o.ret_date, trip.nights,
+                    trip.kind or "-", o.price, o.source, reason is None)
+        if reason:
+            discards[reason] += 1
+        elif useful_hours(s, o) <= 0:
+            discards["SEL-06"] += 1
+        else:
+            kept.append(offer_json(s, o, trip, airports))
+    kept.sort(key=lambda x: x["price"])
+    seen: set[tuple] = set()
+    return [x for x in kept
+            if (t := (x["outbound"]["departure"], x["inbound"]["departure"])) not in seen and not seen.add(t)]
+
+
+def run_kiwi(s: Settings, kiwi: Kiwi, cap: int, today: date, pairs: list[Window], queue: WorkQueue, store: dict,
+             history: History, cal: Calendar, airports: dict, discards: Counter) -> dict:
+    """Other carriers through Kiwi.com (sezione 6, passo 5).
+
+    Once every JOB-04 days a discovery per airport, region and month lists the destinations
+    with direct non-Ryanair flights. Then, for each such route with a price within JOB-07,
+    one call per week of departures returns the cheapest direct round trips with times.
+    """
+    observed = today.isoformat()
+    stats = {"enabled": True, "cap": cap, "calls": 0, "ok": 0, "errors": 0, "offers": 0, "last_error": None}
+    nights = (s["FIN-01"], s["FIN-02"])
+    streak = 0
+
+    def failed(e: Exception) -> bool:
+        nonlocal streak
+        stats["errors"] += 1
+        stats["last_error"] = f"{type(e).__name__}: {e}"[:300]
+        streak += 1
+        if streak >= MAX_CONSECUTIVE_ERRORS:
+            stats["stopped"] = f"{streak} errori consecutivi"
+            return True
+        return False
+
+    path = STATE / "kiwi_routes.json"
+    known = read_json(path, {})
+    if known.get("checked", "") <= (today - timedelta(days=s["JOB-04"])).isoformat():
+        first, last = min(w.out for w in pairs), max(w.ret for w in pairs)
+        chunks, a = [], first
+        while a <= last:
+            b = min(a + timedelta(days=30), last)
+            chunks.append((a, b))
+            a = b + timedelta(days=1)
+        routes: dict[str, dict] = {}
+        complete = True
+        for ap in s.job["kiwi_airports"]:
+            for region in KIWI_REGIONS:
+                for a, b in chunks:
+                    if stats["calls"] >= cap or stats.get("stopped"):
+                        complete = False
+                        break
+                    stats["calls"] += 1
+                    try:
+                        found = kiwi.discover(ap, region, a, b, nights)
+                    except Exception as e:
+                        complete = False
+                        if failed(e):
+                            break
+                        continue
+                    streak = 0
+                    stats["ok"] += 1
+                    for dest, v in found.items():
+                        r = routes.setdefault(f"{ap}-{dest}", {"price": v["price"], "airlines": []})
+                        r["price"] = min(r["price"], v["price"])
+                        r["airlines"] = sorted(set(r["airlines"]) | set(v["airlines"]))
+                    time.sleep(s.job["kiwi_pause_seconds"])
+        if complete:
+            known = {"checked": observed, "routes": dict(sorted(routes.items()))}
+        elif routes:  # partial: add what was found, check again tomorrow
+            known = {"checked": known.get("checked", ""), "routes": {**known.get("routes", {}), **routes}}
+        write_json(path, known)
+
+    routes = {r: v for r, v in known.get("routes", {}).items()
+              if v["price"] <= s["JOB-07"] and r.split("-")[0] in store}
+    stats["routes"] = len(routes)
+    blocks = week_blocks(pairs)
+    items = [(r, rep) for r in routes for rep, _ in blocks.values()]
+    for u in queue.pick_items(s, today, kiwi.name, items, max(cap - stats["calls"], 0)):
+        if stats.get("stopped"):
+            break
+        origin, dest = u.airport.split("-")
+        _, ws = blocks[u.window.key]
+        stats["calls"] += 1
+        try:
+            found = kiwi.routes(origin, dest, min(w.out for w in ws), max(w.out for w in ws),
+                                min(w.ret for w in ws), max(w.ret for w in ws), nights, observed)
+        except Exception as e:
+            queue.failed(u, f"{type(e).__name__}: {e}")
+            if failed(e):
+                break
+            continue
+        streak = 0
+        stats["ok"] += 1
+        queue.done(u, today, len(found))
+        by_pair: dict[str, list[Offer]] = {}
+        keys = {w.key for w in ws}
+        for o in found:
+            if (k := f"{o.out_date}_{o.ret_date}") in keys:
+                by_pair.setdefault(k, []).append(o)
+        for w in ws:
+            # Two timetables per destination and dates are enough (Tirana alone has several a day).
+            kept = keep_offers(s, cal, by_pair.get(w.key, []), history, airports, discards, observed)[:2]
+            stats["offers"] += len(kept)
+            pair = store[origin].setdefault(w.key, {"out": w.out.isoformat(), "ret": w.ret.isoformat(), "offers": []})
+            pair["offers"] = [x for x in pair["offers"]
+                              if not (x["source"] == kiwi.name and x["destination"] == dest)] + kept
+            pair["offers"].sort(key=lambda x: (x["price_per_hour"] is None, x["price_per_hour"] or 0, x["price"]))
+        time.sleep(s.job["kiwi_pause_seconds"])
+    return stats
+
+
 def summarize(store: dict, top: list[dict], meta: dict, today: date) -> dict:
     """Compact facts for the AI news recap (7.2): the Worker only narrates them."""
     offers = [o for m in store.values() for p in m.values() for o in p["offers"]]
@@ -462,6 +598,15 @@ def main(argv: list[str] | None = None) -> None:
                 meta["sources"]["skiplagged_route"] = route
         except Exception:
             meta["sources"]["skiplagged"] = {"enabled": True, "crashed": traceback.format_exc()[-800:]}
+    kiwi = Kiwi(**kw)
+    if cap_left(kiwi.name) > 0:
+        try:
+            meta["sources"][kiwi.name] = run_kiwi(s, kiwi, cap_left(kiwi.name), today, pairs, queue, store, history,
+                                                  cal, airports, discards)
+        except Exception:
+            meta["sources"][kiwi.name] = {"enabled": True, "crashed": traceback.format_exc()[-800:]}
+    else:
+        meta["sources"][kiwi.name] = idle(kiwi.name)
     write_json(STATE / "places.json", {k: v for k, v in airports.items() if "lat" not in v})
     codes = {o["destination"] for m in store.values() for p in m.values() for o in p["offers"]}
     oa = places.complete(airports, codes, read_json(STATE / "ourairports.json", {}), today, meta["warnings"])

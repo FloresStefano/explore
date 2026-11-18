@@ -172,3 +172,44 @@ class CrazyTest(unittest.TestCase):
         prev = {"items": {crazy.offer_id(o): {"title": "t", "text": "x"}}}
         res = crazy.publish([], ["VRN"], prev, "http://unused", [])
         self.assertEqual((res["version"], res["items"]), (crazy.VERSION, {}))
+
+
+class KiwiTest(unittest.TestCase):
+    def test_week_blocks_cover_every_pair_once(self):
+        from job.calendar_it import search_pairs
+        from job.run import week_blocks
+        pairs = search_pairs(S, date(2026, 11, 18), CAL)
+        blocks = week_blocks(pairs)
+        covered = [w.key for _, ws in blocks.values() for w in ws]
+        self.assertEqual(sorted(covered), sorted(w.key for w in pairs))
+        for rep, ws in blocks.values():
+            self.assertEqual(rep, ws[0])
+            self.assertEqual(len({w.out.isocalendar()[:2] for w in ws}), 1)
+
+    def test_routes_keep_direct_round_trips_only(self):
+        from unittest import mock
+        from job.sources import kiwi
+
+        def leg(a, b, dep, arr, stops=0, carrier="V7"):
+            segs = [{"from": a, "to": b, "carrier": carrier, "carrierName": "Volotea", "flightNumber": f"{carrier}1414"}]
+            return {"route": [a, b], "departureTime": dep, "arrivalTime": arr, "stops": stops,
+                    "segments": segs if not stops else segs * 2}
+
+        data = {"currency": "EUR", "itineraries": [
+            {"price": 57, "bookingUrl": "https://kiwi.com/u/x",
+             "outbound": leg("VRN", "BCN", "2026-12-11T19:00:00", "2026-12-11T20:45:00"),
+             "inbound": leg("BCN", "VRN", "2026-12-13T20:00:00", "2026-12-13T21:45:00")},
+            {"price": 40, "outbound": leg("VRN", "BCN", "2026-12-11T07:00:00", "2026-12-11T12:00:00", stops=1),
+             "inbound": leg("BCN", "VRN", "2026-12-13T20:00:00", "2026-12-13T21:45:00")},
+        ]}
+        k = kiwi.Kiwi(market="it-it", currency="EUR", language="it", country="IT")
+        with mock.patch.object(kiwi, "call", return_value=data) as call:
+            offers = k.routes("VRN", "BCN", date(2026, 12, 9), date(2026, 12, 12), date(2026, 12, 10),
+                              date(2026, 12, 15), (1, 5), "2026-11-18")
+        self.assertIn("FR", call.call_args[0][0]["exclude_airlines"])
+        self.assertEqual(len(offers), 1)  # the one with a stop is dropped
+        o = offers[0]
+        self.assertEqual((o.out_date, o.ret_date, o.price, o.airlines), ("2026-12-11", "2026-12-13", 57.0, ["Volotea"]))
+        self.assertEqual(o.outbound.flight, "V71414")
+        self.assertIsNone(discard_reason(S, o))
+        self.assertEqual(trip_of(S, CAL, o).kind, "weekend")

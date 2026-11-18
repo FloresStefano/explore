@@ -247,9 +247,10 @@ editable = "config"
 [[setting]]
 id = "JOB-06"
 name = "Tetto di chiamate giornaliere per fonte"
-# 0 = fonte spenta. skiplagged = scoperta "ovunque", skiplagged_route = orari per rotta.
+# 0 = fonte spenta. kiwi = altre compagnie (scoperta settimanale + orari per rotta e settimana).
+# Skiplagged è di riserva dal 2026-11-18: Kiwi.com copre le stesse compagnie e molte di più.
 # Google Flights resta di riserva: dal runner di GitHub risponde solo in parte.
-value = { ryanair = 160, skiplagged = 60, skiplagged_route = 120, google_flights = 0 }
+value = { ryanair = 160, kiwi = 150, skiplagged = 0, skiplagged_route = 0, google_flights = 0 }
 unit = "chiamate"
 note = "Valori provvisori, da fissare dopo la prova sul campo"
 editable = "config"
@@ -305,5 +306,9 @@ language = "it"
 currency = "EUR"
 # Pausa tra due chiamate alla stessa fonte, in secondi.
 pause_seconds = 1.5
+# Aeroporti su cui cercare le altre compagnie con Kiwi.com (Ryanair escluso, ha la sua fonte).
+kiwi_airports = ["VRN", "BGY", "TSF"]
+# Pausa tra due chiamate a Kiwi.com: poche chiamate, lente.
+kiwi_pause_seconds = 3
 # Skiplagged limita le ricerche "ovunque" ravvicinate (errore 429 dopo una quindicina).
 skiplagged_pause_seconds = 8
