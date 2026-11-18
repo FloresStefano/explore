@@ -25,4 +25,18 @@ void main() {
     expect(ext.map((x) => '${x['type']} ${x['out_date']}'),
         ['weekend 2026-12-04', 'weekend+ 2026-12-04', 'weekend+ 2026-12-03']);
   });
+
+  test('medie and grandi pick their own kind and open only the same trip', () {
+    final cat = [
+      ...catalog,
+      {'origin': 'VRN', 'destination': 'BCN', 'type': 'weekend+', 'out_date': '2026-12-10', 'ret_date': '2026-12-13', 'price': 40},
+      {'origin': 'BGY', 'destination': 'BCN', 'type': 'weekend+', 'out_date': '2026-12-10', 'ret_date': '2026-12-13', 'price': 45},
+      {'origin': 'BGY', 'destination': 'BCN', 'type': 'weekend', 'out_date': '2026-12-11', 'ret_date': '2026-12-13', 'price': 20},
+    ];
+    final medie = crazyOffers(cat, 'weekend+');
+    expect(medie.map((x) => x['price']), [40, 45]);
+    expect(crazyOffers(cat, 'ponte').single['price'], 30);
+    // Same weekend+ from both airports, no weekend and no other dates.
+    expect(crazyDetail(cat, medie.first).map((x) => '${x['origin']} ${x['price']}'), ['VRN 40', 'BGY 45', 'BGY 60']);
+  });
 }

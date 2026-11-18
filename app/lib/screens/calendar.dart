@@ -195,41 +195,13 @@ class _CalendarPanelState extends State<CalendarPanel> {
 
   @override
   Widget build(BuildContext context) {
-    Widget tab(int i, IconData icon, String label) {
-      final on = _tab == i;
-      return Expanded(
-        child: Material(
-          color: on ? Colors.white : Colors.transparent,
-          borderRadius: BorderRadius.circular(11),
-          elevation: on ? 1 : 0,
-          child: InkWell(
-            borderRadius: BorderRadius.circular(11),
-            onTap: () => setState(() => _tab = i),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Icon(icon, size: 17, color: on ? indigo : muted),
-                const SizedBox(width: 6),
-                Text(label,
-                    style: TextStyle(
-                        fontSize: 13.5, fontWeight: on ? FontWeight.w700 : FontWeight.w600, color: on ? indigo : muted)),
-              ]),
-            ),
-          ),
-        ),
-      );
-    }
-
     return WhiteCard(
       padding: const EdgeInsets.fromLTRB(12, 12, 12, 8),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-          padding: const EdgeInsets.all(3),
-          decoration: BoxDecoration(color: chipBg, borderRadius: BorderRadius.circular(14)),
-          child: Row(children: [
-            tab(0, Icons.view_week_outlined, 'Giorni'),
-            tab(1, Icons.celebration_outlined, 'Ponti'),
-          ]),
+        SegmentTabs(
+          tabs: const [(Icons.view_week_outlined, 'Giorni'), (Icons.celebration_outlined, 'Ponti')],
+          selected: _tab,
+          onChanged: (i) => setState(() => _tab = i),
         ),
         const SizedBox(height: 12),
         if (_tab == 0)

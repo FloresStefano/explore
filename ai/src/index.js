@@ -1,7 +1,7 @@
 // weekend-ai: the two AI features of Weekend Break, on Cloudflare Workers AI (free tier).
 //   GET  /recap  -> news-style recap of the latest job run (cached per run)
 //   POST /guide  -> tourist card of a destination for the travel dates (cached per city and month)
-//   POST /crazy  -> "Pazzie": cheap weekends told as a ranking (cached per list)
+//   POST /crazy  -> "Pazzie": cheap weekends, weekend+ and ponti told as a ranking (cached per list)
 // The app has no keys: this Worker is public, rate limited per IP, and caches everything in KV.
 
 const DAY = 86400;
@@ -108,7 +108,7 @@ Date del viaggio: dal ${out} al ${ret}.`;
   return result;
 }
 
-// ---------- Pazzie: weekend under 50 euro told as a ranking ----------
+// ---------- Pazzie: trips under 50 euro told as a ranking ----------
 
 // The app sends the (at most 30) most imminent cheap weekends; every field is checked,
 // and the answer is cached by the content of the list, so identical lists cost one AI call.
@@ -127,18 +127,21 @@ async function crazy(env, request, body) {
     hours: Number(x.hours) > 0 && Number(x.hours) < 200 ? Math.round(Number(x.hours)) : 0,
     dep: hhmm(x.dep),
     arr: hhmm(x.arr),
+    kind: ["weekend", "weekend+", "ponte"].includes(x.kind) ? x.kind : "weekend",
+    leave: Math.max(0, Math.min(5, Math.round(Number(x.leave) || 0))),
+    holidays: str(x.holidays || "", 80, "holidays", true),
     rank: i + 1,
   })).filter((x) => date.test(x.out) && date.test(x.ret) && x.price > 0 && x.price < 1000);
   if (!items.length) throw httpError(400, "bad_input", "items is required");
 
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(JSON.stringify(items)));
-  const key = "crazy:v4:" + [...new Uint8Array(digest)].slice(0, 12).map((b) => b.toString(16).padStart(2, "0")).join("");
+  const key = "crazy:v5:" + [...new Uint8Array(digest)].slice(0, 12).map((b) => b.toString(16).padStart(2, "0")).join("");
   const cached = await env.CACHE.get(key, "json");
   if (cached) return { ...cached, cached: true };
   await limit(env, request, "crazy");
 
   const system = `Sei un conduttore radiofonico italiano simpatico che presenta una classifica di "pazzie":
-weekend low cost in aereo sotto i 50 euro andata e ritorno, dal più vicino nel tempo al più lontano.
+viaggi low cost in aereo sotto i 50 euro andata e ritorno, dal più vicino nel tempo al più lontano.
 Per OGNI voce dell'elenco scrivi un titolo brevissimo (massimo 6 parole, evocativo, che richiami il carattere
 della città, senza prezzo e senza date) e una frase di 30-45 parole, in italiano naturale e colloquiale, che dica
 la città, la nazione, l'aeroporto di partenza, la partenza (giorno e ora del volo di andata) e l'arrivo
@@ -146,7 +149,8 @@ la città, la nazione, l'aeroporto di partenza, la partenza (giorno e ora del vo
 alle 19:10 e si torna a casa domenica 6 dicembre alle 22:30"), le ore nette sfruttabili sul posto
 (es. "26 ore nette da godersi") e il prezzo esattamente come lo ricevi.
 Se un orario manca, scrivi solo il giorno; se mancano le ore nette, non citarle.
-Sono weekend: non chiamarli mai "ponte".
+Il campo "tipo" dice che viaggio è: chiamalo così ("weekend", "weekend lungo", "ponte") e, se ci sono,
+cita i giorni di ferie e la festa come li ricevi. Non chiamare mai "ponte" un viaggio che non è di tipo ponte.
 Varia l'inizio delle frasi: non cominciare mai due frasi allo stesso modo e non iniziare con "Un weekend".
 Puoi aggiungere un tocco di colore generico e sicuro sulla città (es. tapas, mare, castelli), ma non
 inventare eventi, altri orari, compagnie o confronti tra le voci (niente "il più vicino", "il più economico").
@@ -158,9 +162,12 @@ di ogni voce ricevuta, nello stesso ordine.`;
     { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" });
   const euro = (p) => p.toFixed(2).replace(".", ",") + " euro";
   const at = (d, t) => (t ? `${d} alle ${t}` : d);
-  const user = "Voci della classifica:\n" + JSON.stringify(items.map(({ id, rank, city, country, from, out, ret, price, hours, dep, arr }) =>
+  const kindName = { weekend: "weekend", "weekend+": "weekend lungo", ponte: "ponte" };
+  const leaveText = (n) => (n === 0 ? "senza ferie" : n === 1 ? "con 1 giorno di ferie" : `con ${n} giorni di ferie`);
+  const user = "Voci della classifica:\n" + JSON.stringify(items.map(({ id, rank, city, country, from, out, ret, price, hours, dep, arr, kind, leave, holidays }) =>
     ({
-      id, rank, city, country, aeroporto_di_partenza: from,
+      id, rank, city, country, tipo: kindName[kind], ferie: leaveText(leave), festa: holidays,
+      aeroporto_di_partenza: from,
       partenza: at(day(out), dep), arrivo_a_casa: at(day(ret), arr),
       ore_nette: hours ? `${hours} ore nette` : "", prezzo: euro(price),
     })));

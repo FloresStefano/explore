@@ -718,3 +718,49 @@ class Loading extends StatelessWidget {
   Widget build(BuildContext context) =>
       Center(child: CircularProgressIndicator(color: onDark ? Colors.white : indigo));
 }
+
+/// Tabs drawn as a segmented control (Calendario: Giorni / Ponti; Pazzie: Piccole / Medie / Grandi).
+class SegmentTabs extends StatelessWidget {
+  const SegmentTabs({super.key, required this.tabs, required this.selected, required this.onChanged, this.bg = chipBg});
+  final List<(IconData, String)> tabs;
+  final int selected;
+  final ValueChanged<int> onChanged;
+  final Color bg;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(3),
+      decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(14)),
+      child: Row(children: [
+        for (final (i, (icon, label)) in tabs.indexed)
+          Expanded(
+            child: Material(
+              color: selected == i ? Colors.white : Colors.transparent,
+              borderRadius: BorderRadius.circular(11),
+              elevation: selected == i ? 1 : 0,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(11),
+                onTap: () => onChanged(i),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Icon(icon, size: 17, color: selected == i ? indigo : muted),
+                    const SizedBox(width: 6),
+                    Flexible(
+                      child: Text(label,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: 13.5,
+                              fontWeight: selected == i ? FontWeight.w700 : FontWeight.w600,
+                              color: selected == i ? indigo : muted)),
+                    ),
+                  ]),
+                ),
+              ),
+            ),
+          ),
+      ]),
+    );
+  }
+}

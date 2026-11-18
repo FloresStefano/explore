@@ -11,7 +11,14 @@ const crazyMaxPrice = 50;
 const crazyCount = 30;
 
 /// Version of the texts in crazy.json (job/crazy.py VERSION): older texts are not used.
-const crazyTextVersion = 2;
+const crazyTextVersion = 3;
+
+/// The three tabs, same rules and one trip kind each: piccole = weekend, medie = weekend+, grandi = ponti.
+const crazyKinds = [
+  (kind: 'weekend', label: 'Piccole', icon: Icons.local_fire_department_outlined, what: 'weekend'),
+  (kind: 'weekend+', label: 'Medie', icon: Icons.whatshot_outlined, what: 'weekend+'),
+  (kind: 'ponte', label: 'Grandi', icon: Icons.celebration_outlined, what: 'ponti'),
+];
 
 String offerId(Json o) => '${o['origin']}-${o['destination']}-${o['out_date']}-${o['ret_date']}';
 
@@ -36,11 +43,14 @@ Json crazyRequest(Json o) => {
       'hours': o['useful_hours'],
       'dep': legTime(o['outbound'], 'departure'),
       'arr': legTime(o['inbound'], 'arrival'),
+      'kind': o['type'] ?? 'weekend',
+      'leave': o['leave_days'] ?? 0,
+      'holidays': ((o['holidays'] as List?) ?? const []).join(', '),
     };
 
-/// Weekends under 50 euro, from the nearest to the furthest, at most 30.
-List<Json> crazyOffers(List<Json> catalog) {
-  final list = catalog.where((o) => o['type'] == 'weekend' && (o['price'] as num) < crazyMaxPrice).toList()
+/// Trips of one kind under 50 euro, from the nearest to the furthest, at most 30.
+List<Json> crazyOffers(List<Json> catalog, [String kind = 'weekend']) {
+  final list = catalog.where((o) => o['type'] == kind && (o['price'] as num) < crazyMaxPrice).toList()
     ..sort((a, b) {
       final c = (a['out_date'] as String).compareTo(b['out_date'] as String);
       return c != 0 ? c : (a['price'] as num).compareTo(b['price'] as num);
@@ -64,15 +74,36 @@ List<Json> crazyExtensions(List<Json> catalog, Json sel) {
     ..sort((x, y) => (x['price'] as num).compareTo(y['price'] as num));
 }
 
+/// What opens when a pazzia is tapped. Piccole: the weekend plus the weekend+ that stretch it.
+/// Medie and grandi: the same trip (kind, place, dates) from every airport, nothing wider.
+List<Json> crazyDetail(List<Json> catalog, Json sel) {
+  if (sel['type'] == 'weekend') return crazyExtensions(catalog, sel);
+  return catalog
+      .where((o) =>
+          o['type'] == sel['type'] &&
+          o['destination'] == sel['destination'] &&
+          o['out_date'] == sel['out_date'] &&
+          o['ret_date'] == sel['ret_date'])
+      .toList()
+    ..sort((x, y) => (x['price'] as num).compareTo(y['price'] as num));
+}
+
 String _period(Json o) {
   final a = DateTime.parse(o['out_date'] as String), b = DateTime.parse(o['ret_date'] as String);
   final dm = DateFormat('d MMMM', 'it');
   return a.month == b.month ? '${a.day}–${dm.format(b)}' : '${dm.format(a)} – ${dm.format(b)}';
 }
 
-/// Area 4: "Pazzie", the cheapest weekends told by the AI as a ranking.
-class CrazyScreen extends StatelessWidget {
+/// Area 4: "Pazzie", the cheapest trips told by the AI as a ranking, one tab per trip kind.
+class CrazyScreen extends StatefulWidget {
   const CrazyScreen({super.key});
+
+  @override
+  State<CrazyScreen> createState() => _CrazyScreenState();
+}
+
+class _CrazyScreenState extends State<CrazyScreen> {
+  static int _tab = 0; // kept while the app is open
 
   @override
   Widget build(BuildContext context) {
@@ -95,17 +126,33 @@ class CrazyScreen extends StatelessWidget {
             final file = snap.data?[1] as Json?;
             final ready = (file?['version'] == crazyTextVersion ? file!['items'] as Json? : null) ??
                 const <String, dynamic>{};
-            final list = crazyOffers(catalog);
+            final kind = crazyKinds[_tab];
+            final list = crazyOffers(catalog, kind.kind);
+            final tabs = SegmentTabs(
+              bg: Colors.white,
+              tabs: [for (final k in crazyKinds) (k.icon, k.label)],
+              selected: _tab,
+              onChanged: (i) => setState(() => _tab = i),
+            );
             if (list.isEmpty) {
-              return ListView(padding: const EdgeInsets.fromLTRB(16, 4, 16, 24), children: const [
-                EmptyNote('Nessuna offerta weekend sotto i 50 € al momento.', icon: Icons.local_fire_department_outlined),
-              ]);
+              return ResponsiveList(
+                header: [
+                  tabs,
+                  const SizedBox(height: 12),
+                  EmptyNote('Nessuna offerta ${kind.what} sotto i $crazyMaxPrice € al momento.',
+                      icon: Icons.local_fire_department_outlined),
+                ],
+                itemCount: 0,
+                itemBuilder: (_, _) => const SizedBox(),
+              );
             }
-            final request = [for (final o in list) crazyRequest(o)];
             final allReady = list.every((o) => ready.containsKey(offerId(o)));
             return FutureBuilder(
+              key: ValueKey(_tab),
               // Only when the job has not written some text yet (e.g. new offers) ask the Worker.
-              future: allReady ? Future.value(<String, dynamic>{}) : App.ai.crazy(request),
+              future: allReady
+                  ? Future.value(<String, dynamic>{})
+                  : App.ai.crazy([for (final o in list) crazyRequest(o)]),
               builder: (context, ai) {
                 final texts = <String, Json>{
                   for (final e in ready.entries) e.key: e.value as Json,
@@ -116,10 +163,12 @@ class CrazyScreen extends StatelessWidget {
                 return ResponsiveList(
                   minItemWidth: 420,
                   header: [
+                    tabs,
+                    const SizedBox(height: 12),
                     Row(children: [
                       Expanded(
-                        child: CountLine('Top ${list.length} pazzie · offerte weekend sotto i $crazyMaxPrice €, '
-                            'dalla più vicina alla più lontana'),
+                        child: CountLine('Top ${list.length} pazzie ${kind.label.toLowerCase()} · ${kind.what} '
+                            'sotto i $crazyMaxPrice €, dal più vicino al più lontano'),
                       ),
                       const Padding(
                         padding: EdgeInsets.only(bottom: 10),
@@ -151,9 +200,9 @@ class CrazyScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (_) => OffersScreen(
-                          section: 'Pazzie',
+                          section: 'Pazzie ${kind.label.toLowerCase()}',
                           path: ['${list[i]['city'] ?? list[i]['destination']}', _period(list[i])],
-                          offers: crazyExtensions(catalog, list[i]),
+                          offers: crazyDetail(catalog, list[i]),
                         ),
                       ),
                     ),
@@ -181,6 +230,8 @@ class _CrazyCard extends StatelessWidget {
     final city = '${o['city'] ?? o['destination']}';
     final title = (ai?['title'] as String?)?.trim().isNotEmpty == true ? ai!['title'] as String : '$city, ${o['country'] ?? ''}';
     final hours = netHours(o);
+    final leave = (o['leave_days'] as num?) ?? 0;
+    final holidays = ((o['holidays'] as List?) ?? const []).join(', ');
     final dep = legTime(o['outbound'], 'departure'), arr = legTime(o['inbound'], 'arrival');
     final text = (ai?['text'] as String?)?.trim().isNotEmpty == true
         ? ai!['text'] as String
@@ -218,6 +269,8 @@ class _CrazyCard extends StatelessWidget {
                   Tag('${'${o['country_code'] ?? ''}'.toUpperCase()} · $city'.replaceFirst(RegExp(r'^ · '), '')),
                   Tag(_period(o), color: green, bg: greenBg),
                   if (hours > 0) Tag('$hours ore nette', color: violet, bg: violetBg),
+                  if (leave > 0) leaveTag(leave),
+                  if (holidays.isNotEmpty) Tag(holidays, color: orange, bg: orangeBg),
                   Tag('da ${airportCity[o['origin']] ?? o['origin']}', color: muted),
                 ]),
               ]),

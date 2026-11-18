@@ -155,7 +155,9 @@ class CrazyTest(unittest.TestCase):
         offers += [o("VRN", "2026-12-31", 30), o("TSF", "2026-12-31", 60), o("TSF", "2026-12-30", 20, "ponte")]
         ids = {crazy.offer_id(x) for x in crazy.needed(offers, ["VRN", "BGY", "TSF"])}
         self.assertIn("VRN-BCN-2026-12-31-2026-12-31", ids)  # top of the Verona-only ranking
-        self.assertEqual(len(ids), 31)  # over 50 euro and non-weekends never appear
+        self.assertEqual(len(ids), 32)  # the ponte has its own ranking; over 50 euro never appears
+        self.assertIn("TSF-BCN-2026-12-30-2026-12-30", ids)
+        self.assertNotIn("TSF-BCN-2026-12-31-2026-12-31", ids)
 
     def test_request_has_times_and_net_hours(self):
         from job import crazy

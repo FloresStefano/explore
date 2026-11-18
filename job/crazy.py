@@ -1,4 +1,5 @@
-"""Pazzie: the top 30 weekends under 50 euro, with titles and sentences written ahead by the AI.
+"""Pazzie: the top 30 trips under 50 euro of each kind (piccole = weekend, medie = weekend+,
+grandi = ponte), with titles and sentences written ahead by the AI.
 
 The app builds its own ranking from the airports chosen on the device, so the job prepares
 the texts for every combination of departure airports. Texts already written in a previous
@@ -13,6 +14,7 @@ from . import net
 
 MAX_PRICE = 50  # same limits as the app (app/lib/screens/crazy.dart)
 COUNT = 30
+KINDS = ("weekend", "weekend+", "ponte")  # the three tabs of the app
 CITY = {"VRN": "Verona", "BGY": "Bergamo", "TSF": "Treviso"}
 
 
@@ -20,9 +22,9 @@ def offer_id(o: dict) -> str:
     return f"{o['origin']}-{o['destination']}-{o['out_date']}-{o['ret_date']}"
 
 
-def ranking(offers: list[dict], airports: set[str]) -> list[dict]:
-    """The top COUNT weekends under MAX_PRICE from these airports, nearest first."""
-    picked = [o for o in offers if o["origin"] in airports and o.get("type") == "weekend" and o["price"] < MAX_PRICE]
+def ranking(offers: list[dict], airports: set[str], kind: str = "weekend") -> list[dict]:
+    """The top COUNT trips of this kind under MAX_PRICE from these airports, nearest first."""
+    picked = [o for o in offers if o["origin"] in airports and o.get("type") == kind and o["price"] < MAX_PRICE]
     picked.sort(key=lambda o: (o["out_date"], o["price"]))
     return picked[:COUNT]
 
@@ -32,12 +34,13 @@ def needed(offers: list[dict], airports: list[str]) -> list[dict]:
     seen: dict[str, dict] = {}
     for n in range(1, len(airports) + 1):
         for combo in combinations(airports, n):
-            for o in ranking(offers, set(combo)):
-                seen.setdefault(offer_id(o), o)
+            for kind in KINDS:
+                for o in ranking(offers, set(combo), kind):
+                    seen.setdefault(offer_id(o), o)
     return sorted(seen.values(), key=lambda o: (o["out_date"], o["price"]))
 
 
-VERSION = 2  # bump when the texts must say something new: older texts are written again
+VERSION = 3  # bump when the texts must say something new: older texts are written again
 
 
 def _time(leg: dict | None, key: str) -> str:
@@ -53,6 +56,8 @@ def request_item(o: dict) -> dict:
         "from": CITY.get(o["origin"], o["origin"]), "out": o["out_date"], "ret": o["ret_date"],
         "price": o["price"], "hours": o.get("useful_hours"),
         "dep": _time(o.get("outbound"), "departure"), "arr": _time(o.get("inbound"), "arrival"),
+        "kind": o.get("type", "weekend"), "leave": o.get("leave_days", 0),
+        "holidays": ", ".join(o.get("holidays") or []),
     }
 
 
