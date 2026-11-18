@@ -148,15 +148,20 @@ def classify(s: Settings, cal: Calendar, out: date, ret: date, departure: dateti
         d += timedelta(days=1)
     leave = len(leave_dates)
     stay = [out + timedelta(days=i) for i in range((back - out).days + 1)]
-    # The departure day makes a bridge only if you are away for it: a real day off (you can
-    # leave in the morning), or a school closure with a daytime flight (the parent takes leave).
-    quals = [q for d in stay if (q := cal.qualifier(d))
-             and (d != out or not q[1] or out in leave_dates)]
-    names = list(dict.fromkeys(q[0] for q in quals))
     weekend_day = any(d.weekday() >= SAT for d in stay)
 
+    # A ponte joins two days off with leave: the first and the last day of the stay are a
+    # weekday holiday (national, patron or school closure) at one end and a Saturday or Sunday
+    # at the other. Leaving a workday after FIN-04 (18:00) counts as starting the day after.
+    first = out + timedelta(days=1) if cal.is_workday(out) and out not in leave_dates else out
+    ends = (first, back)
+    hol_end = next((d for d in ends if cal.qualifier(d)), None)
+    joins = hol_end is not None and first != back and any(d.weekday() >= SAT for d in ends if d != hol_end)
+    quals = [q for d in stay if d >= first and (q := cal.qualifier(d))] if joins else []
+    names = list(dict.fromkeys(q[0] for q in quals))
+
     kinds = {
-        "ponte": bool(quals) and s["FIN-10"] <= nights <= s["FIN-11"] and leave <= s["FIN-03"],
+        "ponte": joins and s["FIN-10"] <= nights <= s["FIN-11"] and leave <= s["FIN-03"],
         "weekend+": leave == s["FIN-08"] and nights <= s["FIN-09"] and weekend_day
                     and all(d.weekday() in (FRI, MON) for d in leave_dates),
         "weekend": leave == 0 and s["FIN-01"] <= nights <= s["FIN-07"] and weekend_day,
@@ -164,8 +169,9 @@ def classify(s: Settings, cal: Calendar, out: date, ret: date, departure: dateti
     kind = next((k for k in s["FIN-12"] if kinds.get(k)), None)
     if not s["FIN-01"] <= nights <= s["FIN-02"]:
         kind = None
-    return Trip(kind, leave, leave_dates, nights, names if kind == "ponte" else [],
-                kind == "ponte" and all(q[1] for q in quals))
+    # The holiday end is only a school closure: parents still need leave for it.
+    parent = kind == "ponte" and cal.qualifier(hol_end)[1]
+    return Trip(kind, leave, leave_dates, nights, names if kind == "ponte" else [], parent)
 
 
 @dataclass

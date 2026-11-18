@@ -72,6 +72,18 @@ class BreakKindTest(unittest.TestCase):
     def test_school_closure_on_evening_departure_is_not_a_bridge(self):
         self.assertEqual(trip("2027-04-30", "2027-05-02").kind, "weekend")
 
+    def test_ponte_joins_holiday_and_weekend(self):
+        # Holiday at one end, weekend at the other: Fri 25 Dec (evening departure the day before) - Sun 27.
+        t = trip("2026-12-24", "2026-12-27", "2026-12-24T19:00")
+        self.assertEqual((t.kind, t.leave), ("ponte", 0))
+        # Holiday only in the middle: Sat 5 - Wed 9 Dec ends on a workday, not a ponte.
+        self.assertNotEqual(trip("2026-12-05", "2026-12-09").kind, "ponte")
+        # Leaving Fri 4 Dec in the morning: the stay starts on a workday, not a ponte.
+        self.assertIsNone(trip("2026-12-04", "2026-12-08", "2026-12-04T10:00").kind)
+        # Leaving Fri 4 Dec after 18:00 counts as starting on Saturday: ponte with Monday's leave.
+        t = trip("2026-12-04", "2026-12-08", "2026-12-04T19:30", "2026-12-08T22:00")
+        self.assertEqual((t.kind, t.leave), ("ponte", 1))
+
     def test_too_much_leave(self):
         self.assertIsNone(trip("2026-12-01", "2026-12-04").kind)  # Tue - Fri
 
