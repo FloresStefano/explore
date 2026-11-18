@@ -4,6 +4,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'common.dart';
 import 'data.dart';
 import 'screens/calendar.dart';
+import 'screens/destinations.dart';
 import 'screens/home.dart';
 import 'screens/map.dart';
 import 'screens/settings.dart';
@@ -47,10 +48,11 @@ class _ShellState extends State<Shell> {
   int _tab = 0;
   final _built = <int>{0};
   // One navigation stack per section: pages open inside it and the menu stays visible.
-  final _navs = List.generate(5, (_) => GlobalKey<NavigatorState>());
+  final _navs = List.generate(6, (_) => GlobalKey<NavigatorState>());
 
   static const _items = [
     (Icons.home_outlined, Icons.home_rounded, 'Home'),
+    (Icons.explore_outlined, Icons.explore, 'Destinazioni'),
     (Icons.calendar_month_outlined, Icons.calendar_month, 'Calendario'),
     (Icons.public_outlined, Icons.public, 'Mappa'),
     (Icons.local_fire_department_outlined, Icons.local_fire_department, 'Pazzie'),
@@ -60,16 +62,17 @@ class _ShellState extends State<Shell> {
   Widget _page(int i) {
     if (!_built.contains(i)) return const SizedBox();
     final Widget root = switch (i) {
-      0 => const HomeScreen(),
-      1 => const CalendarScreen(),
-      2 => const MapScreen(),
-      3 => const CrazyScreen(),
+      0 => HomeScreen(onExplore: () => _go(1)),
+      1 => const DestinationsScreen(),
+      2 => const CalendarScreen(),
+      3 => const MapScreen(),
+      4 => const CrazyScreen(),
       _ => const SettingsScreen(embedded: true),
     };
     return Navigator(key: _navs[i], onGenerateRoute: (_) => MaterialPageRoute(builder: (_) => root));
   }
 
-  static const _tabNames = ['home', 'calendario', 'mappa', 'pazzie', 'impostazioni'];
+  static const _tabNames = ['home', 'destinazioni', 'calendario', 'mappa', 'pazzie', 'impostazioni'];
 
   @override
   void initState() {
@@ -92,8 +95,8 @@ class _ShellState extends State<Shell> {
   @override
   Widget build(BuildContext context) {
     final wide = isWide(context);
-    // On phones settings open from the header icon: four tabs at the bottom.
-    if (!wide && _tab == 4) _tab = 0;
+    // On phones settings open from the header icon: five tabs at the bottom.
+    if (!wide && _tab == 5) _tab = 0;
     final body = PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, _) {
@@ -120,7 +123,7 @@ class _ShellState extends State<Shell> {
         child: SafeArea(
           top: false,
           child: Row(children: [
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < 5; i++)
               Expanded(
                 child: InkResponse(
                   onTap: () => _go(i),
@@ -179,7 +182,7 @@ class _SideMenu extends StatelessWidget {
             ]),
           ),
           for (var i = 0; i < _ShellState._items.length; i++) ...[
-            if (i == 4) const Spacer(),
+            if (i == 5) const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
               child: Tooltip(

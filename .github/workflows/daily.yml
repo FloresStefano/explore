@@ -4,7 +4,7 @@ name: Job giornaliero
 # pubblicati, li salva nel repository e pubblica tutto su GitHub Pages.
 on:
   schedule:
-    - cron: "23 5 * * *" # 06:23 ora italiana (07:23 d'estate)
+    - cron: "23 20 * * *" # 21:23 ora italiana (22:23 d'estate)
   workflow_dispatch:
   repository_dispatch:
     types: [wake] # sveglia esterna, es. Cron Trigger di Cloudflare
