@@ -59,7 +59,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               );
             }
 
-            const empty = EmptyNote('Nessuna offerta con questi filtri.', icon: Icons.event_busy_outlined);
+            final empty = EmptyNote.filtered();
             if (MediaQuery.sizeOf(context).width >= 1100) {
               // Wide screens, like the Map: the bridges on the left, the months on the right.
               return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
@@ -168,7 +168,7 @@ class BridgesCard extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.only(left: 2, bottom: 8),
         child: Text('Comune di ${(cal['context'] as Json?)?['comune'] ?? 'Verona'} · tocca un ponte per le offerte',
-            style: const TextStyle(fontSize: 11.5, color: muted)),
+            style: const TextStyle(fontSize: Fs.label, color: muted)),
       ),
       if (shown.isEmpty)
         const Padding(
@@ -228,9 +228,9 @@ class _BridgeRow extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 6),
       child: Material(
         color: has ? const Color(0xFFF7F8FD) : Colors.transparent,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Rd.md),
         child: InkWell(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Rd.md),
           onTap: has
               ? () => Navigator.push(
                     context,
@@ -246,19 +246,19 @@ class _BridgeRow extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.fromLTRB(12, 9, 10, 9),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Rd.md),
               border: Border.all(color: has ? const Color(0xFFDDE0F7) : const Color(0xFFEDEEF4)),
             ),
             child: Row(children: [
               Expanded(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text(b.period,
-                      style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.w700, color: has ? navy : muted)),
+                      style: TextStyle(fontSize: Fs.body, fontWeight: FontWeight.w700, color: has ? navy : muted)),
                   const SizedBox(height: 2),
                   Text('${b.name} · $leave${b.parentLeave ? ' (genitori)' : ''}',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 12, color: muted)),
+                      style: const TextStyle(fontSize: Fs.label, color: muted)),
                 ]),
               ),
               const SizedBox(width: 8),
@@ -267,14 +267,14 @@ class _BridgeRow extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
                     color: has ? orangeBg : chipBg,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Rd.sm),
                   ),
                   child: Text('${b.days} giorni',
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: has ? orange : muted)),
+                      style: TextStyle(fontSize: Fs.body, fontWeight: FontWeight.w800, color: has ? orange : muted)),
                 ),
                 const SizedBox(height: 3),
                 Text(has ? 'da ${euro(stats.minPrice!)} · ${offers.length}' : 'offerte non ancora raccolte',
-                    style: TextStyle(fontSize: 11, color: has ? indigo : muted, fontWeight: FontWeight.w600)),
+                    style: TextStyle(fontSize: Fs.caption, color: has ? indigo : muted, fontWeight: FontWeight.w600)),
               ]),
               if (has) const Icon(Icons.chevron_right, color: muted, size: 20),
             ]),

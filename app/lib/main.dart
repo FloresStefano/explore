@@ -1,8 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'common.dart';
 import 'data.dart';
+import 'theme.dart';
 import 'screens/calendar.dart';
 import 'screens/destinations.dart';
 import 'screens/home.dart';
@@ -12,6 +15,9 @@ import 'screens/crazy.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  LicenseRegistry.addLicense(() async* {
+    yield LicenseEntryWithLineBreaks(['Plus Jakarta Sans'], await rootBundle.loadString('assets/fonts/OFL.txt'));
+  });
   await initializeDateFormatting('it');
   await App.prefs.load();
   runApp(const WeekendBreakApp());
@@ -22,15 +28,10 @@ class WeekendBreakApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final base = ThemeData(
-      useMaterial3: true,
-      colorScheme: ColorScheme.fromSeed(seedColor: indigo, primary: indigo, surface: Colors.white),
-      scaffoldBackgroundColor: pageBg,
-    );
     return MaterialApp(
       title: 'Weekend Break',
       debugShowCheckedModeBanner: false,
-      theme: base.copyWith(textTheme: base.textTheme.apply(bodyColor: ink, displayColor: ink)),
+      theme: appTheme(),
       home: const Shell(),
     );
   }
@@ -114,34 +115,23 @@ class _ShellState extends State<Shell> {
     }
     return Scaffold(
       body: body,
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(22)),
-          boxShadow: [BoxShadow(color: navy.withValues(alpha: 0.08), blurRadius: 16, offset: const Offset(0, -4))],
-        ),
-        child: SafeArea(
-          top: false,
-          child: Row(children: [
+      // Material 3 navigation bar: pill indicator on the current section, 48dp+ targets.
+      bottomNavigationBar: DecoratedBox(
+        decoration: const BoxDecoration(border: Border(top: BorderSide(color: border))),
+        child: NavigationBar(
+          selectedIndex: _tab,
+          onDestinationSelected: (i) {
+            HapticFeedback.selectionClick();
+            _go(i);
+          },
+          destinations: [
             for (var i = 0; i < 5; i++)
-              Expanded(
-                child: InkResponse(
-                  onTap: () => _go(i),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Column(mainAxisSize: MainAxisSize.min, children: [
-                      Icon(_tab == i ? _items[i].$2 : _items[i].$1, color: _tab == i ? indigo : muted, size: 24),
-                      const SizedBox(height: 3),
-                      Text(_items[i].$3,
-                          style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: _tab == i ? FontWeight.w700 : FontWeight.w500,
-                              color: _tab == i ? indigo : muted)),
-                    ]),
-                  ),
-                ),
+              NavigationDestination(
+                icon: Icon(_items[i].$1),
+                selectedIcon: Icon(_items[i].$2),
+                label: _items[i].$3,
               ),
-          ]),
+          ],
         ),
       ),
     );
@@ -168,7 +158,7 @@ class _SideMenu extends StatelessWidget {
               Container(
                 width: 40,
                 height: 40,
-                decoration: BoxDecoration(color: indigo, borderRadius: BorderRadius.circular(12)),
+                decoration: BoxDecoration(color: indigo, borderRadius: BorderRadius.circular(Rd.md)),
                 child: const Icon(Icons.flight_takeoff, color: Colors.white, size: 20),
               ),
               if (open) ...[
@@ -176,7 +166,7 @@ class _SideMenu extends StatelessWidget {
                 const Expanded(
                   child: Text('Weekend Break',
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16)),
+                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: Fs.title)),
                 ),
               ],
             ]),
@@ -189,9 +179,9 @@ class _SideMenu extends StatelessWidget {
                 message: open ? '' : _ShellState._items[i].$3,
                 child: Material(
                   color: tab == i ? Colors.white.withValues(alpha: 0.12) : Colors.transparent,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Rd.md),
                   child: InkWell(
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Rd.md),
                     onTap: () => onTap(i),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),

@@ -47,9 +47,10 @@ class _DestinationsScreenState extends State<DestinationsScreen> {
                     const SizedBox(height: 12),
                     CountLine(all.isEmpty ? '' : '${groups.length} paesi · ${offers.length} offerte'),
                     if (all.isEmpty)
-                      const EmptyNote('Nessun dato disponibile al momento.\nTrascina verso il basso per riprovare.')
+                      const EmptyNote('Trascina verso il basso per riprovare tra qualche istante.',
+                          title: 'Dati non disponibili')
                     else if (offers.isEmpty)
-                      const EmptyNote('Nessuna offerta con questi filtri.', icon: Icons.filter_alt_off_outlined),
+                      EmptyNote.filtered(),
                   ],
                   itemCount: groups.length,
                   itemBuilder: (context, i) => countryCard(

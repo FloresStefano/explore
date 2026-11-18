@@ -185,6 +185,14 @@ class SharedFilter extends ChangeNotifier {
     month = v;
     notifyListeners();
   }
+
+  bool get isActive => type != null || month != null || price != null || airline != null;
+
+  /// "Azzera filtri" of the empty states.
+  void clear() {
+    type = month = price = airline = null;
+    notifyListeners();
+  }
 }
 
 class App {

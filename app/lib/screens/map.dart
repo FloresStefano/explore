@@ -107,7 +107,7 @@ class _MapScreenState extends State<MapScreen> {
                     padding: const EdgeInsets.fromLTRB(14, 14, 14, 12),
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Rd.md),
                         child: AspectRatio(
                           aspectRatio: _aspect,
                           child: ColoredBox(
@@ -130,7 +130,7 @@ class _MapScreenState extends State<MapScreen> {
                         dests.isEmpty
                             ? 'Nessuna meta con offerte in questo periodo.'
                             : 'Tocca un punto per vederne le offerte, pizzica per ingrandire',
-                        style: const TextStyle(fontSize: 12, color: muted),
+                        style: const TextStyle(fontSize: Fs.label, color: muted),
                       ),
                     ]),
                   );

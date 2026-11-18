@@ -129,7 +129,7 @@ class _DayStripState extends State<DayStrip> {
           padding: const EdgeInsets.only(bottom: 8),
           child: Text(fmtMonth(shownMonth),
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: navy)),
+              style: const TextStyle(fontSize: Fs.body, fontWeight: FontWeight.w700, color: navy)),
         ),
         SizedBox(
           height: 96,
@@ -222,10 +222,10 @@ class _DayCell extends StatelessWidget {
 
     final content = Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Text(DateFormat('EEE', 'it').format(day).toUpperCase(),
-          style: TextStyle(fontSize: 10, letterSpacing: 0.6, fontWeight: FontWeight.w700, color: small)),
+          style: TextStyle(fontSize: Fs.caption, letterSpacing: 0.6, fontWeight: FontWeight.w700, color: small)),
       const SizedBox(height: 1),
-      Text('${day.day}', style: TextStyle(fontSize: 20, height: 1.1, fontWeight: FontWeight.w800, color: dayColor)),
-      Text(DateFormat('MMM', 'it').format(day), style: TextStyle(fontSize: 10.5, color: small)),
+      Text('${day.day}', style: TextStyle(fontSize: Fs.headline, height: 1.1, fontWeight: FontWeight.w800, color: dayColor)),
+      Text(DateFormat('MMM', 'it').format(day), style: TextStyle(fontSize: Fs.caption, color: small)),
       const SizedBox(height: 5),
       SizedBox(
         height: 17,
@@ -235,7 +235,7 @@ class _DayCell extends StatelessWidget {
             : FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(euro(price!),
-                    style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w800, color: priceColor)),
+                    style: TextStyle(fontSize: Fs.small, fontWeight: FontWeight.w800, color: priceColor)),
               ),
       ),
     ]);
@@ -244,10 +244,10 @@ class _DayCell extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 2.5),
       child: Material(
         color: bg,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Rd.md),
         child: InkWell(
           onTap: onTap,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Rd.md),
           child: Stack(fit: StackFit.expand, children: [
             Padding(padding: const EdgeInsets.symmetric(horizontal: 3), child: content),
             if (holiday != null)
@@ -278,18 +278,18 @@ class _Legend extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Row(mainAxisSize: MainAxisSize.min, children: [
         if (text != null)
-          Text('€', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800, color: text))
+          Text('€', style: TextStyle(fontSize: Fs.label, fontWeight: FontWeight.w800, color: text))
         else
           Container(
             width: 13,
             height: 13,
-            decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(4)),
+            decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(Rd.xs)),
             alignment: Alignment.topRight,
             child: dot
                 ? Container(width: 5, height: 5, decoration: const BoxDecoration(color: orange, shape: BoxShape.circle))
                 : null,
           ),
         const SizedBox(width: 5),
-        Text(label, style: const TextStyle(fontSize: 11, color: muted)),
+        Text(label, style: const TextStyle(fontSize: Fs.caption, color: muted)),
       ]);
 }

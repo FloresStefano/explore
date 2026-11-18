@@ -152,25 +152,25 @@ class SortMenu extends StatelessWidget {
         initialValue: value,
         onSelected: onChanged,
         color: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Rd.md)),
         itemBuilder: (_) => [
           for (final e in options.entries)
             PopupMenuItem(
               value: e.key,
               child: Text(e.value,
                   style: TextStyle(
-                      fontSize: 14,
+                      fontSize: Fs.body,
                       fontWeight: e.key == value ? FontWeight.w700 : FontWeight.w400,
                       color: e.key == value ? indigo : ink)),
             ),
         ],
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(22)),
+          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(Rd.xl)),
           child: Row(mainAxisSize: MainAxisSize.min, children: [
             const Icon(Icons.swap_vert, size: 17, color: indigo),
             const SizedBox(width: 6),
-            Text(options[value]!, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: ink)),
+            Text(options[value]!, style: const TextStyle(fontSize: Fs.small, fontWeight: FontWeight.w600, color: ink)),
             const Icon(Icons.expand_more, size: 18, color: muted),
           ]),
         ),

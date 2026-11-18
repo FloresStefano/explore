@@ -61,10 +61,10 @@ void main() {
 
     await tester.tap(find.text('Tutti i prezzi').first);
     await tester.pumpAndSettle();
-    await tester.tap(find.text('50–100 €').last);
+    await tester.tap(find.text('50–100 €').last);
     await tester.pumpAndSettle();
     expect(App.filter.price, '50-100');
-    expect(find.text('50–100 €'), findsNWidgets(2));
+    expect(find.text('50–100 €'), findsNWidgets(2));
   });
 
   test('airline filter matches any carrier of the trip', () {

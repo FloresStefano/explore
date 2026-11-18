@@ -23,8 +23,8 @@ class TicketCard extends StatelessWidget {
     return PhysicalShape(
       clipper: const _TicketClipper(),
       color: Colors.white,
-      elevation: 3,
-      shadowColor: navy.withValues(alpha: 0.35),
+      elevation: 2,
+      shadowColor: navy.withValues(alpha: 0.22),
       clipBehavior: Clip.antiAlias,
       child: Column(children: [
         Padding(
@@ -35,13 +35,13 @@ class TicketCard extends StatelessWidget {
                 radius: 12,
                 backgroundColor: indigo,
                 child: Text(airlines.isEmpty ? '?' : airlines[0],
-                    style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700)),
+                    style: const TextStyle(color: Colors.white, fontSize: Fs.label, fontWeight: FontWeight.w700)),
               ),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(airlines,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: ink)),
+                    style: const TextStyle(fontSize: Fs.small, fontWeight: FontWeight.w600, color: ink)),
               ),
               if (o['unmissable'] == true) ...[
                 const Tag('Imperdibile', color: orange, bg: orangeBg),
@@ -71,7 +71,7 @@ class TicketCard extends StatelessWidget {
                     holidays + (o['needs_parent_leave'] == true ? ' · richiede ferie dei genitori' : ''),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 11.5, color: ink),
+                    style: const TextStyle(fontSize: Fs.label, color: ink),
                   ),
                 ),
               ]),
@@ -88,15 +88,16 @@ class TicketCard extends StatelessWidget {
                 Expanded(
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                     Text('${o['nights']} notti · ${num1(hours)} ore utili',
-                        style: const TextStyle(fontSize: 13, color: ink, fontWeight: FontWeight.w500)),
-                    Text('Rilevato ${fmtDay(o['observed_at'] as String)} · senza bagaglio',
-                        overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11, color: muted)),
+                        style: const TextStyle(fontSize: Fs.small, color: ink, fontWeight: FontWeight.w500)),
+                    Text('Rilevato ${fmtDay(o['observed_at'] as String)} · ${_fare(o)}',
+                        overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: Fs.caption, color: muted)),
                   ]),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 6),
                   child: Text(euro(o['price'] as num),
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: indigo)),
+                      style: const TextStyle(
+                          fontSize: Fs.headline, fontWeight: FontWeight.w800, color: indigo, fontFeatures: tabular)),
                 ),
               ]),
               const Spacer(),
@@ -110,6 +111,12 @@ class TicketCard extends StatelessWidget {
         ),
       ]),
     );
+  }
+
+  /// "senza bagaglio", or "prezzo indicativo" for sources that are not the airline's own.
+  static String _fare(Json o) {
+    final f = '${o['fare'] ?? ''}';
+    return f.contains('indicativo') ? 'senza bagaglio, prezzo indicativo' : 'senza bagaglio';
   }
 
   static Future<void> _open(String? link) async {
@@ -147,9 +154,9 @@ class _Action extends StatelessWidget {
         padding: const EdgeInsets.only(right: 6),
         child: Material(
           color: primary ? indigo : chipBg,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Rd.lg),
           child: InkWell(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(Rd.lg),
             onTap: onTap,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 7),
@@ -158,7 +165,7 @@ class _Action extends StatelessWidget {
                 const SizedBox(width: 5),
                 Text(label,
                     style: TextStyle(
-                        fontSize: 12, fontWeight: FontWeight.w600, color: primary ? Colors.white : ink)),
+                        fontSize: Fs.label, fontWeight: FontWeight.w600, color: primary ? Colors.white : ink)),
               ]),
             ),
           ),
@@ -177,17 +184,17 @@ class _Leg extends StatelessWidget {
     Widget side(String code, String city, String? time, CrossAxisAlignment align) => SizedBox(
           width: 92,
           child: Column(crossAxisAlignment: align, children: [
-            Text(code, style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w700, color: ink, height: 1.1)),
-            Text(city, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11, color: muted)),
+            Text(code, style: const TextStyle(fontSize: Fs.titleLg, fontWeight: FontWeight.w700, color: ink, height: 1.1)),
+            Text(city, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: Fs.caption, color: muted)),
             const SizedBox(height: 2),
-            Text(hm(time), style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: ink)),
+            Text(hm(time), style: const TextStyle(fontSize: Fs.small, fontWeight: FontWeight.w600, color: ink)),
           ]),
         );
     return Row(children: [
       side(from, fromCity, leg?['departure'], CrossAxisAlignment.start),
       Expanded(
         child: Column(children: [
-          Text(fmtDay(date), style: const TextStyle(fontSize: 11.5, fontWeight: FontWeight.w600, color: ink)),
+          Text(fmtDay(date), style: const TextStyle(fontSize: Fs.label, fontWeight: FontWeight.w600, color: ink)),
           const SizedBox(height: 2),
           Row(children: [
             const Icon(Icons.flight, size: 15, color: indigo),
@@ -200,7 +207,7 @@ class _Leg extends StatelessWidget {
           ]),
           const SizedBox(height: 2),
           Text(leg?['flight'] is String && (leg!['flight'] as String).isNotEmpty ? leg!['flight'] : 'Diretto',
-              style: const TextStyle(fontSize: 10.5, color: muted)),
+              style: const TextStyle(fontSize: Fs.caption, color: muted)),
         ]),
       ),
       side(to, toCity, leg?['arrival'], CrossAxisAlignment.end),
@@ -212,7 +219,7 @@ class _TicketClipper extends CustomClipper<Path> {
   const _TicketClipper();
   @override
   Path getClip(Size size) {
-    final card = Path()..addRRect(RRect.fromRectAndRadius(Offset.zero & size, const Radius.circular(16)));
+    final card = Path()..addRRect(RRect.fromRectAndRadius(Offset.zero & size, const Radius.circular(Rd.lg)));
     final y = size.height - _stubHeight;
     final notches = Path()
       ..addOval(Rect.fromCircle(center: Offset(0, y), radius: 7))

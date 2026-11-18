@@ -1,22 +1,59 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 import 'data.dart';
 
-// Palette taken from the reference template: night-blue header, indigo actions,
-// lavender page, white cards.
-const navy = Color(0xFF15164A);
-const indigo = Color(0xFF2E3AA1);
-const pageBg = Color(0xFFEDEFFA);
-const chipBg = Color(0xFFEEF0F6);
-const ink = Color(0xFF14163C);
-const muted = Color(0xFF8A8FA8);
-const green = Color(0xFF2E9B5B);
-const greenBg = Color(0xFFE6F6EC);
-const orange = Color(0xFFE08A2B);
-const orangeBg = Color(0xFFFFF1E2);
-const violet = Color(0xFF6A3FC4);
-const violetBg = Color(0xFFEFE8FB);
+// ---------- design tokens ----------
+// One palette in tones of blue: deep navy headers, a clear blue for actions, a cool page
+// background and white surfaces. Text colours pass WCAG AA (4.5:1) on white and on pageBg.
+const navy = Color(0xFF0E1A47);
+const navySoft = Color(0xFF1B2A63); // second stop of the header gradient
+const indigo = Color(0xFF2F49C4); // primary: actions, prices, selection
+const pageBg = Color(0xFFF1F4FA);
+const chipBg = Color(0xFFE8ECF5);
+const border = Color(0xFFE1E6F0);
+const ink = Color(0xFF101736);
+const muted = Color(0xFF5D6483); // secondary text: 5.8:1 on white
+const faint = Color(0xFF9AA1BA); // decorative only (icons, chevrons), never body text
+const green = Color(0xFF1F8A4C);
+const greenBg = Color(0xFFE5F5EC);
+const orange = Color(0xFFD9700F);
+const orangeBg = Color(0xFFFFF0E0);
+const violet = Color(0xFF5B3CC4);
+const violetBg = Color(0xFFEEE9FB);
+
+/// Spacing scale (4-point grid).
+abstract final class Sp {
+  static const xs = 4.0, sm = 8.0, md = 12.0, lg = 16.0, xl = 24.0, xxl = 32.0;
+}
+
+/// Corner radii: tags, fields, buttons, cards, sheets.
+abstract final class Rd {
+  static const xs = 6.0, sm = 8.0, md = 12.0, lg = 16.0, xl = 20.0, xxl = 28.0;
+}
+
+/// Type scale: every text in the app uses one of these sizes.
+abstract final class Fs {
+  static const caption = 11.0, label = 12.0, small = 13.0, body = 14.0, title = 16.0, titleLg = 18.0,
+      headline = 22.0, display = 30.0;
+}
+
+/// Prices and times line up in columns.
+const tabular = [FontFeature.tabularFigures()];
+
+/// Two elevations only: resting cards and floating elements.
+final shadowSm = [BoxShadow(color: navy.withValues(alpha: 0.06), blurRadius: 10, offset: const Offset(0, 2))];
+final shadowMd = [BoxShadow(color: navy.withValues(alpha: 0.12), blurRadius: 24, offset: const Offset(0, 8))];
+
+/// Standard motion.
+abstract final class Motion {
+  static const fast = Duration(milliseconds: 150), medium = Duration(milliseconds: 250),
+      slow = Duration(milliseconds: 350);
+  static const curve = Curves.easeOutCubic;
+}
 
 /// Wide layout (side menu, multi-column lists) from this width on.
 const wideBreakpoint = 900.0;
@@ -55,7 +92,7 @@ String fmtMonthShort(String ym) => cap(_monthShort.format(DateTime.parse('$ym-01
 
 String hm(String? iso) => iso == null || iso.length < 16 ? '–' : iso.substring(11, 16);
 String num1(num v) => v == v.roundToDouble() ? v.toInt().toString() : v.toStringAsFixed(1).replaceAll('.', ',');
-String euro(num v) => '${v.toStringAsFixed(v == v.roundToDouble() ? 0 : 2).replaceAll('.', ',')} €';
+String euro(num v) => '${v.toStringAsFixed(v == v.roundToDouble() ? 0 : 2).replaceAll('.', ',')}\u00A0€';
 String leaveLabel(num v) => v == 0 ? 'Senza ferie' : v == 1 ? '1 giorno di ferie' : '${num1(v)} giorni di ferie';
 String ago(DateTime t) {
   final d = DateTime.now().difference(t);
@@ -115,7 +152,7 @@ class ChoiceRecap extends StatelessWidget {
     return WhiteCard(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         const Text('LA TUA SCELTA',
-            style: TextStyle(fontSize: 11, letterSpacing: 0.8, color: muted, fontWeight: FontWeight.w700)),
+            style: TextStyle(fontSize: Fs.caption, letterSpacing: 0.8, color: muted, fontWeight: FontWeight.w700)),
         const SizedBox(height: 8),
         Wrap(spacing: 6, runSpacing: 6, crossAxisAlignment: WrapCrossAlignment.center, children: [
           for (var i = 0; i < path.length; i++) ...[
@@ -124,11 +161,11 @@ class ChoiceRecap extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
                 color: i == path.length - 1 ? indigo : const Color(0xFFE8EAFB),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Rd.xl),
               ),
               child: Text(path[i],
                   style: TextStyle(
-                      fontSize: 15,
+                      fontSize: Fs.title,
                       fontWeight: FontWeight.w700,
                       color: i == path.length - 1 ? Colors.white : indigo)),
             ),
@@ -139,15 +176,15 @@ class ChoiceRecap extends StatelessWidget {
           Row(children: [
             const Icon(Icons.filter_alt_outlined, size: 15, color: muted),
             const SizedBox(width: 4),
-            Expanded(child: Text(filters, style: const TextStyle(fontSize: 12.5, color: muted))),
+            Expanded(child: Text(filters, style: const TextStyle(fontSize: Fs.small, color: muted))),
           ]),
         ],
         const Divider(height: 22),
         Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-          Expanded(child: Text(facts, style: const TextStyle(fontSize: 13.5, color: ink, fontWeight: FontWeight.w500))),
+          Expanded(child: Text(facts, style: const TextStyle(fontSize: Fs.body, color: ink, fontWeight: FontWeight.w500))),
           Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-            const Text('prezzi', style: TextStyle(fontSize: 11, color: muted)),
-            Text(range, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700, color: indigo)),
+            const Text('prezzi', style: TextStyle(fontSize: Fs.caption, color: muted)),
+            Text(range, style: const TextStyle(fontSize: Fs.titleLg, fontWeight: FontWeight.w700, color: indigo)),
           ]),
         ]),
       ]),
@@ -172,15 +209,15 @@ class Pill extends StatelessWidget {
       padding: const EdgeInsets.only(right: 8),
       child: Material(
         color: selected ? on : (light ? Colors.white : chipBg),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Rd.xl),
         child: InkWell(
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(Rd.xl),
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 9),
             child: Text(label,
                 style: TextStyle(
-                    fontSize: 13,
+                    fontSize: Fs.small,
                     fontWeight: FontWeight.w600,
                     color: onTap == null ? muted : (selected ? Colors.white : ink))),
           ),
@@ -235,7 +272,7 @@ class FilterBox<T> extends StatelessWidget {
         Flexible(
           child: Text(text,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 14, fontWeight: bold ? FontWeight.w700 : FontWeight.w600, color: ink)),
+              style: TextStyle(fontSize: Fs.body, fontWeight: bold ? FontWeight.w700 : FontWeight.w600, color: ink)),
         ),
       ]);
 
@@ -248,26 +285,38 @@ class FilterBox<T> extends StatelessWidget {
         position: PopupMenuPosition.under,
         color: Colors.white,
         constraints: BoxConstraints(minWidth: box.maxWidth, maxWidth: box.maxWidth),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-        onSelected: (i) => onChanged(items[i].$1),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Rd.md)),
+        onSelected: (i) {
+          HapticFeedback.selectionClick();
+          onChanged(items[i].$1);
+        },
         itemBuilder: (_) => [
           for (var i = 0; i < items.length; i++)
             PopupMenuItem<int>(value: i, child: _entry(items[i].$2, items[i].$3, bold: items[i].$1 == value)),
         ],
         child: Container(
-          padding: const EdgeInsets.fromLTRB(12, 8, 8, 8),
-          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14)),
+          constraints: const BoxConstraints(minHeight: 54),
+          padding: const EdgeInsets.fromLTRB(Sp.md, Sp.sm, Sp.sm, Sp.sm),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(Rd.md),
+            border: Border.all(color: border),
+            boxShadow: shadowSm,
+          ),
           child: Row(children: [
-            Icon(icon, size: 20, color: indigo),
-            const SizedBox(width: 10),
+            Icon(icon, size: 18, color: indigo),
+            const SizedBox(width: Sp.sm + 2),
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
-                Text(label, style: const TextStyle(fontSize: 11, color: muted, fontWeight: FontWeight.w600)),
+                Text(label,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: Fs.caption, color: muted, fontWeight: FontWeight.w600)),
                 const SizedBox(height: 2),
                 _entry(current.$2, current.$3),
               ]),
             ),
-            const Icon(Icons.expand_more, color: indigo),
+            const Icon(Icons.expand_more_rounded, color: muted, size: 20),
           ]),
         ),
       ),
@@ -311,7 +360,7 @@ class PriceBox extends StatelessWidget {
         value: value,
         items: [
           (null, 'Tutti i prezzi', null),
-          for (final e in priceBands.entries) (e.key, '${e.value.$1 < 0 ? 0 : e.value.$1}–${e.value.$2} €', null),
+          for (final e in priceBands.entries) (e.key, '${e.value.$1 < 0 ? 0 : e.value.$1}–${e.value.$2}\u00A0€', null),
         ],
         onChanged: onChanged,
       );
@@ -326,7 +375,7 @@ class AirlineBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => FilterBox<String>(
-        label: 'Compagnia aerea',
+        label: 'Compagnia',
         icon: Icons.airlines,
         // Keep a choice made elsewhere even if these offers do not have it.
         value: value,
@@ -379,7 +428,7 @@ String filterLabel([String fallback = 'Tutte le offerte']) {
   return [
     if (f.type != null) typePlural[f.type],
     if (f.month != null) fmtMonthKey(f.month!),
-    if (band != null) '${band.$1 < 0 ? 0 : band.$1}–${band.$2} €',
+    if (band != null) '${band.$1 < 0 ? 0 : band.$1}–${band.$2}\u00A0€',
     ?f.airline,
   ].join(' · ').ifEmpty(fallback);
 }
@@ -409,9 +458,10 @@ class Tag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
-        decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(6)),
-        child: Text(label, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: color)),
+        padding: const EdgeInsets.symmetric(horizontal: Sp.sm, vertical: 3),
+        decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(Rd.xs)),
+        child: Text(label,
+            style: TextStyle(fontSize: Fs.caption, fontWeight: FontWeight.w600, color: color, height: 1.3)),
       );
 }
 
@@ -428,20 +478,74 @@ class TypeCounters extends StatelessWidget {
   final Stats stats;
 
   @override
-  Widget build(BuildContext context) => Wrap(spacing: 6, runSpacing: 6, children: [
+  Widget build(BuildContext context) => Wrap(spacing: Sp.xs + 2, runSpacing: Sp.xs + 2, children: [
         for (final t in breakTypes)
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-            decoration: BoxDecoration(
-              color: (stats.byType[t] ?? 0) > 0 ? typeBg[t] : chipBg,
-              borderRadius: BorderRadius.circular(6),
+          if ((stats.byType[t] ?? 0) > 0)
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+              decoration: BoxDecoration(color: typeBg[t], borderRadius: BorderRadius.circular(Rd.xs)),
+              child: Text.rich(
+                TextSpan(children: [
+                  TextSpan(text: '${stats.byType[t]} ', style: const TextStyle(fontWeight: FontWeight.w800)),
+                  TextSpan(text: typePlural[t]),
+                ]),
+                style: TextStyle(fontSize: Fs.caption, fontWeight: FontWeight.w600, color: typeColor[t], height: 1.3),
+              ),
             ),
-            child: Text('${typePlural[t]} ${stats.byType[t] ?? 0}',
-                style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                    color: (stats.byType[t] ?? 0) > 0 ? typeColor[t] : muted)),
+      ]);
+}
+
+/// The one card of the app: white surface, same radius, padding and press feedback everywhere.
+/// When tappable it sinks slightly under the finger (scale 0.98) besides the ink ripple.
+class SurfaceCard extends StatefulWidget {
+  const SurfaceCard({super.key, required this.child, this.onTap, this.padding = const EdgeInsets.all(Sp.lg)});
+  final Widget child;
+  final VoidCallback? onTap;
+  final EdgeInsetsGeometry padding;
+
+  @override
+  State<SurfaceCard> createState() => _SurfaceCardState();
+}
+
+class _SurfaceCardState extends State<SurfaceCard> {
+  bool _down = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final radius = BorderRadius.circular(Rd.xl);
+    return AnimatedScale(
+      scale: _down ? 0.98 : 1,
+      duration: Motion.fast,
+      curve: Motion.curve,
+      child: DecoratedBox(
+        decoration: BoxDecoration(borderRadius: radius, boxShadow: shadowSm),
+        child: Material(
+          color: Colors.white,
+          borderRadius: radius,
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            onTap: widget.onTap,
+            onHighlightChanged: widget.onTap == null ? null : (v) => setState(() => _down = v),
+            child: Padding(padding: widget.padding, child: widget.child),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Price with "da" above it, figures in columns.
+class PriceFrom extends StatelessWidget {
+  const PriceFrom(this.price, {super.key, this.label = 'da'});
+  final num? price;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) => Column(crossAxisAlignment: CrossAxisAlignment.end, mainAxisSize: MainAxisSize.min, children: [
+        Text(label, style: const TextStyle(fontSize: Fs.caption, color: muted, fontWeight: FontWeight.w500)),
+        Text(price == null ? '–' : euro(price!),
+            style: const TextStyle(
+                fontSize: Fs.titleLg, fontWeight: FontWeight.w800, color: indigo, fontFeatures: tabular, height: 1.2)),
       ]);
 }
 
@@ -462,47 +566,35 @@ class AggregateCard extends StatelessWidget {
   final VoidCallback onTap;
 
   @override
-  Widget build(BuildContext context) => Material(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        elevation: 0,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(18),
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(14),
-            child: Row(children: [
-              Container(
-                width: 48,
-                height: 48,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(color: navy, borderRadius: BorderRadius.circular(14)),
-                child: Text(badge,
-                    style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 14, letterSpacing: .5)),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text(title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w700, color: ink)),
-                  const SizedBox(height: 2),
-                  Text(subtitle, style: const TextStyle(fontSize: 12, color: muted)),
-                  const SizedBox(height: 7),
-                  TypeCounters(stats),
-                ]),
-              ),
-              const SizedBox(width: 8),
-              Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-                const Text('da', style: TextStyle(fontSize: 11, color: muted)),
-                Text(stats.minPrice == null ? '–' : euro(stats.minPrice!),
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: indigo)),
-                const Icon(Icons.chevron_right, color: muted, size: 20),
-              ]),
+  Widget build(BuildContext context) => SurfaceCard(
+        onTap: onTap,
+        padding: const EdgeInsets.all(Sp.lg - 2),
+        child: Row(children: [
+          Container(
+            width: 44,
+            height: 44,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(color: navy, borderRadius: BorderRadius.circular(Rd.md)),
+            child: Text(badge,
+                style: const TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.w700, fontSize: Fs.small, letterSpacing: .5)),
+          ),
+          const SizedBox(width: Sp.md),
+          Expanded(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(fontSize: Fs.title, fontWeight: FontWeight.w700, color: ink)),
+              const SizedBox(height: 2),
+              Text(subtitle, style: const TextStyle(fontSize: Fs.label, color: muted)),
+              const SizedBox(height: Sp.sm),
+              TypeCounters(stats),
             ]),
           ),
-        ),
+          const SizedBox(width: Sp.sm),
+          PriceFrom(stats.minPrice),
+        ]),
       );
 }
 
@@ -550,18 +642,14 @@ class ResponsiveList extends StatelessWidget {
 }
 
 class WhiteCard extends StatelessWidget {
-  const WhiteCard({super.key, required this.child, this.padding = const EdgeInsets.all(16)});
+  const WhiteCard({super.key, required this.child, this.padding = const EdgeInsets.all(Sp.lg)});
   final Widget child;
   final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) => Container(
         padding: padding,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [BoxShadow(color: navy.withValues(alpha: 0.10), blurRadius: 18, offset: const Offset(0, 6))],
-        ),
+        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(Rd.xl), boxShadow: shadowSm),
         child: child,
       );
 }
@@ -592,9 +680,10 @@ class RoundIcon extends StatelessWidget {
       );
 }
 
-/// Night-blue dotted header with the page content sliding over its lower edge.
-/// On wide screens the content uses up to [maxWidth].
-class PageShell extends StatelessWidget {
+/// Night-blue header. The title sits in a fixed bar; below it a decorative band reaches
+/// behind the first content (the filters) and scrolls away with it, so nothing ever floats
+/// over an empty band. Once the band is gone the bar keeps a soft shadow over the content.
+class PageShell extends StatefulWidget {
   const PageShell({
     super.key,
     required this.header,
@@ -608,34 +697,82 @@ class PageShell extends StatelessWidget {
   final double maxWidth;
 
   @override
+  State<PageShell> createState() => _PageShellState();
+}
+
+class _PageShellState extends State<PageShell> {
+  final _offset = ValueNotifier<double>(0);
+
+  @override
+  void dispose() {
+    _offset.dispose();
+    super.dispose();
+  }
+
+  bool _onScroll(Notification n) {
+    final metrics = switch (n) {
+      ScrollNotification(:final metrics, :final depth) when depth == 0 => metrics,
+      ScrollMetricsNotification(:final metrics, :final depth) when depth == 0 => metrics,
+      _ => null,
+    };
+    if (metrics != null && metrics.axis == Axis.vertical) _offset.value = math.max(0, metrics.pixels);
+    return false;
+  }
+
+  @override
   Widget build(BuildContext context) {
     final top = MediaQuery.paddingOf(context).top;
     final wide = isWide(context);
+    final barInner = wide ? 76.0 : 64.0;
+    final bar = top + barInner;
+    final full = math.max(bar, (wide ? widget.headerHeight - 30 : widget.headerHeight) + top);
     return ColoredBox(
       color: pageBg,
-      child: Stack(children: [
-        Container(
-          height: (wide ? headerHeight - 30 : headerHeight) + top,
-          decoration: BoxDecoration(
-            color: navy,
-            borderRadius: wide ? null : const BorderRadius.vertical(bottom: Radius.circular(28)),
+      child: NotificationListener<Notification>(
+        onNotification: _onScroll,
+        child: Stack(children: [
+          ValueListenableBuilder(
+            valueListenable: _offset,
+            builder: (context, off, _) {
+              final h = math.max(bar, full - off);
+              final docked = h <= bar + 0.5;
+              return Container(
+                height: h,
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [navy, navySoft],
+                  ),
+                  borderRadius: wide ? null : BorderRadius.vertical(bottom: Radius.circular(docked ? Rd.xl : Rd.xxl)),
+                  boxShadow: docked ? shadowMd : null,
+                ),
+                clipBehavior: Clip.antiAlias,
+                child: const CustomPaint(painter: _Dots(), size: Size.infinite),
+              );
+            },
           ),
-          clipBehavior: Clip.antiAlias,
-          child: const CustomPaint(painter: _Dots(), size: Size.infinite),
-        ),
-        SafeArea(
-          bottom: false,
-          child: Center(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: maxWidth),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                Padding(padding: EdgeInsets.fromLTRB(wide ? 24 : 20, wide ? 20 : 14, wide ? 24 : 20, 14), child: header),
-                Expanded(child: child),
-              ]),
+          SafeArea(
+            bottom: false,
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: widget.maxWidth),
+                child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                  SizedBox(
+                    height: barInner,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: wide ? Sp.xl : Sp.lg + 4),
+                      child: Align(alignment: Alignment.centerLeft, child: widget.header),
+                    ),
+                  ),
+                  // Content scrolls under the bar, never over it.
+                  Expanded(child: ClipRect(child: widget.child)),
+                ]),
+              ),
             ),
           ),
-        ),
-      ]),
+        ]),
+      ),
     );
   }
 }
@@ -644,7 +781,7 @@ class _Dots extends CustomPainter {
   const _Dots();
   @override
   void paint(Canvas canvas, Size size) {
-    final p = Paint()..color = Colors.white.withValues(alpha: 0.07);
+    final p = Paint()..color = Colors.white.withValues(alpha: 0.06);
     for (double y = 6; y < size.height; y += 9) {
       for (double x = (y ~/ 9).isEven ? 4 : 8.5; x < size.width; x += 9) {
         canvas.drawCircle(Offset(x, y), 1.1, p);
@@ -665,15 +802,23 @@ class HeaderTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Row(children: [
-        if (leading != null) ...[leading!, const SizedBox(width: 12)],
+        if (leading != null) ...[leading!, const SizedBox(width: Sp.md)],
         Expanded(
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(kicker, style: TextStyle(color: Colors.white.withValues(alpha: 0.75), fontSize: 12)),
+          child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(kicker.toUpperCase(),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                    color: Colors.white.withValues(alpha: 0.7),
+                    fontSize: Fs.caption,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.8)),
             const SizedBox(height: 2),
             Text(title,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.w600)),
+                style: const TextStyle(
+                    color: Colors.white, fontSize: Fs.headline, fontWeight: FontWeight.w700, letterSpacing: -0.3)),
           ]),
         ),
         ?action,
@@ -688,35 +833,154 @@ class CountLine extends StatelessWidget {
   const CountLine(this.text, {super.key});
   final String text;
 
+  // The numbers change with the filters: a short cross-fade instead of a jump.
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(left: 4, bottom: 10),
-        child: Text(text, style: const TextStyle(fontSize: 12.5, color: muted, fontWeight: FontWeight.w500)),
+        padding: const EdgeInsets.only(left: Sp.xs, top: Sp.xs, bottom: Sp.md),
+        child: AnimatedSwitcher(
+          duration: Motion.medium,
+          layoutBuilder: (current, previous) =>
+              Stack(alignment: Alignment.centerLeft, children: [...previous, ?current]),
+          child: Text(text,
+              key: ValueKey(text),
+              style: const TextStyle(
+                  fontSize: Fs.small, color: muted, fontWeight: FontWeight.w600, fontFeatures: tabular)),
+        ),
       );
 }
 
+/// Empty or error state: icon, a short title, a hint and, when useful, one action.
 class EmptyNote extends StatelessWidget {
-  const EmptyNote(this.text, {super.key, this.icon = Icons.cloud_off_outlined});
+  const EmptyNote(this.text,
+      {super.key, this.icon = Icons.cloud_off_outlined, this.title, this.actionLabel, this.onAction});
   final String text;
   final IconData icon;
+  final String? title;
+  final String? actionLabel;
+  final VoidCallback? onAction;
+
+  /// "No offer with these filters", with the button that clears them.
+  factory EmptyNote.filtered({Key? key, String text = 'Prova ad allargare la ricerca o ad azzerare i filtri.'}) =>
+      EmptyNote(text,
+          key: key,
+          icon: Icons.filter_alt_off_outlined,
+          title: 'Nessuna offerta con questi filtri',
+          actionLabel: App.filter.isActive ? 'Azzera filtri' : null,
+          onAction: App.filter.isActive ? App.filter.clear : null);
 
   @override
   Widget build(BuildContext context) => WhiteCard(
+        padding: const EdgeInsets.fromLTRB(Sp.xl, Sp.xl, Sp.xl, Sp.xl),
         child: Column(children: [
-          Icon(icon, color: muted, size: 32),
-          const SizedBox(height: 8),
-          Text(text, textAlign: TextAlign.center, style: const TextStyle(color: muted)),
+          Container(
+            width: 52,
+            height: 52,
+            decoration: const BoxDecoration(color: chipBg, shape: BoxShape.circle),
+            child: Icon(icon, color: indigo, size: 24),
+          ),
+          const SizedBox(height: Sp.md),
+          if (title != null) ...[
+            Text(title!,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: Fs.title, fontWeight: FontWeight.w700, color: ink)),
+            const SizedBox(height: Sp.xs),
+          ],
+          Text(text, textAlign: TextAlign.center, style: const TextStyle(fontSize: Fs.body, color: muted, height: 1.45)),
+          if (actionLabel != null && onAction != null) ...[
+            const SizedBox(height: Sp.lg),
+            OutlinedButton(onPressed: onAction, child: Text(actionLabel!)),
+          ],
         ]),
       );
 }
 
-class Loading extends StatelessWidget {
-  const Loading({super.key, this.onDark = true});
+/// Loading placeholder shaped like the page that is coming: filters, a count line, cards.
+/// A soft shimmer runs across it; much calmer than a spinner.
+class Loading extends StatefulWidget {
+  const Loading({super.key, this.onDark = true, this.filters = true});
   final bool onDark;
+  final bool filters;
 
   @override
-  Widget build(BuildContext context) =>
-      Center(child: CircularProgressIndicator(color: onDark ? Colors.white : indigo));
+  State<Loading> createState() => _LoadingState();
+}
+
+class _LoadingState extends State<Loading> with SingleTickerProviderStateMixin {
+  late final _c = AnimationController(vsync: this, duration: const Duration(milliseconds: 1300))..repeat();
+
+  @override
+  void dispose() {
+    _c.dispose();
+    super.dispose();
+  }
+
+  Widget _bar(double w, double h, {double r = Rd.xs}) => Container(
+        width: w,
+        height: h,
+        decoration: BoxDecoration(color: chipBg, borderRadius: BorderRadius.circular(r)),
+      );
+
+  @override
+  Widget build(BuildContext context) {
+    final wide = isWide(context);
+    final card = WhiteCard(
+      child: Row(children: [
+        _bar(44, 44, r: Rd.md),
+        const SizedBox(width: Sp.md),
+        Expanded(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            _bar(120, 14),
+            const SizedBox(height: Sp.sm),
+            _bar(90, 10),
+            const SizedBox(height: Sp.md),
+            Row(children: [_bar(64, 16), const SizedBox(width: 6), _bar(72, 16)]),
+          ]),
+        ),
+        _bar(56, 20),
+      ]),
+    );
+    final field = Container(
+      height: 54,
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(Rd.md), border: Border.all(color: border)),
+    );
+    return Semantics(
+      label: 'Caricamento',
+      child: AnimatedBuilder(
+        animation: _c,
+        builder: (context, child) => ShaderMask(
+          blendMode: BlendMode.srcATop,
+          shaderCallback: (rect) => LinearGradient(
+            begin: Alignment(-1.5 + 3 * _c.value, -0.2),
+            end: Alignment(-0.5 + 3 * _c.value, 0.2),
+            colors: [Colors.transparent, Colors.white.withValues(alpha: 0.55), Colors.transparent],
+          ).createShader(rect),
+          child: child,
+        ),
+        child: ListView(
+          physics: const NeverScrollableScrollPhysics(),
+          padding: const EdgeInsets.fromLTRB(Sp.lg, Sp.xs, Sp.lg, Sp.xl),
+          children: [
+            if (widget.filters) ...[
+              wide
+                  ? Row(children: [
+                      for (var i = 0; i < 4; i++) ...[if (i > 0) const SizedBox(width: Sp.md), Expanded(child: field)]
+                    ])
+                  : Column(children: [
+                      Row(children: [Expanded(child: field), const SizedBox(width: Sp.md), Expanded(child: field)]),
+                      const SizedBox(height: Sp.md),
+                      Row(children: [Expanded(child: field), const SizedBox(width: Sp.md), Expanded(child: field)]),
+                    ]),
+              const SizedBox(height: Sp.lg),
+              Padding(padding: const EdgeInsets.only(left: Sp.xs), child: Align(alignment: Alignment.centerLeft, child: _bar(140, 12))),
+              const SizedBox(height: Sp.md),
+            ],
+            for (var i = 0; i < 6; i++) ...[card, const SizedBox(height: Sp.md)],
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 /// Tabs drawn as a segmented control (Calendario: Giorni / Ponti; Pazzie: Piccole / Medie / Grandi).
@@ -731,16 +995,16 @@ class SegmentTabs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(3),
-      decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(14)),
+      decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(Rd.md)),
       child: Row(children: [
         for (final (i, (icon, label)) in tabs.indexed)
           Expanded(
             child: Material(
               color: selected == i ? Colors.white : Colors.transparent,
-              borderRadius: BorderRadius.circular(11),
+              borderRadius: BorderRadius.circular(Rd.sm),
               elevation: selected == i ? 1 : 0,
               child: InkWell(
-                borderRadius: BorderRadius.circular(11),
+                borderRadius: BorderRadius.circular(Rd.sm),
                 onTap: () => onChanged(i),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
@@ -751,7 +1015,7 @@ class SegmentTabs extends StatelessWidget {
                       child: Text(label,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              fontSize: 13.5,
+                              fontSize: Fs.body,
                               fontWeight: selected == i ? FontWeight.w700 : FontWeight.w600,
                               color: selected == i ? indigo : muted)),
                     ),

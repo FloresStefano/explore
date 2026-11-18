@@ -33,20 +33,20 @@ String legTime(Object? leg, String key) {
 
 /// What the Worker needs for one entry (same fields as job/crazy.py request_item).
 Json crazyRequest(Json o) => {
-      'id': offerId(o),
-      'city': o['city'] ?? o['destination'],
-      'country': o['country'] ?? '',
-      'from': airportCity[o['origin']] ?? o['origin'],
-      'out': o['out_date'],
-      'ret': o['ret_date'],
-      'price': o['price'],
-      'hours': o['useful_hours'],
-      'dep': legTime(o['outbound'], 'departure'),
-      'arr': legTime(o['inbound'], 'arrival'),
-      'kind': o['type'] ?? 'weekend',
-      'leave': o['leave_days'] ?? 0,
-      'holidays': ((o['holidays'] as List?) ?? const []).join(', '),
-    };
+  'id': offerId(o),
+  'city': o['city'] ?? o['destination'],
+  'country': o['country'] ?? '',
+  'from': airportCity[o['origin']] ?? o['origin'],
+  'out': o['out_date'],
+  'ret': o['ret_date'],
+  'price': o['price'],
+  'hours': o['useful_hours'],
+  'dep': legTime(o['outbound'], 'departure'),
+  'arr': legTime(o['inbound'], 'arrival'),
+  'kind': o['type'] ?? 'weekend',
+  'leave': o['leave_days'] ?? 0,
+  'holidays': ((o['holidays'] as List?) ?? const []).join(', '),
+};
 
 /// Trips of one kind under 50 euro, from the nearest to the furthest, at most 30.
 List<Json> crazyOffers(List<Json> catalog, [String kind = 'weekend']) {
@@ -70,8 +70,7 @@ List<Json> crazyExtensions(List<Json> catalog, Json sel) {
     if (o['type'] == 'weekend') return oa == a && ob == b;
     if (o['type'] != 'weekend+') return false;
     return !oa.isBefore(from) && !ob.isAfter(to) && !oa.isAfter(b) && !ob.isBefore(a);
-  }).toList()
-    ..sort((x, y) => (x['price'] as num).compareTo(y['price'] as num));
+  }).toList()..sort((x, y) => (x['price'] as num).compareTo(y['price'] as num));
 }
 
 /// What opens when a pazzia is tapped. Piccole: the weekend plus the weekend+ that stretch it.
@@ -79,11 +78,13 @@ List<Json> crazyExtensions(List<Json> catalog, Json sel) {
 List<Json> crazyDetail(List<Json> catalog, Json sel) {
   if (sel['type'] == 'weekend') return crazyExtensions(catalog, sel);
   return catalog
-      .where((o) =>
-          o['type'] == sel['type'] &&
-          o['destination'] == sel['destination'] &&
-          o['out_date'] == sel['out_date'] &&
-          o['ret_date'] == sel['ret_date'])
+      .where(
+        (o) =>
+            o['type'] == sel['type'] &&
+            o['destination'] == sel['destination'] &&
+            o['out_date'] == sel['out_date'] &&
+            o['ret_date'] == sel['ret_date'],
+      )
       .toList()
     ..sort((x, y) => (x['price'] as num).compareTo(y['price'] as num));
 }
@@ -110,11 +111,14 @@ class _CrazyScreenState extends State<CrazyScreen> {
     return ListenableBuilder(
       listenable: App.prefs,
       builder: (context, _) => PageShell(
-        headerHeight: sectionHeaderHeight,
+        // Only the tabs sit on the band: it ends halfway down them.
+        headerHeight: 92,
         header: HeaderTitle(
           kicker: 'Le top $crazyCount',
           title: 'Pazzie',
-          action: isWide(context) ? null : RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
+          action: isWide(context)
+              ? null
+              : RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
         ),
         child: FutureBuilder(
           key: ValueKey(App.prefs.airports.join()),
@@ -124,8 +128,8 @@ class _CrazyScreenState extends State<CrazyScreen> {
             final catalog = (snap.data?[0] as List<Json>?) ?? const <Json>[];
             // Texts written ahead by the daily job: usually nothing to wait for.
             final file = snap.data?[1] as Json?;
-            final ready = (file?['version'] == crazyTextVersion ? file!['items'] as Json? : null) ??
-                const <String, dynamic>{};
+            final ready =
+                (file?['version'] == crazyTextVersion ? file!['items'] as Json? : null) ?? const <String, dynamic>{};
             final kind = crazyKinds[_tab];
             final list = crazyOffers(catalog, kind.kind);
             final tabs = SegmentTabs(
@@ -139,8 +143,10 @@ class _CrazyScreenState extends State<CrazyScreen> {
                 header: [
                   tabs,
                   const SizedBox(height: 12),
-                  EmptyNote('Nessuna offerta ${kind.what} sotto i $crazyMaxPrice € al momento.',
-                      icon: Icons.local_fire_department_outlined),
+                  EmptyNote(
+                    'Nessuna offerta ${kind.what} sotto i $crazyMaxPrice € al momento.',
+                    icon: Icons.local_fire_department_outlined,
+                  ),
                 ],
                 itemCount: 0,
                 itemBuilder: (_, _) => const SizedBox(),
@@ -165,30 +171,45 @@ class _CrazyScreenState extends State<CrazyScreen> {
                   header: [
                     tabs,
                     const SizedBox(height: 12),
-                    Row(children: [
-                      Expanded(
-                        child: CountLine('Top ${list.length} pazzie ${kind.label.toLowerCase()} · ${kind.what} '
-                            'sotto i $crazyMaxPrice €, dal più vicino al più lontano'),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Tag('AI', color: violet, bg: violetBg),
-                      ),
-                    ]),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CountLine(
+                            'Top ${list.length} pazzie ${kind.label.toLowerCase()} · ${kind.what} '
+                            'sotto i $crazyMaxPrice €, dal più vicino al più lontano',
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(bottom: 10),
+                          child: Tag('AI', color: violet, bg: violetBg),
+                        ),
+                      ],
+                    ),
                     if (writing)
                       const Padding(
                         padding: EdgeInsets.only(left: 4, bottom: 12),
-                        child: Row(children: [
-                          SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2, color: violet)),
-                          SizedBox(width: 8),
-                          Text('L\'AI sta scrivendo la classifica…', style: TextStyle(fontSize: 12.5, color: muted)),
-                        ]),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 14,
+                              height: 14,
+                              child: CircularProgressIndicator(strokeWidth: 2, color: violet),
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'L\'AI sta scrivendo la classifica…',
+                              style: TextStyle(fontSize: Fs.small, color: muted),
+                            ),
+                          ],
+                        ),
                       )
                     else if (failed)
                       const Padding(
                         padding: EdgeInsets.only(left: 4, bottom: 12),
-                        child: Text('Testi AI non disponibili: ecco la classifica in breve.',
-                            style: TextStyle(fontSize: 12.5, color: muted)),
+                        child: Text(
+                          'Testi AI non disponibili: ecco la classifica in breve.',
+                          style: TextStyle(fontSize: Fs.small, color: muted),
+                        ),
                       ),
                   ],
                   itemCount: list.length,
@@ -228,7 +249,9 @@ class _CrazyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final o = offer;
     final city = '${o['city'] ?? o['destination']}';
-    final title = (ai?['title'] as String?)?.trim().isNotEmpty == true ? ai!['title'] as String : '$city, ${o['country'] ?? ''}';
+    final title = (ai?['title'] as String?)?.trim().isNotEmpty == true
+        ? ai!['title'] as String
+        : '$city, ${o['country'] ?? ''}';
     final hours = netHours(o);
     final leave = (o['leave_days'] as num?) ?? 0;
     final holidays = ((o['holidays'] as List?) ?? const []).join(', ');
@@ -236,54 +259,74 @@ class _CrazyCard extends StatelessWidget {
     final text = (ai?['text'] as String?)?.trim().isNotEmpty == true
         ? ai!['text'] as String
         : 'Da ${airportCity[o['origin']] ?? o['origin']} a $city, ${_period(o)}'
-            '${dep.isNotEmpty ? ': partenza alle $dep' : ''}'
-            '${arr.isNotEmpty ? ', a casa alle $arr' : ''}'
-            '${hours > 0 ? ', $hours ore nette sul posto' : ''}.';
-    return Material(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(20),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(20),
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(14, 14, 12, 14),
-          child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Container(
-              width: 38,
-              height: 38,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: rank <= 3 ? orange : navy,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text('$rank', style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w800)),
+              '${dep.isNotEmpty ? ': partenza alle $dep' : ''}'
+              '${arr.isNotEmpty ? ', a casa alle $arr' : ''}'
+              '${hours > 0 ? ', $hours ore nette sul posto' : ''}.';
+    return SurfaceCard(
+      onTap: onTap,
+      padding: const EdgeInsets.fromLTRB(Sp.lg - 2, Sp.lg - 2, Sp.md, Sp.lg - 2),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 38,
+            height: 38,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(color: rank <= 3 ? orange : navy, borderRadius: BorderRadius.circular(Rd.md)),
+            child: Text(
+              '$rank',
+              style: const TextStyle(color: Colors.white, fontSize: Fs.title, fontWeight: FontWeight.w800),
             ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(title, style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w700, color: navy)),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(fontSize: Fs.title, fontWeight: FontWeight.w700, color: navy),
+                ),
                 const SizedBox(height: 4),
-                Text(text, style: const TextStyle(fontSize: 13.5, height: 1.4, color: Color(0xFF3A3F5C))),
+                Text(
+                  text,
+                  style: const TextStyle(fontSize: Fs.body, height: 1.4, color: Color(0xFF3A3F5C)),
+                ),
                 const SizedBox(height: 8),
-                Wrap(spacing: 6, runSpacing: 6, crossAxisAlignment: WrapCrossAlignment.center, children: [
-                  Tag('${'${o['country_code'] ?? ''}'.toUpperCase()} · $city'.replaceFirst(RegExp(r'^ · '), '')),
-                  Tag(_period(o), color: green, bg: greenBg),
-                  if (hours > 0) Tag('$hours ore nette', color: violet, bg: violetBg),
-                  if (leave > 0) leaveTag(leave),
-                  if (holidays.isNotEmpty) Tag(holidays, color: orange, bg: orangeBg),
-                  Tag('da ${airportCity[o['origin']] ?? o['origin']}', color: muted),
-                ]),
-              ]),
+                Wrap(
+                  spacing: 6,
+                  runSpacing: 6,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    Tag('${'${o['country_code'] ?? ''}'.toUpperCase()} · $city'.replaceFirst(RegExp(r'^ · '), '')),
+                    Tag(_period(o), color: green, bg: greenBg),
+                    if (hours > 0) Tag('$hours ore nette', color: violet, bg: violetBg),
+                    if (leave > 0) leaveTag(leave),
+                    if (holidays.isNotEmpty) Tag(holidays, color: orange, bg: orangeBg),
+                    Tag('da ${airportCity[o['origin']] ?? o['origin']}', color: muted),
+                  ],
+                ),
+              ],
             ),
-            const SizedBox(width: 8),
-            Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-              Text(euro(o['price'] as num),
-                  style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: indigo)),
+          ),
+          const SizedBox(width: 8),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                euro(o['price'] as num),
+                style: const TextStyle(
+                  fontSize: Fs.titleLg,
+                  fontWeight: FontWeight.w800,
+                  color: indigo,
+                  fontFeatures: tabular,
+                ),
+              ),
               const SizedBox(height: 14),
               const Icon(Icons.chevron_right, color: muted),
-            ]),
-          ]),
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }

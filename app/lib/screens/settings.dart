@@ -60,7 +60,7 @@ class SettingsScreen extends StatelessWidget {
           builder: (context, _) => FutureBuilder(
             future: Future.wait([App.repo.settings(), App.repo.meta(), App.repo.calendar()]),
             builder: (context, snap) {
-              if (snap.connectionState != ConnectionState.done) return const Loading();
+              if (snap.connectionState != ConnectionState.done) return const Loading(filters: false);
               final settings = snap.data?[0];
               final meta = snap.data?[1];
               final cal = snap.data?[2];
@@ -166,12 +166,12 @@ class _Section extends StatelessWidget {
           Row(children: [
             Icon(icon, size: 20, color: indigo),
             const SizedBox(width: 8),
-            Text(title, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700)),
+            Text(title, style: const TextStyle(fontSize: Fs.titleLg, fontWeight: FontWeight.w700)),
           ]),
           if (subtitle != null)
             Padding(
               padding: const EdgeInsets.only(top: 2, left: 28),
-              child: Text(subtitle!, style: const TextStyle(fontSize: 12, color: muted)),
+              child: Text(subtitle!, style: const TextStyle(fontSize: Fs.label, color: muted)),
             ),
           const SizedBox(height: 8),
           ...children,
@@ -193,14 +193,14 @@ class _Row extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Expanded(
-              child: Text(name, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: ink)),
+              child: Text(name, style: const TextStyle(fontSize: Fs.body, fontWeight: FontWeight.w600, color: ink)),
             ),
             if (value != null) ...[
               const SizedBox(width: 12),
               Flexible(
                 child: Text(value!,
                     textAlign: TextAlign.right,
-                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: indigo)),
+                    style: const TextStyle(fontSize: Fs.body, fontWeight: FontWeight.w700, color: indigo)),
               ),
             ],
           ]),
@@ -210,13 +210,13 @@ class _Row extends StatelessWidget {
               padding: const EdgeInsets.only(top: 3),
               child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 if (note != null)
-                  Expanded(child: Text(note!, style: const TextStyle(fontSize: 11.5, color: muted, height: 1.35)))
+                  Expanded(child: Text(note!, style: const TextStyle(fontSize: Fs.label, color: muted, height: 1.35)))
                 else
                   const Spacer(),
                 if (id != null)
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
-                    child: Text(id!, style: TextStyle(fontSize: 10.5, color: muted.withValues(alpha: 0.8))),
+                    child: Text(id!, style: TextStyle(fontSize: Fs.caption, color: muted.withValues(alpha: 0.8))),
                   ),
               ]),
             ),

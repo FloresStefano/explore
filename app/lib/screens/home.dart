@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart' show DateFormat, NumberFormat;
 
 import '../common.dart';
 import '../data.dart';
@@ -21,6 +22,18 @@ class HomeScreen extends StatelessWidget {
     return fallback;
   }
 
+  /// "stasera alle 21:23", "ieri alle 21:23" or "il 16 novembre": when the offers were collected.
+  static String _when(String? iso) {
+    final t = DateTime.tryParse(iso ?? '')?.toLocal();
+    if (t == null) return '';
+    final now = DateTime.now();
+    final days = DateTime(now.year, now.month, now.day).difference(DateTime(t.year, t.month, t.day)).inDays;
+    final hm = DateFormat('HH:mm').format(t);
+    if (days == 0) return t.hour >= 18 ? 'stasera alle $hm' : 'oggi alle $hm';
+    if (days == 1) return 'ieri alle $hm';
+    return 'il ${DateFormat('d MMMM', 'it').format(t)}';
+  }
+
   @override
   Widget build(BuildContext context) {
     final wide = isWide(context);
@@ -28,111 +41,147 @@ class HomeScreen extends StatelessWidget {
     return ColoredBox(
       color: pageBg,
       child: FutureBuilder(
-        future: App.repo.settings(),
+        future: Future.wait([App.repo.settings(), App.repo.get('summary.json')]),
         builder: (context, snap) {
-          final hours = _value(snap.data, 'SEL-08', 8);
-          final maxPrice = _value(snap.data, 'JOB-09', 150);
+          final settings = snap.data?[0] as Json?;
+          final summary = snap.data?[1] as Json?;
+          final hours = _value(settings, 'SEL-08', 8);
+          final maxPrice = _value(settings, 'JOB-09', 150);
+          final n = NumberFormat.decimalPattern('it');
+          final when = _when(summary?['run_at'] as String?);
           return SingleChildScrollView(
             child: Column(children: [
-              // Hero: the drawing and the slogan on the navy background of the other sections.
+              // Hero: brand bar, the drawing, the slogan and three live figures.
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.fromLTRB(20, top + 12, 20, 34),
+                padding: EdgeInsets.fromLTRB(Sp.lg + 4, top + Sp.md, Sp.lg + 4, Sp.xxl),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [navy, Color(0xFF232678)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [navy, navySoft],
                   ),
-                  borderRadius: wide ? null : const BorderRadius.vertical(bottom: Radius.circular(32)),
+                  borderRadius: wide ? null : const BorderRadius.vertical(bottom: Radius.circular(Rd.xxl)),
                 ),
                 child: Column(children: [
                   if (!wide)
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
-                    ),
+                    Row(children: [
+                      Container(
+                        width: 34,
+                        height: 34,
+                        decoration: BoxDecoration(color: indigo, borderRadius: BorderRadius.circular(Rd.sm + 2)),
+                        child: const Icon(Icons.flight_takeoff, color: Colors.white, size: 18),
+                      ),
+                      const SizedBox(width: Sp.sm + 2),
+                      const Expanded(
+                        child: Text('Weekend Break',
+                            style: TextStyle(color: Colors.white, fontSize: Fs.title, fontWeight: FontWeight.w700)),
+                      ),
+                      RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
+                    ]),
                   SizedBox(
-                    width: wide ? 340 : 270,
-                    height: wide ? 260 : 210,
+                    width: wide ? 340 : 280,
+                    height: wide ? 250 : 210,
                     child: const PlaneAroundTheWorld(),
                   ),
-                  const SizedBox(height: 14),
+                  const SizedBox(height: Sp.sm),
                   ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 620),
+                    constraints: const BoxConstraints(maxWidth: 560),
                     child: Text(
                       'Il mondo è troppo piccolo per non girarlo tutto.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: wide ? 36 : 27,
-                        height: 1.2,
+                        fontSize: wide ? 38 : Fs.display - 2,
+                        height: 1.15,
                         fontWeight: FontWeight.w800,
-                        letterSpacing: -0.5,
+                        letterSpacing: -0.8,
                       ),
                     ),
                   ),
+                  if (summary != null) ...[
+                    const SizedBox(height: Sp.lg + 4),
+                    Wrap(alignment: WrapAlignment.center, spacing: Sp.sm, runSpacing: Sp.sm, children: [
+                      _Stat('${n.format(summary['offers'] ?? 0)} offerte'),
+                      _Stat('${summary['destinations'] ?? 0} mete'),
+                      if (when.isNotEmpty) _Stat('aggiornate $when', icon: Icons.schedule),
+                    ]),
+                  ],
                 ]),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(16, 22, 16, 40),
+                padding: const EdgeInsets.fromLTRB(Sp.lg, Sp.xl, Sp.lg, Sp.xxl + Sp.lg),
                 child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 620),
-                  child: Column(children: [
+                  constraints: const BoxConstraints(maxWidth: 600),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
                     _Line(
-                      icon: Icons.event_available,
+                      icon: Icons.event_available_rounded,
                       color: indigo,
-                      bg: const Color(0xFFE8EAFB),
+                      bg: const Color(0xFFE8ECFB),
                       lead: 'Non hai ferie?',
                       text: 'Cerchiamo noi ogni sera per te: weekend, weekend lunghi o ponti per sfruttare '
                           'ogni ora al meglio, con almeno ${num1(hours)} ore sul posto.',
                     ),
                     _Line(
-                      icon: Icons.flight_takeoff,
+                      icon: Icons.flight_takeoff_rounded,
                       color: green,
                       bg: greenBg,
                       lead: 'Da Verona, Bergamo e Treviso.',
-                      text: 'Solo voli convenienti, sotto i ${num1(maxPrice)} € andata e ritorno.',
+                      text: 'Solo voli convenienti, sotto i ${num1(maxPrice)}\u00A0€ andata e ritorno.',
                     ),
                     const _Line(
-                      icon: Icons.local_fire_department,
+                      icon: Icons.local_fire_department_rounded,
                       color: orange,
                       bg: orangeBg,
                       lead: 'E per chi decide al volo,',
-                      text: 'le Pazzie: weekend sotto i 50 €.',
+                      text: 'le Pazzie: weekend sotto i 50\u00A0€.',
                     ),
-                    const SizedBox(height: 18),
+                    const SizedBox(height: Sp.xl),
                     const Text('Dove vai questo weekend?',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: navy)),
-                    const SizedBox(height: 14),
-                    FilledButton.icon(
-                      onPressed: onExplore,
-                      style: FilledButton.styleFrom(
-                        backgroundColor: indigo,
-                        padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 16),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                        textStyle: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w700),
-                      ),
-                      icon: const Icon(Icons.explore),
-                      label: const Text('Scopri le destinazioni'),
-                    ),
-                    const SizedBox(height: 40),
-                    // The closing line, slanted like a sticker.
-                    Transform.rotate(
-                      angle: -0.09,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
-                        decoration: BoxDecoration(
-                          color: orange,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(color: orange.withValues(alpha: 0.35), blurRadius: 14, offset: const Offset(0, 6)),
-                          ],
+                        style: TextStyle(
+                            fontSize: Fs.headline, fontWeight: FontWeight.w800, color: navy, letterSpacing: -0.3)),
+                    const SizedBox(height: Sp.lg),
+                    Center(
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 360),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: FilledButton.icon(
+                            onPressed: onExplore,
+                            style: FilledButton.styleFrom(
+                              minimumSize: const Size.fromHeight(54),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Rd.lg)),
+                              textStyle: const TextStyle(
+                                  fontFamily: 'Jakarta', fontSize: Fs.title, fontWeight: FontWeight.w700),
+                            ),
+                            icon: const Icon(Icons.explore_rounded),
+                            label: const Text('Scopri le destinazioni'),
+                          ),
                         ),
-                        child: const Text('Non hai più scuse!',
-                            style: TextStyle(
-                                color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900, letterSpacing: 0.3)),
+                      ),
+                    ),
+                    const SizedBox(height: Sp.xxl + Sp.sm),
+                    // The closing line, slanted like a sticker.
+                    Center(
+                      child: Transform.rotate(
+                        angle: -0.07,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: Sp.xl, vertical: Sp.sm + 2),
+                          decoration: BoxDecoration(
+                            color: orange,
+                            borderRadius: BorderRadius.circular(Rd.sm),
+                            boxShadow: [
+                              BoxShadow(color: orange.withValues(alpha: 0.3), blurRadius: 16, offset: const Offset(0, 6)),
+                            ],
+                          ),
+                          child: const Text('Non hai più scuse!',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: Fs.headline,
+                                  fontWeight: FontWeight.w800,
+                                  letterSpacing: 0.2)),
+                        ),
                       ),
                     ),
                   ]),
@@ -146,6 +195,29 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+/// A live figure under the slogan, on a translucent pill.
+class _Stat extends StatelessWidget {
+  const _Stat(this.text, {this.icon});
+  final String text;
+  final IconData? icon;
+
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: Sp.md, vertical: 6),
+        decoration: BoxDecoration(
+          color: Colors.white.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(99),
+          border: Border.all(color: Colors.white.withValues(alpha: 0.16)),
+        ),
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          if (icon != null) ...[Icon(icon, size: 14, color: Colors.white70), const SizedBox(width: 6)],
+          Text(text,
+              style: const TextStyle(
+                  color: Colors.white, fontSize: Fs.label, fontWeight: FontWeight.w600, fontFeatures: tabular)),
+        ]),
+      );
+}
+
 class _Line extends StatelessWidget {
   const _Line({required this.icon, required this.color, required this.bg, required this.lead, required this.text});
   final IconData icon;
@@ -154,28 +226,29 @@ class _Line extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
-      child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-          width: 42,
-          height: 42,
-          decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(13)),
-          child: Icon(icon, color: color, size: 22),
-        ),
-        const SizedBox(width: 14),
-        Expanded(
-          child: Text.rich(
-            TextSpan(children: [
-              TextSpan(text: '$lead ', style: const TextStyle(fontWeight: FontWeight.w800, color: navy)),
-              TextSpan(text: text),
-            ]),
-            style: const TextStyle(fontSize: 15, height: 1.45, color: Color(0xFF3A3F5C)),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: Sp.md),
+      child: WhiteCard(
+        padding: const EdgeInsets.all(Sp.lg + 2),
+        child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Container(
+            width: 44,
+            height: 44,
+            decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(Rd.md)),
+            child: Icon(icon, color: color, size: 22),
           ),
-        ),
-      ]),
+          const SizedBox(width: Sp.lg),
+          Expanded(
+            child: Text.rich(
+              TextSpan(children: [
+                TextSpan(text: '$lead ', style: const TextStyle(fontWeight: FontWeight.w700, color: ink)),
+                TextSpan(text: text),
+              ]),
+              style: const TextStyle(fontSize: Fs.body + 1, height: 1.5, color: muted),
+            ),
+          ),
+        ]),
+      ),
     );
   }
 }
@@ -328,7 +401,7 @@ class _GlobePainter extends CustomPainter {
         style: TextStyle(
           fontFamily: icon.fontFamily,
           package: icon.fontPackage,
-          fontSize: 30 * scale,
+          fontSize: Fs.display * scale,
           color: Color.lerp(const Color(0xFFFFB45C), Colors.white, scale == 1 ? 0 : 0.3),
           shadows: const [Shadow(color: Color(0x55000000), blurRadius: 6, offset: Offset(0, 3))],
         ),

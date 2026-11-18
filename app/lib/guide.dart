@@ -11,7 +11,7 @@ Future<void> showGuide(BuildContext context, Json o) {
       context: context,
       builder: (_) => Dialog(
         backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Rd.xl)),
         child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 640, maxHeight: 760), child: body),
       ),
     );
@@ -48,12 +48,12 @@ class _GuideBody extends StatelessWidget {
             const SizedBox(width: 8),
             Expanded(
               child: Text(g?['title'] as String? ?? 'Cosa vedere a $city',
-                  style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w700)),
+                  style: const TextStyle(fontSize: Fs.titleLg, fontWeight: FontWeight.w700)),
             ),
             if (isWide(context)) IconButton(onPressed: () => Navigator.pop(context), icon: const Icon(Icons.close)),
           ]),
           Text('Dal ${fmtDay(o['out_date'])} al ${fmtDay(o['ret_date'])} · città e dintorni entro 100 km',
-              style: const TextStyle(fontSize: 12.5, color: muted)),
+              style: const TextStyle(fontSize: Fs.small, color: muted)),
           const SizedBox(height: 16),
         ];
         if (snap.connectionState != ConnectionState.done) {
@@ -68,7 +68,7 @@ class _GuideBody extends StatelessWidget {
           children.add(EmptyNote('Scheda non disponibile: ${g?['error'] ?? 'errore'}.\nRiprova tra poco.'));
         } else {
           children.addAll([
-            Text('${g['intro']}', style: const TextStyle(fontSize: 14.5, height: 1.45)),
+            Text('${g['intro']}', style: const TextStyle(fontSize: Fs.body, height: 1.45)),
             if ((g['weather'] as String? ?? '').isNotEmpty) ...[
               const SizedBox(height: 12),
               _Note(Icons.thermostat_outlined, g['weather'] as String),
@@ -91,7 +91,7 @@ class _GuideBody extends StatelessWidget {
             Text(
               'Testo generato dall\'AI (${g['model'] ?? 'Workers AI'}) il ${g['generated'] ?? ''}: '
               'date ed eventi vanno verificati prima di partire.',
-              style: const TextStyle(fontSize: 11, color: muted),
+              style: const TextStyle(fontSize: Fs.caption, color: muted),
             ),
           ]);
         }
@@ -108,7 +108,7 @@ class _Section extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.only(top: 20, bottom: 8),
-        child: Text(title, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: violet)),
+        child: Text(title, style: const TextStyle(fontSize: Fs.title, fontWeight: FontWeight.w700, color: violet)),
       );
 }
 
@@ -121,12 +121,12 @@ class _Item extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 12),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Expanded(child: Text(title, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600))),
+            Expanded(child: Text(title, style: const TextStyle(fontSize: Fs.body, fontWeight: FontWeight.w600))),
             const SizedBox(width: 8),
             Tag(trailing, color: violet, bg: violetBg),
           ]),
           const SizedBox(height: 3),
-          Text(text, style: const TextStyle(fontSize: 13, color: Color(0xFF4A4F6A), height: 1.4)),
+          Text(text, style: const TextStyle(fontSize: Fs.small, color: Color(0xFF4A4F6A), height: 1.4)),
         ]),
       );
 }
@@ -142,7 +142,7 @@ class _Note extends StatelessWidget {
         child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Icon(icon, size: 17, color: violet),
           const SizedBox(width: 8),
-          Expanded(child: Text(text, style: const TextStyle(fontSize: 13, height: 1.4))),
+          Expanded(child: Text(text, style: const TextStyle(fontSize: Fs.small, height: 1.4))),
         ]),
       );
 }
