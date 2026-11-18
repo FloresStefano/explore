@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 import '../common.dart';
 import '../data.dart';
+import 'days.dart';
 import 'offers.dart';
 import 'settings.dart';
 
@@ -40,7 +41,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               const SizedBox(height: 12),
               CountLine('${byMonth.length} mesi · ${offers.length} offerte'),
             ];
-            final bridges = BridgesCard(cal: cal, offers: all);
+            final bridges = CalendarPanel(cal: cal, offers: all);
             Widget monthCard(BuildContext context, int i) {
               final (ym, items) = byMonth[i];
               final countries = {for (final o in items) o['country']}.length;
@@ -163,32 +164,78 @@ class BridgesCard extends StatelessWidget {
       for (final b in bridges)
         if (b.offersIn(pool, marks) case final o when o.isNotEmpty) (b, o),
     ];
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Padding(
+        padding: const EdgeInsets.only(left: 2, bottom: 8),
+        child: Text('Comune di ${(cal['context'] as Json?)?['comune'] ?? 'Verona'} · tocca un ponte per le offerte',
+            style: const TextStyle(fontSize: 11.5, color: muted)),
+      ),
+      if (shown.isEmpty)
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Text('Nessun ponte con offerte per questi filtri.', style: TextStyle(color: muted)),
+        ),
+      for (final (b, o) in shown) _BridgeRow(bridge: b, offers: o),
+    ]);
+  }
+}
+
+/// The two alternative widgets of the Calendar: day carousel (main tab) and bridges.
+class CalendarPanel extends StatefulWidget {
+  const CalendarPanel({super.key, required this.cal, required this.offers});
+  final Json cal;
+  final List<Json> offers;
+
+  @override
+  State<CalendarPanel> createState() => _CalendarPanelState();
+}
+
+class _CalendarPanelState extends State<CalendarPanel> {
+  static int _tab = 0; // kept while the app is open
+
+  @override
+  Widget build(BuildContext context) {
+    Widget tab(int i, IconData icon, String label) {
+      final on = _tab == i;
+      return Expanded(
+        child: Material(
+          color: on ? Colors.white : Colors.transparent,
+          borderRadius: BorderRadius.circular(11),
+          elevation: on ? 1 : 0,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(11),
+            onTap: () => setState(() => _tab = i),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Icon(icon, size: 17, color: on ? indigo : muted),
+                const SizedBox(width: 6),
+                Text(label,
+                    style: TextStyle(
+                        fontSize: 13.5, fontWeight: on ? FontWeight.w700 : FontWeight.w600, color: on ? indigo : muted)),
+              ]),
+            ),
+          ),
+        ),
+      );
+    }
+
     return WhiteCard(
-      padding: const EdgeInsets.fromLTRB(14, 14, 14, 8),
+      padding: const EdgeInsets.fromLTRB(12, 12, 12, 8),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Row(children: [
-          Container(
-            width: 34,
-            height: 34,
-            decoration: BoxDecoration(color: orangeBg, borderRadius: BorderRadius.circular(10)),
-            child: const Icon(Icons.celebration_outlined, color: orange, size: 19),
-          ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const Text('I ponti dell\'anno', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
-              Text('Comune di ${(cal['context'] as Json?)?['comune'] ?? 'Verona'} · tocca un ponte per le offerte',
-                  style: const TextStyle(fontSize: 11.5, color: muted)),
-            ]),
-          ),
-        ]),
-        const SizedBox(height: 10),
-        if (shown.isEmpty)
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: Text('Nessun ponte con offerte per questi filtri.', style: TextStyle(color: muted)),
-          ),
-        for (final (b, o) in shown) _BridgeRow(bridge: b, offers: o),
+        Container(
+          padding: const EdgeInsets.all(3),
+          decoration: BoxDecoration(color: chipBg, borderRadius: BorderRadius.circular(14)),
+          child: Row(children: [
+            tab(0, Icons.view_week_outlined, 'Giorni'),
+            tab(1, Icons.celebration_outlined, 'Ponti'),
+          ]),
+        ),
+        const SizedBox(height: 12),
+        if (_tab == 0)
+          DayStrip(cal: widget.cal, offers: widget.offers)
+        else
+          BridgesCard(cal: widget.cal, offers: widget.offers),
       ]),
     );
   }
