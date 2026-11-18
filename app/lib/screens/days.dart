@@ -43,7 +43,18 @@ class _DayStripState extends State<DayStrip> {
   final _scroll = ScrollController();
   static String? _selected; // yyyy-mm-dd, kept while the app is open
   String? _jumpedTo;
-  double _itemW = 64;
+  double _itemW = 60;
+  int _firstVisible = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // The month label follows the first day in view.
+    _scroll.addListener(() {
+      final i = (_scroll.offset / _itemW).round();
+      if (i != _firstVisible) setState(() => _firstVisible = i);
+    });
+  }
 
   @override
   void dispose() {
@@ -54,7 +65,7 @@ class _DayStripState extends State<DayStrip> {
   void _page(int dir, int visible) {
     if (!_scroll.hasClients) return;
     final target = (_scroll.offset + dir * (visible - 1) * _itemW).clamp(0.0, _scroll.position.maxScrollExtent);
-    _scroll.animateTo(target, duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
+    _scroll.animateTo(target, duration: const Duration(milliseconds: 320), curve: Curves.easeOutCubic);
   }
 
   @override
@@ -62,6 +73,7 @@ class _DayStripState extends State<DayStrip> {
     final f = App.filter;
     final pool = OfferFilter(type: f.type, price: f.price, airline: f.airline).apply(widget.offers);
     final prices = minPriceByDay(pool);
+    final cheapest = prices.isEmpty ? null : prices.values.reduce((a, b) => a < b ? a : b);
     final marks = (widget.cal['marks'] as Json?) ?? const <String, dynamic>{};
     final now = DateTime.now();
     final first = DateTime(now.year, now.month, now.day).add(const Duration(days: 1));
@@ -78,9 +90,9 @@ class _DayStripState extends State<DayStrip> {
     final days = [for (var i = 0; i < count; i++) first.add(Duration(days: i))];
 
     return LayoutBuilder(builder: (context, box) {
-      const arrowW = 26.0;
+      const arrowW = 34.0;
       final listW = box.maxWidth - 2 * arrowW;
-      final visible = (listW / 78).floor().clamp(5, 9);
+      final visible = (listW / 72).floor().clamp(5, 9);
       _itemW = listW / visible;
       // The month combo box scrolls the carousel to that month.
       if (f.month != _jumpedTo) {
@@ -90,24 +102,39 @@ class _DayStripState extends State<DayStrip> {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             if (_scroll.hasClients) {
               _scroll.animateTo((i * _itemW).clamp(0.0, _scroll.position.maxScrollExtent),
-                  duration: const Duration(milliseconds: 350), curve: Curves.easeOut);
+                  duration: const Duration(milliseconds: 350), curve: Curves.easeOutCubic);
             }
           });
         }
       }
+      final shownMonth = days[_firstVisible.clamp(0, days.length - 1)];
       Widget arrow(IconData icon, int dir) => SizedBox(
             width: arrowW,
-            child: InkResponse(
-              radius: 18,
-              onTap: () => _page(dir, visible),
-              child: Icon(icon, color: indigo, size: 26),
+            child: Center(
+              child: Material(
+                color: Colors.white,
+                shape: const CircleBorder(side: BorderSide(color: Color(0xFFE3E5F0))),
+                elevation: 1.5,
+                shadowColor: navy.withValues(alpha: 0.25),
+                child: InkWell(
+                  customBorder: const CircleBorder(),
+                  onTap: () => _page(dir, visible),
+                  child: Padding(padding: const EdgeInsets.all(4), child: Icon(icon, color: indigo, size: 20)),
+                ),
+              ),
             ),
           );
-      return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Text(fmtMonth(shownMonth),
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: navy)),
+        ),
         SizedBox(
-          height: 86,
+          height: 96,
           child: Row(children: [
-            arrow(Icons.chevron_left, -1),
+            arrow(Icons.chevron_left_rounded, -1),
             Expanded(
               child: ListView.builder(
                 controller: _scroll,
@@ -118,12 +145,14 @@ class _DayStripState extends State<DayStrip> {
                   final d = days[i];
                   final key = _iso(d);
                   final mark = marks[key] as Json?;
+                  final price = prices[key];
                   return _DayCell(
                     day: d,
-                    price: prices[key],
+                    price: price,
+                    best: price != null && price == cheapest,
                     holiday: mark?['kind'] == 'festivita' ? mark!['name'] as String? : null,
                     selected: _selected == key,
-                    onTap: prices[key] == null
+                    onTap: price == null
                         ? null
                         : () {
                             setState(() => _selected = key);
@@ -142,30 +171,35 @@ class _DayStripState extends State<DayStrip> {
                 },
               ),
             ),
-            arrow(Icons.chevron_right, 1),
+            arrow(Icons.chevron_right_rounded, 1),
           ]),
         ),
-        const SizedBox(height: 8),
-        const Padding(
-          padding: EdgeInsets.only(left: 4, bottom: 4),
-          child: Wrap(spacing: 14, runSpacing: 4, children: [
-            _Legend(bg: _weekendBg, label: 'Sabato e domenica'),
-            _Legend(bg: orangeBg, label: 'Festivo', dot: true),
-            Text('Prezzo minimo dei viaggi che includono il giorno',
-                style: TextStyle(fontSize: 11, color: muted)),
-          ]),
-        ),
+        const SizedBox(height: 10),
+        const Wrap(alignment: WrapAlignment.center, spacing: 14, runSpacing: 4, children: [
+          _Legend(bg: _weekendBg, label: 'Weekend'),
+          _Legend(bg: orangeBg, label: 'Festivo', dot: true),
+          _Legend(bg: Colors.transparent, label: 'Prezzo più basso', text: green),
+        ]),
+        const SizedBox(height: 2),
       ]);
     });
   }
 }
 
-const _weekendBg = Color(0xFFF1F2FB);
+const _weekendBg = Color(0xFFF0F1FA);
 
 class _DayCell extends StatelessWidget {
-  const _DayCell({required this.day, required this.price, required this.holiday, required this.selected, this.onTap});
+  const _DayCell({
+    required this.day,
+    required this.price,
+    required this.best,
+    required this.holiday,
+    required this.selected,
+    this.onTap,
+  });
   final DateTime day;
   final num? price;
+  final bool best;
   final String? holiday;
   final bool selected;
   final VoidCallback? onTap;
@@ -173,51 +207,61 @@ class _DayCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final weekend = day.weekday >= DateTime.saturday;
-    final red = holiday != null || day.weekday == DateTime.sunday;
-    final bg = holiday != null ? orangeBg : (weekend ? _weekendBg : Colors.transparent);
-    final labelColor = selected ? indigo : (red ? orange : (price == null ? muted : ink));
-    final cell = InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(10),
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 2),
-        decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(10)),
-        child: Stack(children: [
-          Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text(DateFormat('EEE', 'it').format(day),
-                style: TextStyle(fontSize: 11, color: labelColor, fontWeight: FontWeight.w600)),
-            Text(DateFormat('d MMM', 'it').format(day),
-                style: TextStyle(fontSize: 13, color: labelColor, fontWeight: FontWeight.w800)),
-            const SizedBox(height: 4),
-            if (price == null)
-              const Icon(Icons.airplanemode_inactive, size: 18, color: Color(0xFFC5C8D6))
-            else
-              FittedBox(
+    final festive = holiday != null || day.weekday == DateTime.sunday;
+    final empty = price == null;
+    final bg = selected
+        ? indigo
+        : holiday != null
+            ? orangeBg
+            : weekend
+                ? _weekendBg
+                : Colors.transparent;
+    final dayColor = selected ? Colors.white : (empty ? const Color(0xFFB4B8CB) : (festive ? orange : navy));
+    final small = selected ? Colors.white70 : (festive && !empty ? orange : muted);
+    final priceColor = selected ? Colors.white : (best ? green : indigo);
+
+    final content = Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Text(DateFormat('EEE', 'it').format(day).toUpperCase(),
+          style: TextStyle(fontSize: 10, letterSpacing: 0.6, fontWeight: FontWeight.w700, color: small)),
+      const SizedBox(height: 1),
+      Text('${day.day}', style: TextStyle(fontSize: 20, height: 1.1, fontWeight: FontWeight.w800, color: dayColor)),
+      Text(DateFormat('MMM', 'it').format(day), style: TextStyle(fontSize: 10.5, color: small)),
+      const SizedBox(height: 5),
+      SizedBox(
+        height: 17,
+        child: empty
+            ? Icon(Icons.airplanemode_inactive_rounded,
+                size: 15, color: selected ? Colors.white54 : const Color(0xFFC9CCDA))
+            : FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(euro(price!),
-                    style: TextStyle(
-                        fontSize: 13, fontWeight: FontWeight.w800, color: selected ? indigo : const Color(0xFF2B3480))),
+                    style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w800, color: priceColor)),
+              ),
+      ),
+    ]);
+
+    final cell = Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 2.5),
+      child: Material(
+        color: bg,
+        borderRadius: BorderRadius.circular(14),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(14),
+          child: Stack(fit: StackFit.expand, children: [
+            Padding(padding: const EdgeInsets.symmetric(horizontal: 3), child: content),
+            if (holiday != null)
+              Positioned(
+                top: 6,
+                right: 6,
+                child: Container(
+                  width: 6,
+                  height: 6,
+                  decoration: BoxDecoration(color: selected ? Colors.white : orange, shape: BoxShape.circle),
+                ),
               ),
           ]),
-          if (holiday != null)
-            Positioned(
-              top: 5,
-              right: 6,
-              child: Container(
-                  width: 6, height: 6, decoration: const BoxDecoration(color: orange, shape: BoxShape.circle)),
-            ),
-          // The selected day is underlined, as in airline date pickers.
-          if (selected)
-            Positioned(
-              left: 6,
-              right: 6,
-              bottom: 0,
-              child: Container(
-                height: 4,
-                decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(2)),
-              ),
-            ),
-        ]),
+        ),
       ),
     );
     return holiday == null ? cell : Tooltip(message: holiday!, child: cell);
@@ -225,22 +269,26 @@ class _DayCell extends StatelessWidget {
 }
 
 class _Legend extends StatelessWidget {
-  const _Legend({required this.bg, required this.label, this.dot = false});
+  const _Legend({required this.bg, required this.label, this.dot = false, this.text});
   final Color bg;
   final String label;
   final bool dot;
+  final Color? text; // a coloured price sample instead of a swatch
 
   @override
   Widget build(BuildContext context) => Row(mainAxisSize: MainAxisSize.min, children: [
-        Container(
-          width: 14,
-          height: 14,
-          decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(4)),
-          alignment: Alignment.topRight,
-          child: dot
-              ? Container(width: 5, height: 5, decoration: const BoxDecoration(color: orange, shape: BoxShape.circle))
-              : null,
-        ),
+        if (text != null)
+          Text('€', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800, color: text))
+        else
+          Container(
+            width: 13,
+            height: 13,
+            decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(4)),
+            alignment: Alignment.topRight,
+            child: dot
+                ? Container(width: 5, height: 5, decoration: const BoxDecoration(color: orange, shape: BoxShape.circle))
+                : null,
+          ),
         const SizedBox(width: 5),
         Text(label, style: const TextStyle(fontSize: 11, color: muted)),
       ]);
