@@ -55,7 +55,7 @@ class CrazyScreen extends StatelessWidget {
       builder: (context, _) => PageShell(
         headerHeight: sectionHeaderHeight,
         header: HeaderTitle(
-          kicker: 'Weekend sotto i $crazyMaxPrice €',
+          kicker: 'Le top $crazyCount',
           title: 'Pazzie',
           action: isWide(context) ? null : RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
         ),
@@ -68,7 +68,7 @@ class CrazyScreen extends StatelessWidget {
             final list = crazyOffers(catalog);
             if (list.isEmpty) {
               return ListView(padding: const EdgeInsets.fromLTRB(16, 4, 16, 24), children: const [
-                EmptyNote('Nessun weekend sotto i 50 € al momento.', icon: Icons.local_fire_department_outlined),
+                EmptyNote('Nessuna offerta weekend sotto i 50 € al momento.', icon: Icons.local_fire_department_outlined),
               ]);
             }
             final request = [
@@ -96,7 +96,8 @@ class CrazyScreen extends StatelessWidget {
                   header: [
                     Row(children: [
                       Expanded(
-                        child: CountLine('${list.length} weekend · dal più vicino al più lontano'),
+                        child: CountLine('Top ${list.length} pazzie · offerte weekend sotto i $crazyMaxPrice €, '
+                            'dalla più vicina alla più lontana'),
                       ),
                       const Padding(
                         padding: EdgeInsets.only(bottom: 10),
