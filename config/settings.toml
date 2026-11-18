@@ -177,6 +177,14 @@ unit = "ore"
 editable = "config"
 
 [[setting]]
+id = "SEL-08"
+name = "Ore nette minime sul posto"
+value = 8
+unit = "ore"
+note = "Il job scarta le offerte con meno ore utili (SEL-06, SEL-07), anche quelle già pubblicate"
+editable = "config"
+
+[[setting]]
 id = "IMP-01"
 name = "Sconto minimo rispetto al riferimento per il bollino"
 value = 30

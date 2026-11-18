@@ -113,6 +113,13 @@ class SelectionTest(unittest.TestCase):
         o = offer("2026-12-11T18:00", "2026-12-11T19:45", "2026-12-13T20:00", "2026-12-13T21:45", ret_to="BGY")
         self.assertEqual(discard_reason(S, o), "SEL-04")
 
+    def test_short_stay_discarded(self):
+        # Sat evening - Sun midday, one night: 21:45-22:00 + 08:00-10:45 = 3 useful hours.
+        o = offer("2026-12-12T19:00", "2026-12-12T20:45", "2026-12-13T12:45", "2026-12-13T14:30",
+                  out="2026-12-12")
+        self.assertLess(useful_hours(S, o), S["SEL-08"])
+        self.assertEqual(discard_reason(S, o), "SEL-08")
+
     def test_price_cap(self):
         o = offer("2026-12-11T18:00", "2026-12-11T19:45", "2026-12-13T20:00", "2026-12-13T21:45")
         o.price = S["JOB-09"]

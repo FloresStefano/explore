@@ -36,6 +36,8 @@ def discard_reason(s: Settings, o: Offer) -> str | None:
     landing_limit = datetime.fromisoformat(o.out_date) + _hours(s["SEL-02"])
     if o.outbound.arrival > landing_limit:
         return "SEL-02"
+    if useful_hours(s, o) < s["SEL-08"]:
+        return "SEL-08"
     return None
 
 

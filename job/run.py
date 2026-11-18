@@ -161,6 +161,8 @@ def reclassify(s: Settings, cal: Calendar, o: dict) -> dict | None:
     back = t(o.get("inbound"), "departure")
     if back and back.time() < s.time("SEL-01"):
         return None  # SEL-01 may have changed since the offer was stored
+    if back and (o.get("useful_hours") or 0) < s["SEL-08"]:
+        return None  # too few hours at the destination (SEL-08)
     trip = classify(s, cal, date.fromisoformat(o["out_date"]), date.fromisoformat(o["ret_date"]),
                     t(o.get("outbound"), "departure"), t(o.get("inbound"), "arrival"))
     if not trip.kind:
