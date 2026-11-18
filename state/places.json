@@ -430,5 +430,149 @@
   "name": "New York",
   "city": "New York",
   "country": "United States"
+ },
+ "SAW": {
+  "code": "SAW",
+  "name": "Istanbul",
+  "city": "Istanbul",
+  "country": "Turkey"
+ },
+ "SKP": {
+  "code": "SKP",
+  "name": "Skopje",
+  "city": "Skopje",
+  "country": "North Macedonia"
+ },
+ "SZF": {
+  "code": "SZF",
+  "name": "Samsun",
+  "city": "Samsun",
+  "country": "Turkey"
+ },
+ "BOS": {
+  "code": "BOS",
+  "name": "Boston",
+  "city": "Boston",
+  "country": "United States"
+ },
+ "DFW": {
+  "code": "DFW",
+  "name": "Dallas-Fort Worth",
+  "city": "Dallas-Fort Worth",
+  "country": "United States"
+ },
+ "IAD": {
+  "code": "IAD",
+  "name": "Washington",
+  "city": "Washington",
+  "country": "United States"
+ },
+ "YYZ": {
+  "code": "YYZ",
+  "name": "Toronto",
+  "city": "Toronto",
+  "country": "Canada"
+ },
+ "YUL": {
+  "code": "YUL",
+  "name": "Montréal",
+  "city": "Montréal",
+  "country": "Canada"
+ },
+ "YYC": {
+  "code": "YYC",
+  "name": "Calgary",
+  "city": "Calgary",
+  "country": "Canada"
+ },
+ "MCO": {
+  "code": "MCO",
+  "name": "Orlando",
+  "city": "Orlando",
+  "country": "United States"
+ },
+ "MEX": {
+  "code": "MEX",
+  "name": "Mexico City",
+  "city": "Mexico City",
+  "country": "Mexico"
+ },
+ "IAH": {
+  "code": "IAH",
+  "name": "Houston",
+  "city": "Houston",
+  "country": "United States"
+ },
+ "YVR": {
+  "code": "YVR",
+  "name": "Vancouver",
+  "city": "Vancouver",
+  "country": "Canada"
+ },
+ "YXE": {
+  "code": "YXE",
+  "name": "Saskatoon",
+  "city": "Saskatoon",
+  "country": "Canada"
+ },
+ "CMH": {
+  "code": "CMH",
+  "name": "Columbus",
+  "city": "Columbus",
+  "country": "United States"
+ },
+ "CVG": {
+  "code": "CVG",
+  "name": "Cincinnati",
+  "city": "Cincinnati",
+  "country": "United States"
+ },
+ "IND": {
+  "code": "IND",
+  "name": "Indianapolis",
+  "city": "Indianapolis",
+  "country": "United States"
+ },
+ "SDF": {
+  "code": "SDF",
+  "name": "Louisville",
+  "city": "Louisville",
+  "country": "United States"
+ },
+ "YOW": {
+  "code": "YOW",
+  "name": "Ottawa",
+  "city": "Ottawa",
+  "country": "Canada"
+ },
+ "GDL": {
+  "code": "GDL",
+  "name": "Guadalajara",
+  "city": "Guadalajara",
+  "country": "Mexico"
+ },
+ "LAS": {
+  "code": "LAS",
+  "name": "Las Vegas",
+  "city": "Las Vegas",
+  "country": "United States"
+ },
+ "DEN": {
+  "code": "DEN",
+  "name": "Denver",
+  "city": "Denver",
+  "country": "United States"
+ },
+ "YQR": {
+  "code": "YQR",
+  "name": "Regina",
+  "city": "Regina",
+  "country": "Canada"
+ },
+ "ALG": {
+  "code": "ALG",
+  "name": "Algiers",
+  "city": "Algiers",
+  "country": "Algeria"
  }
 }

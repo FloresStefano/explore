@@ -1,226 +1,354 @@
 {
-"VRN-AMS": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-ASE": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-ASR": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-ATH": {
-"empty": 10,
-"checked": "2026-11-17"
-},
-"VRN-AYT": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-BER": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-BIO": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-BOI": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-BUD": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-CDG": {
-"empty": 8,
-"checked": "2026-11-17"
-},
-"VRN-CGN": {
-"empty": 8,
-"checked": "2026-11-17"
-},
-"VRN-CUN": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-DBV": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-DUB": {
-"empty": 3,
-"checked": "2026-11-17"
-},
-"VRN-EAS": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-EGE": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-EWR": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-FAO": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-FCO": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-FLL": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-FNC": {
-"empty": 3,
-"checked": "2026-11-16"
-},
-"VRN-GVA": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-IST": {
-"empty": 3,
-"checked": "2026-11-17"
-},
-"VRN-JAC": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-JFK": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-KEF": {
-"empty": 3,
-"checked": "2026-11-16"
-},
-"VRN-KRK": {
-"empty": 4,
-"checked": "2026-11-17"
-},
-"VRN-LAX": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-LHR": {
-"empty": 5,
-"checked": "2026-11-17"
-},
-"VRN-LIS": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-LYS": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-MAD": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-MRS": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-MSP": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-NCE": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-OKC": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-OMA": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-OPO": {
-"empty": 7,
-"checked": "2026-11-17"
-},
-"VRN-ORD": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-OTP": {
-"empty": 6,
-"checked": "2026-11-17"
-},
-"VRN-PDL": {
-"empty": 3,
-"checked": "2026-11-16"
-},
-"VRN-PMI": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-PRG": {
-"empty": 10,
-"checked": "2026-11-17"
-},
-"VRN-SFO": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-SJC": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-SOF": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-SPU": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-SVQ": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-SZG": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-TFS": {
-"empty": 3,
-"checked": "2026-11-16"
-},
-"VRN-TUL": {
-"empty": 1,
-"checked": "2026-11-16"
-},
-"VRN-VIE": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-VLC": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-WAW": {
-"empty": 12,
-"checked": "2026-11-17"
-},
-"VRN-ZAG": {
-"empty": 2,
-"checked": "2026-11-16"
-},
-"VRN-ZRH": {
-"empty": 2,
-"checked": "2026-11-16"
-}
+ "BGY-ATH": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "BGY-BCN": {
+  "empty": 3,
+  "checked": "2026-11-18"
+ },
+ "BGY-BER": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "BGY-BHX": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "BGY-BUD": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "BGY-BVA": {
+  "empty": 3,
+  "checked": "2026-11-18"
+ },
+ "BGY-CGN": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "BGY-FAO": {
+  "empty": 2,
+  "checked": "2026-11-18"
+ },
+ "BGY-KRK": {
+  "empty": 10,
+  "checked": "2026-11-18"
+ },
+ "BGY-MAD": {
+  "empty": 3,
+  "checked": "2026-11-18"
+ },
+ "BGY-MAN": {
+  "empty": 2,
+  "checked": "2026-11-18"
+ },
+ "BGY-MRS": {
+  "empty": 3,
+  "checked": "2026-11-18"
+ },
+ "BGY-OPO": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "BGY-PMI": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "BGY-PMO": {
+  "empty": 7,
+  "checked": "2026-11-18"
+ },
+ "BGY-PRG": {
+  "empty": 5,
+  "checked": "2026-11-18"
+ },
+ "BGY-STN": {
+  "empty": 7,
+  "checked": "2026-11-18"
+ },
+ "BGY-SVQ": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "BGY-TPS": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "BGY-VIE": {
+  "empty": 4,
+  "checked": "2026-11-18"
+ },
+ "BGY-VLC": {
+  "empty": 4,
+  "checked": "2026-11-18"
+ },
+ "BGY-WMI": {
+  "empty": 4,
+  "checked": "2026-11-18"
+ },
+ "BGY-ZAG": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "TSF-AGP": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "TSF-ALC": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "TSF-BVA": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "TSF-CRL": {
+  "empty": 2,
+  "checked": "2026-11-18"
+ },
+ "TSF-MRS": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "TSF-PRG": {
+  "empty": 2,
+  "checked": "2026-11-18"
+ },
+ "TSF-VIE": {
+  "empty": 2,
+  "checked": "2026-11-18"
+ },
+ "TSF-WMI": {
+  "empty": 1,
+  "checked": "2026-11-18"
+ },
+ "VRN-AMS": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-ASE": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-ASR": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-ATH": {
+  "empty": 10,
+  "checked": "2026-11-17"
+ },
+ "VRN-AYT": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-BER": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-BIO": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-BOI": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-BUD": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-CDG": {
+  "empty": 8,
+  "checked": "2026-11-17"
+ },
+ "VRN-CGN": {
+  "empty": 8,
+  "checked": "2026-11-17"
+ },
+ "VRN-CUN": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-DBV": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-DUB": {
+  "empty": 3,
+  "checked": "2026-11-17"
+ },
+ "VRN-EAS": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-EGE": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-EWR": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-FAO": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-FCO": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-FLL": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-FNC": {
+  "empty": 3,
+  "checked": "2026-11-16"
+ },
+ "VRN-GVA": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-IST": {
+  "empty": 3,
+  "checked": "2026-11-17"
+ },
+ "VRN-JAC": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-JFK": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-KEF": {
+  "empty": 3,
+  "checked": "2026-11-16"
+ },
+ "VRN-KRK": {
+  "empty": 4,
+  "checked": "2026-11-17"
+ },
+ "VRN-LAX": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-LHR": {
+  "empty": 5,
+  "checked": "2026-11-17"
+ },
+ "VRN-LIS": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-LYS": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-MAD": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-MRS": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-MSP": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-NCE": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-OKC": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-OMA": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-OPO": {
+  "empty": 7,
+  "checked": "2026-11-17"
+ },
+ "VRN-ORD": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-OTP": {
+  "empty": 6,
+  "checked": "2026-11-17"
+ },
+ "VRN-PDL": {
+  "empty": 3,
+  "checked": "2026-11-16"
+ },
+ "VRN-PMI": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-PMO": {
+  "empty": 3,
+  "checked": "2026-11-18"
+ },
+ "VRN-PRG": {
+  "empty": 10,
+  "checked": "2026-11-17"
+ },
+ "VRN-SFO": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-SJC": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-SOF": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-SPU": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-SVQ": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-SZG": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-TFS": {
+  "empty": 3,
+  "checked": "2026-11-16"
+ },
+ "VRN-TUL": {
+  "empty": 1,
+  "checked": "2026-11-16"
+ },
+ "VRN-VIE": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-VLC": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-WAW": {
+  "empty": 12,
+  "checked": "2026-11-17"
+ },
+ "VRN-ZAG": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ },
+ "VRN-ZRH": {
+  "empty": 2,
+  "checked": "2026-11-16"
+ }
 }

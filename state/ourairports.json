@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17",
+ "updated": "2026-11-18",
  "airports": {
   "ORY": {
    "code": "ORY",
@@ -8,6 +8,14 @@
    "country_code": "fr",
    "lat": 48.7295,
    "lon": 2.359
+  },
+  "SAW": {
+   "code": "SAW",
+   "name": "Istanbul Sabiha Gökçen International Airport",
+   "city": "Pendik, Istanbul",
+   "country_code": "tr",
+   "lat": 40.8986,
+   "lon": 29.3092
   }
  }
 }
