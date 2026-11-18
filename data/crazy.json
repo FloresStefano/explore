@@ -90,6 +90,18 @@
    "title": "Weekend lungo a Bruxelles, cultura e divertimento",
    "text": "Da Treviso, si parte giovedì 10 dicembre alle 20:10 e si torna a casa sabato 12 dicembre alle 13:15. Con 1 giorno di ferie e 16 ore nette da godersi. 38,98 euro"
   },
+  "BGY-TIA-2026-12-10-2026-12-12": {
+   "title": "Capitale albanese: tra storia e mare",
+   "text": "Si parte giovedì 10 dicembre alle 21:45 e si torna a casa sabato 12 dicembre alle 20:55 per 23 ore nette da godersi. Si vola da Bergamo per un weekend lungo con 1 giorno di ferie. Il prezzo? 40,00 euro."
+  },
+  "BGY-TIA-2026-12-10-2026-12-13": {
+   "title": "Tra castelli e sapori di Albania",
+   "text": "Tre giorni di Tirana, con partenza giovedì 10 dicembre alle 21:45 e arrivo a casa domenica 13 dicembre alle 12:25. Da Bergamo per 29 ore nette da godersi, include 1 giorno di ferie. Il prezzo? 40,00 euro."
+  },
+  "TSF-TIA-2026-12-10-2026-12-13": {
+   "title": "Tirana: cultura e natura in Albania",
+   "text": "Dall'aeroporto di Treviso, si parte giovedì 10 dicembre alle 19:00 e si torna a casa domenica 13 dicembre alle 18:15 per 35 ore nette da godersi. Per un weekend lungo con 1 giorno di ferie. Il prezzo? 40,00 euro."
+  },
   "BGY-TNG-2026-12-10-2026-12-12": {
    "title": "Weekend lungo a Tangeri, mare e tapas",
    "text": "Si parte da Bergamo giovedì 10 dicembre alle 21:25 e si torna a casa sabato 12 dicembre alle 23:25. Con 1 giorno di ferie e 24 ore nette da godersi. 41,48 euro"
@@ -174,6 +186,10 @@
    "title": "Weekend lungo a Bari con il mare",
    "text": "Da Verona venerdì 11 dicembre alle 22:30 si parte per un weekend lungo a Bari in Italia, tornando a casa lunedì 14 dicembre alle 21:55. 39 ore nette da godersi. Con 1 giorno di ferie. 42,99 euro."
   },
+  "VRN-TIA-2026-12-11-2026-12-13": {
+   "title": "Scopri Tirana, gioiello dei Balcani",
+   "text": "Da Verona, si vola venerdì 11 dicembre alle 13:20 e si rientra domenica 13 dicembre alle 22:40. Un weekend lungo di 31 ore nette da godersi e 1 giorno di ferie. Il prezzo? 43,00 euro."
+  },
   "BGY-PSR-2026-12-11-2026-12-13": {
    "title": "Weekend lungo a Pescara, mare e sole",
    "text": "Da Bergamo venerdì 11 dicembre alle 15:55 si parte per un weekend lungo a Pescara in Italia, tornando a casa domenica 13 dicembre alle 18:35. 25 ore nette da godersi. Con 1 giorno di ferie. 45,98 euro."
@@ -217,6 +233,10 @@
   "TSF-MLA-2026-12-12-2026-12-13": {
    "title": "Weekend a Malta, tra mare e sole",
    "text": "Da Treviso sabato 12 dicembre alle 14:40 si parte per un weekend a Malta, tornando a casa domenica 13 dicembre alle 16:35. 9 ore nette da godersi. Senza ferie. 46,60 euro."
+  },
+  "VRN-TIA-2026-12-12-2026-12-13": {
+   "title": "Weekend a Tirana: dal cielo al mare",
+   "text": "Si parte da Verona sabato 12 dicembre alle 13:45 e si torna domenica 13 dicembre alle 22:40. 17 ore nette da godersi in città. Il prezzo? 47,00 euro."
   },
   "VRN-DUB-2026-12-12-2026-12-14": {
    "title": "Weekend lungo a Dublino, tra pub",
@@ -413,26 +433,6 @@
   "VRN-TIA-2027-01-24-2027-01-25": {
    "title": "Tirana, tra storia e modernità",
    "text": "Con 1 giorno di ferie si può fare un weekend lungo a Tirana, in Albania, partendo domenica 24 gennaio alle 19:00 da Verona e tornando a casa lunedì 25 gennaio alle 22:15. Si hanno 11 ore nette per godersi la città per 34,98 euro."
-  },
-  "BGY-TIA-2026-12-10-2026-12-12": {
-   "title": "Capitale albanese: tra storia e mare",
-   "text": "Si parte giovedì 10 dicembre alle 21:45 e si torna a casa sabato 12 dicembre alle 20:55 per 23 ore nette da godersi. Si vola da Bergamo per un weekend lungo con 1 giorno di ferie. Il prezzo? 40,00 euro."
-  },
-  "BGY-TIA-2026-12-10-2026-12-13": {
-   "title": "Tra castelli e sapori di Albania",
-   "text": "Tre giorni di Tirana, con partenza giovedì 10 dicembre alle 21:45 e arrivo a casa domenica 13 dicembre alle 12:25. Da Bergamo per 29 ore nette da godersi, include 1 giorno di ferie. Il prezzo? 40,00 euro."
-  },
-  "TSF-TIA-2026-12-10-2026-12-13": {
-   "title": "Tirana: cultura e natura in Albania",
-   "text": "Dall'aeroporto di Treviso, si parte giovedì 10 dicembre alle 19:00 e si torna a casa domenica 13 dicembre alle 18:15 per 35 ore nette da godersi. Per un weekend lungo con 1 giorno di ferie. Il prezzo? 40,00 euro."
-  },
-  "VRN-TIA-2026-12-11-2026-12-13": {
-   "title": "Scopri Tirana, gioiello dei Balcani",
-   "text": "Da Verona, si vola venerdì 11 dicembre alle 13:20 e si rientra domenica 13 dicembre alle 22:40. Un weekend lungo di 31 ore nette da godersi e 1 giorno di ferie. Il prezzo? 43,00 euro."
-  },
-  "VRN-TIA-2026-12-12-2026-12-13": {
-   "title": "Weekend a Tirana: dal cielo al mare",
-   "text": "Si parte da Verona sabato 12 dicembre alle 13:45 e si torna domenica 13 dicembre alle 22:40. 17 ore nette da godersi in città. Il prezzo? 47,00 euro."
   }
  },
  "model": "Cloudflare Workers AI"

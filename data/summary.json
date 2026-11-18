@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-18T20:18:25+00:00",
+ "run_at": "2026-11-18T20:48:05+00:00",
  "generated": "2026-11-18",
  "offers": 1912,
  "destinations": 80,
@@ -572,9 +572,7 @@
   "skiplagged": {},
   "skiplagged_route": {},
   "kiwi": {
-   "calls": 150,
-   "ok": 150,
-   "errors": 0
+   "calls": 0
   }
  }
 }

@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-18T20:18:25+00:00",
+ "run_at": "2026-11-18T20:48:05+00:00",
  "sources": {
   "ryanair": {
    "enabled": true,
@@ -14,23 +14,12 @@
   },
   "kiwi": {
    "enabled": true,
-   "cap": 150,
-   "calls": 150,
-   "ok": 150,
-   "errors": 0,
-   "offers": 113,
-   "last_error": null,
-   "routes": 30
+   "calls": 0,
+   "note": "tetto giornaliero già raggiunto"
   }
  },
  "warnings": [],
- "discards": {
-  "FIN-12": 90,
-  "JOB-09": 327,
-  "SEL-01": 205,
-  "SEL-02": 34,
-  "SEL-08": 35
- },
+ "discards": {},
  "coverage_ryanair": {
   "VRN": {
    "pairs": 126,
@@ -45,5 +34,5 @@
    "fresh": 101
   }
  },
- "seconds": 569
+ "seconds": 0
 }
