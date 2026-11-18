@@ -1,0 +1,263 @@
+{
+ "label": "github",
+ "run_at": "20261118T202930Z",
+ "test_dates": [
+  "2026-12-11",
+  "2026-12-13"
+ ],
+ "network": {
+  "ok": true,
+  "ipinfo": {
+   "region": "Virginia",
+   "country": "US",
+   "org": "AS14618 Amazon.com, Inc."
+  },
+  "seconds": 0.04
+ },
+ "ryanair_anywhere_VRN": {
+  "ok": true,
+  "destinations": 8,
+  "with_times": 8,
+  "cheapest": [
+   [
+    "TIA",
+    31.98
+   ],
+   [
+    "TPS",
+    31.99
+   ],
+   [
+    "SUF",
+    39.12
+   ],
+   [
+    "BRI",
+    45.98
+   ],
+   [
+    "PMO",
+    51.09
+   ]
+  ],
+  "seconds": 0.1
+ },
+ "ryanair_anywhere_BGY": {
+  "ok": true,
+  "destinations": 59,
+  "with_times": 59,
+  "cheapest": [
+   [
+    "MRS",
+    29.98
+   ],
+   [
+    "POZ",
+    33.98
+   ],
+   [
+    "SUF",
+    39.98
+   ],
+   [
+    "BCN",
+    40.32
+   ],
+   [
+    "PMO",
+    43.68
+   ]
+  ],
+  "seconds": 0.24
+ },
+ "ryanair_anywhere_TSF": {
+  "ok": true,
+  "destinations": 18,
+  "with_times": 18,
+  "cheapest": [
+   [
+    "TIA",
+    31.98
+   ],
+   [
+    "WMI",
+    32.98
+   ],
+   [
+    "GDN",
+    33.98
+   ],
+   [
+    "TLS",
+    38.98
+   ],
+   [
+    "PMI",
+    40.98
+   ]
+  ],
+  "seconds": 0.1
+ },
+ "ryanair_routes_VRN": {
+  "ok": true,
+  "routes": 19,
+  "seconds": 0.06
+ },
+ "skiplagged_anywhere_VRN": {
+  "ok": false,
+  "seconds": 0.16,
+  "error": "RuntimeError: skiplagged sk_destinations_anywhere: [{\"type\": \"text\", \"text\": \"Failed to fetch from skipsy: Request failed with status code 403\"}]",
+  "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 42, in timed\n    res = fn()\n          ^^^^\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 79, in sk_anywhere\n    offers = sk.anywhere(\"VRN\", out, ret, observed)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 47, in anywhere\n    data = call_tool(\"sk_destinations_anywhere\", {\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 35, in call_tool\n    raise RuntimeError(f\"skiplagged {name}: {json.dumps(result.get('content'))[:300]}\")\nRuntimeError: skiplagged sk_destinations_anywhere: [{\"type\": \"text\", \"text\": \"Failed to fetch from skipsy: Request failed with status code 403\"}]\n"
+ },
+ "skiplagged_route_VRN": {
+  "PMO": {
+   "ok": false,
+   "seconds": 0.08,
+   "error": "RuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"Failed to fetch from search: Request failed with status code 403\"}]",
+   "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 42, in timed\n    res = fn()\n          ^^^^\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 87, in sk_route\n    data = sk.flights(\"VRN\", dest, out, ret)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 72, in flights\n    return call_tool(\"sk_flights_search\", args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 35, in call_tool\n    raise RuntimeError(f\"skiplagged {name}: {json.dumps(result.get('content'))[:300]}\")\nRuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"Failed to fetch from search: Request failed with status code 403\"}]\n"
+  },
+  "CTA": {
+   "ok": false,
+   "seconds": 0.07,
+   "error": "RuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"Failed to fetch from search: Request failed with status code 403\"}]",
+   "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 42, in timed\n    res = fn()\n          ^^^^\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 87, in sk_route\n    data = sk.flights(\"VRN\", dest, out, ret)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 72, in flights\n    return call_tool(\"sk_flights_search\", args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 35, in call_tool\n    raise RuntimeError(f\"skiplagged {name}: {json.dumps(result.get('content'))[:300]}\")\nRuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"Failed to fetch from search: Request failed with status code 403\"}]\n"
+  },
+  "NAP": {
+   "ok": false,
+   "seconds": 0.07,
+   "error": "RuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"Failed to fetch from search: Request failed with status code 403\"}]",
+   "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 42, in timed\n    res = fn()\n          ^^^^\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 87, in sk_route\n    data = sk.flights(\"VRN\", dest, out, ret)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 72, in flights\n    return call_tool(\"sk_flights_search\", args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 35, in call_tool\n    raise RuntimeError(f\"skiplagged {name}: {json.dumps(result.get('content'))[:300]}\")\nRuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"Failed to fetch from search: Request failed with status code 403\"}]\n"
+  },
+  "BRI": {
+   "ok": false,
+   "seconds": 0.11,
+   "error": "RuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"Failed to fetch from search: Request failed with status code 403\"}]",
+   "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 42, in timed\n    res = fn()\n          ^^^^\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 87, in sk_route\n    data = sk.flights(\"VRN\", dest, out, ret)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 72, in flights\n    return call_tool(\"sk_flights_search\", args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 35, in call_tool\n    raise RuntimeError(f\"skiplagged {name}: {json.dumps(result.get('content'))[:300]}\")\nRuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"Failed to fetch from search: Request failed with status code 403\"}]\n"
+  },
+  "CAG": {
+   "ok": false,
+   "seconds": 0.07,
+   "error": "RuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"Failed to fetch from search: Request failed with status code 403\"}]",
+   "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 42, in timed\n    res = fn()\n          ^^^^\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 87, in sk_route\n    data = sk.flights(\"VRN\", dest, out, ret)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 72, in flights\n    return call_tool(\"sk_flights_search\", args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 35, in call_tool\n    raise RuntimeError(f\"skiplagged {name}: {json.dumps(result.get('content'))[:300]}\")\nRuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"Failed to fetch from search: Request failed with status code 403\"}]\n"
+  },
+  "OLB": {
+   "ok": false,
+   "seconds": 0.07,
+   "error": "RuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"Failed to fetch from search: Request failed with status code 403\"}]",
+   "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 42, in timed\n    res = fn()\n          ^^^^\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 87, in sk_route\n    data = sk.flights(\"VRN\", dest, out, ret)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 72, in flights\n    return call_tool(\"sk_flights_search\", args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/skiplagged.py\", line 35, in call_tool\n    raise RuntimeError(f\"skiplagged {name}: {json.dumps(result.get('content'))[:300]}\")\nRuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"Failed to fetch from search: Request failed with status code 403\"}]\n"
+  }
+ },
+ "google_flights_VRN": {
+  "PMO": {
+   "ok": true,
+   "options": 1,
+   "direct": 1,
+   "airlines": [
+    "Ryanair"
+   ],
+   "non_ryanair": [],
+   "min_price": 52,
+   "price_level": null,
+   "html_bytes": 2041507,
+   "seconds": 1.25
+  },
+  "CTA": {
+   "ok": false,
+   "seconds": 0.21,
+   "error": "FlightsNotFound: no flights found; received error",
+   "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 42, in timed\n    res = fn()\n          ^^^^\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 101, in gf_route\n    flights = google_flights.parse(html)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/google_flights.py\", line 50, in parse\n    return list(ff_parse(html))\n                ^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/fast_flights/parser.py\", line 31, in parse\n    return parse_js(script.text())\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/fast_flights/parser.py\", line 51, in parse_js\n    raise FlightsNotFound(\"no flights found; received error\")\nfast_flights.exceptions.FlightsNotFound: no flights found; received error\n"
+  },
+  "NAP": {
+   "ok": false,
+   "seconds": 0.26,
+   "error": "FlightsNotFound: no flights found; received error",
+   "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 42, in timed\n    res = fn()\n          ^^^^\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 101, in gf_route\n    flights = google_flights.parse(html)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/google_flights.py\", line 50, in parse\n    return list(ff_parse(html))\n                ^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/fast_flights/parser.py\", line 31, in parse\n    return parse_js(script.text())\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/fast_flights/parser.py\", line 51, in parse_js\n    raise FlightsNotFound(\"no flights found; received error\")\nfast_flights.exceptions.FlightsNotFound: no flights found; received error\n"
+  },
+  "BRI": {
+   "ok": true,
+   "options": 2,
+   "direct": 2,
+   "airlines": [
+    "Ryanair"
+   ],
+   "non_ryanair": [],
+   "min_price": 46,
+   "price_level": null,
+   "html_bytes": 2081870,
+   "seconds": 0.5
+  },
+  "CAG": {
+   "ok": true,
+   "options": 1,
+   "direct": 1,
+   "airlines": [
+    "Ryanair"
+   ],
+   "non_ryanair": [],
+   "min_price": 59,
+   "price_level": null,
+   "html_bytes": 2039643,
+   "seconds": 0.54
+  },
+  "OLB": {
+   "ok": true,
+   "options": 0,
+   "direct": 0,
+   "airlines": [],
+   "non_ryanair": [],
+   "min_price": null,
+   "price_level": null,
+   "html_bytes": 1968629,
+   "seconds": 0.47
+  },
+  "BCN": {
+   "ok": false,
+   "seconds": 0.25,
+   "error": "FlightsNotFound: no flights found; received error",
+   "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 42, in timed\n    res = fn()\n          ^^^^\n  File \"/home/runner/work/explore/explore/job/fieldtest.py\", line 101, in gf_route\n    flights = google_flights.parse(html)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/explore/explore/job/sources/google_flights.py\", line 50, in parse\n    return list(ff_parse(html))\n                ^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/fast_flights/parser.py\", line 31, in parse\n    return parse_js(script.text())\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/fast_flights/parser.py\", line 51, in parse_js\n    raise FlightsNotFound(\"no flights found; received error\")\nfast_flights.exceptions.FlightsNotFound: no flights found; received error\n"
+  },
+  "TIA": {
+   "ok": true,
+   "options": 3,
+   "direct": 3,
+   "airlines": [
+    "Ryanair",
+    "Wizz Air"
+   ],
+   "non_ryanair": [
+    "Wizz Air"
+   ],
+   "min_price": 32,
+   "price_level": null,
+   "html_bytes": 2114588,
+   "seconds": 0.33
+  },
+  "LGW": {
+   "ok": true,
+   "options": 4,
+   "direct": 4,
+   "airlines": [
+    "British Airways",
+    "easyJet"
+   ],
+   "non_ryanair": [
+    "easyJet"
+   ],
+   "min_price": 131,
+   "price_level": null,
+   "html_bytes": 2158708,
+   "seconds": 0.54
+  },
+  "CDG": {
+   "ok": true,
+   "options": 0,
+   "direct": 0,
+   "airlines": [],
+   "non_ryanair": [],
+   "min_price": null,
+   "price_level": null,
+   "html_bytes": 1966826,
+   "seconds": 0.46
+  }
+ }
+}
