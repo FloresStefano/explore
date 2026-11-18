@@ -147,74 +147,132 @@ class _SideMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final open = App.prefs.sideMenuExpanded;
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      width: open ? 232 : 76,
-      color: navy,
+      duration: Motion.medium,
+      curve: Motion.curve,
+      width: open ? 236 : 80,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [navy, navySoft]),
+      ),
       child: SafeArea(
         child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(14, 18, 10, 22),
+            padding: const EdgeInsets.fromLTRB(Sp.lg + 4, Sp.xl, Sp.md, Sp.xl),
             child: Row(children: [
               Container(
                 width: 40,
                 height: 40,
-                decoration: BoxDecoration(color: indigo, borderRadius: BorderRadius.circular(Rd.md)),
-                child: const Icon(Icons.flight_takeoff, color: Colors.white, size: 20),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(colors: [indigo, Color(0xFF4F6BF0)]),
+                  borderRadius: BorderRadius.circular(Rd.md),
+                  boxShadow: [BoxShadow(color: indigo.withValues(alpha: 0.45), blurRadius: 12, offset: const Offset(0, 4))],
+                ),
+                child: const Icon(Icons.flight_takeoff_rounded, color: Colors.white, size: 20),
               ),
               if (open) ...[
-                const SizedBox(width: 10),
+                const SizedBox(width: Sp.md),
                 const Expanded(
                   child: Text('Weekend Break',
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: Fs.title)),
+                      maxLines: 1,
+                      overflow: TextOverflow.clip,
+                      softWrap: false,
+                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: Fs.title)),
                 ),
               ],
             ]),
           ),
           for (var i = 0; i < _ShellState._items.length; i++) ...[
             if (i == 5) const Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-              child: Tooltip(
-                message: open ? '' : _ShellState._items[i].$3,
-                child: Material(
-                  color: tab == i ? Colors.white.withValues(alpha: 0.12) : Colors.transparent,
-                  borderRadius: BorderRadius.circular(Rd.md),
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(Rd.md),
-                    onTap: () => onTap(i),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                      child: Row(children: [
-                        Icon(tab == i ? _ShellState._items[i].$2 : _ShellState._items[i].$1,
-                            color: tab == i ? Colors.white : Colors.white70, size: 22),
-                        if (open) ...[
-                          const SizedBox(width: 14),
-                          Expanded(
-                            child: Text(_ShellState._items[i].$3,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    color: tab == i ? Colors.white : Colors.white70,
-                                    fontWeight: tab == i ? FontWeight.w700 : FontWeight.w500)),
-                          ),
-                        ],
-                      ]),
-                    ),
-                  ),
-                ),
-              ),
+            _SideItem(
+              icon: tab == i ? _ShellState._items[i].$2 : _ShellState._items[i].$1,
+              label: _ShellState._items[i].$3,
+              selected: tab == i,
+              open: open,
+              onTap: () => onTap(i),
             ),
           ],
+          const SizedBox(height: Sp.sm),
           Padding(
-            padding: const EdgeInsets.fromLTRB(10, 6, 10, 14),
-            child: IconButton(
-              tooltip: open ? 'Comprimi il menu' : 'Espandi il menu',
-              onPressed: App.prefs.toggleSideMenu,
-              icon: Icon(open ? Icons.keyboard_double_arrow_left : Icons.keyboard_double_arrow_right,
-                  color: Colors.white70),
+            padding: const EdgeInsets.fromLTRB(Sp.md, 0, Sp.md, Sp.lg),
+            child: Align(
+              alignment: open ? Alignment.centerRight : Alignment.center,
+              child: IconButton(
+                tooltip: open ? 'Comprimi il menu' : 'Espandi il menu',
+                onPressed: App.prefs.toggleSideMenu,
+                icon: Icon(open ? Icons.keyboard_double_arrow_left_rounded : Icons.keyboard_double_arrow_right_rounded,
+                    color: Colors.white60),
+              ),
             ),
           ),
         ]),
+      ),
+    );
+  }
+}
+
+/// One entry of the side menu: a soft pill and an accent bar on the current section, a hover tint.
+class _SideItem extends StatefulWidget {
+  const _SideItem(
+      {required this.icon, required this.label, required this.selected, required this.open, required this.onTap});
+  final IconData icon;
+  final String label;
+  final bool selected, open;
+  final VoidCallback onTap;
+
+  @override
+  State<_SideItem> createState() => _SideItemState();
+}
+
+class _SideItemState extends State<_SideItem> {
+  bool _hover = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final on = widget.selected;
+    final fg = on ? Colors.white : (_hover ? Colors.white : Colors.white70);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Sp.md, vertical: 2),
+      child: Tooltip(
+        message: widget.open ? '' : widget.label,
+        child: MouseRegion(
+          onEnter: (_) => setState(() => _hover = true),
+          onExit: (_) => setState(() => _hover = false),
+          child: GestureDetector(
+            onTap: widget.onTap,
+            child: AnimatedContainer(
+              duration: Motion.fast,
+              height: 46,
+              padding: const EdgeInsets.symmetric(horizontal: Sp.md + 2),
+              decoration: BoxDecoration(
+                color: on
+                    ? Colors.white.withValues(alpha: 0.13)
+                    : (_hover ? Colors.white.withValues(alpha: 0.06) : Colors.transparent),
+                borderRadius: BorderRadius.circular(Rd.md),
+              ),
+              child: Row(children: [
+                AnimatedContainer(
+                  duration: Motion.medium,
+                  curve: Motion.curve,
+                  width: 3,
+                  height: on ? 18 : 0,
+                  margin: const EdgeInsets.only(right: Sp.sm + 2),
+                  decoration: BoxDecoration(color: const Color(0xFF8FA6FF), borderRadius: BorderRadius.circular(2)),
+                ),
+                Icon(widget.icon, color: fg, size: 21),
+                if (widget.open) ...[
+                  const SizedBox(width: Sp.md + 2),
+                  Expanded(
+                    child: Text(widget.label,
+                        maxLines: 1,
+                        overflow: TextOverflow.clip,
+                        softWrap: false,
+                        style: TextStyle(
+                            color: fg, fontSize: Fs.body, fontWeight: on ? FontWeight.w700 : FontWeight.w500)),
+                  ),
+                ],
+              ]),
+            ),
+          ),
+        ),
       ),
     );
   }

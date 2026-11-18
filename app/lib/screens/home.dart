@@ -5,6 +5,7 @@ import 'package:intl/intl.dart' show DateFormat, NumberFormat;
 
 import '../common.dart';
 import '../data.dart';
+import 'home_bits.dart';
 import 'settings.dart';
 
 /// Home: the idea behind the app in a few lines, with a plane flying around the world.
@@ -34,6 +35,20 @@ class HomeScreen extends StatelessWidget {
     return 'il ${DateFormat('d MMMM', 'it').format(t)}';
   }
 
+  /// Destinations in the catalog, the most served first: (country code, city).
+  static List<(String, String)> _places(List<Json> catalog) {
+    final count = <String, int>{};
+    final info = <String, (String, String)>{};
+    for (final o in catalog) {
+      // "Paris (Orly, Val-de-Marne)" -> "Paris": one chip per city.
+      final city = '${o['city'] ?? o['destination']}'.split(' (').first.trim();
+      count[city] = (count[city] ?? 0) + 1;
+      info[city] = ('${o['country_code'] ?? ''}', city);
+    }
+    final cities = count.keys.toList()..sort((a, b) => count[b]!.compareTo(count[a]!));
+    return [for (final c in cities) info[c]!];
+  }
+
   @override
   Widget build(BuildContext context) {
     final wide = isWide(context);
@@ -41,10 +56,11 @@ class HomeScreen extends StatelessWidget {
     return ColoredBox(
       color: pageBg,
       child: FutureBuilder(
-        future: Future.wait([App.repo.settings(), App.repo.get('summary.json')]),
+        future: Future.wait([App.repo.settings(), App.repo.get('summary.json'), App.repo.catalog(App.prefs.airports)]),
         builder: (context, snap) {
           final settings = snap.data?[0] as Json?;
           final summary = snap.data?[1] as Json?;
+          final places = _places((snap.data?[2] as List<Json>?) ?? const []);
           final hours = _value(settings, 'SEL-08', 8);
           final maxPrice = _value(settings, 'JOB-09', 150);
           final n = NumberFormat.decimalPattern('it');
@@ -103,40 +119,92 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: Sp.lg + 4),
                     Wrap(alignment: WrapAlignment.center, spacing: Sp.sm, runSpacing: Sp.sm, children: [
                       _Stat('${n.format(summary['offers'] ?? 0)} offerte'),
-                      _Stat('${summary['destinations'] ?? 0} mete'),
+                      _Stat('${places.isNotEmpty ? places.length : summary['destinations'] ?? 0} mete'),
                       if (when.isNotEmpty) _Stat('aggiornate $when', icon: Icons.schedule),
                     ]),
                   ],
                 ]),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(Sp.lg, Sp.xl, Sp.lg, Sp.xxl + Sp.lg),
+                padding: const EdgeInsets.fromLTRB(Sp.lg, Sp.xl, Sp.lg, 0),
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 600),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                    _Line(
-                      icon: Icons.event_available_rounded,
-                      color: indigo,
-                      bg: const Color(0xFFE8ECFB),
-                      lead: 'Non hai ferie?',
-                      text: 'Cerchiamo noi ogni sera per te: weekend, weekend lunghi o ponti per sfruttare '
-                          'ogni ora al meglio, con almeno ${num1(hours)} ore sul posto.',
+                    Reveal(
+                      key: const ValueKey('line1'),
+                      child: _Line(
+                        icon: Icons.event_available_rounded,
+                        color: indigo,
+                        bg: const Color(0xFFE8ECFB),
+                        lead: 'Non hai ferie?',
+                        text: 'Cerchiamo noi ogni sera per te: weekend, weekend lunghi o ponti per sfruttare '
+                            'ogni ora al meglio, con almeno ${num1(hours)} ore sul posto.',
+                      ),
                     ),
-                    _Line(
-                      icon: Icons.flight_takeoff_rounded,
-                      color: green,
-                      bg: greenBg,
-                      lead: 'Da Verona, Bergamo e Treviso.',
-                      text: 'Solo voli convenienti, sotto i ${num1(maxPrice)}\u00A0€ andata e ritorno.',
+                    Reveal(
+                      key: const ValueKey('line2'),
+                      delay: const Duration(milliseconds: 90),
+                      child: _Line(
+                        icon: Icons.flight_takeoff_rounded,
+                        color: green,
+                        bg: greenBg,
+                        lead: 'Da Verona, Bergamo e Treviso.',
+                        text: 'Solo voli convenienti, sotto i ${num1(maxPrice)} € andata e ritorno.',
+                      ),
                     ),
-                    const _Line(
-                      icon: Icons.local_fire_department_rounded,
-                      color: orange,
-                      bg: orangeBg,
-                      lead: 'E per chi decide al volo,',
-                      text: 'le Pazzie: weekend sotto i 50\u00A0€.',
+                    const Reveal(
+                      key: ValueKey('line3'),
+                      delay: Duration(milliseconds: 180),
+                      child: _Line(
+                        icon: Icons.local_fire_department_rounded,
+                        color: orange,
+                        bg: orangeBg,
+                        lead: 'E per chi decide al volo,',
+                        text: 'le Pazzie: weekend sotto i 50 €.',
+                      ),
                     ),
-                    const SizedBox(height: Sp.xl),
+                    const SizedBox(height: Sp.md),
+                    const Reveal(
+                      key: ValueKey('countdown'),
+                      delay: Duration(milliseconds: 270),
+                      child: WeekendCountdown(),
+                    ),
+                  ]),
+                ),
+              ),
+              // The destinations within reach, on two bands sliding in opposite directions.
+              Reveal(
+                key: const ValueKey('places'),
+                delay: const Duration(milliseconds: 360),
+                child: places.length < 6
+                    ? const SizedBox(height: Sp.xl)
+                    : Padding(
+                        padding: const EdgeInsets.only(top: Sp.xxl),
+                        child: Column(children: [
+                          Text('${places.length} mete a portata di weekend',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(fontSize: Fs.title, fontWeight: FontWeight.w700, color: ink)),
+                          const SizedBox(height: Sp.xs),
+                          const Text('da Verona, Bergamo e Treviso',
+                              textAlign: TextAlign.center, style: TextStyle(fontSize: Fs.small, color: muted)),
+                          const SizedBox(height: Sp.md),
+                          Marquee(children: [
+                            for (final (code, city) in places.take((places.length / 2).ceil()))
+                              PlaceChip(code: code, city: city),
+                          ]),
+                          const SizedBox(height: Sp.sm),
+                          Marquee(reverse: true, speed: 22, children: [
+                            for (final (code, city) in places.skip((places.length / 2).ceil()))
+                              PlaceChip(code: code, city: city),
+                          ]),
+                        ]),
+                      ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(Sp.lg, Sp.xxl, Sp.lg, Sp.xxl + Sp.lg),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 600),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
                     const Text('Dove vai questo weekend?',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -162,28 +230,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: Sp.xxl + Sp.sm),
-                    // The closing line, slanted like a sticker.
-                    Center(
-                      child: Transform.rotate(
-                        angle: -0.07,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: Sp.xl, vertical: Sp.sm + 2),
-                          decoration: BoxDecoration(
-                            color: orange,
-                            borderRadius: BorderRadius.circular(Rd.sm),
-                            boxShadow: [
-                              BoxShadow(color: orange.withValues(alpha: 0.3), blurRadius: 16, offset: const Offset(0, 6)),
-                            ],
-                          ),
-                          child: const Text('Non hai più scuse!',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: Fs.headline,
-                                  fontWeight: FontWeight.w800,
-                                  letterSpacing: 0.2)),
-                        ),
-                      ),
-                    ),
+                    // The closing line, slanted like a sticker, with a little wobble now and then.
+                    const Center(child: _Sticker()),
                   ]),
                 ),
               ),
@@ -193,6 +241,46 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+/// "Non hai più scuse!": a slanted sticker that gives a small wobble every few seconds.
+class _Sticker extends StatefulWidget {
+  const _Sticker();
+
+  @override
+  State<_Sticker> createState() => _StickerState();
+}
+
+class _StickerState extends State<_Sticker> with SingleTickerProviderStateMixin {
+  late final _c = AnimationController(vsync: this, duration: const Duration(milliseconds: 4200))..repeat();
+
+  @override
+  void dispose() {
+    _c.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => AnimatedBuilder(
+        animation: _c,
+        builder: (context, child) {
+          // Still most of the time; a short damped swing in the last 15% of each cycle.
+          final t = ((_c.value - 0.85) / 0.15).clamp(0.0, 1.0);
+          final swing = math.sin(t * math.pi * 4) * (1 - t) * 0.05;
+          return Transform.rotate(angle: -0.07 + swing, child: child);
+        },
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: Sp.xl, vertical: Sp.sm + 2),
+          decoration: BoxDecoration(
+            color: orange,
+            borderRadius: BorderRadius.circular(Rd.sm),
+            boxShadow: [BoxShadow(color: orange.withValues(alpha: 0.3), blurRadius: 16, offset: const Offset(0, 6))],
+          ),
+          child: const Text('Non hai più scuse!',
+              style: TextStyle(
+                  color: Colors.white, fontSize: Fs.headline, fontWeight: FontWeight.w800, letterSpacing: 0.2)),
+        ),
+      );
 }
 
 /// A live figure under the slogan, on a translucent pill.
@@ -317,12 +405,28 @@ class _GlobePainter extends CustomPainter {
       ..color = Colors.white.withValues(alpha: 0.35);
 
     _stars(canvas, size);
+    // A far cloud drifts behind the globe, a near one passes in front, slower.
+    _cloud(canvas, size, speed: 1, y: 0.22, scale: 0.75, alpha: 0.35);
     // Far half of the orbit, then the plane if it is behind the globe.
     _dashed(canvas, orbitPath(math.pi, 2 * math.pi), orbitPaint);
     if (behind) _plane(canvas, orbit, theta, a, b, 0.75);
     _globe(canvas, c, r);
     _dashed(canvas, orbitPath(0, math.pi), orbitPaint..color = Colors.white.withValues(alpha: 0.6));
     if (!behind) _plane(canvas, orbit, theta, a, b, 1);
+    _cloud(canvas, size, speed: -1, y: 0.8, scale: 1, alpha: 0.9, phase: 0.4);
+  }
+
+  /// A soft cartoon cloud crossing the drawing once per orbit (speed ±1), wrapping around.
+  void _cloud(Canvas canvas, Size size,
+      {required double speed, required double y, required double scale, required double alpha, double phase = 0}) {
+    final w = 54 * scale, span = size.width + 2 * w;
+    final x = ((t * speed + phase) % 1) * span - w;
+    final base = Offset(x, size.height * y);
+    final p = Paint()..color = Colors.white.withValues(alpha: alpha);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(Rect.fromLTWH(base.dx, base.dy, w, 14 * scale), Radius.circular(7 * scale)), p);
+    canvas.drawCircle(base + Offset(w * 0.32, 2 * scale), 11 * scale, p);
+    canvas.drawCircle(base + Offset(w * 0.6, 0), 14 * scale, p);
   }
 
   void _stars(Canvas canvas, Size size) {

@@ -86,7 +86,7 @@ class _MapScreenState extends State<MapScreen> {
             future: _loading,
             builder: (context, snap) {
               if (snap.connectionState != ConnectionState.done) {
-                return const Center(child: CircularProgressIndicator(color: Colors.white));
+                return const Loading();
               }
               final (land, all, catalog) = snap.data!;
               // Months come from the offers in hand: the scan depth decides the choice.
