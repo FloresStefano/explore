@@ -67,6 +67,26 @@ class HomeScreen extends StatelessWidget {
           final maxPrice = _value(settings, 'JOB-09', 150);
           final n = NumberFormat.decimalPattern('it');
           final when = _when(summary?['run_at'] as String?);
+          final lines = <(LineArt, String, String)>[
+            (
+              LineArt.calendar,
+              'Non hai ferie?',
+              'Ogni sera cerchiamo per te weekend, weekend lunghi e ponti, contando feste, santi patroni '
+                  'e chiusure delle scuole: ogni viaggio ti lascia almeno ${num1(hours)} ore nette sul posto.',
+            ),
+            (
+              LineArt.routes,
+              'Da Verona, Bergamo e Treviso.',
+              'Solo voli diretti e convenienti, sotto i ${num1(maxPrice)}\u00A0€ andata e ritorno: Ryanair, '
+                  'Wizz Air, Volotea, easyJet e le altre compagnie, tutte nella stessa lista.',
+            ),
+            (
+              LineArt.ticket,
+              'E per chi decide al volo,',
+              'le Pazzie: weekend, weekend lunghi e ponti sotto i 50\u00A0€, raccontati dall\'intelligenza '
+                  'artificiale in una classifica che parte dal più vicino.',
+            ),
+          ];
           return SingleChildScrollView(
             child: Column(children: [
               // Hero: the plane over the paper-cut landscape, the brand bar on the sky (phones).
@@ -142,33 +162,12 @@ class HomeScreen extends StatelessWidget {
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 600),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                    Reveal(
-                      key: const ValueKey('line1'),
-                      child: _Line(
-                        art: LineArt.calendar,
-                        lead: 'Non hai ferie?',
-                        text: 'Cerchiamo noi ogni sera per te: weekend, weekend lunghi o ponti per sfruttare '
-                            'ogni ora al meglio, con almeno ${num1(hours)} ore sul posto.',
+                    for (final (i, line) in lines.indexed)
+                      Reveal(
+                        key: ValueKey('line$i'),
+                        delay: Duration(milliseconds: 90 * i),
+                        child: _Line(art: line.$1, lead: line.$2, text: line.$3, all: lines),
                       ),
-                    ),
-                    Reveal(
-                      key: const ValueKey('line2'),
-                      delay: const Duration(milliseconds: 90),
-                      child: _Line(
-                        art: LineArt.routes,
-                        lead: 'Da Verona, Bergamo e Treviso.',
-                        text: 'Solo voli convenienti, sotto i ${num1(maxPrice)} € andata e ritorno.',
-                      ),
-                    ),
-                    const Reveal(
-                      key: ValueKey('line3'),
-                      delay: Duration(milliseconds: 180),
-                      child: _Line(
-                        art: LineArt.ticket,
-                        lead: 'E per chi decide al volo,',
-                        text: 'le Pazzie: weekend sotto i 50 €.',
-                      ),
-                    ),
                     const SizedBox(height: Sp.md),
                     const Reveal(
                       key: ValueKey('countdown'),
@@ -312,30 +311,60 @@ class _Stat extends StatelessWidget {
 }
 
 class _Line extends StatelessWidget {
-  const _Line({required this.art, required this.lead, required this.text});
+  const _Line({required this.art, required this.lead, required this.text, required this.all});
   final LineArt art;
   final String lead, text;
 
+  /// All the blocks: each one takes the height of the tallest, so the three are equal.
+  final List<(LineArt, String, String)> all;
+
+  static const _style = TextStyle(fontFamily: 'Jakarta', fontSize: Fs.body + 1, height: 1.5, color: muted);
+  static const _pad = Sp.lg + 2, _art = 52.0, _gap = Sp.lg;
+
+  TextSpan _span(String lead, String text) => TextSpan(children: [
+        TextSpan(text: '$lead ', style: const TextStyle(fontWeight: FontWeight.w700, color: ink)),
+        TextSpan(text: text),
+      ], style: _style);
+
   @override
   Widget build(BuildContext context) {
+    final scaler = MediaQuery.textScalerOf(context);
     return Padding(
       padding: const EdgeInsets.only(bottom: Sp.md),
-      child: WhiteCard(
-        padding: const EdgeInsets.all(Sp.lg + 2),
-        child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          LineArtTile(art),
-          const SizedBox(width: Sp.lg),
-          Expanded(
-            child: Text.rich(
-              TextSpan(children: [
-                TextSpan(text: '$lead ', style: const TextStyle(fontWeight: FontWeight.w700, color: ink)),
-                TextSpan(text: text),
+      child: LayoutBuilder(builder: (context, box) {
+        final width = box.maxWidth - 2 * _pad - _art - _gap;
+        var tallest = _art;
+        for (final (_, l, t) in all) {
+          final tp = TextPainter(text: _span(l, t), textDirection: TextDirection.ltr, textScaler: scaler)
+            ..layout(maxWidth: width);
+          tallest = math.max(tallest, tp.height);
+          tp.dispose();
+        }
+        return Container(
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(Rd.xl),
+            boxShadow: shadowSm,
+          ),
+          child: CustomPaint(
+            painter: const SwooshPainter(),
+            child: Padding(
+              padding: const EdgeInsets.all(_pad),
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                LineArtTile(art),
+                const SizedBox(width: _gap),
+                Expanded(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(minHeight: tallest),
+                    child: Text.rich(_span(lead, text)),
+                  ),
+                ),
               ]),
-              style: const TextStyle(fontSize: Fs.body + 1, height: 1.5, color: muted),
             ),
           ),
-        ]),
-      ),
+        );
+      }),
     );
   }
 }

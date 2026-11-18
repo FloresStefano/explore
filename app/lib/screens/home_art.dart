@@ -21,6 +21,44 @@ class LineArtTile extends StatelessWidget {
       );
 }
 
+/// Barely-there background of the Home blocks: a field of blue with a white trail sweeping in
+/// from the left and ending at the tail of a white plane flying up to the right. Everything is
+/// measured on the card height and anchored to the right edge, so it never stretches.
+class SwooshPainter extends CustomPainter {
+  const SwooshPainter({this.color = const Color(0xFF4F8CCB), this.opacity = 0.085});
+  final Color color;
+  final double opacity;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width, h = size.height;
+    final len = h * 0.95; // plane length
+    const angle = 0.95; // nose up and to the right
+    final nose = Offset(math.sin(angle), -math.cos(angle));
+    final plane = Offset(w - h * 0.5, h * 0.44);
+    final tail = plane - nose * (len * 0.44);
+    final field = Path()
+      ..moveTo(tail.dx - h * 1.25, -2)
+      ..cubicTo(tail.dx - h * 1.05, h * 0.55, tail.dx - h * 0.45, tail.dy + 2, tail.dx, tail.dy)
+      ..cubicTo(tail.dx - h * 0.12, tail.dy + h * 0.18, tail.dx - h * 0.32, h * 0.9, tail.dx - h * 0.48, h + 2)
+      ..lineTo(w + 2, h + 2)
+      ..lineTo(w + 2, -2)
+      ..close();
+    canvas.drawPath(field, Paint()..color = color.withValues(alpha: opacity));
+    // The plane is the card's own white, cut out of the blue.
+    canvas.save();
+    canvas.translate(plane.dx, plane.dy);
+    canvas.rotate(angle);
+    canvas.scale(len / 230);
+    canvas.translate(-100, -115);
+    canvas.drawPath(PlaneArt.silhouette, Paint()..color = Colors.white);
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(SwooshPainter old) => old.color != color || old.opacity != opacity;
+}
+
 final _soft = Paint()
   ..color = const Color(0xFF0B1E45).withValues(alpha: 0.16)
   ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2.5);
