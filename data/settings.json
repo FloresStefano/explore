@@ -275,9 +275,9 @@
   {
    "id": "JOB-08",
    "name": "Orario del job",
-   "value": "23 5 * * *",
+   "value": "23 20 * * *",
    "unit": "cron UTC",
-   "note": "Ogni giorno alle 05:23 UTC (06:23 ora italiana, 07:23 con l'ora legale); deve coincidere con .github/workflows/daily.yml",
+   "note": "Ogni sera alle 20:23 UTC (21:23 ora italiana, 22:23 con l'ora legale); deve coincidere con .github/workflows/daily.yml",
    "editable": "config"
   },
   {
