@@ -61,10 +61,12 @@ class CrazyScreen extends StatelessWidget {
         ),
         child: FutureBuilder(
           key: ValueKey(App.prefs.airports.join()),
-          future: App.repo.catalog(App.prefs.airports),
+          future: Future.wait([App.repo.catalog(App.prefs.airports), App.repo.get('crazy.json')]),
           builder: (context, snap) {
             if (snap.connectionState != ConnectionState.done) return const Loading();
-            final catalog = snap.data ?? const <Json>[];
+            final catalog = (snap.data?[0] as List<Json>?) ?? const <Json>[];
+            // Texts written ahead by the daily job: usually nothing to wait for.
+            final ready = ((snap.data?[1] as Json?)?['items'] as Json?) ?? const <String, dynamic>{};
             final list = crazyOffers(catalog);
             if (list.isEmpty) {
               return ListView(padding: const EdgeInsets.fromLTRB(16, 4, 16, 24), children: const [
@@ -83,14 +85,17 @@ class CrazyScreen extends StatelessWidget {
                   'price': o['price'],
                 },
             ];
+            final allReady = list.every((o) => ready.containsKey(offerId(o)));
             return FutureBuilder(
-              future: App.ai.crazy(request),
+              // Only when the job has not written some text yet (e.g. new offers) ask the Worker.
+              future: allReady ? Future.value(<String, dynamic>{}) : App.ai.crazy(request),
               builder: (context, ai) {
                 final texts = <String, Json>{
+                  for (final e in ready.entries) e.key: e.value as Json,
                   for (final x in ((ai.data?['items'] as List?) ?? const []).cast<Json>()) '${x['id']}': x,
                 };
-                final writing = ai.connectionState != ConnectionState.done;
-                final failed = !writing && (ai.data == null || ai.data!.containsKey('error'));
+                final writing = !allReady && ai.connectionState != ConnectionState.done;
+                final failed = !allReady && !writing && (ai.data == null || ai.data!.containsKey('error'));
                 return ResponsiveList(
                   minItemWidth: 420,
                   header: [

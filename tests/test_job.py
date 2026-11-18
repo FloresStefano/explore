@@ -135,3 +135,17 @@ class ConfigTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class CrazyTest(unittest.TestCase):
+    def test_texts_cover_every_airport_combination(self):
+        from job import crazy
+
+        def o(origin, out, price, kind="weekend"):
+            return {"origin": origin, "destination": "BCN", "out_date": out, "ret_date": out, "price": price, "type": kind}
+
+        offers = [o("BGY", f"2026-12-{d:02d}", 40) for d in range(1, 31)]  # 30 from Bergamo
+        offers += [o("VRN", "2026-12-31", 30), o("TSF", "2026-12-31", 60), o("TSF", "2026-12-30", 20, "ponte")]
+        ids = {crazy.offer_id(x) for x in crazy.needed(offers, ["VRN", "BGY", "TSF"])}
+        self.assertIn("VRN-BCN-2026-12-31-2026-12-31", ids)  # top of the Verona-only ranking
+        self.assertEqual(len(ids), 31)  # over 50 euro and non-weekends never appear

@@ -15,7 +15,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from . import places
+from . import crazy, places
 from .calendar_it import Calendar, Window, bridges, classify, day_marks, load_patrons, search_pairs
 from .history import History
 from .model import Leg, Offer
@@ -491,6 +491,13 @@ def main(argv: list[str] | None = None) -> None:
     top = sorted(best.values(), key=lambda o: o["price_per_hour"])[: s["IMP-04"]]
     write_json(DATA / "top.json", {"updated": today.isoformat(), "offers": top})
     write_json(DATA / "summary.json", summarize(store, top, meta, today))
+    # Pazzie: the AI texts are written here, so the app shows them without waiting.
+    if j.get("ai_url"):
+        all_offers = [o for m in store.values() for p in m.values() for o in p["offers"]]
+        write_json(DATA / "crazy.json", {
+            "updated": today.isoformat(),
+            **crazy.publish(all_offers, j["airports"], read_json(DATA / "crazy.json", {}), j["ai_url"], meta["warnings"]),
+        })
 
     publish_routes(s, fr, today, airports, store, meta)
     write_json(DATA / "settings.json", s.published())

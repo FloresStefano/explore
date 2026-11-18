@@ -289,6 +289,8 @@ regions = ["veneto"]
 context = "Verona"
 # Aeroporti con compagnie oltre a Ryanair, su cui cercare anche con Skiplagged.
 skiplagged_airports = ["VRN", "BGY", "TSF"]
+# Worker AI su Cloudflare (pubblico, senza chiavi): il job ci fa scrivere i testi delle Pazzie.
+ai_url = "https://weekend-ai.explore-ai.workers.dev"
 market = "it-it"
 country = "IT"
 language = "it"
