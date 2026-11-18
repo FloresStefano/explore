@@ -1,12 +1,12 @@
 {
- "run_at": "2026-11-18T11:35:39+00:00",
+ "run_at": "2026-11-18T12:02:08+00:00",
  "generated": "2026-11-18",
- "offers": 2072,
- "destinations": 77,
- "countries": 29,
+ "offers": 1799,
+ "destinations": 75,
+ "countries": 28,
  "by_type": {
   "weekend+": {
-   "offers": 1379,
+   "offers": 1236,
    "min_price": 29.98,
    "cheapest": {
     "from": "VRN",
@@ -25,22 +25,22 @@
    }
   },
   "weekend": {
-   "offers": 389,
-   "min_price": 33.98,
+   "offers": 259,
+   "min_price": 37.98,
    "cheapest": {
     "from": "VRN",
     "to": "Tirana",
     "country": "Albania",
-    "out": "2026-12-11",
-    "ret": "2026-12-12",
+    "out": "2027-01-16",
+    "ret": "2027-01-17",
     "nights": 1,
     "type": "weekend",
     "leave_days": 0,
-    "price": 33.98,
+    "price": 37.98,
     "airlines": [
      "Ryanair"
     ],
-    "useful_hours": 4.2
+    "useful_hours": 9.9
    }
   },
   "ponte": {
@@ -66,7 +66,7 @@
  "top_countries": [
   {
    "country": "Italia",
-   "offers": 427,
+   "offers": 386,
    "min_price": 29.98,
    "cities": [
     "Lamezia",
@@ -79,27 +79,27 @@
     "Napoli"
    ],
    "types": {
-    "weekend+": 317,
-    "weekend": 57,
+    "weekend+": 291,
+    "weekend": 42,
     "ponte": 53
    }
   },
   {
    "country": "Albania",
-   "offers": 126,
+   "offers": 110,
    "min_price": 29.98,
    "cities": [
     "Tirana"
    ],
    "types": {
-    "weekend": 9,
-    "weekend+": 88,
-    "ponte": 29
+    "weekend+": 76,
+    "ponte": 29,
+    "weekend": 5
    }
   },
   {
    "country": "Francia",
-   "offers": 103,
+   "offers": 82,
    "min_price": 29.98,
    "cities": [
     "Marsiglia",
@@ -107,27 +107,27 @@
     "Parigi"
    ],
    "types": {
-    "weekend+": 72,
-    "weekend": 19,
+    "weekend+": 61,
+    "weekend": 9,
     "ponte": 12
    }
   },
   {
    "country": "Malta",
-   "offers": 75,
+   "offers": 68,
    "min_price": 31.98,
    "cities": [
     "Malta"
    ],
    "types": {
-    "weekend+": 54,
+    "weekend+": 47,
     "ponte": 12,
     "weekend": 9
    }
   },
   {
    "country": "Polonia",
-   "offers": 173,
+   "offers": 157,
    "min_price": 33.98,
    "cities": [
     "Poznań",
@@ -139,14 +139,14 @@
     "Lodz"
    ],
    "types": {
-    "weekend+": 108,
-    "weekend": 31,
+    "weekend+": 104,
+    "weekend": 19,
     "ponte": 34
    }
   },
   {
    "country": "Regno Unito",
-   "offers": 118,
+   "offers": 107,
    "min_price": 36.9,
    "cities": [
     "Londra",
@@ -157,68 +157,68 @@
     "Edimburgo"
    ],
    "types": {
-    "weekend+": 75,
+    "weekend+": 71,
     "ponte": 30,
-    "weekend": 13
-   }
-  },
-  {
-   "country": "Austria",
-   "offers": 55,
-   "min_price": 37.65,
-   "cities": [
-    "Vienna"
-   ],
-   "types": {
-    "weekend": 19,
-    "weekend+": 24,
-    "ponte": 12
+    "weekend": 6
    }
   },
   {
    "country": "Spagna",
-   "offers": 229,
+   "offers": 197,
    "min_price": 38.98,
    "cities": [
     "Valencia",
     "Alicante",
     "Madrid",
     "Palma",
-    "Barcellona",
     "Saragozza",
     "Malaga",
+    "Barcellona",
     "Siviglia"
    ],
    "types": {
-    "weekend": 55,
     "ponte": 24,
-    "weekend+": 150
+    "weekend": 34,
+    "weekend+": 139
    }
   },
   {
    "country": "Belgio",
-   "offers": 62,
+   "offers": 56,
    "min_price": 38.98,
    "cities": [
     "Charleroi"
    ],
    "types": {
-    "weekend+": 43,
-    "weekend": 8,
+    "weekend+": 40,
+    "weekend": 5,
     "ponte": 11
    }
   },
   {
    "country": "Croazia",
-   "offers": 33,
+   "offers": 28,
    "min_price": 39.3,
    "cities": [
     "Zagreb"
    ],
    "types": {
     "weekend+": 20,
-    "weekend": 6,
-    "ponte": 7
+    "ponte": 7,
+    "weekend": 1
+   }
+  },
+  {
+   "country": "Ungheria",
+   "offers": 62,
+   "min_price": 39.98,
+   "cities": [
+    "Budapest"
+   ],
+   "types": {
+    "weekend+": 35,
+    "ponte": 10,
+    "weekend": 17
    }
   }
  ],
@@ -557,10 +557,8 @@
   }
  ],
  "airlines": {
-  "Ryanair": 2070,
-  "Wizz Air Malta": 6,
-  "AJet": 2,
-  "Pegasus Airlines": 1
+  "Ryanair": 1799,
+  "Wizz Air Malta": 6
  },
  "sources": {
   "ryanair": {

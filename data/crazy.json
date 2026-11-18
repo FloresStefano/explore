@@ -2,21 +2,9 @@
  "updated": "2026-11-18",
  "version": 2,
  "items": {
-  "BGY-KTW-2026-11-28-2026-11-29": {
-   "title": "Polonia industriale, viaggi in miniera",
-   "text": "Si parte sabato 28 novembre alle 20:50 e si torna a casa domenica 29 novembre alle 14:45 da Bergamo per Katowice, in Polonia. 3 ore nette da godersi. Il prezzo è di 44,98 euro."
-  },
   "TSF-PMI-2026-12-04-2026-12-06": {
    "title": "Palma, mare e tapas low cost",
    "text": "Da Treviso si parte venerdì 4 dicembre alle 21:10 e si torna a casa domenica 6 dicembre alle 14:45 a Palma di Maiorca, in Spagna. 17 ore nette da godersi. Il prezzo è di 40,98 euro."
-  },
-  "TSF-BVA-2026-12-05-2026-12-06": {
-   "title": "Parigi romantica, weekend in volo",
-   "text": "Da Treviso si parte sabato 5 dicembre alle 20:00 e si torna a casa domenica 6 dicembre alle 11:45 a Parigi, in Francia. Il prezzo è di 43,54 euro."
-  },
-  "VRN-TIA-2026-12-11-2026-12-12": {
-   "title": "Tirana, città dei contrasti",
-   "text": "Da Verona si parte venerdì 11 dicembre alle 22:05 e si torna a casa sabato 12 dicembre alle 15:55 a Tirana, in Albania. 4 ore nette da godersi. Il prezzo è di 33,98 euro."
   },
   "TSF-PMI-2026-12-11-2026-12-13": {
    "title": "Palma, mare e tapas low cost",
@@ -25,22 +13,6 @@
   "VRN-BRI-2026-12-11-2026-12-13": {
    "title": "Bari, città di mare",
    "text": "Si parte venerdì 11 dicembre alle 22:30 e si torna a casa domenica 13 dicembre alle 22:40 da Verona per Bari. 25 ore nette da godersi. Il prezzo è di 42,99 euro."
-  },
-  "BGY-AGP-2026-12-11-2026-12-12": {
-   "title": "Malaga, sole e cultura",
-   "text": "Si parte venerdì 11 dicembre alle 18:45 e si torna a casa sabato 12 dicembre alle 13:00 da Bergamo per Malaga, in Spagna. Il prezzo è di 46,64 euro."
-  },
-  "BGY-VLC-2026-12-11-2026-12-12": {
-   "title": "Valencia, città degli artisti",
-   "text": "Da Bergamo si parte venerdì 11 dicembre alle 20:40 e si torna a casa sabato 12 dicembre alle 14:25 a Valencia, in Spagna. 3 ore nette da godersi. Il prezzo è di 47,41 euro."
-  },
-  "TSF-BVA-2026-12-12-2026-12-13": {
-   "title": "Parigi romantica, weekend in volo",
-   "text": "Da Treviso si parte sabato 12 dicembre alle 20:00 e si torna a casa domenica 13 dicembre alle 11:45 a Parigi, in Francia. Il prezzo è di 40,98 euro."
-  },
-  "BGY-REG-2026-12-12-2026-12-13": {
-   "title": "Reggio Calabria, città di mare",
-   "text": "Da Bergamo si parte sabato 12 dicembre alle 13:00 e si torna a casa domenica 13 dicembre alle 13:45 a Reggio Calabria. 8 ore nette da godersi. Il prezzo è di 45,33 euro."
   },
   "TSF-MLA-2026-12-12-2026-12-13": {
    "title": "Malta, isola del sole",
@@ -54,10 +26,6 @@
    "title": "Cagliari, sole e tradizione",
    "text": "Da Bergamo si parte sabato 19 dicembre alle 06:05 e si torna a casa domenica 20 dicembre alle 10:30 a Cagliari. 13 ore nette da godersi. Il prezzo è di 47,98 euro."
   },
-  "BGY-PSR-2027-01-02-2027-01-03": {
-   "title": "Pescara, mare e relax",
-   "text": "Da Bergamo si parte sabato 2 gennaio alle 12:10 e si torna a casa domenica 3 gennaio alle 10:15 a Pescara. 8 ore nette da godersi. Il prezzo è di 47,99 euro."
-  },
   "TSF-MLA-2027-01-09-2027-01-10": {
    "title": "Malta, isola del sole",
    "text": "Da Treviso si parte sabato 9 gennaio alle 11:00 e si torna a casa domenica 10 gennaio alle 16:35 a Malta. 13 ore nette da godersi. Il prezzo è di 39,98 euro."
@@ -66,29 +34,9 @@
    "title": "Charleroi, città industriale",
    "text": "Da Bergamo si parte sabato 9 gennaio alle 08:35 e si torna a casa domenica 10 gennaio alle 15:35 a Charleroi, in Belgio. 15 ore nette da godersi. Il prezzo è di 40,33 euro."
   },
-  "BGY-VIE-2027-01-15-2027-01-16": {
-   "title": "Vienna, città della musica",
-   "text": "Da Bergamo si parte venerdì 15 gennaio alle 21:00 e si torna a casa sabato 16 gennaio alle 15:25 a Vienna, in Austria. 4 ore nette da godersi. Il prezzo è di 37,65 euro."
-  },
-  "TSF-PRG-2027-01-15-2027-01-16": {
-   "title": "Praga, città dei castelli",
-   "text": "Da Treviso si parte venerdì 15 gennaio alle 19:45 e si torna a casa sabato 16 gennaio alle 11:45 a Praga, in Repubblica Ceca. Il prezzo è di 39,98 euro."
-  },
   "BGY-CLJ-2027-01-15-2027-01-17": {
    "title": "Cluj, città medievale",
    "text": "Da Bergamo si parte venerdì 15 gennaio alle 20:20 e si torna a casa domenica 17 gennaio alle 23:55 a Cluj, in Romania. 27 ore nette da godersi. Il prezzo è di 41,98 euro."
-  },
-  "BGY-CPH-2027-01-15-2027-01-16": {
-   "title": "Copenhagen, città dei canali",
-   "text": "Da Bergamo si parte venerdì 15 gennaio alle 19:45 e si torna a casa sabato 16 gennaio alle 18:35 a Copenhagen, in Danimarca. 6 ore nette da godersi. Il prezzo è di 46,98 euro."
-  },
-  "BGY-BRI-2027-01-15-2027-01-16": {
-   "title": "Bari, città di mare",
-   "text": "Da Bergamo si parte venerdì 15 gennaio alle 21:10 e si torna a casa sabato 16 gennaio alle 18:30 a Bari. 7 ore nette da godersi. Il prezzo è di 48,98 euro."
-  },
-  "TSF-BUD-2027-01-15-2027-01-16": {
-   "title": "Budapest, città sul Danubio",
-   "text": "Da Treviso si parte venerdì 15 gennaio alle 20:30 e si torna a casa sabato 16 gennaio alle 14:55 a Budapest, in Ungheria. 4 ore nette da godersi. Il prezzo è di 49,98 euro."
   },
   "VRN-TIA-2027-01-16-2027-01-17": {
    "title": "Tirana, città dei contrasti",
@@ -97,10 +45,6 @@
   "BGY-GDN-2027-01-16-2027-01-17": {
    "title": "Danzica, città sul Baltico",
    "text": "Da Bergamo si parte sabato 16 gennaio alle 06:10 e si torna a casa domenica 17 gennaio alle 17:05 a Danzica, in Polonia. 18 ore nette da godersi. Il prezzo è di 39,98 euro."
-  },
-  "TSF-BVA-2027-01-16-2027-01-17": {
-   "title": "Parigi romantica, weekend in volo",
-   "text": "Da Treviso si parte sabato 16 gennaio alle 20:00 e si torna a casa domenica 17 gennaio alle 11:45 a Parigi, in Francia. Il prezzo è di 39,98 euro."
   },
   "TSF-MLA-2027-01-16-2027-01-17": {
    "title": "Malta, isola del sole",
@@ -118,25 +62,9 @@
    "title": "Varsavia, città della storia",
    "text": "Si parte venerdì 22 gennaio alle 19:00 e si torna a casa domenica 24 gennaio alle 16:15 da Bergamo per Varsavia, in Polonia. 18 ore nette da godersi. Il prezzo è di 41,98 euro."
   },
-  "BGY-CTA-2027-01-22-2027-01-23": {
-   "title": "Catania, città dell'Etna",
-   "text": "Da Bergamo si parte venerdì 22 gennaio alle 21:00 e si torna a casa sabato 23 gennaio alle 18:10 a Catania. 6 ore nette da godersi. Il prezzo è di 43,60 euro."
-  },
-  "BGY-VIE-2027-01-22-2027-01-23": {
-   "title": "Un sapore di Vienna",
-   "text": "Si parte venerdì 22 gennaio alle 21:00 e si torna a casa sabato 23 gennaio alle 15:25 da Bergamo per Vienna, Austria. 4 ore nette da godersi. 43,98 euro."
-  },
   "BGY-CLJ-2027-01-22-2027-01-24": {
    "title": "Castelli della Transilvania",
    "text": "Dalla pista di Bergamo si vola venerdì 22 gennaio alle 20:20 in Romania, a Cluj. Si torna a casa domenica 24 gennaio alle 23:55. 27 ore nette. 45,98 euro."
-  },
-  "BGY-CRL-2027-01-22-2027-01-23": {
-   "title": "Weekend a Bruxelles low cost",
-   "text": "Decolla da Bergamo per Charleroi, Belgio, venerdì 22 gennaio alle 21:10, si rientra sabato 23 gennaio alle 14:05. 3 ore nette. 47,98 euro."
-  },
-  "BGY-PMO-2027-01-23-2027-01-24": {
-   "title": "Mare e mandorle siciliane",
-   "text": "Dalla pista di Bergamo, sabato 23 gennaio alle 20:50 per Palermo, Sicilia. Si torna a casa domenica 24 gennaio alle 14:15. 3 ore nette. 39,98 euro."
   },
   "TSF-MLA-2027-01-23-2027-01-24": {
    "title": "Sole e mare maltese",
@@ -145,10 +73,6 @@
   "BGY-CRV-2027-01-23-2027-01-24": {
    "title": "Weekend nel sud Italia",
    "text": "Da Bergamo per Crotone, Calabria, sabato 23 gennaio alle 06:35, si ritorna domenica 24 gennaio alle 18:05. 19 ore nette. 49,45 euro."
-  },
-  "TSF-BVA-2027-01-23-2027-01-24": {
-   "title": "Love in the city of love",
-   "text": "Prenota subito un volo per Parigi: da Treviso sabato 23 gennaio alle 20:00 a casa domenica 24 gennaio alle 11:45. 49,98 euro."
   }
  },
  "model": "Cloudflare Workers AI"

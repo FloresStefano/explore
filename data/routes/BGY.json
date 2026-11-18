@@ -1544,9 +1544,9 @@
     "2026-11"
    ],
    "last_confirmed": "2026-11-18",
-   "name": "Istanbul Sabiha Gökçen International Airport",
-   "city": "Pendik, Istanbul",
-   "country": "Turchia",
+   "name": "Istanbul",
+   "city": "Istanbul",
+   "country": "Turkey",
    "country_code": "tr",
    "lat": 40.8986,
    "lon": 29.3092
