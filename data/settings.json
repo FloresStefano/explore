@@ -102,7 +102,7 @@
    "name": "Ponte: notti minime",
    "value": 2,
    "unit": "notti",
-   "note": "Il ponte contiene almeno una festività in un giorno feriale: nazionale, patrono o chiusura scolastica",
+   "note": "Il ponte unisce due giorni liberi con le ferie: a un estremo una festa infrasettimanale (nazionale, patrono o chiusura scolastica), all'altro un sabato o una domenica. Partire dopo le 18:00 conta come partire il giorno dopo",
    "editable": "config"
   },
   {
@@ -134,7 +134,7 @@
   {
    "id": "SEL-01",
    "name": "Ritorno: decollo non prima delle",
-   "value": "07:00",
+   "value": "09:00",
    "unit": "ora",
    "editable": "config"
   },
