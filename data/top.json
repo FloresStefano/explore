@@ -264,6 +264,49 @@
    "country_code": "pl"
   },
   {
+   "origin": "BGY",
+   "destination": "TIA",
+   "out_date": "2026-12-17",
+   "ret_date": "2026-12-20",
+   "nights": 3,
+   "type": "weekend+",
+   "leave_days": 1,
+   "leave_dates": [
+    "2026-12-18"
+   ],
+   "outbound": {
+    "from": "BGY",
+    "to": "TIA",
+    "flight": "W45020",
+    "airline": "Wizz Air Malta",
+    "departure": "2026-12-17T21:45+01:00",
+    "arrival": "2026-12-17T23:30+01:00"
+   },
+   "inbound": {
+    "from": "TIA",
+    "to": "BGY",
+    "flight": "W45019",
+    "airline": "Wizz Air Malta",
+    "departure": "2026-12-20T19:00+01:00",
+    "arrival": "2026-12-20T20:55+01:00"
+   },
+   "airlines": [
+    "Wizz Air Malta"
+   ],
+   "price": 41.0,
+   "currency": "EUR",
+   "fare": "tariffa minima Kiwi.com, prezzo indicativo",
+   "useful_hours": 37.0,
+   "price_per_hour": 1.11,
+   "unmissable": false,
+   "source": "kiwi",
+   "observed_at": "2026-11-18",
+   "link": "https://kiwi.com/u/2uqw953yp5",
+   "city": "Tirana",
+   "country": "Albania",
+   "country_code": "al"
+  },
+  {
    "origin": "VRN",
    "destination": "BRI",
    "city": "Bari",
@@ -436,6 +479,49 @@
    "country_code": "mt"
   },
   {
+   "origin": "TSF",
+   "destination": "TIA",
+   "out_date": "2026-12-10",
+   "ret_date": "2026-12-13",
+   "nights": 3,
+   "type": "weekend+",
+   "leave_days": 1,
+   "leave_dates": [
+    "2026-12-11"
+   ],
+   "outbound": {
+    "from": "TSF",
+    "to": "TIA",
+    "flight": "W45038",
+    "airline": "Wizz Air Malta",
+    "departure": "2026-12-10T19:00+01:00",
+    "arrival": "2026-12-10T20:30+01:00"
+   },
+   "inbound": {
+    "from": "TIA",
+    "to": "TSF",
+    "flight": "W45037",
+    "airline": "Wizz Air Malta",
+    "departure": "2026-12-13T16:35+01:00",
+    "arrival": "2026-12-13T18:15+01:00"
+   },
+   "airlines": [
+    "Wizz Air Malta"
+   ],
+   "price": 40.0,
+   "currency": "EUR",
+   "fare": "tariffa minima Kiwi.com, prezzo indicativo",
+   "useful_hours": 35.1,
+   "price_per_hour": 1.14,
+   "unmissable": false,
+   "source": "kiwi",
+   "observed_at": "2026-11-18",
+   "link": "https://kiwi.com/u/rusjwp54sp",
+   "city": "Tirana",
+   "country": "Albania",
+   "country_code": "al"
+  },
+  {
    "origin": "BGY",
    "destination": "CLJ",
    "city": "Cluj",
@@ -477,49 +563,6 @@
     "2026-12-14"
    ],
    "country_code": "ro"
-  },
-  {
-   "origin": "TSF",
-   "destination": "TIA",
-   "city": "Tirana",
-   "country": "Albania",
-   "out_date": "2026-12-10",
-   "ret_date": "2026-12-12",
-   "nights": 2,
-   "leave_days": 1,
-   "outbound": {
-    "from": "TSF",
-    "to": "TIA",
-    "flight": "FR1134",
-    "airline": "Ryanair",
-    "departure": "2026-12-10T18:05+01:00",
-    "arrival": "2026-12-10T19:35+01:00"
-   },
-   "inbound": {
-    "from": "TIA",
-    "to": "TSF",
-    "flight": "FR8400",
-    "airline": "Ryanair",
-    "departure": "2026-12-12T20:05+01:00",
-    "arrival": "2026-12-12T21:40+01:00"
-   },
-   "airlines": [
-    "Ryanair"
-   ],
-   "price": 29.98,
-   "currency": "EUR",
-   "fare": "base, senza bagaglio",
-   "useful_hours": 25.5,
-   "price_per_hour": 1.18,
-   "unmissable": false,
-   "source": "ryanair",
-   "observed_at": "2026-11-16",
-   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-10&dateIn=2026-12-12&isReturn=true&originIata=TSF&destinationIata=TIA",
-   "type": "weekend+",
-   "leave_dates": [
-    "2026-12-11"
-   ],
-   "country_code": "al"
   },
   {
    "origin": "BGY",
@@ -868,49 +911,6 @@
    "city": "Palermo",
    "country": "Italia",
    "country_code": "it"
-  },
-  {
-   "origin": "BGY",
-   "destination": "TIA",
-   "city": "Tirana",
-   "country": "Albania",
-   "out_date": "2026-12-12",
-   "ret_date": "2026-12-14",
-   "nights": 2,
-   "leave_days": 1,
-   "outbound": {
-    "from": "BGY",
-    "to": "TIA",
-    "flight": "FR8121",
-    "airline": "Ryanair",
-    "departure": "2026-12-12T05:45+01:00",
-    "arrival": "2026-12-12T07:30+01:00"
-   },
-   "inbound": {
-    "from": "TIA",
-    "to": "BGY",
-    "flight": "FR8350",
-    "airline": "Ryanair",
-    "departure": "2026-12-14T09:05+01:00",
-    "arrival": "2026-12-14T10:50+01:00"
-   },
-   "airlines": [
-    "Ryanair"
-   ],
-   "price": 35.98,
-   "currency": "EUR",
-   "fare": "base, senza bagaglio",
-   "useful_hours": 27.5,
-   "price_per_hour": 1.31,
-   "unmissable": false,
-   "source": "ryanair",
-   "observed_at": "2026-11-16",
-   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-12&dateIn=2026-12-14&isReturn=true&originIata=BGY&destinationIata=TIA",
-   "type": "weekend+",
-   "leave_dates": [
-    "2026-12-14"
-   ],
-   "country_code": "al"
   },
   {
    "origin": "BGY",
@@ -1576,6 +1576,49 @@
   },
   {
    "origin": "BGY",
+   "destination": "SOF",
+   "out_date": "2026-12-12",
+   "ret_date": "2026-12-14",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "leave_dates": [
+    "2026-12-14"
+   ],
+   "outbound": {
+    "from": "BGY",
+    "to": "SOF",
+    "flight": "W64352",
+    "airline": "Wizz Air",
+    "departure": "2026-12-12T08:20+01:00",
+    "arrival": "2026-12-12T11:20+02:00"
+   },
+   "inbound": {
+    "from": "SOF",
+    "to": "BGY",
+    "flight": "W64389",
+    "airline": "Wizz Air",
+    "departure": "2026-12-14T20:00+02:00",
+    "arrival": "2026-12-14T21:15+01:00"
+   },
+   "airlines": [
+    "Wizz Air"
+   ],
+   "price": 56.0,
+   "currency": "EUR",
+   "fare": "tariffa minima Kiwi.com, prezzo indicativo",
+   "useful_hours": 33.7,
+   "price_per_hour": 1.66,
+   "unmissable": false,
+   "source": "kiwi",
+   "observed_at": "2026-11-18",
+   "link": "https://kiwi.com/u/udg2yrw48y",
+   "city": "Sofia",
+   "country": "Bulgaria",
+   "country_code": "bg"
+  },
+  {
+   "origin": "BGY",
    "destination": "MAN",
    "city": "Manchester",
    "country": "Regno Unito",
@@ -2016,49 +2059,6 @@
     "2027-01-11"
    ],
    "country_code": "it"
-  },
-  {
-   "origin": "BGY",
-   "destination": "SOF",
-   "out_date": "2027-01-16",
-   "ret_date": "2027-01-18",
-   "nights": 2,
-   "type": "weekend+",
-   "leave_days": 1,
-   "leave_dates": [
-    "2027-01-18"
-   ],
-   "outbound": {
-    "from": "BGY",
-    "to": "SOF",
-    "flight": "FR3437",
-    "airline": "Ryanair",
-    "departure": "2027-01-16T07:20+01:00",
-    "arrival": "2027-01-16T10:20+02:00"
-   },
-   "inbound": {
-    "from": "SOF",
-    "to": "BGY",
-    "flight": "FR3438",
-    "airline": "Ryanair",
-    "departure": "2027-01-18T13:35+02:00",
-    "arrival": "2027-01-18T14:40+01:00"
-   },
-   "airlines": [
-    "Ryanair"
-   ],
-   "price": 48.85,
-   "currency": "EUR",
-   "fare": "base, senza bagaglio",
-   "useful_hours": 28.2,
-   "price_per_hour": 1.73,
-   "unmissable": false,
-   "source": "ryanair",
-   "observed_at": "2026-11-18",
-   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-16&dateIn=2027-01-18&isReturn=true&originIata=BGY&destinationIata=SOF",
-   "city": "Sofia",
-   "country": "Bulgaria",
-   "country_code": "bg"
   },
   {
    "origin": "BGY",

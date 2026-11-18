@@ -501,6 +501,21 @@
    "lon": 23.9711,
    "tz": "Europe/Riga"
   },
+  "SCV": {
+   "airlines": [
+    "Wizz Air Malta"
+   ],
+   "months": [
+    "2026-12"
+   ],
+   "last_confirmed": "2026-11-18",
+   "name": "Suceava Ștefan cel Mare International Airport",
+   "city": "Suceava",
+   "country_code": "ro",
+   "lat": 47.6875,
+   "lon": 26.3541,
+   "country": "Romania"
+  },
   "SDR": {
    "airlines": [
     "Ryanair"

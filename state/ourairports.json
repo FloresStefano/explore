@@ -16,6 +16,22 @@
    "country_code": "tr",
    "lat": 40.8986,
    "lon": 29.3092
+  },
+  "CRA": {
+   "code": "CRA",
+   "name": "Craiova International Airport",
+   "city": "Craiova",
+   "country_code": "ro",
+   "lat": 44.3181,
+   "lon": 23.8886
+  },
+  "SCV": {
+   "code": "SCV",
+   "name": "Suceava Ștefan cel Mare International Airport",
+   "city": "Suceava",
+   "country_code": "ro",
+   "lat": 47.6875,
+   "lon": 26.3541
   }
  }
 }

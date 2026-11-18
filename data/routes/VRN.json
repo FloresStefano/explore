@@ -3,12 +3,14 @@
  "destinations": {
   "BCN": {
    "airlines": [
+    "Volotea",
     "Volotea Airlines"
    ],
    "months": [
-    "2026-11"
+    "2026-11",
+    "2026-12"
    ],
-   "last_confirmed": "2026-11-17",
+   "last_confirmed": "2026-11-18",
    "name": "Barcellona El Prat",
    "city": "Barcellona",
    "country": "Spagna",
@@ -126,6 +128,7 @@
   "CTA": {
    "airlines": [
     "Ryanair",
+    "Volotea",
     "Wizz Air Malta"
    ],
    "months": [
@@ -181,9 +184,10 @@
     "easyJet"
    ],
    "months": [
-    "2026-11"
+    "2026-11",
+    "2026-12"
    ],
-   "last_confirmed": "2026-11-17",
+   "last_confirmed": "2026-11-18",
    "name": "Londra (Gatwick)",
    "city": "Londra",
    "country": "Regno Unito",
@@ -255,6 +259,22 @@
    "lon": 14.2908,
    "tz": "Europe/Rome"
   },
+  "OLB": {
+   "airlines": [
+    "Volotea"
+   ],
+   "months": [
+    "2026-12"
+   ],
+   "last_confirmed": "2026-11-18",
+   "name": "Olbia",
+   "city": "Olbia",
+   "country": "Italia",
+   "country_code": "it",
+   "lat": 40.8987,
+   "lon": 9.51763,
+   "tz": "Europe/Rome"
+  },
   "OPO": {
    "airlines": [
     "Ryanair"
@@ -272,15 +292,17 @@
   },
   "ORY": {
    "airlines": [
+    "Volotea",
     "Volotea Airlines"
    ],
    "months": [
-    "2026-11"
+    "2026-11",
+    "2026-12"
    ],
-   "last_confirmed": "2026-11-17",
-   "name": "Paris",
-   "city": "Paris",
-   "country": "France",
+   "last_confirmed": "2026-11-18",
+   "name": "Paris-Orly Airport",
+   "city": "Paris (Orly, Val-de-Marne)",
+   "country": "Francia",
    "country_code": "fr",
    "lat": 48.7295,
    "lon": 2.359
@@ -371,7 +393,8 @@
   },
   "TIA": {
    "airlines": [
-    "Ryanair"
+    "Ryanair",
+    "Wizz Air Malta"
    ],
    "months": [
     "2026-11",

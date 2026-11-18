@@ -501,6 +501,22 @@
    "lon": 12.6561,
    "tz": "Europe/Copenhagen"
   },
+  "CRA": {
+   "airlines": [
+    "Wizz Air Malta"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "last_confirmed": "2026-11-18",
+   "name": "Craiova International Airport",
+   "city": "Craiova",
+   "country_code": "ro",
+   "lat": 44.3181,
+   "lon": 23.8886,
+   "country": "Romania"
+  },
   "CRL": {
    "airlines": [
     "Ryanair"
@@ -541,6 +557,7 @@
   },
   "CTA": {
    "airlines": [
+    "Aeroitalia",
     "Ryanair"
    ],
    "months": [
@@ -772,7 +789,8 @@
   },
   "IAS": {
    "airlines": [
-    "Ryanair"
+    "Ryanair",
+    "Wizz Air Malta"
    ],
    "months": [
     "2026-11",
@@ -1602,7 +1620,8 @@
   },
   "SOF": {
    "airlines": [
-    "Ryanair"
+    "Ryanair",
+    "Wizz Air"
    ],
    "months": [
     "2026-11",
@@ -1697,7 +1716,8 @@
   },
   "TIA": {
    "airlines": [
-    "Ryanair"
+    "Ryanair",
+    "Wizz Air Malta"
    ],
    "months": [
     "2026-11",
@@ -1865,6 +1885,23 @@
    "lat": 54.6341,
    "lon": 25.2858,
    "tz": "Europe/Vilnius"
+  },
+  "WAW": {
+   "airlines": [
+    "Wizz Air"
+   ],
+   "months": [
+    "2026-11",
+    "2026-12"
+   ],
+   "last_confirmed": "2026-11-18",
+   "name": "Varsavia (Chopin)",
+   "city": "Varsavia",
+   "country": "Polonia",
+   "country_code": "pl",
+   "lat": 52.1657,
+   "lon": 20.9671,
+   "tz": "Europe/Warsaw"
   },
   "WMI": {
    "airlines": [
