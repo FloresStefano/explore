@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-18T07:57:48+00:00",
+ "run_at": "2026-11-18T08:12:17+00:00",
  "sources": {
   "ryanair": {
    "enabled": true,
@@ -33,5 +33,5 @@
    "fresh": 101
   }
  },
- "seconds": 0
+ "seconds": 1
 }
