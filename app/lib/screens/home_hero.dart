@@ -260,7 +260,7 @@ class _HeroPainter extends CustomPainter {
       canvas.scale(scale * 0.96);
       canvas.translate(-100, -115);
       canvas.drawPath(
-        _Plane.silhouette,
+        PlaneArt.silhouette,
         Paint()
           ..color = const Color(0xFF0B1E45).withValues(alpha: 0.35)
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5),
@@ -272,7 +272,7 @@ class _HeroPainter extends CustomPainter {
     canvas.rotate(p.tilt);
     canvas.scale(scale);
     canvas.translate(-100, -115);
-    _Plane.paint(canvas);
+    PlaneArt.paint(canvas);
     canvas.restore();
   }
 
@@ -287,7 +287,7 @@ class _Pose {
 }
 
 /// An airliner seen from above, nose up, drawn in a 200 x 230 box.
-abstract final class _Plane {
+abstract final class PlaneArt {
   static final Path fuselage = Path()
     ..moveTo(100, 0)
     ..cubicTo(109, 2, 115, 20, 115, 42)

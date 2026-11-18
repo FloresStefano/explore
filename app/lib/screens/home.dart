@@ -5,6 +5,7 @@ import 'package:intl/intl.dart' show DateFormat, NumberFormat;
 
 import '../common.dart';
 import '../data.dart';
+import 'home_art.dart';
 import 'home_bits.dart';
 import 'home_hero.dart';
 import 'settings.dart';
@@ -144,9 +145,7 @@ class HomeScreen extends StatelessWidget {
                     Reveal(
                       key: const ValueKey('line1'),
                       child: _Line(
-                        icon: Icons.event_available_rounded,
-                        color: indigo,
-                        bg: const Color(0xFFE8ECFB),
+                        art: LineArt.calendar,
                         lead: 'Non hai ferie?',
                         text: 'Cerchiamo noi ogni sera per te: weekend, weekend lunghi o ponti per sfruttare '
                             'ogni ora al meglio, con almeno ${num1(hours)} ore sul posto.',
@@ -156,9 +155,7 @@ class HomeScreen extends StatelessWidget {
                       key: const ValueKey('line2'),
                       delay: const Duration(milliseconds: 90),
                       child: _Line(
-                        icon: Icons.flight_takeoff_rounded,
-                        color: green,
-                        bg: greenBg,
+                        art: LineArt.routes,
                         lead: 'Da Verona, Bergamo e Treviso.',
                         text: 'Solo voli convenienti, sotto i ${num1(maxPrice)} € andata e ritorno.',
                       ),
@@ -167,9 +164,7 @@ class HomeScreen extends StatelessWidget {
                       key: ValueKey('line3'),
                       delay: Duration(milliseconds: 180),
                       child: _Line(
-                        icon: Icons.local_fire_department_rounded,
-                        color: orange,
-                        bg: orangeBg,
+                        art: LineArt.ticket,
                         lead: 'E per chi decide al volo,',
                         text: 'le Pazzie: weekend sotto i 50 €.',
                       ),
@@ -317,9 +312,8 @@ class _Stat extends StatelessWidget {
 }
 
 class _Line extends StatelessWidget {
-  const _Line({required this.icon, required this.color, required this.bg, required this.lead, required this.text});
-  final IconData icon;
-  final Color color, bg;
+  const _Line({required this.art, required this.lead, required this.text});
+  final LineArt art;
   final String lead, text;
 
   @override
@@ -329,12 +323,7 @@ class _Line extends StatelessWidget {
       child: WhiteCard(
         padding: const EdgeInsets.all(Sp.lg + 2),
         child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(Rd.md)),
-            child: Icon(icon, color: color, size: 22),
-          ),
+          LineArtTile(art),
           const SizedBox(width: Sp.lg),
           Expanded(
             child: Text.rich(
