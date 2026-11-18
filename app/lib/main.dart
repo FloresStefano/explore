@@ -7,7 +7,7 @@ import 'screens/calendar.dart';
 import 'screens/home.dart';
 import 'screens/map.dart';
 import 'screens/settings.dart';
-import 'screens/stats.dart';
+import 'screens/crazy.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,7 +53,7 @@ class _ShellState extends State<Shell> {
     (Icons.home_outlined, Icons.home_rounded, 'Home'),
     (Icons.calendar_month_outlined, Icons.calendar_month, 'Calendario'),
     (Icons.public_outlined, Icons.public, 'Mappa'),
-    (Icons.show_chart, Icons.show_chart, 'Statistiche'),
+    (Icons.local_fire_department_outlined, Icons.local_fire_department, 'Pazzie'),
     (Icons.tune, Icons.tune, 'Impostazioni'),
   ];
 
@@ -63,13 +63,13 @@ class _ShellState extends State<Shell> {
       0 => const HomeScreen(),
       1 => const CalendarScreen(),
       2 => const MapScreen(),
-      3 => const StatsScreen(),
+      3 => const CrazyScreen(),
       _ => const SettingsScreen(embedded: true),
     };
     return Navigator(key: _navs[i], onGenerateRoute: (_) => MaterialPageRoute(builder: (_) => root));
   }
 
-  static const _tabNames = ['home', 'calendario', 'mappa', 'statistiche', 'impostazioni'];
+  static const _tabNames = ['home', 'calendario', 'mappa', 'pazzie', 'impostazioni'];
 
   @override
   void initState() {

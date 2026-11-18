@@ -1,6 +1,7 @@
 // weekend-ai: the two AI features of Weekend Break, on Cloudflare Workers AI (free tier).
 //   GET  /recap  -> news-style recap of the latest job run (cached per run)
 //   POST /guide  -> tourist card of a destination for the travel dates (cached per city and month)
+//   POST /crazy  -> "Pazzie": cheap weekends told as a ranking (cached per list)
 // The app has no keys: this Worker is public, rate limited per IP, and caches everything in KV.
 
 const DAY = 86400;
@@ -16,6 +17,9 @@ export default {
       }
       if (url.pathname === "/guide" && request.method === "POST") {
         return json(await guide(env, request, await request.json()));
+      }
+      if (url.pathname === "/crazy" && request.method === "POST") {
+        return json(await crazy(env, request, await request.json()));
       }
       return json({ error: "not_found" }, 404);
     } catch (err) {
@@ -101,6 +105,64 @@ Date del viaggio: dal ${out} al ${ret}.`;
     model: env.MODEL,
   };
   await env.CACHE.put(key, JSON.stringify(result), { expirationTtl: 45 * DAY });
+  return result;
+}
+
+// ---------- Pazzie: weekend under 50 euro told as a ranking ----------
+
+// The app sends the (at most 30) most imminent cheap weekends; every field is checked,
+// and the answer is cached by the content of the list, so identical lists cost one AI call.
+async function crazy(env, request, body) {
+  const raw = Array.isArray(body?.items) ? body.items.slice(0, 30) : [];
+  const date = /^\d{4}-\d{2}-\d{2}$/;
+  const items = raw.map((x, i) => ({
+    id: str(x.id, 40, "id"),
+    city: str(x.city, 60, "city"),
+    country: str(x.country || "", 60, "country", true),
+    from: str(x.from || "", 40, "from", true),
+    out: str(x.out, 10, "out"),
+    ret: str(x.ret, 10, "ret"),
+    price: Number(x.price),
+    rank: i + 1,
+  })).filter((x) => date.test(x.out) && date.test(x.ret) && x.price > 0 && x.price < 1000);
+  if (!items.length) throw httpError(400, "bad_input", "items is required");
+
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(JSON.stringify(items)));
+  const key = "crazy:v3:" + [...new Uint8Array(digest)].slice(0, 12).map((b) => b.toString(16).padStart(2, "0")).join("");
+  const cached = await env.CACHE.get(key, "json");
+  if (cached) return { ...cached, cached: true };
+  await limit(env, request, "crazy");
+
+  const system = `Sei un conduttore radiofonico italiano simpatico che presenta una classifica di "pazzie":
+weekend low cost in aereo sotto i 50 euro andata e ritorno, dal più vicino nel tempo al più lontano.
+Per OGNI voce dell'elenco scrivi un titolo brevissimo (massimo 6 parole, evocativo, che richiami il carattere
+della città, senza prezzo e senza date) e una frase di 20-30 parole, in italiano naturale e colloquiale, che dica
+la città, la nazione, l'aeroporto di partenza, le date di andata e ritorno ESATTAMENTE come le ricevi
+(giorno della settimana compreso, es. "da sabato 5 a domenica 6 dicembre") e il prezzo esattamente come lo ricevi.
+Sono weekend: non chiamarli mai "ponte".
+Varia l'inizio delle frasi: non cominciare mai due frasi allo stesso modo e non iniziare con "Un weekend".
+Puoi aggiungere un tocco di colore generico e sicuro sulla città (es. tapas, mare, castelli), ma non
+inventare eventi, orari, compagnie o confronti tra le voci (niente "il più vicino", "il più economico").
+Niente elenchi puntati.
+Rispondi SOLO con un oggetto JSON {"items":[{"id": "...", "title": "...", "text": "..."}]} con lo stesso id
+di ogni voce ricevuta, nello stesso ordine.`;
+  // Weekday names are written here: models often get them wrong.
+  const day = (iso) => new Date(iso + "T12:00:00Z").toLocaleDateString("it-IT",
+    { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" });
+  const euro = (p) => p.toFixed(2).replace(".", ",") + " euro";
+  const user = "Voci della classifica:\n" + JSON.stringify(items.map(({ id, rank, city, country, from, out, ret, price }) =>
+    ({ id, rank, city, country, partenza_da: from, andata: day(out), ritorno: day(ret), prezzo: euro(price) })));
+  const out = await chatJson(env, system, user, 3000);
+  const byId = new Map(arr(out.items).map((x) => [String(x?.id ?? ""), x]));
+  const result = {
+    items: items.map((x) => {
+      const a = byId.get(x.id) || {};
+      return { id: x.id, title: String(a.title || ""), text: String(a.text || "") };
+    }),
+    generated: new Date().toISOString(),
+    model: env.MODEL,
+  };
+  await env.CACHE.put(key, JSON.stringify(result), { expirationTtl: 3 * DAY });
   return result;
 }
 

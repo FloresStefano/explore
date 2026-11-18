@@ -45,7 +45,6 @@ class Repo {
   Future<Json?> settings() async => (await get('settings.json')) as Json?;
   Future<Json?> calendar() async => (await get('calendar.json')) as Json?;
   Future<Json> patrons() async => ((await get('patrons.json')) as Json?) ?? {};
-  Future<Json?> history(String route) async => (await get('history/$route.json')) as Json?;
 
   /// Destinations of one airport: code -> info.
   Future<Json> routes(String airport) async =>
@@ -77,6 +76,20 @@ class Repo {
 /// Calls to the AI Worker (Cloudflare Workers AI, free tier).
 class Ai {
   final _guides = <String, Future<Json>>{};
+  final _crazy = <String, Future<Json>>{};
+
+  /// "Pazzie": AI titles and sentences for a list of cheap weekends (id, city, country, from, out, ret, price).
+  Future<Json> crazy(List<Json> items) {
+    final body = jsonEncode({'items': items});
+    return _crazy[body] ??= _call(http.post(
+      Uri.parse('$aiBase/crazy'),
+      headers: {'content-type': 'application/json'},
+      body: body,
+    )).then((v) {
+      if (v.containsKey('error')) _crazy.remove(body);
+      return v;
+    });
+  }
 
   Future<Json> guide(Json o) {
     final key = '${o['destination']}:${(o['out_date'] as String).substring(0, 7)}';
