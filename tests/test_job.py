@@ -218,18 +218,20 @@ class KiwiTest(unittest.TestCase):
 class KpiTest(unittest.TestCase):
     def test_three_indicators(self):
         from job import kpi
-        airports = {"VRN": {"lat": 45.3957, "lon": 10.8885, "tz": "Europe/Rome"},
-                    "BCN": {"lat": 41.2971, "lon": 2.0785, "tz": "Europe/Madrid"}}
+        airports = {"VRN": {"lat": 45.3957, "lon": 10.8885}, "BCN": {"lat": 41.2971, "lon": 2.0785}}
         o = {"origin": "VRN", "destination": "BCN", "price": 50, "useful_hours": 25,
              "outbound": {"arrival": "2026-12-11T20:00+01:00"}, "inbound": {"departure": "2026-12-13T20:00+01:00"}}
         k = kpi.kpis(o, airports)
         self.assertTrue(820 < k["km"] < 870)  # Verona - Barcelona, about 845 km
         self.assertAlmostEqual(k["eur_km"], 50 / k["km"], places=3)
         self.assertEqual(k["eur_h"], 2.0)
-        # 48 hours in December Barcelona: two days of about 9 hours of light.
-        self.assertTrue(35 <= k["sun"] <= 40, k["sun"])
+        # Fri 20:00 - Sun 20:00 = 48 h; lived 07-24: Fri 4 + Sat 17 + Sun 13 = 34 h -> 71%.
+        self.assertEqual(k["life"], 71)
 
-    def test_country_zone_when_the_airport_has_none(self):
-        from job import kpi
-        place = {"lat": 41.4147, "lon": 19.7206, "country_code": "al"}  # Tirana, no tz
-        self.assertIsNotNone(kpi.sun_share(datetime(2026, 12, 12, 8), datetime(2026, 12, 12, 20), place))
+    def test_life_share(self):
+        from job.kpi import life_share
+        d = lambda s: datetime.fromisoformat(s)
+        self.assertEqual(life_share(d("2026-12-12T07:00"), d("2026-12-13T00:00")), 100)  # one whole day
+        self.assertEqual(life_share(d("2026-12-12T00:00"), d("2026-12-12T07:00")), 0)  # only night
+        self.assertEqual(life_share(d("2026-12-12T00:00"), d("2026-12-13T00:00")), 71)  # 17 of 24 h
+        self.assertEqual(life_share(d("2026-12-11T23:30"), d("2026-12-12T08:00")), 18)  # 0.5 + 1 of 8.5 h

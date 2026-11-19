@@ -368,15 +368,15 @@ class KpiChips extends StatelessWidget {
               'ritorno, contando solo le ore tra le 8 e le 22. Più è basso, più vale il viaggio.',
           Icons.schedule_rounded,
         ),
-      if (k['sun'] != null)
+      if (k['life'] != null)
         (
-          '${k['sun']}%',
-          'sole',
-          'Ore di sole',
-          '${k['sun']}% del soggiorno con il sole',
-          'La parte del tuo soggiorno a $city, dall\'atterraggio al decollo del ritorno, in cui il sole è '
-              'sopra l\'orizzonte in quelle date. Più è alta, più giornata ti godi.',
-          Icons.wb_sunny_rounded,
+          '${k['life']}%',
+          'vita',
+          'Vita',
+          '${k['life']}% del soggiorno da vivere',
+          'La parte del tuo soggiorno a $city, dall\'atterraggio al decollo del ritorno, che cade tra le 7 '
+              'del mattino e mezzanotte; le 7 ore dalle 0 alle 7 sono notte. Più è alta, meno ore passi a dormire.',
+          Icons.wb_twilight_rounded,
         ),
     ];
     return Column(mainAxisSize: MainAxisSize.min, children: [
