@@ -89,7 +89,7 @@ List<Json> crazyDetail(List<Json> catalog, Json sel) {
     ..sort((x, y) => (x['price'] as num).compareTo(y['price'] as num));
 }
 
-String _period(Json o) {
+String crazyPeriod(Json o) {
   final a = DateTime.parse(o['out_date'] as String), b = DateTime.parse(o['ret_date'] as String);
   final dm = DateFormat('d MMMM', 'it');
   return a.month == b.month ? '${a.day}–${dm.format(b)}' : '${dm.format(a)} – ${dm.format(b)}';
@@ -213,7 +213,7 @@ class _CrazyScreenState extends State<CrazyScreen> {
                       ),
                   ],
                   itemCount: list.length,
-                  itemBuilder: (context, i) => _CrazyCard(
+                  itemBuilder: (context, i) => CrazyCard(
                     rank: i + 1,
                     offer: list[i],
                     ai: texts[offerId(list[i])],
@@ -222,7 +222,7 @@ class _CrazyScreenState extends State<CrazyScreen> {
                       MaterialPageRoute(
                         builder: (_) => OffersScreen(
                           section: 'Pazzie ${kind.label.toLowerCase()}',
-                          path: ['${list[i]['city'] ?? list[i]['destination']}', _period(list[i])],
+                          path: ['${list[i]['city'] ?? list[i]['destination']}', crazyPeriod(list[i])],
                           offers: crazyDetail(catalog, list[i]),
                         ),
                       ),
@@ -238,8 +238,8 @@ class _CrazyScreenState extends State<CrazyScreen> {
   }
 }
 
-class _CrazyCard extends StatelessWidget {
-  const _CrazyCard({required this.rank, required this.offer, required this.ai, required this.onTap});
+class CrazyCard extends StatelessWidget {
+  const CrazyCard({super.key, required this.rank, required this.offer, required this.ai, required this.onTap});
   final int rank;
   final Json offer;
   final Json? ai;
@@ -258,7 +258,7 @@ class _CrazyCard extends StatelessWidget {
     final dep = legTime(o['outbound'], 'departure'), arr = legTime(o['inbound'], 'arrival');
     final text = (ai?['text'] as String?)?.trim().isNotEmpty == true
         ? ai!['text'] as String
-        : 'Da ${airportCity[o['origin']] ?? o['origin']} a $city, ${_period(o)}'
+        : 'Da ${airportCity[o['origin']] ?? o['origin']} a $city, ${crazyPeriod(o)}'
               '${dep.isNotEmpty ? ': partenza alle $dep' : ''}'
               '${arr.isNotEmpty ? ', a casa alle $arr' : ''}'
               '${hours > 0 ? ', $hours ore nette sul posto' : ''}.';
@@ -299,7 +299,7 @@ class _CrazyCard extends StatelessWidget {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     Tag('${'${o['country_code'] ?? ''}'.toUpperCase()} · $city'.replaceFirst(RegExp(r'^ · '), '')),
-                    Tag(_period(o), color: green, bg: greenBg),
+                    Tag(crazyPeriod(o), color: green, bg: greenBg),
                     if (hours > 0) Tag('$hours ore nette', color: violet, bg: violetBg),
                     if (leave > 0) leaveTag(leave),
                     if (holidays.isNotEmpty) Tag(holidays, color: orange, bg: orangeBg),
@@ -436,4 +436,101 @@ class KpiChips extends StatelessWidget {
       ),
     );
   }
+}
+
+/// The best offers by the three indicators: least € per km, least € per hour, most "vita".
+/// Each offer gets its position in the three rankings; the average decides. One offer per city,
+/// so the Home strip never repeats a place.
+List<Json> bestOffers(List<Json> catalog, {int count = 10}) {
+  final pool = catalog.where((o) {
+    final k = o['kpi'] as Json?;
+    return k != null && k['eur_km'] != null && k['eur_h'] != null && k['life'] != null;
+  }).toList();
+  if (pool.isEmpty) return const [];
+  num kpi(Json o, String key) => (o['kpi'] as Json)[key] as num;
+  final score = <Json, double>{for (final o in pool) o: 0};
+  for (final (key, ascending) in [('eur_km', true), ('eur_h', true), ('life', false)]) {
+    final sorted = [...pool]..sort((a, b) => ascending ? kpi(a, key).compareTo(kpi(b, key)) : kpi(b, key).compareTo(kpi(a, key)));
+    for (final (i, o) in sorted.indexed) {
+      score[o] = score[o]! + i / pool.length;
+    }
+  }
+  pool.sort((a, b) {
+    final c = score[a]!.compareTo(score[b]!);
+    return c != 0 ? c : (a['price'] as num).compareTo(b['price'] as num);
+  });
+  final seen = <String>{};
+  return [
+    for (final o in pool)
+      if (seen.add('${o['city'] ?? o['destination']}')) o,
+  ].take(count).toList();
+}
+
+/// The flights behind a pazzia: the same detail page as in the Pazzie section.
+void openCrazyOffers(BuildContext context, List<Json> catalog, Json o, String section) => Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => OffersScreen(
+          section: section,
+          path: ['${o['city'] ?? o['destination']}', crazyPeriod(o)],
+          offers: crazyDetail(catalog, o),
+        ),
+      ),
+    );
+
+/// A pazzia card in a modal (Home top 10); tapping it opens its flights.
+void showCrazyCard(BuildContext context,
+    {required Json offer, required int rank, required List<Json> catalog, Json? ai, String caption = ''}) {
+  showDialog<void>(
+    context: context,
+    barrierColor: navy.withValues(alpha: 0.45),
+    builder: (dialog) => Dialog(
+      backgroundColor: pageBg,
+      insetPadding: const EdgeInsets.all(Sp.lg),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Rd.xl + 4)),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 480),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(Sp.lg, Sp.sm, Sp.sm, Sp.lg),
+          child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            Row(children: [
+              Expanded(
+                child: Text(caption,
+                    style: const TextStyle(fontSize: Fs.small, fontWeight: FontWeight.w600, color: muted)),
+              ),
+              IconButton(
+                tooltip: 'Chiudi',
+                onPressed: () => Navigator.pop(dialog),
+                icon: const Icon(Icons.close_rounded),
+              ),
+            ]),
+            Padding(
+              padding: const EdgeInsets.only(right: Sp.sm),
+              child: CrazyCard(
+                rank: rank,
+                offer: offer,
+                ai: ai,
+                onTap: () {
+                  Navigator.pop(dialog);
+                  openCrazyOffers(context, catalog, offer, 'Home');
+                },
+              ),
+            ),
+            const SizedBox(height: Sp.md),
+            Padding(
+              padding: const EdgeInsets.only(right: Sp.sm),
+              child: FilledButton.icon(
+                onPressed: () {
+                  Navigator.pop(dialog);
+                  openCrazyOffers(context, catalog, offer, 'Home');
+                },
+                icon: const Icon(Icons.flight_rounded),
+                label: const Text('Vedi i voli'),
+              ),
+            ),
+          ]),
+        ),
+      ),
+    ),
+  );
 }

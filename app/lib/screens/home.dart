@@ -7,6 +7,7 @@ import '../common.dart';
 import '../data.dart';
 import 'home_art.dart';
 import 'home_bits.dart';
+import 'crazy.dart';
 import 'home_hero.dart';
 import 'settings.dart';
 
@@ -58,11 +59,21 @@ class HomeScreen extends StatelessWidget {
     return ColoredBox(
       color: pageBg,
       child: FutureBuilder(
-        future: Future.wait([App.repo.settings(), App.repo.get('summary.json'), App.repo.catalog(App.prefs.airports)]),
+        future: Future.wait([
+          App.repo.settings(),
+          App.repo.get('summary.json'),
+          App.repo.catalog(App.prefs.airports),
+          App.repo.get('crazy.json'),
+        ]),
         builder: (context, snap) {
           final settings = snap.data?[0] as Json?;
           final summary = snap.data?[1] as Json?;
-          final places = _places((snap.data?[2] as List<Json>?) ?? const []);
+          final catalog = (snap.data?[2] as List<Json>?) ?? const <Json>[];
+          final places = _places(catalog);
+          final best = bestOffers(catalog);
+          // AI texts the job wrote for the Pazzie, when the offer is one of them.
+          final crazyFile = snap.data?[3] as Json?;
+          final texts = (crazyFile?['version'] == crazyTextVersion ? (crazyFile?['items'] as Json?) : null) ?? const <String, dynamic>{};
           final hours = _value(settings, 'SEL-08', 8);
           final maxPrice = _value(settings, 'JOB-09', 150);
           final n = NumberFormat.decimalPattern('it');
@@ -177,30 +188,39 @@ class HomeScreen extends StatelessWidget {
                   ]),
                 ),
               ),
-              // The destinations within reach, on two bands sliding in opposite directions.
+              // The ten best offers by the three indicators, sliding by; tap one to open its card.
               Reveal(
                 key: const ValueKey('places'),
                 delay: const Duration(milliseconds: 360),
-                child: places.length < 6
+                child: best.length < 3
                     ? const SizedBox(height: Sp.xl)
                     : Padding(
                         padding: const EdgeInsets.only(top: Sp.xxl),
                         child: Column(children: [
-                          Text('${places.length} mete a portata di weekend',
+                          Text('Le ${best.length} occasioni migliori',
                               textAlign: TextAlign.center,
                               style: const TextStyle(fontSize: Fs.title, fontWeight: FontWeight.w700, color: ink)),
                           const SizedBox(height: Sp.xs),
-                          const Text('da Verona, Bergamo e Treviso',
+                          const Text('meno euro per km e per ora, più ore di vita · tocca per aprire',
                               textAlign: TextAlign.center, style: TextStyle(fontSize: Fs.small, color: muted)),
                           const SizedBox(height: Sp.md),
-                          Marquee(children: [
-                            for (final (code, city) in places.take((places.length / 2).ceil()))
-                              PlaceChip(code: code, city: city),
-                          ]),
-                          const SizedBox(height: Sp.sm),
-                          Marquee(reverse: true, speed: 22, children: [
-                            for (final (code, city) in places.skip((places.length / 2).ceil()))
-                              PlaceChip(code: code, city: city),
+                          Marquee(speed: 24, children: [
+                            for (final (i, o) in best.indexed)
+                              BestChip(
+                                rank: i + 1,
+                                code: '${o['country_code'] ?? ''}',
+                                city: '${o['city'] ?? o['destination']}'.split(' (').first,
+                                price: o['price'] as num,
+                                onTap: () => showCrazyCard(
+                                  context,
+                                  offer: o,
+                                  rank: i + 1,
+                                  catalog: catalog,
+                                  ai: texts['${o['origin']}-${o['destination']}-${o['out_date']}-${o['ret_date']}']
+                                      as Json?,
+                                  caption: 'N° ${i + 1} delle ${best.length} occasioni migliori',
+                                ),
+                              ),
                           ]),
                         ]),
                       ),

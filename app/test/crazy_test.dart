@@ -39,4 +39,18 @@ void main() {
     // Same weekend+ from both airports, no weekend and no other dates.
     expect(crazyDetail(cat, medie.first).map((x) => '${x['origin']} ${x['price']}'), ['VRN 40', 'BGY 45', 'BGY 60']);
   });
+
+  test('best offers: least per km and per hour, most vita, one per city', () {
+    Map<String, dynamic> k(String city, num p, num km, num h, num life) =>
+        {'city': city, 'destination': city, 'price': p, 'kpi': {'eur_km': km, 'eur_h': h, 'life': life}};
+    final best = bestOffers([
+      k('Tirana', 30, 0.03, 1.2, 80), // best on all three
+      k('Tirana', 31, 0.031, 1.3, 79), // same city: skipped
+      k('Palma', 40, 0.05, 2.0, 70),
+      k('Londra', 90, 0.08, 5.0, 60), // worst on all three
+      {'city': 'Bari', 'price': 20}, // no indicators: left out
+    ]);
+    expect(best.map((o) => o['city']), ['Tirana', 'Palma', 'Londra']);
+    expect(best.first['price'], 30);
+  });
 }
