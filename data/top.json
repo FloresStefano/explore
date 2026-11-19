@@ -42,7 +42,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-11&dateIn=2026-12-13&isReturn=true&originIata=BGY&destinationIata=MRS",
    "city": "Marsiglia",
    "country": "Francia",
-   "country_code": "fr"
+   "country_code": "fr",
+   "kpi": {
+    "km": 433,
+    "eur_km": 0.069,
+    "eur_h": 0.77,
+    "sun": 42
+   }
   },
   {
    "origin": "BGY",
@@ -85,7 +91,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-12&dateIn=2026-12-14&isReturn=true&originIata=BGY&destinationIata=CAG",
    "city": "Cagliari",
    "country": "Italia",
-   "country_code": "it"
+   "country_code": "it",
+   "kpi": {
+    "km": 716,
+    "eur_km": 0.045,
+    "eur_h": 0.84,
+    "sun": 46
+   }
   },
   {
    "origin": "BGY",
@@ -128,7 +140,13 @@
    "leave_dates": [
     "2026-12-18"
    ],
-   "country_code": "it"
+   "country_code": "it",
+   "kpi": {
+    "km": 508,
+    "eur_km": 0.061,
+    "eur_h": 0.92,
+    "sun": 46
+   }
   },
   {
    "origin": "BGY",
@@ -171,7 +189,13 @@
    "link": "https://kiwi.com/u/sz97xcxp54",
    "city": "Tirana",
    "country": "Albania",
-   "country_code": "al"
+   "country_code": "al",
+   "kpi": {
+    "km": 935,
+    "eur_km": 0.037,
+    "eur_h": 0.95,
+    "sun": 42
+   }
   },
   {
    "origin": "VRN",
@@ -214,7 +238,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-15&dateIn=2027-01-17&isReturn=true&originIata=VRN&destinationIata=SUF",
    "city": "Lamezia",
    "country": "Italia",
-   "country_code": "it"
+   "country_code": "it",
+   "kpi": {
+    "km": 845,
+    "eur_km": 0.043,
+    "eur_h": 0.99,
+    "sun": 45
+   }
   },
   {
    "origin": "BGY",
@@ -261,7 +291,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-05&dateIn=2027-01-10&isReturn=true&originIata=BGY&destinationIata=WMI",
    "city": "Varsavia",
    "country": "Polonia",
-   "country_code": "pl"
+   "country_code": "pl",
+   "kpi": {
+    "km": 1095,
+    "eur_km": 0.054,
+    "eur_h": 0.99,
+    "sun": 34
+   }
   },
   {
    "origin": "TSF",
@@ -304,7 +340,13 @@
    "link": "https://kiwi.com/u/5p9duhk7mq",
    "city": "Tirana",
    "country": "Albania",
-   "country_code": "al"
+   "country_code": "al",
+   "kpi": {
+    "km": 767,
+    "eur_km": 0.046,
+    "eur_h": 1.0,
+    "sun": 42
+   }
   },
   {
    "origin": "BGY",
@@ -347,7 +389,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-10&dateIn=2026-12-13&isReturn=true&originIata=BGY&destinationIata=ALC",
    "city": "Alicante",
    "country": "Spagna",
-   "country_code": "es"
+   "country_code": "es",
+   "kpi": {
+    "km": 1179,
+    "eur_km": 0.036,
+    "eur_h": 1.05,
+    "sun": 40
+   }
   },
   {
    "origin": "BGY",
@@ -390,7 +438,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-12&dateIn=2027-02-14&isReturn=true&originIata=BGY&destinationIata=CLJ",
    "city": "Cluj",
    "country": "Romania",
-   "country_code": "ro"
+   "country_code": "ro",
+   "kpi": {
+    "km": 1081,
+    "eur_km": 0.038,
+    "eur_h": 1.07,
+    "sun": 46
+   }
   },
   {
    "origin": "VRN",
@@ -433,7 +487,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-12&dateIn=2027-02-15&isReturn=true&originIata=VRN&destinationIata=BRI",
    "city": "Bari",
    "country": "Italia",
-   "country_code": "it"
+   "country_code": "it",
+   "kpi": {
+    "km": 671,
+    "eur_km": 0.062,
+    "eur_h": 1.09,
+    "sun": 46
+   }
   },
   {
    "origin": "BGY",
@@ -476,7 +536,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-12&dateIn=2026-12-14&isReturn=true&originIata=BGY&destinationIata=SUF",
    "city": "Lamezia",
    "country": "Italia",
-   "country_code": "it"
+   "country_code": "it",
+   "kpi": {
+    "km": 924,
+    "eur_km": 0.036,
+    "eur_h": 1.09,
+    "sun": 38
+   }
   },
   {
    "origin": "BGY",
@@ -519,7 +585,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-22&dateIn=2027-01-24&isReturn=true&originIata=BGY&destinationIata=OLB",
    "city": "Olbia",
    "country": "Italia",
-   "country_code": "it"
+   "country_code": "it",
+   "kpi": {
+    "km": 531,
+    "eur_km": 0.075,
+    "eur_h": 1.12,
+    "sun": 50
+   }
   },
   {
    "origin": "VRN",
@@ -562,7 +634,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-15&dateIn=2027-01-17&isReturn=true&originIata=VRN&destinationIata=TIA",
    "city": "Tirana",
    "country": "Albania",
-   "country_code": "al"
+   "country_code": "al",
+   "kpi": {
+    "km": 839,
+    "eur_km": 0.043,
+    "eur_h": 1.13,
+    "sun": 47
+   }
   },
   {
    "origin": "BGY",
@@ -605,7 +683,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-13&dateIn=2027-02-15&isReturn=true&originIata=BGY&destinationIata=WRO",
    "city": "Breslavia",
    "country": "Polonia",
-   "country_code": "pl"
+   "country_code": "pl",
+   "kpi": {
+    "km": 803,
+    "eur_km": 0.052,
+    "eur_h": 1.22,
+    "sun": 47
+   }
   },
   {
    "origin": "BGY",
@@ -648,7 +732,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-05&dateIn=2027-02-07&isReturn=true&originIata=BGY&destinationIata=BDS",
    "city": "Brindisi",
    "country": "Italia",
-   "country_code": "it"
+   "country_code": "it",
+   "kpi": {
+    "km": 870,
+    "eur_km": 0.055,
+    "eur_h": 1.22,
+    "sun": 48
+   }
   },
   {
    "origin": "TSF",
@@ -691,7 +781,13 @@
    "leave_dates": [
     "2027-01-11"
    ],
-   "country_code": "hu"
+   "country_code": "hu",
+   "kpi": {
+    "km": 575,
+    "eur_km": 0.07,
+    "eur_h": 1.22,
+    "sun": 38
+   }
   },
   {
    "origin": "BGY",
@@ -734,7 +830,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-16&dateIn=2027-01-18&isReturn=true&originIata=BGY&destinationIata=BRI",
    "city": "Bari",
    "country": "Italia",
-   "country_code": "it"
+   "country_code": "it",
+   "kpi": {
+    "km": 761,
+    "eur_km": 0.063,
+    "eur_h": 1.24,
+    "sun": 46
+   }
   },
   {
    "origin": "TSF",
@@ -781,7 +883,13 @@
    "holidays": [
     "Epifania"
    ],
-   "country_code": "fr"
+   "country_code": "fr",
+   "kpi": {
+    "km": 866,
+    "eur_km": 0.077,
+    "eur_h": 1.24,
+    "sun": 36
+   }
   },
   {
    "origin": "VRN",
@@ -824,7 +932,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-12&dateIn=2026-12-14&isReturn=true&originIata=VRN&destinationIata=BHX",
    "city": "Birmingham",
    "country": "Regno Unito",
-   "country_code": "gb"
+   "country_code": "gb",
+   "kpi": {
+    "km": 1209,
+    "eur_km": 0.029,
+    "eur_h": 1.28,
+    "sun": 33
+   }
   },
   {
    "origin": "BGY",
@@ -867,7 +981,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-11&dateIn=2026-12-13&isReturn=true&originIata=BGY&destinationIata=ZAZ",
    "city": "Saragozza",
    "country": "Spagna",
-   "country_code": "es"
+   "country_code": "es",
+   "kpi": {
+    "km": 971,
+    "eur_km": 0.044,
+    "eur_h": 1.28,
+    "sun": 46
+   }
   },
   {
    "origin": "TSF",
@@ -910,7 +1030,13 @@
    "leave_dates": [
     "2026-12-18"
    ],
-   "country_code": "mt"
+   "country_code": "mt",
+   "kpi": {
+    "km": 1105,
+    "eur_km": 0.035,
+    "eur_h": 1.28,
+    "sun": 47
+   }
   },
   {
    "origin": "BGY",
@@ -958,7 +1084,13 @@
     "Natale"
    ],
    "country_code": "mt",
-   "needs_parent_leave": true
+   "needs_parent_leave": true,
+   "kpi": {
+    "km": 1163,
+    "eur_km": 0.058,
+    "eur_h": 1.29,
+    "sun": 41
+   }
   },
   {
    "origin": "BGY",
@@ -1001,7 +1133,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-21&dateIn=2027-01-24&isReturn=true&originIata=BGY&destinationIata=PMO",
    "city": "Palermo",
    "country": "Italia",
-   "country_code": "it"
+   "country_code": "it",
+   "kpi": {
+    "km": 879,
+    "eur_km": 0.045,
+    "eur_h": 1.31,
+    "sun": 41
+   }
   },
   {
    "origin": "BGY",
@@ -1044,7 +1182,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-04&dateIn=2026-12-06&isReturn=true&originIata=BGY&destinationIata=TPS",
    "city": "Trapani",
    "country": "Italia",
-   "country_code": "it"
+   "country_code": "it",
+   "kpi": {
+    "km": 893,
+    "eur_km": 0.055,
+    "eur_h": 1.32,
+    "sun": 47
+   }
   },
   {
    "origin": "BGY",
@@ -1087,7 +1231,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-15&dateIn=2027-01-17&isReturn=true&originIata=BGY&destinationIata=CRV",
    "city": "Crotone",
    "country": "Italia",
-   "country_code": "it"
+   "country_code": "it",
+   "kpi": {
+    "km": 958,
+    "eur_km": 0.046,
+    "eur_h": 1.33,
+    "sun": 49
+   }
   },
   {
    "origin": "BGY",
@@ -1130,7 +1280,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-10&dateIn=2026-12-12&isReturn=true&originIata=BGY&destinationIata=TNG",
    "city": "Tangeri",
    "country": "Marocco",
-   "country_code": "ma"
+   "country_code": "ma",
+   "kpi": {
+    "km": 1714,
+    "eur_km": 0.019,
+    "eur_h": 1.35,
+    "sun": 44
+   }
   },
   {
    "origin": "BGY",
@@ -1173,7 +1329,13 @@
    "link": "https://kiwi.com/u/z27md785x9",
    "city": "Craiova",
    "country": "Romania",
-   "country_code": "ro"
+   "country_code": "ro",
+   "kpi": {
+    "km": 1124,
+    "eur_km": 0.039,
+    "eur_h": 1.35,
+    "sun": 40
+   }
   },
   {
    "origin": "BGY",
@@ -1221,7 +1383,13 @@
     "Vacanze di Natale (scuole)"
    ],
    "needs_parent_leave": true,
-   "country_code": "es"
+   "country_code": "es",
+   "kpi": {
+    "km": 887,
+    "eur_km": 0.08,
+    "eur_h": 1.37,
+    "sun": 43
+   }
   },
   {
    "origin": "VRN",
@@ -1264,7 +1432,13 @@
    "leave_dates": [
     "2026-12-18"
    ],
-   "country_code": "it"
+   "country_code": "it",
+   "kpi": {
+    "km": 700,
+    "eur_km": 0.06,
+    "eur_h": 1.42,
+    "sun": 44
+   }
   },
   {
    "origin": "BGY",
@@ -1307,7 +1481,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-13&dateIn=2027-02-15&isReturn=true&originIata=BGY&destinationIata=ZAG",
    "city": "Zagreb",
    "country": "Croazia",
-   "country_code": "hr"
+   "country_code": "hr",
+   "kpi": {
+    "km": 494,
+    "eur_km": 0.084,
+    "eur_h": 1.42,
+    "sun": 45
+   }
   },
   {
    "origin": "VRN",
@@ -1350,7 +1530,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-11&dateIn=2026-12-13&isReturn=true&originIata=VRN&destinationIata=TPS",
    "city": "Trapani",
    "country": "Italia",
-   "country_code": "it"
+   "country_code": "it",
+   "kpi": {
+    "km": 843,
+    "eur_km": 0.038,
+    "eur_h": 1.45,
+    "sun": 36
+   }
   },
   {
    "origin": "BGY",
@@ -1393,7 +1579,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-05&dateIn=2027-02-07&isReturn=true&originIata=BGY&destinationIata=OTP",
    "city": "Bucarest",
    "country": "Romania",
-   "country_code": "ro"
+   "country_code": "ro",
+   "kpi": {
+    "km": 1290,
+    "eur_km": 0.03,
+    "eur_h": 1.45,
+    "sun": 44
+   }
   },
   {
    "origin": "BGY",
@@ -1440,7 +1632,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-05&dateIn=2027-01-10&isReturn=true&originIata=BGY&destinationIata=BVA",
    "city": "Parigi",
    "country": "Francia",
-   "country_code": "fr"
+   "country_code": "fr",
+   "kpi": {
+    "km": 707,
+    "eur_km": 0.135,
+    "eur_h": 1.46,
+    "sun": 36
+   }
   },
   {
    "origin": "BGY",
@@ -1488,7 +1686,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-06&dateIn=2027-02-09&isReturn=true&originIata=BGY&destinationIata=NRN",
    "city": "Düsseldorf",
    "country": "Germania",
-   "country_code": "de"
+   "country_code": "de",
+   "kpi": {
+    "km": 709,
+    "eur_km": 0.083,
+    "eur_h": 1.46,
+    "sun": 41
+   }
   },
   {
    "origin": "BGY",
@@ -1531,7 +1735,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-16&dateIn=2027-01-18&isReturn=true&originIata=BGY&destinationIata=GDN",
    "city": "Danzica",
    "country": "Polonia",
-   "country_code": "pl"
+   "country_code": "pl",
+   "kpi": {
+    "km": 1151,
+    "eur_km": 0.039,
+    "eur_h": 1.48,
+    "sun": 39
+   }
   },
   {
    "origin": "TSF",
@@ -1578,7 +1788,13 @@
    "holidays": [
     "Epifania"
    ],
-   "country_code": "at"
+   "country_code": "at",
+   "kpi": {
+    "km": 431,
+    "eur_km": 0.2,
+    "eur_h": 1.51,
+    "sun": 35
+   }
   },
   {
    "origin": "TSF",
@@ -1621,7 +1837,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-11&dateIn=2026-12-14&isReturn=true&originIata=TSF&destinationIata=ALC",
    "city": "Alicante",
    "country": "Spagna",
-   "country_code": "es"
+   "country_code": "es",
+   "kpi": {
+    "km": 1332,
+    "eur_km": 0.035,
+    "eur_h": 1.52,
+    "sun": 38
+   }
   },
   {
    "origin": "BGY",
@@ -1669,7 +1891,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-06&dateIn=2027-02-08&isReturn=true&originIata=BGY&destinationIata=IAS",
    "city": "IASI",
    "country": "Romania",
-   "country_code": "ro"
+   "country_code": "ro",
+   "kpi": {
+    "km": 1380,
+    "eur_km": 0.031,
+    "eur_h": 1.54,
+    "sun": 40
+   }
   },
   {
    "origin": "BGY",
@@ -1712,7 +1940,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-14&dateIn=2027-01-16&isReturn=true&originIata=BGY&destinationIata=MAD",
    "city": "Madrid",
    "country": "Spagna",
-   "country_code": "es"
+   "country_code": "es",
+   "kpi": {
+    "km": 1221,
+    "eur_km": 0.034,
+    "eur_h": 1.55,
+    "sun": 39
+   }
   },
   {
    "origin": "BGY",
@@ -1755,7 +1989,13 @@
    "link": "https://kiwi.com/u/6bv6sc6qqm",
    "city": "Varsavia",
    "country": "Polonia",
-   "country_code": "pl"
+   "country_code": "pl",
+   "kpi": {
+    "km": 1092,
+    "eur_km": 0.051,
+    "eur_h": 1.56,
+    "sun": 36
+   }
   },
   {
    "origin": "BGY",
@@ -1798,7 +2038,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-17&dateIn=2026-12-19&isReturn=true&originIata=BGY&destinationIata=VLC",
    "city": "Valencia",
    "country": "Spagna",
-   "country_code": "es"
+   "country_code": "es",
+   "kpi": {
+    "km": 1079,
+    "eur_km": 0.036,
+    "eur_h": 1.56,
+    "sun": 39
+   }
   },
   {
    "origin": "BGY",
@@ -1841,7 +2087,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-05&dateIn=2027-02-07&isReturn=true&originIata=BGY&destinationIata=LPL",
    "city": "Liverpool",
    "country": "Regno Unito",
-   "country_code": "gb"
+   "country_code": "gb",
+   "kpi": {
+    "km": 1241,
+    "eur_km": 0.03,
+    "eur_h": 1.56,
+    "sun": 39
+   }
   },
   {
    "origin": "BGY",
@@ -1884,7 +2136,13 @@
    "leave_dates": [
     "2027-01-11"
    ],
-   "country_code": "no"
+   "country_code": "no",
+   "kpi": {
+    "km": 1503,
+    "eur_km": 0.033,
+    "eur_h": 1.57,
+    "sun": 36
+   }
   },
   {
    "origin": "TSF",
@@ -1927,7 +2185,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-05&dateIn=2027-02-07&isReturn=true&originIata=TSF&destinationIata=WRO",
    "city": "Breslavia",
    "country": "Polonia",
-   "country_code": "pl"
+   "country_code": "pl",
+   "kpi": {
+    "km": 698,
+    "eur_km": 0.054,
+    "eur_h": 1.58,
+    "sun": 36
+   }
   },
   {
    "origin": "BGY",
@@ -1970,7 +2234,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-21&dateIn=2027-01-24&isReturn=true&originIata=BGY&destinationIata=TLS",
    "city": "Tolosa",
    "country": "Francia",
-   "country_code": "fr"
+   "country_code": "fr",
+   "kpi": {
+    "km": 716,
+    "eur_km": 0.067,
+    "eur_h": 1.59,
+    "sun": 36
+   }
   },
   {
    "origin": "TSF",
@@ -2013,7 +2283,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-12&dateIn=2027-02-15&isReturn=true&originIata=TSF&destinationIata=BER",
    "city": "Berlino",
    "country": "Germania",
-   "country_code": "de"
+   "country_code": "de",
+   "kpi": {
+    "km": 753,
+    "eur_km": 0.062,
+    "eur_h": 1.59,
+    "sun": 35
+   }
   },
   {
    "origin": "BGY",
@@ -2056,7 +2332,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-16&dateIn=2027-01-18&isReturn=true&originIata=BGY&destinationIata=LUX",
    "city": "Luxembourg",
    "country": "Lussemburgo",
-   "country_code": "lu"
+   "country_code": "lu",
+   "kpi": {
+    "km": 511,
+    "eur_km": 0.079,
+    "eur_h": 1.6,
+    "sun": 36
+   }
   },
   {
    "origin": "BGY",
@@ -2099,7 +2381,13 @@
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-11&dateIn=2026-12-13&isReturn=true&originIata=BGY&destinationIata=KUN",
    "city": "Kaunas",
    "country": "Lituania",
-   "country_code": "lt"
+   "country_code": "lt",
+   "kpi": {
+    "km": 1447,
+    "eur_km": 0.037,
+    "eur_h": 1.63,
+    "sun": 36
+   }
   },
   {
    "origin": "BGY",
@@ -2146,7 +2434,13 @@
    "holidays": [
     "Epifania"
    ],
-   "country_code": "pl"
+   "country_code": "pl",
+   "kpi": {
+    "km": 896,
+    "eur_km": 0.078,
+    "eur_h": 1.64,
+    "sun": 38
+   }
   },
   {
    "origin": "BGY",
@@ -2189,7 +2483,13 @@
    "link": "https://kiwi.com/u/udg2yrw48y",
    "city": "Sofia",
    "country": "Bulgaria",
-   "country_code": "bg"
+   "country_code": "bg",
+   "kpi": {
+    "km": 1136,
+    "eur_km": 0.049,
+    "eur_h": 1.66,
+    "sun": 42
+   }
   }
  ]
 }
