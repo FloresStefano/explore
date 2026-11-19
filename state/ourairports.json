@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18",
+ "updated": "2026-11-19",
  "airports": {
   "ORY": {
    "code": "ORY",
@@ -32,6 +32,14 @@
    "country_code": "ro",
    "lat": 47.6875,
    "lon": 26.3541
+  },
+  "RMO": {
+   "code": "RMO",
+   "name": "Chişinău International Airport",
+   "city": "Chişinău",
+   "country_code": "md",
+   "lat": 46.9277,
+   "lon": 28.9317
   }
  }
 }

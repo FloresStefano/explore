@@ -26,10 +26,11 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-01"
+    "2027-01",
+    "2027-02"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-18",
+   "last_confirmed": "2026-11-19",
    "name": "Brindisi",
    "city": "Brindisi",
    "country": "Italia",
@@ -45,10 +46,11 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-01"
+    "2027-01",
+    "2027-02"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-18",
+   "last_confirmed": "2026-11-19",
    "name": "Birmingham",
    "city": "Birmingham",
    "country": "Regno Unito",
@@ -64,10 +66,11 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-01"
+    "2027-01",
+    "2027-02"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-18",
+   "last_confirmed": "2026-11-19",
    "name": "Bari",
    "city": "Bari",
    "country": "Italia",
@@ -83,10 +86,11 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-01"
+    "2027-01",
+    "2027-02"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-18",
+   "last_confirmed": "2026-11-19",
    "name": "Cagliari",
    "city": "Cagliari",
    "country": "Italia",
@@ -134,10 +138,11 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-01"
+    "2027-01",
+    "2027-02"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-18",
+   "last_confirmed": "2026-11-19",
    "name": "Catania",
    "city": "Catania",
    "country": "Italia",
@@ -156,7 +161,7 @@
     "2027-01"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-18",
+   "last_confirmed": "2026-11-19",
    "name": "Dublino",
    "city": "Dublino",
    "country": "Irlanda",
@@ -185,9 +190,10 @@
    ],
    "months": [
     "2026-11",
-    "2026-12"
+    "2026-12",
+    "2027-01"
    ],
-   "last_confirmed": "2026-11-18",
+   "last_confirmed": "2026-11-19",
    "name": "Londra (Gatwick)",
    "city": "Londra",
    "country": "Regno Unito",
@@ -264,9 +270,10 @@
     "Volotea"
    ],
    "months": [
-    "2026-12"
+    "2026-12",
+    "2027-01"
    ],
-   "last_confirmed": "2026-11-18",
+   "last_confirmed": "2026-11-19",
    "name": "Olbia",
    "city": "Olbia",
    "country": "Italia",
@@ -297,9 +304,10 @@
    ],
    "months": [
     "2026-11",
-    "2026-12"
+    "2026-12",
+    "2027-01"
    ],
-   "last_confirmed": "2026-11-18",
+   "last_confirmed": "2026-11-19",
    "name": "Paris-Orly Airport",
    "city": "Paris (Orly, Val-de-Marne)",
    "country": "Francia",
@@ -329,10 +337,11 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-01"
+    "2027-01",
+    "2027-02"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-17",
+   "last_confirmed": "2026-11-19",
    "name": "Palermo",
    "city": "Palermo",
    "country": "Italia",
@@ -349,9 +358,12 @@
     "2026-11"
    ],
    "last_confirmed": "2026-11-17",
-   "name": "Chişinău",
+   "name": "Chişinău International Airport",
    "city": "Chişinău",
-   "country": "Moldova"
+   "country": "Moldavia",
+   "country_code": "md",
+   "lat": 46.9277,
+   "lon": 28.9317
   },
   "STN": {
    "airlines": [
@@ -360,10 +372,11 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-01"
+    "2027-01",
+    "2027-02"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-18",
+   "last_confirmed": "2026-11-19",
    "name": "Londra (Stansted)",
    "city": "Londra",
    "country": "Regno Unito",
@@ -379,10 +392,11 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-01"
+    "2027-01",
+    "2027-02"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-18",
+   "last_confirmed": "2026-11-19",
    "name": "Lamezia",
    "city": "Lamezia",
    "country": "Italia",
@@ -399,10 +413,11 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-01"
+    "2027-01",
+    "2027-02"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-18",
+   "last_confirmed": "2026-11-19",
    "name": "Tirana",
    "city": "Tirana",
    "country": "Albania",
@@ -418,10 +433,11 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-01"
+    "2027-01",
+    "2027-02"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-18",
+   "last_confirmed": "2026-11-19",
    "name": "Trapani-Marsala",
    "city": "Trapani",
    "country": "Italia",
@@ -447,5 +463,5 @@
   }
  },
  "ryanair_updated": "2026-11-16",
- "updated": "2026-11-18"
+ "updated": "2026-11-19"
 }
