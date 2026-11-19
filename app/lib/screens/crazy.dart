@@ -118,10 +118,10 @@ class _CrazyScreenState extends State<CrazyScreen> {
           title: 'Pazzie',
           action: isWide(context)
               ? null
-              : RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
+              : const HeaderActions(),
         ),
         child: FutureBuilder(
-          key: ValueKey(App.prefs.airports.join()),
+          key: ValueKey(App.prefs.scope),
           future: Future.wait([App.repo.catalog(App.prefs.airports), App.repo.get('crazy.json')]),
           builder: (context, snap) {
             if (snap.connectionState != ConnectionState.done) return const Loading();
@@ -322,11 +322,117 @@ class _CrazyCard extends StatelessWidget {
                   fontFeatures: tabular,
                 ),
               ),
-              const SizedBox(height: 14),
-              const Icon(Icons.chevron_right, color: muted),
+              const SizedBox(height: Sp.sm),
+              KpiChips(o),
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// The three indicators the job computes for every offer: costo chilometrico, costo orario,
+/// ore di sole. Small value-and-unit chips; a tap explains what the number means.
+class KpiChips extends StatelessWidget {
+  const KpiChips(this.o, {super.key});
+  final Json o;
+
+  static String _n(num v, int digits) => v.toStringAsFixed(digits).replaceAll('.', ',');
+
+  @override
+  Widget build(BuildContext context) {
+    final k = o['kpi'] as Json?;
+    if (k == null) return const SizedBox.shrink();
+    final city = '${o['city'] ?? o['destination']}';
+    final from = airportCity[o['origin']] ?? '${o['origin']}';
+    final hours = num1((o['useful_hours'] as num?) ?? 0);
+    final items = [
+      if (k['eur_km'] != null)
+        (
+          _n(k['eur_km'] as num, 2),
+          '€/km',
+          'Costo chilometrico',
+          '${_n(k['eur_km'] as num, 3)} € per ogni km',
+          'Il prezzo del biglietto diviso i km in linea d\'aria tra $from e $city '
+              '(${k['km']} km). Più è basso, più strada fai con ogni euro.',
+          Icons.straighten_rounded,
+        ),
+      if (k['eur_h'] != null)
+        (
+          _n(k['eur_h'] as num, 2),
+          '€/ora',
+          'Costo orario',
+          '${_n(k['eur_h'] as num, 2)} € per ogni ora sul posto',
+          'Il prezzo diviso le $hours ore nette che passi a $city: dall\'atterraggio al decollo del '
+              'ritorno, contando solo le ore tra le 8 e le 22. Più è basso, più vale il viaggio.',
+          Icons.schedule_rounded,
+        ),
+      if (k['sun'] != null)
+        (
+          '${k['sun']}%',
+          'sole',
+          'Ore di sole',
+          '${k['sun']}% del soggiorno con il sole',
+          'La parte del tuo soggiorno a $city, dall\'atterraggio al decollo del ritorno, in cui il sole è '
+              'sopra l\'orizzonte in quelle date. Più è alta, più giornata ti godi.',
+          Icons.wb_sunny_rounded,
+        ),
+    ];
+    return Column(mainAxisSize: MainAxisSize.min, children: [
+      for (final (value, unit, name, headline, text, icon) in items)
+        Padding(
+          padding: const EdgeInsets.only(top: Sp.xs),
+          child: Tooltip(
+            message: name,
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () => _explain(context, name, headline, text, icon),
+              child: Container(
+                width: 60,
+                padding: const EdgeInsets.symmetric(vertical: 3),
+                decoration: BoxDecoration(color: chipBg, borderRadius: BorderRadius.circular(Rd.xs)),
+                child: Column(children: [
+                  Text(value,
+                      style: const TextStyle(
+                          fontSize: Fs.label, fontWeight: FontWeight.w800, color: ink, fontFeatures: tabular, height: 1.2)),
+                  Text(unit, style: const TextStyle(fontSize: Fs.caption - 1, color: muted, height: 1.2)),
+                ]),
+              ),
+            ),
+          ),
+        ),
+    ]);
+  }
+
+  static void _explain(BuildContext context, String name, String headline, String text, IconData icon) {
+    showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: Colors.white,
+      showDragHandle: true,
+      constraints: const BoxConstraints(maxWidth: 520),
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(Rd.xl))),
+      builder: (context) => Padding(
+        padding: const EdgeInsets.fromLTRB(Sp.xl, 0, Sp.xl, Sp.xl),
+        child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(children: [
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(color: chipBg, borderRadius: BorderRadius.circular(Rd.md)),
+              child: Icon(icon, color: indigo, size: 20),
+            ),
+            const SizedBox(width: Sp.md),
+            Expanded(
+              child: Text(name, style: const TextStyle(fontSize: Fs.titleLg, fontWeight: FontWeight.w700, color: ink)),
+            ),
+          ]),
+          const SizedBox(height: Sp.md),
+          Text(headline,
+              style: const TextStyle(fontSize: Fs.title, fontWeight: FontWeight.w700, color: indigo, fontFeatures: tabular)),
+          const SizedBox(height: Sp.sm),
+          Text(text, style: const TextStyle(fontSize: Fs.body, height: 1.5, color: muted)),
+        ]),
       ),
     );
   }

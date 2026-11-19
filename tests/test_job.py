@@ -213,3 +213,23 @@ class KiwiTest(unittest.TestCase):
         self.assertEqual(o.outbound.flight, "V71414")
         self.assertIsNone(discard_reason(S, o))
         self.assertEqual(trip_of(S, CAL, o).kind, "weekend")
+
+
+class KpiTest(unittest.TestCase):
+    def test_three_indicators(self):
+        from job import kpi
+        airports = {"VRN": {"lat": 45.3957, "lon": 10.8885, "tz": "Europe/Rome"},
+                    "BCN": {"lat": 41.2971, "lon": 2.0785, "tz": "Europe/Madrid"}}
+        o = {"origin": "VRN", "destination": "BCN", "price": 50, "useful_hours": 25,
+             "outbound": {"arrival": "2026-12-11T20:00+01:00"}, "inbound": {"departure": "2026-12-13T20:00+01:00"}}
+        k = kpi.kpis(o, airports)
+        self.assertTrue(820 < k["km"] < 870)  # Verona - Barcelona, about 845 km
+        self.assertAlmostEqual(k["eur_km"], 50 / k["km"], places=3)
+        self.assertEqual(k["eur_h"], 2.0)
+        # 48 hours in December Barcelona: two days of about 9 hours of light.
+        self.assertTrue(35 <= k["sun"] <= 40, k["sun"])
+
+    def test_country_zone_when_the_airport_has_none(self):
+        from job import kpi
+        place = {"lat": 41.4147, "lon": 19.7206, "country_code": "al"}  # Tirana, no tz
+        self.assertIsNotNone(kpi.sun_share(datetime(2026, 12, 12, 8), datetime(2026, 12, 12, 20), place))

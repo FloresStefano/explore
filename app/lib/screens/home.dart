@@ -116,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                                     fontWeight: FontWeight.w800,
                                     shadows: [Shadow(color: Color(0x55000000), blurRadius: 8)])),
                           ),
-                          RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
+                          const HeaderActions(),
                         ]),
                       ),
               ),

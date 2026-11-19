@@ -38,6 +38,7 @@ class Repo {
   void refresh() {
     _cache.clear();
     _catalog.clear();
+    _filtered.clear();
   }
 
   Future<List<Json>> top() async => _list((await get('top.json'))?['offers']);
@@ -51,7 +52,20 @@ class Repo {
       ((await get('routes/$airport.json'))?['destinations'] as Json?) ?? {};
 
   /// Every published offer from the given airports, flat, cheapest first.
-  Future<List<Json>> catalog(List<String> airports) {
+  /// Offers from these departure airports, without the destination countries switched off in
+  /// Impostazioni ([all] keeps every country: the settings page lists them all).
+  /// The same Future comes back for the same choice, so FutureBuilders do not reload.
+  Future<List<Json>> catalog(List<String> airports, {bool all = false}) {
+    final off = all ? const <String>{} : App.prefs.excludedCountries;
+    if (off.isEmpty) return _raw(airports);
+    final key = '${([...airports]..sort()).join(',')}|${([...off]..sort()).join(',')}';
+    return _filtered[key] ??= _raw(airports)
+        .then((l) => l.where((o) => !off.contains('${o['country_code'] ?? ''}'.toLowerCase())).toList());
+  }
+
+  final _filtered = <String, Future<List<Json>>>{};
+
+  Future<List<Json>> _raw(List<String> airports) {
     final key = ([...airports]..sort()).join(',');
     return _catalog[key] ??= () async {
       final files = await Future.wait(airports.map((a) => get('offers/$a.json')));
@@ -127,11 +141,18 @@ class Prefs extends ChangeNotifier {
   List<String> airports = ['VRN', 'BGY', 'TSF'];
   bool sideMenuExpanded = true;
 
+  /// Destination countries switched off (lower-case codes): their offers disappear everywhere.
+  Set<String> excludedCountries = {};
+
+  /// Everything that changes the offers in hand: screens key their data on it.
+  String get scope => '${airports.join()}|${([...excludedCountries]..sort()).join()}';
+
   Future<void> load() async {
     try {
       _sp = await SharedPreferences.getInstance();
       airports = _sp!.getStringList('USR-04') ?? airports;
       sideMenuExpanded = _sp!.getBool('ui.sideMenu') ?? true;
+      excludedCountries = (_sp!.getStringList('USR-05') ?? const []).toSet();
     } catch (_) {}
     notifyListeners();
   }
@@ -142,6 +163,23 @@ class Prefs extends ChangeNotifier {
     if (next.isEmpty) return; // at least one departure airport
     airports = next;
     _sp?.setStringList('USR-04', airports);
+    notifyListeners();
+  }
+
+  void toggleCountry(String code) {
+    final c = code.toLowerCase();
+    excludedCountries.contains(c) ? excludedCountries.remove(c) : excludedCountries.add(c);
+    _saveCountries();
+  }
+
+  /// "Tutti" / "Nessuno" in Impostazioni.
+  void setAllCountries(bool on, Iterable<String> codes) {
+    excludedCountries = on ? {} : {for (final c in codes) c.toLowerCase()};
+    _saveCountries();
+  }
+
+  void _saveCountries() {
+    _sp?.setStringList('USR-05', excludedCountries.toList()..sort());
     notifyListeners();
   }
 

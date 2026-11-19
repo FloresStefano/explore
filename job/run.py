@@ -15,7 +15,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from . import crazy, places
+from . import crazy, kpi, places
 from .calendar_it import Calendar, Window, bridges, classify, day_marks, load_patrons, search_pairs
 from .history import History
 from .model import Leg, Offer
@@ -150,6 +150,11 @@ def enrich(o: dict, airports: dict) -> dict:
             o.pop(k, None)
     if not o.get("needs_parent_leave"):
         o.pop("needs_parent_leave", None)
+    # Costo chilometrico, costo orario, ore di sole: on every offer, shown on the Pazzie cards.
+    if k := kpi.kpis(o, airports):
+        o["kpi"] = k
+    else:
+        o.pop("kpi", None)
     return o
 
 

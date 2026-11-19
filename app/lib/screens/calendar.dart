@@ -25,10 +25,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
         header: HeaderTitle(
           kicker: 'Offerte per mese',
           title: 'Calendario',
-          action: isWide(context) ? null : RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
+          action: isWide(context) ? null : const HeaderActions(),
         ),
         child: FutureBuilder(
-          key: ValueKey(App.prefs.airports.join()),
+          key: ValueKey(App.prefs.scope),
           future: Future.wait([App.repo.catalog(App.prefs.airports), App.repo.calendar()]),
           builder: (context, snap) {
             if (snap.connectionState != ConnectionState.done) return const Loading();

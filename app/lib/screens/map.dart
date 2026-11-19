@@ -53,6 +53,8 @@ class _MapScreenState extends State<MapScreen> {
       all[i].forEach((code, v) {
         final d = v as Json;
         if (d['lat'] == null) return;
+        // Countries switched off in Impostazioni disappear from the map too.
+        if (App.prefs.excludedCountries.contains('${d['country_code'] ?? ''}'.toLowerCase())) return;
         final e = dests.putIfAbsent(code, () => {...d, 'from': <String>[], 'months': <String>{}, 'airlines': <String>{}});
         (e['from'] as List).add(airports[i]);
         (e['months'] as Set).addAll((d['months'] as List? ?? const []).cast<String>());
@@ -68,7 +70,7 @@ class _MapScreenState extends State<MapScreen> {
       listenable: App.changes,
       builder: (context, _) {
         final prefs = App.prefs;
-        final airportsKey = prefs.airports.join();
+        final airportsKey = prefs.scope;
         if (_loadedFor != airportsKey) {
           _loadedFor = airportsKey;
           _loading = _load(prefs.airports);
@@ -79,10 +81,10 @@ class _MapScreenState extends State<MapScreen> {
             // Departure airports come from the settings (USR-04).
             kicker: 'Offerte per meta',
             title: 'Mappa',
-            action: isWide(context) ? null : RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
+            action: isWide(context) ? null : const HeaderActions(),
           ),
           child: FutureBuilder(
-            key: ValueKey(prefs.airports.join()),
+            key: ValueKey(prefs.scope),
             future: _loading,
             builder: (context, snap) {
               if (snap.connectionState != ConnectionState.done) {

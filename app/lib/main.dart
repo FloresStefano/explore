@@ -49,7 +49,7 @@ class _ShellState extends State<Shell> {
   int _tab = 0;
   final _built = <int>{0};
   // One navigation stack per section: pages open inside it and the menu stays visible.
-  final _navs = List.generate(6, (_) => GlobalKey<NavigatorState>());
+  final _navs = List.generate(7, (_) => GlobalKey<NavigatorState>());
 
   static const _items = [
     (Icons.home_outlined, Icons.home_rounded, 'Home'),
@@ -58,6 +58,7 @@ class _ShellState extends State<Shell> {
     (Icons.public_outlined, Icons.public, 'Mappa'),
     (Icons.local_fire_department_outlined, Icons.local_fire_department, 'Pazzie'),
     (Icons.tune, Icons.tune, 'Impostazioni'),
+    (Icons.info_outline_rounded, Icons.info_rounded, 'Informazioni'),
   ];
 
   Widget _page(int i) {
@@ -68,12 +69,13 @@ class _ShellState extends State<Shell> {
       2 => const CalendarScreen(),
       3 => const MapScreen(),
       4 => const CrazyScreen(),
-      _ => const SettingsScreen(embedded: true),
+      5 => const SettingsScreen(embedded: true),
+      _ => const InfoScreen(embedded: true),
     };
     return Navigator(key: _navs[i], onGenerateRoute: (_) => MaterialPageRoute(builder: (_) => root));
   }
 
-  static const _tabNames = ['home', 'destinazioni', 'calendario', 'mappa', 'pazzie', 'impostazioni'];
+  static const _tabNames = ['home', 'destinazioni', 'calendario', 'mappa', 'pazzie', 'impostazioni', 'informazioni'];
 
   @override
   void initState() {
@@ -97,7 +99,7 @@ class _ShellState extends State<Shell> {
   Widget build(BuildContext context) {
     final wide = isWide(context);
     // On phones settings open from the header icon: five tabs at the bottom.
-    if (!wide && _tab == 5) _tab = 0;
+    if (!wide && _tab >= 5) _tab = 0;
     final body = PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, _) {

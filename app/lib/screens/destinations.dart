@@ -25,10 +25,10 @@ class _DestinationsScreenState extends State<DestinationsScreen> {
           header: HeaderTitle(
             kicker: 'Offerte per paese',
             title: 'Destinazioni',
-            action: isWide(context) ? null : RoundIcon(Icons.tune, tooltip: 'Impostazioni', onTap: () => openSettings(context)),
+            action: isWide(context) ? null : const HeaderActions(),
           ),
           child: FutureBuilder(
-            key: ValueKey(airports.join()),
+            key: ValueKey(App.prefs.scope),
             future: App.repo.catalog(airports),
             builder: (context, snap) {
               if (snap.connectionState != ConnectionState.done) return const Loading();
