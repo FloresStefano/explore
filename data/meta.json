@@ -1,15 +1,15 @@
 {
- "run_at": "2026-11-19T18:13:36+00:00",
+ "run_at": "2026-11-19T23:02:35+00:00",
  "sources": {
   "ryanair": {
    "enabled": true,
    "cap": 15,
-   "calls": 0,
-   "ok": 0,
+   "calls": 15,
+   "ok": 15,
    "errors": 0,
-   "offers": 0,
+   "offers": 140,
    "last_error": null,
-   "due_not_picked": null
+   "due_not_picked": "possibile arretrato"
   },
   "skiplagged": {
    "enabled": false
@@ -24,20 +24,26 @@
   }
  },
  "warnings": [],
- "discards": {},
+ "discards": {
+  "FIN-12": 125,
+  "JOB-09": 30,
+  "SEL-01": 88,
+  "SEL-02": 8,
+  "SEL-08": 13
+ },
  "coverage_ryanair": {
   "VRN": {
-   "pairs": 124,
-   "fresh": 124
+   "pairs": 161,
+   "fresh": 129
   },
   "BGY": {
-   "pairs": 124,
-   "fresh": 124
+   "pairs": 161,
+   "fresh": 129
   },
   "TSF": {
-   "pairs": 124,
-   "fresh": 124
+   "pairs": 161,
+   "fresh": 129
   }
  },
- "seconds": 0
+ "seconds": 34
 }

@@ -220,7 +220,7 @@
   {
    "id": "JOB-01",
    "name": "Orizzonte di ricerca delle offerte",
-   "value": 90,
+   "value": 120,
    "unit": "giorni",
    "editable": "config"
   },

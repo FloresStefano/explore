@@ -123,3 +123,6 @@ observed,out,ret,nights,window,price,source,selected
 2026-11-19,2027-02-13,2027-02-14,1,weekend,67.43,ryanair,1
 2026-11-19,2027-02-13,2027-02-15,2,weekend+,51.37,ryanair,1
 2026-11-19,2027-02-14,2027-02-15,1,weekend+,46.37,ryanair,1
+2026-11-19,2027-02-19,2027-02-20,1,weekend,48.37,ryanair,0
+2026-11-19,2027-02-19,2027-02-21,2,weekend,57.15,ryanair,1
+2026-11-19,2027-02-19,2027-02-22,3,weekend+,45.37,ryanair,1

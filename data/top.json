@@ -1589,6 +1589,55 @@
   },
   {
    "origin": "BGY",
+   "destination": "CRL",
+   "out_date": "2027-02-19",
+   "ret_date": "2027-02-22",
+   "nights": 3,
+   "type": "weekend+",
+   "leave_days": 1,
+   "leave_dates": [
+    "2027-02-22"
+   ],
+   "outbound": {
+    "from": "BGY",
+    "to": "CRL",
+    "flight": "FR3659",
+    "airline": "Ryanair",
+    "departure": "2027-02-19T21:10+01:00",
+    "arrival": "2027-02-19T22:45+01:00"
+   },
+   "inbound": {
+    "from": "CRL",
+    "to": "BGY",
+    "flight": "FR4474",
+    "airline": "Ryanair",
+    "departure": "2027-02-22T14:20+01:00",
+    "arrival": "2027-02-22T15:50+01:00"
+   },
+   "airlines": [
+    "Ryanair"
+   ],
+   "price": 47.22,
+   "currency": "EUR",
+   "fare": "base, senza bagaglio",
+   "useful_hours": 32.3,
+   "price_per_hour": 1.46,
+   "unmissable": false,
+   "source": "ryanair",
+   "observed_at": "2026-11-19",
+   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-19&dateIn=2027-02-22&isReturn=true&originIata=BGY&destinationIata=CRL",
+   "city": "Charleroi",
+   "country": "Belgio",
+   "country_code": "be",
+   "kpi": {
+    "km": 659,
+    "eur_km": 0.072,
+    "eur_h": 1.46,
+    "life": 67
+   }
+  },
+  {
+   "origin": "BGY",
    "destination": "BVA",
    "out_date": "2027-01-05",
    "ret_date": "2027-01-10",
@@ -2440,55 +2489,6 @@
     "eur_km": 0.078,
     "eur_h": 1.64,
     "life": 72
-   }
-  },
-  {
-   "origin": "BGY",
-   "destination": "SOF",
-   "out_date": "2026-12-12",
-   "ret_date": "2026-12-14",
-   "nights": 2,
-   "type": "weekend+",
-   "leave_days": 1,
-   "leave_dates": [
-    "2026-12-14"
-   ],
-   "outbound": {
-    "from": "BGY",
-    "to": "SOF",
-    "flight": "W64352",
-    "airline": "Wizz Air",
-    "departure": "2026-12-12T08:20+01:00",
-    "arrival": "2026-12-12T11:20+02:00"
-   },
-   "inbound": {
-    "from": "SOF",
-    "to": "BGY",
-    "flight": "W64389",
-    "airline": "Wizz Air",
-    "departure": "2026-12-14T20:00+02:00",
-    "arrival": "2026-12-14T21:15+01:00"
-   },
-   "airlines": [
-    "Wizz Air"
-   ],
-   "price": 56.0,
-   "currency": "EUR",
-   "fare": "tariffa minima Kiwi.com, prezzo indicativo",
-   "useful_hours": 33.7,
-   "price_per_hour": 1.66,
-   "unmissable": false,
-   "source": "kiwi",
-   "observed_at": "2026-11-18",
-   "link": "https://kiwi.com/u/udg2yrw48y",
-   "city": "Sofia",
-   "country": "Bulgaria",
-   "country_code": "bg",
-   "kpi": {
-    "km": 1136,
-    "eur_km": 0.049,
-    "eur_h": 1.66,
-    "life": 75
    }
   }
  ]
