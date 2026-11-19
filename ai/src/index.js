@@ -1,4 +1,4 @@
-// weekend-ai: the two AI features of Weekend Break, on Cloudflare Workers AI (free tier).
+// weekend-ai: the AI features of Volo via!, on Cloudflare Workers AI (free tier).
 //   GET  /recap  -> news-style recap of the latest job run (cached per run)
 //   POST /guide  -> tourist card of a destination for the travel dates (cached per city and month)
 //   POST /crazy  -> "Pazzie": cheap weekends, weekend+ and ponti told as a ranking (cached per list)

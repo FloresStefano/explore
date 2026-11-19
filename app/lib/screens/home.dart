@@ -70,7 +70,7 @@ class HomeScreen extends StatelessWidget {
           final summary = snap.data?[1] as Json?;
           final catalog = (snap.data?[2] as List<Json>?) ?? const <Json>[];
           final places = _places(catalog);
-          final best = bestOffers(catalog);
+          final best = bestOffers(catalog, count: 20);
           // AI texts the job wrote for the Pazzie, when the offer is one of them.
           final crazyFile = snap.data?[3] as Json?;
           final texts = (crazyFile?['version'] == crazyTextVersion ? (crazyFile?['items'] as Json?) : null) ?? const <String, dynamic>{};
@@ -120,7 +120,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           const SizedBox(width: Sp.sm + 2),
                           const Expanded(
-                            child: Text('Weekend Break',
+                            child: Text('Volo via!',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: Fs.title,
@@ -204,24 +204,31 @@ class HomeScreen extends StatelessWidget {
                           const Text('meno euro per km e per ora, più ore di vita · tocca per aprire',
                               textAlign: TextAlign.center, style: TextStyle(fontSize: Fs.small, color: muted)),
                           const SizedBox(height: Sp.md),
-                          Marquee(speed: 24, children: [
-                            for (final (i, o) in best.indexed)
-                              BestChip(
-                                rank: i + 1,
-                                code: '${o['country_code'] ?? ''}',
-                                city: '${o['city'] ?? o['destination']}'.split(' (').first,
-                                price: o['price'] as num,
-                                onTap: () => showCrazyCard(
-                                  context,
-                                  offer: o,
-                                  rank: i + 1,
-                                  catalog: catalog,
-                                  ai: texts['${o['origin']}-${o['destination']}-${o['out_date']}-${o['ret_date']}']
-                                      as Json?,
-                                  caption: 'N° ${i + 1} delle ${best.length} occasioni migliori',
-                                ),
+                          // Positions 1-10 on the first band, 11-20 on the second, sliding the other way.
+                          for (final (band, reverse) in [(0, false), (1, true)])
+                            if (best.length > band * 10)
+                              Padding(
+                                padding: EdgeInsets.only(top: band == 0 ? 0 : Sp.sm),
+                                child: Marquee(speed: reverse ? 20 : 24, reverse: reverse, children: [
+                                  for (final (i, o) in best.indexed)
+                                    if (i ~/ 10 == band)
+                                      BestChip(
+                                        rank: i + 1,
+                                        code: '${o['country_code'] ?? ''}',
+                                        city: '${o['city'] ?? o['destination']}'.split(' (').first,
+                                        price: o['price'] as num,
+                                        onTap: () => showCrazyCard(
+                                          context,
+                                          offer: o,
+                                          rank: i + 1,
+                                          catalog: catalog,
+                                          ai: texts['${o['origin']}-${o['destination']}-${o['out_date']}-${o['ret_date']}']
+                                              as Json?,
+                                          caption: 'N° ${i + 1} delle ${best.length} occasioni migliori',
+                                        ),
+                                      ),
+                                ]),
                               ),
-                          ]),
                         ]),
                       ),
               ),

@@ -29,7 +29,7 @@ class WeekendBreakApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Weekend Break',
+      title: 'Volo via!',
       debugShowCheckedModeBanner: false,
       theme: appTheme(),
       home: const Shell(),
@@ -173,7 +173,7 @@ class _SideMenu extends StatelessWidget {
               if (open) ...[
                 const SizedBox(width: Sp.md),
                 const Expanded(
-                  child: Text('Weekend Break',
+                  child: Text('Volo via!',
                       maxLines: 1,
                       overflow: TextOverflow.clip,
                       softWrap: false,
