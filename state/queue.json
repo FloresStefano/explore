@@ -1,11 +1,11 @@
 {
-"kiwi|BGY-BEG|2026-11-19_2026-11-21": {
-"count": 6,
-"fetched": "2026-11-18"
-},
 "kiwi|BGY-BEG|2026-11-20_2026-11-21": {
 "count": 3,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-BEG|2026-11-21_2026-11-22": {
+"count": 1,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-BEG|2026-11-26_2026-11-28": {
 "count": 6,
@@ -39,13 +39,29 @@
 "count": 2,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-CLJ|2026-11-19_2026-11-21": {
-"count": 5,
-"fetched": "2026-11-18"
+"kiwi|BGY-BEG|2027-01-21_2027-01-23": {
+"count": 2,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-BEG|2027-01-28_2027-01-30": {
+"count": 2,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-BEG|2027-02-04_2027-02-06": {
+"count": 2,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-BEG|2027-02-11_2027-02-13": {
+"count": 2,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-CLJ|2026-11-20_2026-11-21": {
 "count": 3,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-CLJ|2026-11-21_2026-11-22": {
+"count": 1,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-CLJ|2026-11-26_2026-11-28": {
 "count": 5,
@@ -79,13 +95,29 @@
 "count": 2,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-CMN|2026-11-19_2026-11-21": {
-"count": 3,
-"fetched": "2026-11-18"
+"kiwi|BGY-CLJ|2027-01-21_2027-01-23": {
+"count": 2,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CLJ|2027-01-28_2027-01-30": {
+"count": 2,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CLJ|2027-02-04_2027-02-06": {
+"count": 5,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CLJ|2027-02-11_2027-02-13": {
+"count": 5,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-CMN|2026-11-20_2026-11-21": {
 "count": 1,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-CMN|2026-11-21_2026-11-22": {
+"count": 1,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-CMN|2026-11-26_2026-11-28": {
 "count": 3,
@@ -119,13 +151,29 @@
 "count": 4,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-CPH|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-18"
+"kiwi|BGY-CMN|2027-01-21_2027-01-23": {
+"count": 4,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CMN|2027-01-28_2027-01-30": {
+"count": 4,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CMN|2027-02-04_2027-02-06": {
+"count": 7,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CMN|2027-02-11_2027-02-13": {
+"count": 4,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-CPH|2026-11-20_2026-11-21": {
 "count": 0,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-CPH|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-CPH|2026-11-26_2026-11-28": {
 "count": 0,
@@ -159,13 +207,29 @@
 "count": 0,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-CRA|2026-11-19_2026-11-21": {
-"count": 8,
-"fetched": "2026-11-18"
+"kiwi|BGY-CPH|2027-01-21_2027-01-23": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CPH|2027-01-28_2027-01-30": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CPH|2027-02-04_2027-02-06": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CPH|2027-02-11_2027-02-13": {
+"count": 1,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-CRA|2026-11-20_2026-11-21": {
 "count": 5,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-CRA|2026-11-21_2026-11-22": {
+"count": 2,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-CRA|2026-11-26_2026-11-28": {
 "count": 8,
@@ -199,13 +263,29 @@
 "count": 5,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-CTA|2026-11-19_2026-11-21": {
-"count": 1,
-"fetched": "2026-11-18"
+"kiwi|BGY-CRA|2027-01-21_2027-01-23": {
+"count": 5,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CRA|2027-01-28_2027-01-30": {
+"count": 5,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CRA|2027-02-04_2027-02-06": {
+"count": 5,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CRA|2027-02-11_2027-02-13": {
+"count": 5,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-CTA|2026-11-20_2026-11-21": {
 "count": 1,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-CTA|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-CTA|2026-11-26_2026-11-28": {
 "count": 1,
@@ -239,13 +319,29 @@
 "count": 1,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-IAS|2026-11-19_2026-11-21": {
-"count": 2,
-"fetched": "2026-11-18"
+"kiwi|BGY-CTA|2027-01-21_2027-01-23": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CTA|2027-01-28_2027-01-30": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CTA|2027-02-04_2027-02-06": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-CTA|2027-02-11_2027-02-13": {
+"count": 1,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-IAS|2026-11-20_2026-11-21": {
 "count": 2,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-IAS|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-IAS|2026-11-26_2026-11-28": {
 "count": 2,
@@ -279,13 +375,29 @@
 "count": 4,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-OLB|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-18"
+"kiwi|BGY-IAS|2027-01-21_2027-01-23": {
+"count": 4,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-IAS|2027-01-28_2027-01-30": {
+"count": 4,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-IAS|2027-02-04_2027-02-06": {
+"count": 4,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-IAS|2027-02-11_2027-02-13": {
+"count": 2,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-OLB|2026-11-20_2026-11-21": {
 "count": 0,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-OLB|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-OLB|2026-11-26_2026-11-28": {
 "count": 0,
@@ -319,13 +431,29 @@
 "count": 0,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-OTP|2026-11-19_2026-11-21": {
-"count": 15,
-"fetched": "2026-11-18"
+"kiwi|BGY-OLB|2027-01-21_2027-01-23": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-OLB|2027-01-28_2027-01-30": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-OLB|2027-02-04_2027-02-06": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-OLB|2027-02-11_2027-02-13": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-OTP|2026-11-20_2026-11-21": {
 "count": 15,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-OTP|2026-11-21_2026-11-22": {
+"count": 8,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-OTP|2026-11-26_2026-11-28": {
 "count": 15,
@@ -359,13 +487,29 @@
 "count": 15,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-RMO|2026-11-19_2026-11-21": {
-"count": 9,
-"fetched": "2026-11-18"
+"kiwi|BGY-OTP|2027-01-21_2027-01-23": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-OTP|2027-01-28_2027-01-30": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-OTP|2027-02-04_2027-02-06": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-OTP|2027-02-11_2027-02-13": {
+"count": 15,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-RMO|2026-11-20_2026-11-21": {
 "count": 6,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-RMO|2026-11-21_2026-11-22": {
+"count": 3,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-RMO|2026-11-26_2026-11-28": {
 "count": 9,
@@ -399,13 +543,29 @@
 "count": 9,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-SAW|2026-11-19_2026-11-21": {
-"count": 15,
-"fetched": "2026-11-18"
+"kiwi|BGY-RMO|2027-01-21_2027-01-23": {
+"count": 5,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-RMO|2027-01-28_2027-01-30": {
+"count": 5,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-RMO|2027-02-04_2027-02-06": {
+"count": 5,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-RMO|2027-02-11_2027-02-13": {
+"count": 5,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-SAW|2026-11-20_2026-11-21": {
 "count": 15,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-SAW|2026-11-21_2026-11-22": {
+"count": 15,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-SAW|2026-11-26_2026-11-28": {
 "count": 15,
@@ -439,13 +599,29 @@
 "count": 15,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-SCV|2026-11-19_2026-11-21": {
-"count": 3,
-"fetched": "2026-11-18"
+"kiwi|BGY-SAW|2027-01-21_2027-01-23": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-SAW|2027-01-28_2027-01-30": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-SAW|2027-02-04_2027-02-06": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-SAW|2027-02-11_2027-02-13": {
+"count": 15,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-SCV|2026-11-20_2026-11-21": {
 "count": 3,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-SCV|2026-11-21_2026-11-22": {
+"count": 1,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-SCV|2026-11-26_2026-11-28": {
 "count": 3,
@@ -479,13 +655,29 @@
 "count": 9,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-SOF|2026-11-19_2026-11-21": {
+"kiwi|BGY-SCV|2027-01-21_2027-01-23": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-SCV|2027-01-28_2027-01-30": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-SCV|2027-02-04_2027-02-06": {
 "count": 13,
-"fetched": "2026-11-18"
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-SCV|2027-02-11_2027-02-13": {
+"count": 9,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-SOF|2026-11-20_2026-11-21": {
 "count": 9,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-SOF|2026-11-21_2026-11-22": {
+"count": 5,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-SOF|2026-11-26_2026-11-28": {
 "count": 13,
@@ -519,13 +711,29 @@
 "count": 9,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-TIA|2026-11-19_2026-11-21": {
-"count": 15,
-"fetched": "2026-11-18"
+"kiwi|BGY-SOF|2027-01-21_2027-01-23": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-SOF|2027-01-28_2027-01-30": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-SOF|2027-02-04_2027-02-06": {
+"count": 13,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-SOF|2027-02-11_2027-02-13": {
+"count": 9,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-TIA|2026-11-20_2026-11-21": {
 "count": 15,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-TIA|2026-11-21_2026-11-22": {
+"count": 12,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-TIA|2026-11-26_2026-11-28": {
 "count": 15,
@@ -559,13 +767,29 @@
 "count": 15,
 "fetched": "2026-11-19"
 },
-"kiwi|BGY-WAW|2026-11-19_2026-11-21": {
+"kiwi|BGY-TIA|2027-01-21_2027-01-23": {
 "count": 15,
-"fetched": "2026-11-18"
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-TIA|2027-01-28_2027-01-30": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-TIA|2027-02-04_2027-02-06": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-TIA|2027-02-11_2027-02-13": {
+"count": 15,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-WAW|2026-11-20_2026-11-21": {
 "count": 15,
 "fetched": "2026-11-19"
+},
+"kiwi|BGY-WAW|2026-11-21_2026-11-22": {
+"count": 12,
+"fetched": "2026-11-20"
 },
 "kiwi|BGY-WAW|2026-11-26_2026-11-28": {
 "count": 15,
@@ -599,13 +823,29 @@
 "count": 15,
 "fetched": "2026-11-19"
 },
-"kiwi|TSF-CLJ|2026-11-19_2026-11-21": {
-"count": 1,
-"fetched": "2026-11-18"
+"kiwi|BGY-WAW|2027-01-21_2027-01-23": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-WAW|2027-01-28_2027-01-30": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-WAW|2027-02-04_2027-02-06": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|BGY-WAW|2027-02-11_2027-02-13": {
+"count": 15,
+"fetched": "2026-11-20"
 },
 "kiwi|TSF-CLJ|2026-11-20_2026-11-21": {
 "count": 1,
 "fetched": "2026-11-19"
+},
+"kiwi|TSF-CLJ|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|TSF-CLJ|2026-11-26_2026-11-28": {
 "count": 1,
@@ -639,13 +879,29 @@
 "count": 1,
 "fetched": "2026-11-19"
 },
-"kiwi|TSF-IAS|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-18"
+"kiwi|TSF-CLJ|2027-01-21_2027-01-23": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-CLJ|2027-01-28_2027-01-30": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-CLJ|2027-02-04_2027-02-06": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-CLJ|2027-02-11_2027-02-13": {
+"count": 1,
+"fetched": "2026-11-20"
 },
 "kiwi|TSF-IAS|2026-11-20_2026-11-21": {
 "count": 0,
 "fetched": "2026-11-19"
+},
+"kiwi|TSF-IAS|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|TSF-IAS|2026-11-26_2026-11-28": {
 "count": 0,
@@ -679,13 +935,29 @@
 "count": 0,
 "fetched": "2026-11-19"
 },
-"kiwi|TSF-OTP|2026-11-19_2026-11-21": {
-"count": 9,
-"fetched": "2026-11-18"
+"kiwi|TSF-IAS|2027-01-21_2027-01-23": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-IAS|2027-01-28_2027-01-30": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-IAS|2027-02-04_2027-02-06": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-IAS|2027-02-11_2027-02-13": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|TSF-OTP|2026-11-20_2026-11-21": {
 "count": 6,
 "fetched": "2026-11-19"
+},
+"kiwi|TSF-OTP|2026-11-21_2026-11-22": {
+"count": 3,
+"fetched": "2026-11-20"
 },
 "kiwi|TSF-OTP|2026-11-26_2026-11-28": {
 "count": 9,
@@ -719,13 +991,29 @@
 "count": 6,
 "fetched": "2026-11-19"
 },
-"kiwi|TSF-SCV|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-18"
+"kiwi|TSF-OTP|2027-01-21_2027-01-23": {
+"count": 6,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-OTP|2027-01-28_2027-01-30": {
+"count": 6,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-OTP|2027-02-04_2027-02-06": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-OTP|2027-02-11_2027-02-13": {
+"count": 9,
+"fetched": "2026-11-20"
 },
 "kiwi|TSF-SCV|2026-11-20_2026-11-21": {
 "count": 0,
 "fetched": "2026-11-19"
+},
+"kiwi|TSF-SCV|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|TSF-SCV|2026-11-26_2026-11-28": {
 "count": 0,
@@ -759,13 +1047,29 @@
 "count": 0,
 "fetched": "2026-11-19"
 },
-"kiwi|TSF-TIA|2026-11-19_2026-11-21": {
-"count": 15,
-"fetched": "2026-11-18"
+"kiwi|TSF-SCV|2027-01-21_2027-01-23": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-SCV|2027-01-28_2027-01-30": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-SCV|2027-02-04_2027-02-06": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-SCV|2027-02-11_2027-02-13": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|TSF-TIA|2026-11-20_2026-11-21": {
 "count": 15,
 "fetched": "2026-11-19"
+},
+"kiwi|TSF-TIA|2026-11-21_2026-11-22": {
+"count": 12,
+"fetched": "2026-11-20"
 },
 "kiwi|TSF-TIA|2026-11-26_2026-11-28": {
 "count": 15,
@@ -799,13 +1103,29 @@
 "count": 15,
 "fetched": "2026-11-19"
 },
-"kiwi|VRN-BCN|2026-11-19_2026-11-21": {
-"count": 1,
-"fetched": "2026-11-18"
+"kiwi|TSF-TIA|2027-01-21_2027-01-23": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-TIA|2027-01-28_2027-01-30": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-TIA|2027-02-04_2027-02-06": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|TSF-TIA|2027-02-11_2027-02-13": {
+"count": 15,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-BCN|2026-11-20_2026-11-21": {
 "count": 0,
 "fetched": "2026-11-19"
+},
+"kiwi|VRN-BCN|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-BCN|2026-11-26_2026-11-28": {
 "count": 1,
@@ -839,13 +1159,29 @@
 "count": 1,
 "fetched": "2026-11-19"
 },
-"kiwi|VRN-CMN|2026-11-19_2026-11-21": {
+"kiwi|VRN-BCN|2027-01-21_2027-01-23": {
 "count": 1,
-"fetched": "2026-11-18"
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-BCN|2027-01-28_2027-01-30": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-BCN|2027-02-04_2027-02-06": {
+"count": 5,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-BCN|2027-02-11_2027-02-13": {
+"count": 5,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-CMN|2026-11-20_2026-11-21": {
 "count": 1,
 "fetched": "2026-11-19"
+},
+"kiwi|VRN-CMN|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-CMN|2026-11-26_2026-11-28": {
 "count": 1,
@@ -879,13 +1215,29 @@
 "count": 1,
 "fetched": "2026-11-19"
 },
-"kiwi|VRN-CTA|2026-11-19_2026-11-21": {
-"count": 13,
-"fetched": "2026-11-18"
+"kiwi|VRN-CMN|2027-01-21_2027-01-23": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-CMN|2027-01-28_2027-01-30": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-CMN|2027-02-04_2027-02-06": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-CMN|2027-02-11_2027-02-13": {
+"count": 1,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-CTA|2026-11-20_2026-11-21": {
 "count": 13,
 "fetched": "2026-11-19"
+},
+"kiwi|VRN-CTA|2026-11-21_2026-11-22": {
+"count": 5,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-CTA|2026-11-26_2026-11-28": {
 "count": 13,
@@ -919,13 +1271,29 @@
 "count": 15,
 "fetched": "2026-11-19"
 },
-"kiwi|VRN-LGW|2026-11-19_2026-11-21": {
-"count": 1,
-"fetched": "2026-11-18"
+"kiwi|VRN-CTA|2027-01-21_2027-01-23": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-CTA|2027-01-28_2027-01-30": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-CTA|2027-02-04_2027-02-06": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-CTA|2027-02-11_2027-02-13": {
+"count": 15,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-LGW|2026-11-20_2026-11-21": {
 "count": 1,
 "fetched": "2026-11-19"
+},
+"kiwi|VRN-LGW|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-LGW|2026-11-26_2026-11-28": {
 "count": 1,
@@ -959,13 +1327,29 @@
 "count": 1,
 "fetched": "2026-11-19"
 },
-"kiwi|VRN-OLB|2026-11-19_2026-11-21": {
+"kiwi|VRN-LGW|2027-01-21_2027-01-23": {
 "count": 1,
-"fetched": "2026-11-18"
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-LGW|2027-01-28_2027-01-30": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-LGW|2027-02-04_2027-02-06": {
+"count": 3,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-LGW|2027-02-11_2027-02-13": {
+"count": 15,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-OLB|2026-11-20_2026-11-21": {
 "count": 1,
 "fetched": "2026-11-19"
+},
+"kiwi|VRN-OLB|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-OLB|2026-11-26_2026-11-28": {
 "count": 1,
@@ -999,13 +1383,29 @@
 "count": 1,
 "fetched": "2026-11-19"
 },
-"kiwi|VRN-ORY|2026-11-19_2026-11-21": {
+"kiwi|VRN-OLB|2027-01-21_2027-01-23": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-OLB|2027-01-28_2027-01-30": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-OLB|2027-02-04_2027-02-06": {
 "count": 3,
-"fetched": "2026-11-18"
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-OLB|2027-02-11_2027-02-13": {
+"count": 3,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-ORY|2026-11-20_2026-11-21": {
 "count": 3,
 "fetched": "2026-11-19"
+},
+"kiwi|VRN-ORY|2026-11-21_2026-11-22": {
+"count": 1,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-ORY|2026-11-26_2026-11-28": {
 "count": 3,
@@ -1039,13 +1439,29 @@
 "count": 3,
 "fetched": "2026-11-19"
 },
-"kiwi|VRN-PMO|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-18"
+"kiwi|VRN-ORY|2027-01-21_2027-01-23": {
+"count": 3,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-ORY|2027-01-28_2027-01-30": {
+"count": 3,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-ORY|2027-02-04_2027-02-06": {
+"count": 3,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-ORY|2027-02-11_2027-02-13": {
+"count": 3,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-PMO|2026-11-20_2026-11-21": {
 "count": 0,
 "fetched": "2026-11-19"
+},
+"kiwi|VRN-PMO|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-PMO|2026-11-26_2026-11-28": {
 "count": 0,
@@ -1079,13 +1495,29 @@
 "count": 1,
 "fetched": "2026-11-19"
 },
-"kiwi|VRN-PRG|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-18"
+"kiwi|VRN-PMO|2027-01-21_2027-01-23": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-PMO|2027-01-28_2027-01-30": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-PMO|2027-02-04_2027-02-06": {
+"count": 1,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-PMO|2027-02-11_2027-02-13": {
+"count": 1,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-PRG|2026-11-20_2026-11-21": {
 "count": 0,
 "fetched": "2026-11-19"
+},
+"kiwi|VRN-PRG|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-PRG|2026-11-26_2026-11-28": {
 "count": 0,
@@ -1119,13 +1551,29 @@
 "count": 0,
 "fetched": "2026-11-19"
 },
-"kiwi|VRN-RMO|2026-11-19_2026-11-21": {
-"count": 2,
-"fetched": "2026-11-18"
+"kiwi|VRN-PRG|2027-01-21_2027-01-23": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-PRG|2027-01-28_2027-01-30": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-PRG|2027-02-04_2027-02-06": {
+"count": 0,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-PRG|2027-02-11_2027-02-13": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-RMO|2026-11-20_2026-11-21": {
 "count": 0,
 "fetched": "2026-11-19"
+},
+"kiwi|VRN-RMO|2026-11-21_2026-11-22": {
+"count": 0,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-RMO|2026-11-26_2026-11-28": {
 "count": 2,
@@ -1159,13 +1607,29 @@
 "count": 2,
 "fetched": "2026-11-19"
 },
-"kiwi|VRN-TIA|2026-11-19_2026-11-21": {
-"count": 12,
-"fetched": "2026-11-18"
+"kiwi|VRN-RMO|2027-01-21_2027-01-23": {
+"count": 2,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-RMO|2027-01-28_2027-01-30": {
+"count": 2,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-RMO|2027-02-04_2027-02-06": {
+"count": 5,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-RMO|2027-02-11_2027-02-13": {
+"count": 2,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-TIA|2026-11-20_2026-11-21": {
 "count": 8,
 "fetched": "2026-11-19"
+},
+"kiwi|VRN-TIA|2026-11-21_2026-11-22": {
+"count": 4,
+"fetched": "2026-11-20"
 },
 "kiwi|VRN-TIA|2026-11-26_2026-11-28": {
 "count": 15,
@@ -1199,17 +1663,21 @@
 "count": 15,
 "fetched": "2026-11-19"
 },
-"ryanair|BGY|2026-11-19_2026-11-21": {
-"count": 53,
-"fetched": "2026-11-16"
+"kiwi|VRN-TIA|2027-01-21_2027-01-23": {
+"count": 15,
+"fetched": "2026-11-20"
 },
-"ryanair|BGY|2026-11-19_2026-11-22": {
-"count": 52,
-"fetched": "2026-11-16"
+"kiwi|VRN-TIA|2027-01-28_2027-01-30": {
+"count": 15,
+"fetched": "2026-11-20"
 },
-"ryanair|BGY|2026-11-19_2026-11-23": {
-"count": 54,
-"fetched": "2026-11-16"
+"kiwi|VRN-TIA|2027-02-04_2027-02-06": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"kiwi|VRN-TIA|2027-02-11_2027-02-13": {
+"count": 15,
+"fetched": "2026-11-20"
 },
 "ryanair|BGY|2026-11-20_2026-11-21": {
 "count": 50,
@@ -1469,11 +1937,11 @@
 },
 "ryanair|BGY|2026-12-18_2026-12-20": {
 "count": 62,
-"fetched": "2026-11-17"
+"fetched": "2026-11-20"
 },
 "ryanair|BGY|2026-12-18_2026-12-21": {
 "count": 64,
-"fetched": "2026-11-17"
+"fetched": "2026-11-20"
 },
 "ryanair|BGY|2026-12-18_2026-12-22": {
 "count": 60,
@@ -1959,17 +2427,141 @@
 "count": 61,
 "fetched": "2026-11-19"
 },
-"ryanair|TSF|2026-11-19_2026-11-21": {
-"count": 10,
-"fetched": "2026-11-16"
+"ryanair|BGY|2027-02-20_2027-02-21": {
+"count": 57,
+"fetched": "2026-11-20"
 },
-"ryanair|TSF|2026-11-19_2026-11-22": {
-"count": 13,
-"fetched": "2026-11-16"
+"ryanair|BGY|2027-02-20_2027-02-22": {
+"count": 66,
+"fetched": "2026-11-20"
 },
-"ryanair|TSF|2026-11-19_2026-11-23": {
-"count": 11,
-"fetched": "2026-11-16"
+"ryanair|BGY|2027-02-21_2027-02-22": {
+"count": 60,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-02-25_2027-02-27": {
+"count": 59,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-02-25_2027-02-28": {
+"count": 57,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-02-26_2027-02-27": {
+"count": 56,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-02-26_2027-02-28": {
+"count": 58,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-02-26_2027-03-01": {
+"count": 61,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-02-27_2027-02-28": {
+"count": 57,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-02-27_2027-03-01": {
+"count": 66,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-02-28_2027-03-01": {
+"count": 60,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-04_2027-03-06": {
+"count": 60,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-04_2027-03-07": {
+"count": 57,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-05_2027-03-06": {
+"count": 56,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-05_2027-03-07": {
+"count": 58,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-05_2027-03-08": {
+"count": 61,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-06_2027-03-07": {
+"count": 58,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-06_2027-03-08": {
+"count": 66,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-07_2027-03-08": {
+"count": 60,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-11_2027-03-13": {
+"count": 60,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-11_2027-03-14": {
+"count": 57,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-12_2027-03-13": {
+"count": 56,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-12_2027-03-14": {
+"count": 58,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-12_2027-03-15": {
+"count": 61,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-13_2027-03-14": {
+"count": 58,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-13_2027-03-15": {
+"count": 66,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-14_2027-03-15": {
+"count": 60,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-18_2027-03-20": {
+"count": 60,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-18_2027-03-21": {
+"count": 57,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-19_2027-03-20": {
+"count": 57,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-19_2027-03-21": {
+"count": 59,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-19_2027-03-22": {
+"count": 63,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-20_2027-03-21": {
+"count": 58,
+"fetched": "2026-11-20"
+},
+"ryanair|BGY|2027-03-20_2027-03-22": {
+"count": 67,
+"fetched": "2026-11-20"
 },
 "ryanair|TSF|2026-11-20_2026-11-21": {
 "count": 11,
@@ -2229,11 +2821,11 @@
 },
 "ryanair|TSF|2026-12-18_2026-12-20": {
 "count": 18,
-"fetched": "2026-11-17"
+"fetched": "2026-11-20"
 },
 "ryanair|TSF|2026-12-18_2026-12-21": {
 "count": 15,
-"fetched": "2026-11-17"
+"fetched": "2026-11-20"
 },
 "ryanair|TSF|2026-12-18_2026-12-22": {
 "count": 11,
@@ -2719,17 +3311,141 @@
 "count": 16,
 "fetched": "2026-11-19"
 },
-"ryanair|VRN|2026-11-19_2026-11-21": {
-"count": 7,
-"fetched": "2026-11-16"
+"ryanair|TSF|2027-02-20_2027-02-21": {
+"count": 13,
+"fetched": "2026-11-20"
 },
-"ryanair|VRN|2026-11-19_2026-11-22": {
-"count": 7,
-"fetched": "2026-11-16"
+"ryanair|TSF|2027-02-20_2027-02-22": {
+"count": 15,
+"fetched": "2026-11-20"
 },
-"ryanair|VRN|2026-11-19_2026-11-23": {
-"count": 5,
-"fetched": "2026-11-16"
+"ryanair|TSF|2027-02-21_2027-02-22": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-02-25_2027-02-27": {
+"count": 10,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-02-25_2027-02-28": {
+"count": 13,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-02-26_2027-02-27": {
+"count": 13,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-02-26_2027-02-28": {
+"count": 18,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-02-26_2027-03-01": {
+"count": 16,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-02-27_2027-02-28": {
+"count": 13,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-02-27_2027-03-01": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-02-28_2027-03-01": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-04_2027-03-06": {
+"count": 10,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-04_2027-03-07": {
+"count": 13,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-05_2027-03-06": {
+"count": 13,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-05_2027-03-07": {
+"count": 18,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-05_2027-03-08": {
+"count": 16,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-06_2027-03-07": {
+"count": 13,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-06_2027-03-08": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-07_2027-03-08": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-11_2027-03-13": {
+"count": 10,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-11_2027-03-14": {
+"count": 13,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-12_2027-03-13": {
+"count": 13,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-12_2027-03-14": {
+"count": 18,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-12_2027-03-15": {
+"count": 16,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-13_2027-03-14": {
+"count": 13,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-13_2027-03-15": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-14_2027-03-15": {
+"count": 15,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-18_2027-03-20": {
+"count": 10,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-18_2027-03-21": {
+"count": 13,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-19_2027-03-20": {
+"count": 13,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-19_2027-03-21": {
+"count": 18,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-19_2027-03-22": {
+"count": 16,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-20_2027-03-21": {
+"count": 13,
+"fetched": "2026-11-20"
+},
+"ryanair|TSF|2027-03-20_2027-03-22": {
+"count": 15,
+"fetched": "2026-11-20"
 },
 "ryanair|VRN|2026-11-20_2026-11-21": {
 "count": 7,
@@ -2977,7 +3693,7 @@
 },
 "ryanair|VRN|2026-12-17_2026-12-20": {
 "count": 7,
-"fetched": "2026-11-17"
+"fetched": "2026-11-20"
 },
 "ryanair|VRN|2026-12-17_2026-12-21": {
 "count": 8,
@@ -2989,11 +3705,11 @@
 },
 "ryanair|VRN|2026-12-18_2026-12-20": {
 "count": 8,
-"fetched": "2026-11-17"
+"fetched": "2026-11-20"
 },
 "ryanair|VRN|2026-12-18_2026-12-21": {
 "count": 9,
-"fetched": "2026-11-17"
+"fetched": "2026-11-20"
 },
 "ryanair|VRN|2026-12-18_2026-12-22": {
 "count": 8,
@@ -3475,6 +4191,142 @@
 "count": 9,
 "fetched": "2026-11-19"
 },
+"ryanair|VRN|2027-02-20_2027-02-21": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-02-20_2027-02-22": {
+"count": 10,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-02-21_2027-02-22": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-02-25_2027-02-27": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-02-25_2027-02-28": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-02-26_2027-02-27": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-02-26_2027-02-28": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-02-26_2027-03-01": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-02-27_2027-02-28": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-02-27_2027-03-01": {
+"count": 10,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-02-28_2027-03-01": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-04_2027-03-06": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-04_2027-03-07": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-05_2027-03-06": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-05_2027-03-07": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-05_2027-03-08": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-06_2027-03-07": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-06_2027-03-08": {
+"count": 10,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-07_2027-03-08": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-11_2027-03-13": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-11_2027-03-14": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-12_2027-03-13": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-12_2027-03-14": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-12_2027-03-15": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-13_2027-03-14": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-13_2027-03-15": {
+"count": 10,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-14_2027-03-15": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-18_2027-03-20": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-18_2027-03-21": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-19_2027-03-20": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-19_2027-03-21": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-19_2027-03-22": {
+"count": 9,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-20_2027-03-21": {
+"count": 8,
+"fetched": "2026-11-20"
+},
+"ryanair|VRN|2027-03-20_2027-03-22": {
+"count": 10,
+"fetched": "2026-11-20"
+},
 "skiplagged_route|BGY-ATH|2026-11-28_2026-11-29": {
 "count": 1,
 "fetched": "2026-11-18"
@@ -3519,14 +4371,6 @@
 "count": 1,
 "fetched": "2026-11-18"
 },
-"skiplagged_route|BGY-CTA|2026-11-19_2026-11-21": {
-"count": 3,
-"fetched": "2026-11-18"
-},
-"skiplagged_route|BGY-CTA|2026-11-19_2026-11-22": {
-"count": 3,
-"fetched": "2026-11-18"
-},
 "skiplagged_route|BGY-CTA|2026-11-20_2026-11-23": {
 "count": 4,
 "fetched": "2026-11-18"
@@ -3557,14 +4401,6 @@
 },
 "skiplagged_route|BGY-FAO|2026-11-27_2026-11-30": {
 "count": 1,
-"fetched": "2026-11-18"
-},
-"skiplagged_route|BGY-KRK|2026-11-19_2026-11-21": {
-"count": 2,
-"fetched": "2026-11-18"
-},
-"skiplagged_route|BGY-KRK|2026-11-19_2026-11-22": {
-"count": 2,
 "fetched": "2026-11-18"
 },
 "skiplagged_route|BGY-KRK|2026-11-20_2026-11-23": {
@@ -3735,14 +4571,6 @@
 "count": 6,
 "fetched": "2026-11-18"
 },
-"skiplagged_route|BGY-STN|2026-11-19_2026-11-21": {
-"count": 3,
-"fetched": "2026-11-18"
-},
-"skiplagged_route|BGY-STN|2026-11-19_2026-11-22": {
-"count": 3,
-"fetched": "2026-11-18"
-},
 "skiplagged_route|BGY-STN|2026-11-20_2026-11-22": {
 "count": 4,
 "fetched": "2026-11-18"
@@ -3765,14 +4593,6 @@
 },
 "skiplagged_route|BGY-SVQ|2026-11-27_2026-11-28": {
 "count": 1,
-"fetched": "2026-11-18"
-},
-"skiplagged_route|BGY-TPS|2026-11-19_2026-11-21": {
-"count": 1,
-"fetched": "2026-11-18"
-},
-"skiplagged_route|BGY-VIE|2026-11-19_2026-11-21": {
-"count": 2,
 "fetched": "2026-11-18"
 },
 "skiplagged_route|BGY-VIE|2026-11-26_2026-11-28": {
@@ -3801,14 +4621,6 @@
 },
 "skiplagged_route|BGY-VLC|2026-11-26_2026-11-28": {
 "count": 1,
-"fetched": "2026-11-18"
-},
-"skiplagged_route|BGY-WAW|2026-11-19_2026-11-21": {
-"count": 2,
-"fetched": "2026-11-18"
-},
-"skiplagged_route|BGY-WAW|2026-11-19_2026-11-22": {
-"count": 2,
 "fetched": "2026-11-18"
 },
 "skiplagged_route|BGY-WAW|2026-11-20_2026-11-22": {
@@ -3867,10 +4679,6 @@
 "count": 1,
 "fetched": "2026-11-18"
 },
-"skiplagged_route|TSF-CRL|2026-11-19_2026-11-22": {
-"count": 2,
-"fetched": "2026-11-17"
-},
 "skiplagged_route|TSF-CRL|2026-11-21_2026-11-22": {
 "count": 3,
 "fetched": "2026-11-18"
@@ -3878,10 +4686,6 @@
 "skiplagged_route|TSF-CRL|2026-11-27_2026-11-30": {
 "count": 3,
 "fetched": "2026-11-18"
-},
-"skiplagged_route|TSF-LIS|2026-11-19_2026-11-23": {
-"count": 1,
-"fetched": "2026-11-16"
 },
 "skiplagged_route|TSF-MRS|2026-11-27_2026-11-30": {
 "count": 1,
@@ -3971,14 +4775,6 @@
 "count": 2,
 "fetched": "2026-11-17"
 },
-"skiplagged_route|TSF-TIA|2026-11-19_2026-11-22": {
-"count": 3,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|TSF-TIA|2026-11-19_2026-11-23": {
-"count": 3,
-"fetched": "2026-11-16"
-},
 "skiplagged_route|TSF-TIA|2026-11-20_2026-11-21": {
 "count": 3,
 "fetched": "2026-11-18"
@@ -4019,14 +4815,6 @@
 "count": 3,
 "fetched": "2026-11-18"
 },
-"skiplagged_route|TSF-VIE|2026-11-19_2026-11-22": {
-"count": 1,
-"fetched": "2026-11-17"
-},
-"skiplagged_route|TSF-VIE|2026-11-19_2026-11-23": {
-"count": 1,
-"fetched": "2026-11-16"
-},
 "skiplagged_route|TSF-VIE|2026-11-26_2026-11-28": {
 "count": 1,
 "fetched": "2026-11-18"
@@ -4043,10 +4831,6 @@
 "count": 1,
 "fetched": "2026-11-18"
 },
-"skiplagged_route|TSF-VLC|2026-11-19_2026-11-22": {
-"count": 2,
-"fetched": "2026-11-17"
-},
 "skiplagged_route|TSF-VLC|2026-11-28_2026-11-30": {
 "count": 2,
 "fetched": "2026-11-17"
@@ -4062,22 +4846,6 @@
 "skiplagged_route|TSF-WMI|2026-11-27_2026-11-30": {
 "count": 1,
 "fetched": "2026-11-18"
-},
-"skiplagged_route|VRN-AMS|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-ASE|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-ASR|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-ATH|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
 },
 "skiplagged_route|VRN-ATH|2026-11-25_2026-11-29": {
 "count": 0,
@@ -4111,14 +4879,6 @@
 "count": 0,
 "fetched": "2026-11-17"
 },
-"skiplagged_route|VRN-AYT|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-BCN|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
 "skiplagged_route|VRN-BCN|2026-11-25_2026-11-29": {
 "count": 0,
 "fetched": "2026-11-17"
@@ -4143,26 +4903,6 @@
 "count": 0,
 "fetched": "2026-11-17"
 },
-"skiplagged_route|VRN-BER|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-BIO|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-BOI|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-BUD|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-CDG|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
 "skiplagged_route|VRN-CDG|2026-11-26_2026-11-28": {
 "count": 0,
 "fetched": "2026-11-17"
@@ -4186,10 +4926,6 @@
 "skiplagged_route|VRN-CDG|2026-11-28_2026-12-01": {
 "count": 0,
 "fetched": "2026-11-17"
-},
-"skiplagged_route|VRN-CGN|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
 },
 "skiplagged_route|VRN-CGN|2026-11-26_2026-11-28": {
 "count": 0,
@@ -4239,77 +4975,13 @@
 "count": 2,
 "fetched": "2026-11-17"
 },
-"skiplagged_route|VRN-DBV|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-DUB|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
 "skiplagged_route|VRN-DUB|2026-11-28_2026-12-01": {
 "count": 0,
 "fetched": "2026-11-17"
 },
-"skiplagged_route|VRN-EAS|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-EGE|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-FAO|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-FCO|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-FNC|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-FNC|2026-11-19_2026-11-22": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-FRA|2026-11-19_2026-11-23": {
-"count": 6,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-GVA|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-IST|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
 "skiplagged_route|VRN-IST|2026-11-28_2026-12-01": {
 "count": 0,
 "fetched": "2026-11-17"
-},
-"skiplagged_route|VRN-JAC|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-JFK|2026-11-19_2026-11-22": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-KEF|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-KEF|2026-11-19_2026-11-22": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-KRK|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
 },
 "skiplagged_route|VRN-KRK|2026-11-28_2026-11-30": {
 "count": 0,
@@ -4322,10 +4994,6 @@
 "skiplagged_route|VRN-LGW|2026-11-20_2026-11-22": {
 "count": 1,
 "fetched": "2026-11-17"
-},
-"skiplagged_route|VRN-LHR|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
 },
 "skiplagged_route|VRN-LHR|2026-11-26_2026-11-28": {
 "count": 0,
@@ -4343,22 +5011,6 @@
 "count": 0,
 "fetched": "2026-11-17"
 },
-"skiplagged_route|VRN-LIS|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-LYS|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-MAD|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-MAN|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
 "skiplagged_route|VRN-MAN|2026-11-21_2026-11-23": {
 "count": 1,
 "fetched": "2026-11-17"
@@ -4370,38 +5022,6 @@
 "skiplagged_route|VRN-MAN|2026-11-28_2026-12-01": {
 "count": 0,
 "fetched": "2026-11-17"
-},
-"skiplagged_route|VRN-MRS|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-MSP|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-MSP|2026-11-19_2026-11-22": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-MUC|2026-11-19_2026-11-23": {
-"count": 6,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-NCE|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-OKC|2026-11-19_2026-11-22": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-OMA|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-OPO|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
 },
 "skiplagged_route|VRN-OPO|2026-11-26_2026-11-30": {
 "count": 0,
@@ -4439,10 +5059,6 @@
 "count": 1,
 "fetched": "2026-11-17"
 },
-"skiplagged_route|VRN-OTP|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
 "skiplagged_route|VRN-OTP|2026-11-26_2026-11-30": {
 "count": 0,
 "fetched": "2026-11-17"
@@ -4458,22 +5074,6 @@
 "skiplagged_route|VRN-OTP|2026-11-28_2026-12-01": {
 "count": 0,
 "fetched": "2026-11-17"
-},
-"skiplagged_route|VRN-PDL|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-PDL|2026-11-19_2026-11-22": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-PMI|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-PMO|2026-11-19_2026-11-23": {
-"count": 1,
-"fetched": "2026-11-16"
 },
 "skiplagged_route|VRN-PMO|2026-11-20_2026-11-22": {
 "count": 1,
@@ -4531,10 +5131,6 @@
 "count": 2,
 "fetched": "2026-11-17"
 },
-"skiplagged_route|VRN-PRG|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
 "skiplagged_route|VRN-PRG|2026-11-25_2026-11-29": {
 "count": 0,
 "fetched": "2026-11-17"
@@ -4566,10 +5162,6 @@
 "skiplagged_route|VRN-PRG|2026-11-28_2026-12-01": {
 "count": 0,
 "fetched": "2026-11-17"
-},
-"skiplagged_route|VRN-RMO|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
 },
 "skiplagged_route|VRN-RMO|2026-11-21_2026-11-22": {
 "count": 1,
@@ -4603,14 +5195,6 @@
 "count": 1,
 "fetched": "2026-11-17"
 },
-"skiplagged_route|VRN-SJC|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-SPU|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
 "skiplagged_route|VRN-STN|2026-11-20_2026-11-23": {
 "count": 1,
 "fetched": "2026-11-17"
@@ -4626,34 +5210,6 @@
 "skiplagged_route|VRN-STN|2026-11-28_2026-11-30": {
 "count": 1,
 "fetched": "2026-11-17"
-},
-"skiplagged_route|VRN-SZG|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-TFS|2026-11-19_2026-11-21": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-TFS|2026-11-19_2026-11-22": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-TUL|2026-11-19_2026-11-22": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-VIE|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-VLC|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-WAW|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
 },
 "skiplagged_route|VRN-WAW|2026-11-20_2026-11-23": {
 "count": 0,
@@ -4694,25 +5250,6 @@
 "skiplagged_route|VRN-WAW|2026-11-27_2026-12-01": {
 "count": 0,
 "fetched": "2026-11-17"
-},
-"skiplagged_route|VRN-ZAG|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged_route|VRN-ZMB|2026-11-19_2026-11-23": {
-"error": "RuntimeError: skiplagged sk_flights_search: [{\"type\": \"text\", \"text\": \"The destination was not recognized. Try a city name or a valid airport or city IATA code; ask the user if unsure.\"}]"
-},
-"skiplagged_route|VRN-ZRH|2026-11-19_2026-11-23": {
-"count": 0,
-"fetched": "2026-11-16"
-},
-"skiplagged|BGY|2026-11-19_2026-11-21": {
-"count": 31,
-"fetched": "2026-11-18"
-},
-"skiplagged|BGY|2026-11-19_2026-11-22": {
-"count": 30,
-"fetched": "2026-11-18"
 },
 "skiplagged|BGY|2026-11-20_2026-11-21": {
 "count": 26,
@@ -4865,18 +5402,6 @@
 "skiplagged|BGY|2026-12-11_2026-12-14": {
 "count": 31,
 "fetched": "2026-11-18"
-},
-"skiplagged|TSF|2026-11-19_2026-11-21": {
-"count": 1,
-"fetched": "2026-11-16"
-},
-"skiplagged|TSF|2026-11-19_2026-11-22": {
-"count": 9,
-"fetched": "2026-11-16"
-},
-"skiplagged|TSF|2026-11-19_2026-11-23": {
-"count": 8,
-"fetched": "2026-11-16"
 },
 "skiplagged|TSF|2026-11-20_2026-11-21": {
 "count": 9,
@@ -5137,18 +5662,6 @@
 "skiplagged|TSF|2026-12-19_2026-12-21": {
 "count": 11,
 "fetched": "2026-11-17"
-},
-"skiplagged|VRN|2026-11-19_2026-11-21": {
-"count": 11,
-"fetched": "2026-11-16"
-},
-"skiplagged|VRN|2026-11-19_2026-11-22": {
-"count": 8,
-"fetched": "2026-11-16"
-},
-"skiplagged|VRN|2026-11-19_2026-11-23": {
-"count": 41,
-"fetched": "2026-11-16"
 },
 "skiplagged|VRN|2026-11-20_2026-11-21": {
 "count": 4,

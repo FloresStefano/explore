@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19",
+ "updated": "2026-11-20",
  "airports": {
   "ORY": {
    "code": "ORY",
@@ -40,6 +40,14 @@
    "country_code": "md",
    "lat": 46.9277,
    "lon": 28.9317
+  },
+  "CMN": {
+   "code": "CMN",
+   "name": "Mohammed V International Airport",
+   "city": "Casablanca",
+   "country_code": "ma",
+   "lat": 33.3675,
+   "lon": -7.59
   }
  }
 }

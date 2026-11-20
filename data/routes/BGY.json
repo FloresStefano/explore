@@ -43,10 +43,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Agadir",
    "city": "Agadir",
    "country": "Marocco",
@@ -63,10 +64,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Malaga",
    "city": "Malaga",
    "country": "Spagna",
@@ -83,10 +85,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Alghero",
    "city": "Alghero",
    "country": "Italia",
@@ -103,10 +106,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Alicante",
    "city": "Alicante",
    "country": "Spagna",
@@ -138,10 +142,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Stoccolma Arlanda",
    "city": "Stoccolma",
    "country": "Svezia",
@@ -158,10 +163,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Atene",
    "city": "Atene",
    "country": "Grecia",
@@ -197,10 +203,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Brindisi",
    "city": "Brindisi",
    "country": "Italia",
@@ -217,10 +224,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Beni Mellal",
    "city": "Beni Mellal",
    "country": "Marocco",
@@ -237,10 +245,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Berlino Brandeburgo",
    "city": "Berlino",
    "country": "Germania",
@@ -272,10 +281,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Birmingham",
    "city": "Birmingham",
    "country": "Regno Unito",
@@ -307,10 +317,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Bari",
    "city": "Bari",
    "country": "Italia",
@@ -342,10 +353,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Bristol",
    "city": "Bristol",
    "country": "Regno Unito",
@@ -362,10 +374,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Budapest",
    "city": "Budapest",
    "country": "Ungheria",
@@ -382,10 +395,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Parigi (Beauvais)",
    "city": "Parigi",
    "country": "Francia",
@@ -402,10 +416,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Cagliari",
    "city": "Cagliari",
    "country": "Italia",
@@ -452,10 +467,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Colonia",
    "city": "Colonia",
    "country": "Germania",
@@ -481,16 +497,18 @@
   },
   "CLJ": {
    "airlines": [
-    "Ryanair"
+    "Ryanair",
+    "Wizz Air Malta"
    ],
    "months": [
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Cluj",
    "city": "Cluj",
    "country": "Romania",
@@ -507,10 +525,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Copenaghen",
    "city": "Copenhagen",
    "country": "Danimarca",
@@ -526,9 +545,10 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-01"
+    "2027-01",
+    "2027-02"
    ],
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Craiova International Airport",
    "city": "Craiova",
    "country_code": "ro",
@@ -544,10 +564,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Bruxelles (Charleroi)",
    "city": "Charleroi",
    "country": "Belgio",
@@ -564,10 +585,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Crotone",
    "city": "Crotone",
    "country": "Italia",
@@ -585,10 +607,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Catania",
    "city": "Catania",
    "country": "Italia",
@@ -620,10 +643,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Dublino",
    "city": "Dublino",
    "country": "Irlanda",
@@ -640,10 +664,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Edimburgo",
    "city": "Edimburgo",
    "country": "Regno Unito",
@@ -677,7 +702,7 @@
     "2027-01"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Eindhoven",
    "city": "Eindhoven",
    "country": "Olanda",
@@ -729,10 +754,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Fez",
    "city": "Fez",
    "country": "Marocco",
@@ -749,10 +775,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Fuerteventura",
    "city": "Fuerteventura",
    "country": "Spagna",
@@ -769,10 +796,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Danzica",
    "city": "Danzica",
    "country": "Polonia",
@@ -789,10 +817,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Helsinki",
    "city": "Helsinki",
    "country": "Finlandia",
@@ -825,10 +854,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Iasi",
    "city": "IASI",
    "country": "Romania",
@@ -905,10 +935,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Cracovia",
    "city": "Cracovia",
    "country": "Polonia",
@@ -925,10 +956,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Katowice",
    "city": "Katowice",
    "country": "Polonia",
@@ -945,10 +977,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Kaunas",
    "city": "Kaunas",
    "country": "Lituania",
@@ -999,10 +1032,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Lisbona",
    "city": "Lisbona",
    "country": "Portogallo",
@@ -1038,10 +1072,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Liverpool",
    "city": "Liverpool",
    "country": "Regno Unito",
@@ -1058,10 +1093,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Lussemburgo",
    "city": "Luxembourg",
    "country": "Lussemburgo",
@@ -1108,10 +1144,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Madrid",
    "city": "Madrid",
    "country": "Spagna",
@@ -1143,10 +1180,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Manchester",
    "city": "Manchester",
    "country": "Regno Unito",
@@ -1163,10 +1201,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Malta",
    "city": "Malta",
    "country": "Malta",
@@ -1183,10 +1222,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Marsiglia",
    "city": "Marsiglia",
    "country": "Francia",
@@ -1202,10 +1242,11 @@
    "months": [
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Napoli",
    "city": "Napoli",
    "country": "Italia",
@@ -1253,10 +1294,11 @@
     "Ryanair"
    ],
    "months": [
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Düsseldorf (Weeze)",
    "city": "Düsseldorf",
    "country": "Germania",
@@ -1267,16 +1309,18 @@
   },
   "OLB": {
    "airlines": [
-    "Ryanair"
+    "Ryanair",
+    "Volotea"
    ],
    "months": [
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Olbia",
    "city": "Olbia",
    "country": "Italia",
@@ -1293,10 +1337,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Porto",
    "city": "Porto",
    "country": "Portogallo",
@@ -1329,10 +1374,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Bucharest (Otopeni)",
    "city": "Bucarest",
    "country": "Romania",
@@ -1387,10 +1433,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Palermo",
    "city": "Palermo",
    "country": "Italia",
@@ -1407,10 +1454,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Poznan",
    "city": "Poznań",
    "country": "Polonia",
@@ -1427,10 +1475,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Praga",
    "city": "Praga",
    "country": "Repubblica Ceca",
@@ -1447,10 +1496,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Pescara",
    "city": "Pescara",
    "country": "Italia",
@@ -1482,10 +1532,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Salerno Costa d'Amalfi",
    "city": "Salerno ",
    "country": "Italia",
@@ -1502,10 +1553,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Marrakech",
    "city": "Marrakesh",
    "country": "Marocco",
@@ -1542,10 +1594,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Reggio Calabria",
    "city": "Reggio Calabria",
    "country": "Italia",
@@ -1577,10 +1630,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Riga",
    "city": "Riga",
    "country": "Lettonia",
@@ -1646,9 +1700,10 @@
     "Wizz Air Malta"
    ],
    "months": [
-    "2027-01"
+    "2027-01",
+    "2027-02"
    ],
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Suceava Ștefan cel Mare International Airport",
    "city": "Suceava",
    "country_code": "ro",
@@ -1679,10 +1734,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Salonicco",
    "city": "Salonicco",
    "country": "Grecia",
@@ -1715,10 +1771,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Sofia",
    "city": "Sofia",
    "country": "Bulgaria",
@@ -1735,10 +1792,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Londra (Stansted)",
    "city": "Londra",
    "country": "Regno Unito",
@@ -1755,10 +1813,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Lamezia",
    "city": "Lamezia",
    "country": "Italia",
@@ -1775,10 +1834,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Siviglia",
    "city": "Siviglia",
    "country": "Spagna",
@@ -1795,10 +1855,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Tenerife (Sud)",
    "city": "Tenerife",
    "country": "Spagna",
@@ -1816,10 +1877,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Tirana",
    "city": "Tirana",
    "country": "Albania",
@@ -1835,10 +1897,11 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-01"
+    "2027-01",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Tolosa",
    "city": "Tolosa",
    "country": "Francia",
@@ -1855,10 +1918,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Tangeri",
    "city": "Tangeri",
    "country": "Marocco",
@@ -1875,10 +1939,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Trapani-Marsala",
    "city": "Trapani",
    "country": "Italia",
@@ -1895,10 +1960,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Oslo (Torp)",
    "city": "Sandefjord",
    "country": "Norvegia",
@@ -1915,10 +1981,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Vienna",
    "city": "Vienna",
    "country": "Austria",
@@ -1974,10 +2041,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Vilnius",
    "city": "Vilnius",
    "country": "Lituania",
@@ -1993,9 +2061,10 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-01"
+    "2027-01",
+    "2027-02"
    ],
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Varsavia (Chopin)",
    "city": "Varsavia",
    "country": "Polonia",
@@ -2012,10 +2081,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Varsavia (Modlin)",
    "city": "Varsavia",
    "country": "Polonia",
@@ -2032,10 +2102,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Breslavia",
    "city": "Breslavia",
    "country": "Polonia",
@@ -2067,10 +2138,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Zagabria",
    "city": "Zagreb",
    "country": "Croazia",
@@ -2087,10 +2159,11 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-20",
    "name": "Saragozza",
    "city": "Saragozza",
    "country": "Spagna",
@@ -2116,5 +2189,5 @@
   }
  },
  "ryanair_updated": "2026-11-16",
- "updated": "2026-11-19"
+ "updated": "2026-11-20"
 }
