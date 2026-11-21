@@ -1,13 +1,13 @@
 {
- "run_at": "2026-11-20T01:48:58+00:00",
+ "run_at": "2026-11-21T01:37:08+00:00",
  "sources": {
   "ryanair": {
    "enabled": true,
    "cap": 160,
-   "calls": 109,
-   "ok": 109,
+   "calls": 42,
+   "ok": 42,
    "errors": 0,
-   "offers": 1088,
+   "offers": 365,
    "last_error": null,
    "due_not_picked": null
   },
@@ -21,34 +21,34 @@
    "enabled": true,
    "cap": 150,
    "calls": 150,
-   "ok": 150,
-   "errors": 0,
-   "offers": 145,
-   "last_error": null,
+   "ok": 149,
+   "errors": 1,
+   "offers": 168,
+   "last_error": "HttpError: HTTP 503: upstream connect error or disconnect/reset before headers. retried and the latest reset reason: remote connection failure",
    "routes": 30
   }
  },
  "warnings": [],
  "discards": {
-  "FIN-12": 751,
-  "JOB-09": 438,
-  "SEL-01": 894,
-  "SEL-02": 121,
-  "SEL-08": 213
+  "FIN-12": 147,
+  "JOB-09": 411,
+  "SEL-01": 440,
+  "SEL-02": 72,
+  "SEL-08": 175
  },
  "coverage_ryanair": {
   "VRN": {
-   "pairs": 160,
-   "fresh": 160
+   "pairs": 159,
+   "fresh": 159
   },
   "BGY": {
-   "pairs": 160,
-   "fresh": 160
+   "pairs": 159,
+   "fresh": 159
   },
   "TSF": {
-   "pairs": 160,
-   "fresh": 160
+   "pairs": 159,
+   "fresh": 159
   }
  },
- "seconds": 828
+ "seconds": 709
 }

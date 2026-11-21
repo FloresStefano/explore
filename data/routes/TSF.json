@@ -49,7 +49,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Alicante",
    "city": "Alicante",
    "country": "Spagna",
@@ -70,7 +70,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Berlino Brandeburgo",
    "city": "Berlino",
    "country": "Germania",
@@ -106,7 +106,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Budapest",
    "city": "Budapest",
    "country": "Ungheria",
@@ -127,7 +127,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Parigi (Beauvais)",
    "city": "Parigi",
    "country": "Francia",
@@ -194,7 +194,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Bruxelles (Charleroi)",
    "city": "Charleroi",
    "country": "Belgio",
@@ -377,7 +377,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Malta",
    "city": "Malta",
    "country": "Malta",
@@ -440,7 +440,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Bucharest (Otopeni)",
    "city": "Bucarest",
    "country": "Romania",
@@ -497,7 +497,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Praga",
    "city": "Praga",
    "country": "Repubblica Ceca",
@@ -614,7 +614,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Siviglia",
    "city": "Siviglia",
    "country": "Spagna",
@@ -656,7 +656,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Tirana",
    "city": "Tirana",
    "country": "Albania",
@@ -698,7 +698,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Vienna",
    "city": "Vienna",
    "country": "Austria",
@@ -719,7 +719,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Valencia",
    "city": "Valencia",
    "country": "Spagna",
@@ -739,7 +739,7 @@
     "2027-02"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-19",
+   "last_confirmed": "2026-11-21",
    "name": "Vilnius",
    "city": "Vilnius",
    "country": "Lituania",
@@ -760,7 +760,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Varsavia (Modlin)",
    "city": "Varsavia",
    "country": "Polonia",
@@ -781,7 +781,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Breslavia",
    "city": "Breslavia",
    "country": "Polonia",
@@ -792,5 +792,5 @@
   }
  },
  "ryanair_updated": "2026-11-16",
- "updated": "2026-11-20"
+ "updated": "2026-11-21"
 }

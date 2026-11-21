@@ -9,9 +9,10 @@
    "months": [
     "2026-11",
     "2026-12",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Barcellona El Prat",
    "city": "Barcellona",
    "country": "Spagna",
@@ -53,7 +54,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Birmingham",
    "city": "Birmingham",
    "country": "Regno Unito",
@@ -74,7 +75,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Bari",
    "city": "Bari",
    "country": "Italia",
@@ -95,7 +96,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Cagliari",
    "city": "Cagliari",
    "country": "Italia",
@@ -124,9 +125,11 @@
     "Royal Air Maroc"
    ],
    "months": [
-    "2027-01"
+    "2027-01",
+    "2027-02",
+    "2027-03"
    ],
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Mohammed V International Airport",
    "city": "Casablanca",
    "country_code": "ma",
@@ -163,7 +166,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Catania",
    "city": "Catania",
    "country": "Italia",
@@ -215,9 +218,10 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Londra (Gatwick)",
    "city": "Londra",
    "country": "Regno Unito",
@@ -296,9 +300,10 @@
    "months": [
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Olbia",
    "city": "Olbia",
    "country": "Italia",
@@ -331,9 +336,10 @@
     "2026-11",
     "2026-12",
     "2027-01",
-    "2027-02"
+    "2027-02",
+    "2027-03"
    ],
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Paris-Orly Airport",
    "city": "Paris (Orly, Val-de-Marne)",
    "country": "Francia",
@@ -425,7 +431,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Lamezia",
    "city": "Lamezia",
    "country": "Italia",
@@ -447,7 +453,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-20",
+   "last_confirmed": "2026-11-21",
    "name": "Tirana",
    "city": "Tirana",
    "country": "Albania",
@@ -494,5 +500,5 @@
   }
  },
  "ryanair_updated": "2026-11-16",
- "updated": "2026-11-20"
+ "updated": "2026-11-21"
 }

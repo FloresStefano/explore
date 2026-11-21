@@ -1,22 +1,14 @@
 {
- "updated": "2026-11-20",
+ "updated": "2026-11-21",
  "version": 3,
  "items": {
-  "BGY-SUF-2026-11-27-2026-11-28": {
-   "title": "Lamezia in tre giorni, aria di mare",
-   "text": "Un weekend lungo da Bergamo, si parte venerdì 27 novembre alle 07:40 e si torna a casa sabato 28 novembre alle 22:00. Si sfruttano 22 ore nette con 1 giorno di ferie. 40,31 euro"
-  },
-  "BGY-CTA-2026-11-27-2026-11-28": {
-   "title": "Etnie e vulcani a Catania in tre giorni",
-   "text": "Volate da Bergamo, si parte venerdì 27 novembre alle 06:00 e si torna a casa sabato 28 novembre alle 00:50. Si godono 26 ore nette con 1 giorno di ferie. 43,92 euro"
-  },
   "VRN-SUF-2026-11-27-2026-11-28": {
    "title": "Weekend lungo a Lamezia, mare e relax",
    "text": "Si parte da Verona venerdì 27 novembre alle 08:05 e si torna a casa sabato 28 novembre alle 22:30. Si sfruttano 22 ore nette con 1 giorno di ferie. 44,98 euro"
   },
-  "BGY-POZ-2026-11-27-2026-11-28": {
-   "title": "Weekend lungo a Poznań, storia e cultura",
-   "text": "Da Bergamo, si parte venerdì 27 novembre alle 15:10 e si torna a casa sabato 28 novembre alle 16:55. Con 1 giorno di ferie e 9 ore nette da godersi. 49,49 euro"
+  "BGY-SUF-2026-11-27-2026-11-28": {
+   "title": "Lamezia in tre giorni, aria di mare",
+   "text": "Un weekend lungo da Bergamo, si parte venerdì 27 novembre alle 07:40 e si torna a casa sabato 28 novembre alle 22:00. Si sfruttano 22 ore nette con 1 giorno di ferie. 40,31 euro"
   },
   "TSF-TIA-2026-12-03-2026-12-05": {
    "title": "Tirana, un weekend lungo",
@@ -118,9 +110,9 @@
    "title": "Weekend lungo a Marsiglia, cultura e divertimento",
    "text": "Si parte da Bergamo venerdì 11 dicembre alle 07:35 e si torna a casa domenica 13 dicembre alle 23:50. Con 1 giorno di ferie e 39 ore nette da godersi. 29,98 euro"
   },
-  "TSF-TIA-2026-12-11-2026-12-12": {
-   "title": "Weekend lungo a Tirana, mare e relax",
-   "text": "Da Treviso, si parte venerdì 11 dicembre alle 16:45 e si torna a casa sabato 12 dicembre alle 21:40. Con 1 giorno di ferie e 13 ore nette da godersi. 29,98 euro"
+  "VRN-SUF-2026-12-11-2026-12-12": {
+   "title": "Weekend lungo sul sole di Lamezia",
+   "text": "Da Verona venerdì 11 dicembre alle 08:05 si parte per un weekend lungo a Lamezia in Italia, tornando a casa sabato 12 dicembre alle 22:30. Si hanno 22 ore nette da godersi. Con 1 giorno di ferie. 38,90 euro."
   },
   "VRN-TPS-2026-12-11-2026-12-13": {
    "title": "Weekend lungo a Trapani, mare e divertimento",
@@ -130,9 +122,9 @@
    "title": "Weekend lungo storico a Varsavia",
    "text": "Un weekend lungo a Varsavia in Polonia, partendo da Treviso venerdì 11 dicembre alle 16:20 e tornando a casa domenica 13 dicembre alle 13:00, con 18 ore nette da godersi. Con 1 giorno di ferie. 35,98 euro."
   },
-  "BGY-POZ-2026-12-11-2026-12-12": {
-   "title": "Weekend lungo a Poznań, storia e cultura",
-   "text": "Si parte da Bergamo venerdì 11 dicembre alle 08:15 e si torna a casa sabato 12 dicembre alle 16:55. Con 1 giorno di ferie e 16 ore nette da godersi. 33,98 euro"
+  "BGY-CAG-2026-12-11-2026-12-12": {
+   "title": "Weekend lungo al sole di Cagliari",
+   "text": "Da Bergamo venerdì 11 dicembre alle 06:00 si parte per un weekend lungo a Cagliari in Italia, tornando a casa sabato 12 dicembre alle 19:10. 21 ore nette da godersi. Con 1 giorno di ferie. 38,96 euro."
   },
   "VRN-SUF-2026-12-11-2026-12-13": {
    "title": "Weekend lungo al sole di Lamezia",
@@ -142,33 +134,25 @@
    "title": "Weekend lungo al sole di Lamezia",
    "text": "Dalla mattina di venerdì 11 dicembre alle 05:45 da Bergamo, si parte per Lamezia in Italia e si ritorna a casa sabato 12 dicembre alle 13:10. 15 ore nette da godersi. Con 1 giorno di ferie. 36,99 euro."
   },
+  "TSF-TIA-2026-12-11-2026-12-12": {
+   "title": "Weekend lungo a Tirana, mare e relax",
+   "text": "Da Treviso, si parte venerdì 11 dicembre alle 16:45 e si torna a casa sabato 12 dicembre alle 21:40. Con 1 giorno di ferie e 13 ore nette da godersi. 29,98 euro"
+  },
   "TSF-MLA-2026-12-11-2026-12-12": {
    "title": "Weekend lungo di mare e sole",
    "text": "Si parte con un weekend lungo da Treviso venerdì 11 dicembre alle 07:15 per raggiungere Malta, e si torna a casa sabato 12 dicembre alle 13:45. 14 ore nette da godersi. Con 1 giorno di ferie. 37,98 euro."
   },
-  "VRN-SUF-2026-12-11-2026-12-12": {
-   "title": "Weekend lungo sul sole di Lamezia",
-   "text": "Da Verona venerdì 11 dicembre alle 08:05 si parte per un weekend lungo a Lamezia in Italia, tornando a casa sabato 12 dicembre alle 22:30. Si hanno 22 ore nette da godersi. Con 1 giorno di ferie. 38,90 euro."
-  },
-  "BGY-CAG-2026-12-11-2026-12-12": {
-   "title": "Weekend lungo al sole di Cagliari",
-   "text": "Da Bergamo venerdì 11 dicembre alle 06:00 si parte per un weekend lungo a Cagliari in Italia, tornando a casa sabato 12 dicembre alle 19:10. 21 ore nette da godersi. Con 1 giorno di ferie. 38,96 euro."
+  "BGY-POZ-2026-12-11-2026-12-12": {
+   "title": "Weekend lungo a Poznań, storia e cultura",
+   "text": "Si parte da Bergamo venerdì 11 dicembre alle 08:15 e si torna a casa sabato 12 dicembre alle 16:55. Con 1 giorno di ferie e 16 ore nette da godersi. 33,98 euro"
   },
   "TSF-TLS-2026-12-11-2026-12-13": {
    "title": "Weekend lungo tra i castelli di Tolosa",
    "text": "Da Treviso venerdì 11 dicembre alle 13:40 si parte per un weekend lungo a Tolosa in Francia, tornando a casa domenica 13 dicembre alle 14:45. 23 ore nette da godersi. Con 1 giorno di ferie. 42,11 euro."
   },
-  "BGY-PMO-2026-12-11-2026-12-12": {
-   "title": "Weekend lungo a Palermo con il mare",
-   "text": "Da Bergamo venerdì 11 dicembre alle 11:45 si parte per un weekend lungo a Palermo in Italia, tornando a casa sabato 12 dicembre alle 20:10. 16 ore nette da godersi. Con 1 giorno di ferie. 39,98 euro."
-  },
   "TSF-PMI-2026-12-11-2026-12-13": {
    "title": "Weekend a Palma, tra mare e tapas",
    "text": "Da Treviso venerdì 11 dicembre alle 21:10 si parte per un weekend a Palma in Spagna, tornando a casa domenica 13 dicembre alle 14:45. 17 ore nette da godersi. Senza ferie. 40,98 euro."
-  },
-  "BGY-BRI-2026-12-11-2026-12-12": {
-   "title": "Weekend lungo a Bari con il mare",
-   "text": "Da Bergamo venerdì 11 dicembre alle 05:45 si parte per un weekend lungo a Bari in Italia, tornando a casa sabato 12 dicembre alle 22:35. 25 ore nette da godersi. Con 1 giorno di ferie. 41,98 euro."
   },
   "BGY-ZAZ-2026-12-11-2026-12-13": {
    "title": "Weekend lungo a Saragozza, tra storia",
@@ -189,6 +173,10 @@
   "VRN-BRI-2026-12-11-2026-12-14": {
    "title": "Weekend lungo a Bari con il mare",
    "text": "Da Verona venerdì 11 dicembre alle 22:30 si parte per un weekend lungo a Bari in Italia, tornando a casa lunedì 14 dicembre alle 21:55. 39 ore nette da godersi. Con 1 giorno di ferie. 42,99 euro."
+  },
+  "BGY-BRI-2026-12-11-2026-12-12": {
+   "title": "Weekend lungo a Bari con il mare",
+   "text": "Da Bergamo venerdì 11 dicembre alle 05:45 si parte per un weekend lungo a Bari in Italia, tornando a casa sabato 12 dicembre alle 22:35. 25 ore nette da godersi. Con 1 giorno di ferie. 41,98 euro."
   },
   "BGY-TIA-2026-12-11-2026-12-13": {
    "title": "Weekend lungo a Tirana, tra storia",
@@ -226,10 +214,6 @@
    "title": "Charleroi, un weekend lungo",
    "text": "Con 1 giorno di ferie si parte da Treviso sabato 12 dicembre alle 16:00 e si torna lunedì 14 dicembre alle 11:55. 18 ore nette da godersi a 45,52 euro"
   },
-  "TSF-MLA-2026-12-12-2026-12-13": {
-   "title": "Weekend a Malta, tra mare e sole",
-   "text": "Da Treviso sabato 12 dicembre alle 14:40 si parte per un weekend a Malta, tornando a casa domenica 13 dicembre alle 16:35. 9 ore nette da godersi. Senza ferie. 46,60 euro."
-  },
   "VRN-TIA-2026-12-12-2026-12-13": {
    "title": "Weekend a Tirana: dal cielo al mare",
    "text": "Si parte da Verona sabato 12 dicembre alle 13:45 e si torna domenica 13 dicembre alle 22:40. 17 ore nette da godersi in città. Il prezzo? 47,00 euro."
@@ -250,29 +234,25 @@
    "title": "Sol e playas, con 1 giorno di ferie",
    "text": "Si parte per Malaga giovedì 17 dicembre alle 20:35 da Treviso e si torna sabato 19 dicembre alle 20:15. Weekend lungo con 1 giorno di ferie, 22 ore nette. 44,98 euro"
   },
-  "TSF-MLA-2026-12-18-2026-12-20": {
-   "title": "Weekend lungo a Malta, con 1 giorno di ferie",
-   "text": "Si parte per Malta venerdì 18 dicembre alle 07:15 da Treviso e si torna domenica 20 dicembre alle 16:35. Weekend lungo con 1 giorno di ferie, 31 ore nette da godersi. 38,91 euro"
-  },
   "TSF-MLA-2026-12-18-2026-12-19": {
    "title": "Spettacolo di Malta, con 1 giorno di ferie",
    "text": "Da Treviso si parte venerdì 18 dicembre alle 07:15 per Malta e si torna sabato 19 dicembre alle 13:45. Weekend lungo con 1 giorno di ferie, 14 ore nette. 36,31 euro"
+  },
+  "TSF-MLA-2026-12-18-2026-12-20": {
+   "title": "Weekend lungo a Malta, con 1 giorno di ferie",
+   "text": "Si parte per Malta venerdì 18 dicembre alle 07:15 da Treviso e si torna domenica 20 dicembre alle 16:35. Weekend lungo con 1 giorno di ferie, 31 ore nette da godersi. 38,91 euro"
   },
   "VRN-CAG-2026-12-18-2026-12-20": {
    "title": "Sole sardo, con 1 giorno di ferie",
    "text": "Un weekend lungo a Cagliari con 1 giorno di ferie. Si parte venerdì 18 dicembre alle 07:55 da Verona e si torna domenica 20 dicembre alle 15:25. 30 ore nette, 41,99 euro"
   },
-  "TSF-MLA-2026-12-19-2026-12-21": {
-   "title": "Weekend lungo a Malta, con 1 giorno di ferie",
-   "text": "Da Treviso si parte sabato 19 dicembre alle 14:40 per Malta e si torna lunedì 21 dicembre alle 15:00. Weekend lungo con 1 giorno di ferie, 22 ore nette. 33,98 euro"
-  },
   "TSF-MLA-2026-12-19-2026-12-20": {
    "title": "Weekend a Malta, senza ferie",
    "text": "Partenza per Malta sabato 19 dicembre alle 14:40 da Treviso e ritorno domenica 20 dicembre alle 16:35. 9 ore nette, 40,98 euro"
   },
-  "BGY-CAG-2026-12-19-2026-12-20": {
-   "title": "Sole in Sardegna, senza ferie",
-   "text": "Da Bergamo si parte per Cagliari sabato 19 dicembre alle 06:05 e si torna domenica 20 dicembre alle 10:30. 13 ore nette, 47,98 euro"
+  "TSF-MLA-2026-12-19-2026-12-21": {
+   "title": "Weekend lungo a Malta, con 1 giorno di ferie",
+   "text": "Da Treviso si parte sabato 19 dicembre alle 14:40 per Malta e si torna lunedì 21 dicembre alle 15:00. Weekend lungo con 1 giorno di ferie, 22 ore nette. 33,98 euro"
   },
   "BGY-WMI-2026-12-23-2026-12-26": {
    "title": "Natale a Varsavia, con 1 giorno di ferie",
@@ -309,10 +289,6 @@
   "TSF-MLA-2027-01-08-2027-01-09": {
    "title": "Weekend a Malta, con 1 giorno di ferie",
    "text": "Si parte per Malta venerdì 8 gennaio alle 07:15 da Treviso e si torna sabato 9 gennaio alle 13:45. Weekend lungo con 1 giorno di ferie, 14 ore nette. 44,98 euro"
-  },
-  "TSF-BVA-2027-01-08-2027-01-10": {
-   "title": "Parigi, un weekend lungo",
-   "text": "Con 1 giorno di ferie si parte da Treviso venerdì 8 gennaio alle 13:10 e si torna domenica 10 gennaio alle 11:45. 20 ore nette da godersi a 49,98 euro"
   },
   "TSF-MLA-2027-01-09-2027-01-10": {
    "title": "Weekend a Malta, senza ferie",
@@ -402,6 +378,14 @@
    "title": "Tirana, tra storia e modernità",
    "text": "Un weekend lungo a Tirana, in Albania, con 1 giorno di ferie, si parte venerdì 22 gennaio alle 08:20 da Verona e si torna a casa sabato 23 gennaio alle 15:55. Si hanno 15 ore nette per godersi la città per 39,98 euro."
   },
+  "BGY-CRA-2027-01-22-2027-01-23": {
+   "title": "Weekend nella Romania orientale",
+   "text": "Da Bergamo si vola a Craiova venerdì 22 gennaio alle 21:00 e si torna sabato 23 gennaio alle 22:05 senza ferie. Avrete 11 ore nette per 41,00 euro."
+  },
+  "BGY-TIA-2027-01-22-2027-01-23": {
+   "title": "Tirana in un weekend d'inverno",
+   "text": "Si parte per Tirana da Bergamo venerdì 22 gennaio alle 21:45 e si torna sabato 23 gennaio alle 20:55 senza ferie. Si possono sfruttare 9 ore nette a 41,00 euro."
+  },
   "VRN-SUF-2027-01-22-2027-01-24": {
    "title": "Castelli e mare calabrese",
    "text": "Con 1 giorno di ferie si può fare un weekend lungo a Lamezia Terme, partendo venerdì 22 gennaio alle 08:05 da Verona e tornando a casa domenica 24 gennaio alle 22:30. Si hanno 36 ore nette per godersi la città per 41,23 euro."
@@ -410,13 +394,17 @@
    "title": "Vita notturna e storia a Varsavia",
    "text": "Un weekend senza ferie a Varsavia, partendo venerdì 22 gennaio alle 19:00 da Bergamo e tornando a casa domenica 24 gennaio alle 16:15. Si hanno 18 ore nette per godersi la città per 41,98 euro."
   },
-  "VRN-TPS-2027-01-22-2027-01-24": {
-   "title": "Sole e mare siciliano",
-   "text": "Con 1 giorno di ferie si può fare un weekend lungo a Trapani, partendo venerdì 22 gennaio alle 12:35 da Verona e tornando a casa domenica 24 gennaio alle 13:10. Si hanno 22 ore nette per godersi la città per 43,98 euro."
-  },
   "BGY-CLJ-2027-01-22-2027-01-24": {
    "title": "Castelli medievali e vita notturna",
    "text": "Cluj, in Romania, vi aspetta per un weekend senza ferie: si parte venerdì 22 gennaio alle 20:20 da Bergamo e si torna a casa domenica 24 gennaio alle 23:55. Si hanno 27 ore nette da godersi per 45,98 euro."
+  },
+  "BGY-CRA-2027-01-22-2027-01-24": {
+   "title": "Castelli e storia a Craiova",
+   "text": "Da Bergamo si parte per Craiova venerdì 22 gennaio alle 21:00 e si torna domenica 24 gennaio alle 20:10 senza ferie. Si possono godere 23 ore nette per 47,00 euro."
+  },
+  "VRN-TIA-2027-01-23-2027-01-24": {
+   "title": "Weekend in Albania con la neve",
+   "text": "Da Verona si vola a Tirana sabato 23 gennaio alle 13:45 e si torna domenica 24 gennaio alle 22:40 senza ferie. Si avranno 17 ore nette a 40,00 euro."
   },
   "TSF-MLA-2027-01-23-2027-01-24": {
    "title": "Spiagge e storia a Malta",
@@ -426,6 +414,14 @@
    "title": "Castelli e mare a Crotone",
    "text": "Si parte sabato 23 gennaio alle 06:35 da Bergamo e si torna a casa domenica 24 gennaio alle 18:05 per un weekend a Crotone con 19 ore nette da godersi, senza ferie. Il prezzo è di 49,45 euro."
   },
+  "BGY-CRA-2027-01-29-2027-01-31": {
+   "title": "Weekend a Craiova in Romania",
+   "text": "Da Bergamo si parte per Craiova venerdì 29 gennaio alle 21:00 e si torna domenica 31 gennaio alle 20:10 senza ferie. Avrete 23 ore nette per 38,00 euro."
+  },
+  "BGY-CRA-2027-01-29-2027-01-30": {
+   "title": "Weekend breve a Craiova",
+   "text": "Si parte per Craiova da Bergamo venerdì 29 gennaio alle 21:00 e si torna sabato 30 gennaio alle 22:05 senza ferie. Avrete 11 ore nette a 39,00 euro."
+  },
   "TSF-PMI-2027-01-29-2027-01-31": {
    "title": "Palma di Maiorca, weekend",
    "text": "Si parte da Treviso venerdì 29 gennaio alle 21:10 e si torna domenica 31 gennaio alle 14:45. 17 ore nette da godersi a 47,98 euro"
@@ -433,6 +429,10 @@
   "TSF-MLA-2027-01-30-2027-01-31": {
    "title": "Malta, weekend di 9 ore",
    "text": "Si parte da Treviso sabato 30 gennaio alle 14:40 e si torna domenica 31 gennaio alle 16:35. 9 ore nette da godersi a 36,98 euro"
+  },
+  "VRN-TIA-2027-01-30-2027-01-31": {
+   "title": "Weekend in Albania da Verona",
+   "text": "Da Verona si parte per Tirana sabato 30 gennaio alle 13:45 e si torna domenica 31 gennaio alle 22:40 senza ferie. Si possono sfruttare 17 ore nette a 40,00 euro."
   },
   "BGY-CRL-2027-01-30-2027-01-31": {
    "title": "Charleroi, weekend di 9 ore",
@@ -442,6 +442,18 @@
    "title": "Manchester, weekend di 11 ore",
    "text": "Si parte da Bergamo sabato 30 gennaio alle 10:20 e si torna domenica 31 gennaio alle 14:45. 11 ore nette da godersi a 46,98 euro"
   },
+  "TSF-TIA-2027-02-05-2027-02-09": {
+   "title": "Tirana, ponte per Carnevale",
+   "text": "Un ponte per Tirana da Treviso venerdì 5 febbraio alle 18:50 e si torna martedì 9 febbraio alle 18:15 con 2 giorni di ferie. Avrete 49 ore nette per 36,00 euro."
+  },
+  "BGY-CRA-2027-02-05-2027-02-07": {
+   "title": "Craiova, per un weekend lungo",
+   "text": "Da Bergamo si parte per Craiova venerdì 5 febbraio alle 21:00 e si torna domenica 7 febbraio alle 20:10 senza ferie. Avrete 23 ore nette per 38,00 euro."
+  },
+  "BGY-CRA-2027-02-05-2027-02-06": {
+   "title": "Craiova in un weekend breve",
+   "text": "Si parte per Craiova da Bergamo venerdì 5 febbraio alle 21:00 e si torna sabato 6 febbraio alle 22:05 senza ferie. Si possono sfruttare 11 ore nette a 39,00 euro."
+  },
   "BGY-TIA-2027-02-05-2027-02-08": {
    "title": "Tirana, ponte Carnevale scuola",
    "text": "Con 1 giorno di ferie si parte da Bergamo venerdì 5 febbraio alle 21:00 e si torna lunedì 8 febbraio alle 10:50. 28 ore nette da godersi a 43,89 euro"
@@ -449,6 +461,10 @@
   "BGY-TIA-2027-02-05-2027-02-09": {
    "title": "Tirana, ponte lungo",
    "text": "Con 2 giorni di ferie si parte da Bergamo venerdì 5 febbraio alle 21:00 e si torna martedì 9 febbraio alle 12:25. 43 ore nette da godersi a 43,89 euro"
+  },
+  "BGY-CRA-2027-02-05-2027-02-08": {
+   "title": "Ponte a Craiova per Carnevale",
+   "text": "Da Bergamo si vola a Craiova venerdì 5 febbraio alle 21:00 e si torna lunedì 8 febbraio alle 15:40 con 1 giorno di ferie. Si avranno 33 ore nette per 44,00 euro."
   },
   "BGY-TIA-2027-02-05-2027-02-07": {
    "title": "Tirana, weekend senza ferie",
@@ -458,9 +474,29 @@
    "title": "Tirana, ponte Carnevale scuola",
    "text": "Con 1 giorno di ferie si parte da Treviso sabato 6 febbraio alle 18:10 e si torna lunedì 8 febbraio alle 21:10. 25 ore nette da godersi a 33,88 euro"
   },
+  "VRN-TIA-2027-02-06-2027-02-09": {
+   "title": "Tirana, ponte di Carnevale",
+   "text": "Da Verona si parte per Tirana sabato 6 febbraio alle 18:25 e si torna martedì 9 febbraio alle 13:10 con 2 giorni di ferie. Avrete 30 ore nette a 35,00 euro."
+  },
+  "BGY-TIA-2027-02-06-2027-02-09": {
+   "title": "Tirana, ponte per Carnevale",
+   "text": "Da Bergamo si vola a Tirana sabato 6 febbraio alle 13:00 e si torna martedì 9 febbraio alle 12:25 con 2 giorni di ferie. Si avranno 35 ore nette a 35,00 euro."
+  },
+  "TSF-TIA-2027-02-06-2027-02-09": {
+   "title": "Tirana, ponte per Carnevale",
+   "text": "Si parte per Tirana da Treviso sabato 6 febbraio alle 09:10 e si torna martedì 9 febbraio alle 18:15 con 2 giorni di ferie. Avrete 45 ore nette a 36,00 euro."
+  },
   "VRN-TIA-2027-02-06-2027-02-08": {
    "title": "Tirana, ponte Carnevale scuola",
    "text": "Con 1 giorno di ferie si parte da Verona sabato 6 febbraio alle 16:20 e si torna lunedì 8 febbraio alle 22:15. 28 ore nette da godersi a 36,53 euro"
+  },
+  "VRN-TIA-2027-02-06-2027-02-07": {
+   "title": "Weekend in Albania da Verona",
+   "text": "Da Verona si parte per Tirana sabato 6 febbraio alle 18:25 e si torna domenica 7 febbraio alle 22:40 senza ferie. Avrete 12 ore nette a 39,00 euro."
+  },
+  "BGY-TIA-2027-02-06-2027-02-08": {
+   "title": "Tirana ponte per Carnevale",
+   "text": "Da Bergamo si parte per Tirana sabato 6 febbraio alle 13:00 e si torna lunedì 8 febbraio alle 12:25 con 1 giorno di ferie. Avrete 21 ore nette per 41,00 euro."
   },
   "BGY-IAS-2027-02-06-2027-02-08": {
    "title": "Iaşi, ponte Carnevale scuola",
@@ -494,9 +530,17 @@
    "title": "Tirana, città di contrasti",
    "text": "Da Bergamo a Tirana, Albania, per un ponte con 2 giorni di ferie per Carnevale (scuole). La partenza è domenica 7 febbraio alle 20:35, si ritorna martedì 9 febbraio alle 12:25. 15 ore nette da vivere, tutto per 43,08 euro."
   },
+  "TSF-TIA-2027-02-07-2027-02-09": {
+   "title": "Tirana, ponte per Carnevale",
+   "text": "Si parte per Tirana da Treviso domenica 7 febbraio alle 09:10 e si torna martedì 9 febbraio alle 18:15 con 2 giorni di ferie. Avrete 31 ore nette a 36,00 euro."
+  },
   "BGY-KTW-2027-02-07-2027-02-09": {
    "title": "Katowice, miniere e birra",
    "text": "Ponte da Bergamo a Katowice, Polonia, con 2 giorni di ferie per Carnevale (scuole). Si parte domenica 7 febbraio alle 15:10 e si torna a casa martedì 9 febbraio alle 11:05. 18 ore nette da godersi. 37,70 euro."
+  },
+  "BGY-TIA-2027-02-12-2027-02-14": {
+   "title": "Weekend a Tirana dall'Italia",
+   "text": "Da Bergamo si parte per Tirana venerdì 12 febbraio alle 21:45 e si torna domenica 14 febbraio alle 12:25 senza ferie. Avrete 15 ore nette a 41,00 euro."
   },
   "BGY-PMO-2027-02-12-2027-02-13": {
    "title": "Palermo, sole e mandorle",
@@ -518,94 +562,6 @@
    "title": "Lamezia, sole e calabresità",
    "text": "Weekend lungo a Lamezia, Italia, da Verona senza ferie. Si parte venerdì 12 febbraio alle 20:55 e si torna domenica 14 febbraio alle 22:30. 25 ore nette. 48,98 euro."
   },
-  "BGY-PSR-2027-02-13-2027-02-14": {
-   "title": "Pescara, mare e monti",
-   "text": "Weekend a Pescara, Italia, da Bergamo senza ferie. Si parte sabato 13 febbraio alle 12:10 e si torna domenica 14 febbraio alle 18:35. 15 ore nette. 35,19 euro"
-  },
-  "TSF-TIA-2027-02-13-2027-02-14": {
-   "title": "Tirana, città di contrasti",
-   "text": "Weekend a Tirana, Albania, da Treviso senza ferie. Partenza sabato 13 febbraio alle 12:05, si ritorna domenica 14 febbraio alle 21:05. 17 ore nette. 40,23 euro."
-  },
-  "BGY-CTA-2027-02-19-2027-02-20": {
-   "title": "Etna in 2 giorni",
-   "text": "Si parte venerdì 19 febbraio alle 21:00 e si torna a casa sabato 20 febbraio alle 00:50 per un weekend a Catania, in Italia. 13 ore nette da godersi. Si vola da Bergamo. Il prezzo per questo viaggio è di 49,23 euro."
-  },
-  "TSF-MLA-2027-01-09-2027-01-11": {
-   "title": "Isole, mare, sole, tempo freddo",
-   "text": "Si parte per un weekend lungo a Malta da Treviso sabato 9 gennaio alle 11:00 e si torna a casa lunedì 11 gennaio alle 15:00 con 1 giorno di ferie. Il tutto per 25 ore nette da godersi a 39,98 euro."
-  },
-  "BGY-CRA-2027-01-22-2027-01-23": {
-   "title": "Weekend nella Romania orientale",
-   "text": "Da Bergamo si vola a Craiova venerdì 22 gennaio alle 21:00 e si torna sabato 23 gennaio alle 22:05 senza ferie. Avrete 11 ore nette per 41,00 euro."
-  },
-  "BGY-TIA-2027-01-22-2027-01-23": {
-   "title": "Tirana in un weekend d'inverno",
-   "text": "Si parte per Tirana da Bergamo venerdì 22 gennaio alle 21:45 e si torna sabato 23 gennaio alle 20:55 senza ferie. Si possono sfruttare 9 ore nette a 41,00 euro."
-  },
-  "BGY-CRA-2027-01-22-2027-01-24": {
-   "title": "Castelli e storia a Craiova",
-   "text": "Da Bergamo si parte per Craiova venerdì 22 gennaio alle 21:00 e si torna domenica 24 gennaio alle 20:10 senza ferie. Si possono godere 23 ore nette per 47,00 euro."
-  },
-  "VRN-TIA-2027-01-23-2027-01-24": {
-   "title": "Weekend in Albania con la neve",
-   "text": "Da Verona si vola a Tirana sabato 23 gennaio alle 13:45 e si torna domenica 24 gennaio alle 22:40 senza ferie. Si avranno 17 ore nette a 40,00 euro."
-  },
-  "BGY-CRA-2027-01-29-2027-01-31": {
-   "title": "Weekend a Craiova in Romania",
-   "text": "Da Bergamo si parte per Craiova venerdì 29 gennaio alle 21:00 e si torna domenica 31 gennaio alle 20:10 senza ferie. Avrete 23 ore nette per 38,00 euro."
-  },
-  "BGY-CRA-2027-01-29-2027-01-30": {
-   "title": "Weekend breve a Craiova",
-   "text": "Si parte per Craiova da Bergamo venerdì 29 gennaio alle 21:00 e si torna sabato 30 gennaio alle 22:05 senza ferie. Avrete 11 ore nette a 39,00 euro."
-  },
-  "VRN-TIA-2027-01-30-2027-01-31": {
-   "title": "Weekend in Albania da Verona",
-   "text": "Da Verona si parte per Tirana sabato 30 gennaio alle 13:45 e si torna domenica 31 gennaio alle 22:40 senza ferie. Si possono sfruttare 17 ore nette a 40,00 euro."
-  },
-  "TSF-TIA-2027-02-05-2027-02-09": {
-   "title": "Tirana, ponte per Carnevale",
-   "text": "Un ponte per Tirana da Treviso venerdì 5 febbraio alle 18:50 e si torna martedì 9 febbraio alle 18:15 con 2 giorni di ferie. Avrete 49 ore nette per 36,00 euro."
-  },
-  "BGY-CRA-2027-02-05-2027-02-07": {
-   "title": "Craiova, per un weekend lungo",
-   "text": "Da Bergamo si parte per Craiova venerdì 5 febbraio alle 21:00 e si torna domenica 7 febbraio alle 20:10 senza ferie. Avrete 23 ore nette per 38,00 euro."
-  },
-  "BGY-CRA-2027-02-05-2027-02-06": {
-   "title": "Craiova in un weekend breve",
-   "text": "Si parte per Craiova da Bergamo venerdì 5 febbraio alle 21:00 e si torna sabato 6 febbraio alle 22:05 senza ferie. Si possono sfruttare 11 ore nette a 39,00 euro."
-  },
-  "BGY-CRA-2027-02-05-2027-02-08": {
-   "title": "Ponte a Craiova per Carnevale",
-   "text": "Da Bergamo si vola a Craiova venerdì 5 febbraio alle 21:00 e si torna lunedì 8 febbraio alle 15:40 con 1 giorno di ferie. Si avranno 33 ore nette per 44,00 euro."
-  },
-  "VRN-TIA-2027-02-06-2027-02-09": {
-   "title": "Tirana, ponte di Carnevale",
-   "text": "Da Verona si parte per Tirana sabato 6 febbraio alle 18:25 e si torna martedì 9 febbraio alle 13:10 con 2 giorni di ferie. Avrete 30 ore nette a 35,00 euro."
-  },
-  "BGY-TIA-2027-02-06-2027-02-09": {
-   "title": "Tirana, ponte per Carnevale",
-   "text": "Da Bergamo si vola a Tirana sabato 6 febbraio alle 13:00 e si torna martedì 9 febbraio alle 12:25 con 2 giorni di ferie. Si avranno 35 ore nette a 35,00 euro."
-  },
-  "TSF-TIA-2027-02-06-2027-02-09": {
-   "title": "Tirana, ponte per Carnevale",
-   "text": "Si parte per Tirana da Treviso sabato 6 febbraio alle 09:10 e si torna martedì 9 febbraio alle 18:15 con 2 giorni di ferie. Avrete 45 ore nette a 36,00 euro."
-  },
-  "VRN-TIA-2027-02-06-2027-02-07": {
-   "title": "Weekend in Albania da Verona",
-   "text": "Da Verona si parte per Tirana sabato 6 febbraio alle 18:25 e si torna domenica 7 febbraio alle 22:40 senza ferie. Avrete 12 ore nette a 39,00 euro."
-  },
-  "BGY-TIA-2027-02-06-2027-02-08": {
-   "title": "Tirana ponte per Carnevale",
-   "text": "Da Bergamo si parte per Tirana sabato 6 febbraio alle 13:00 e si torna lunedì 8 febbraio alle 12:25 con 1 giorno di ferie. Avrete 21 ore nette per 41,00 euro."
-  },
-  "TSF-TIA-2027-02-07-2027-02-09": {
-   "title": "Tirana, ponte per Carnevale",
-   "text": "Si parte per Tirana da Treviso domenica 7 febbraio alle 09:10 e si torna martedì 9 febbraio alle 18:15 con 2 giorni di ferie. Avrete 31 ore nette a 36,00 euro."
-  },
-  "BGY-TIA-2027-02-12-2027-02-14": {
-   "title": "Weekend a Tirana dall'Italia",
-   "text": "Da Bergamo si parte per Tirana venerdì 12 febbraio alle 21:45 e si torna domenica 14 febbraio alle 12:25 senza ferie. Avrete 15 ore nette a 41,00 euro."
-  },
   "VRN-OLB-2027-02-12-2027-02-14": {
    "title": "Sole a Olbia in inverno",
    "text": "Da Verona si vola a Olbia venerdì 12 febbraio alle 21:55 e si torna domenica 14 febbraio alle 16:55 senza ferie. Avrete 20 ore nette a 49,00 euro."
@@ -618,21 +574,33 @@
    "title": "Weekend a Craiova in Romania",
    "text": "Da Bergamo si parte per Craiova venerdì 12 febbraio alle 21:00 e si torna sabato 13 febbraio alle 22:05 senza ferie. Avrete 11 ore nette per 49,00 euro."
   },
+  "BGY-PSR-2027-02-13-2027-02-14": {
+   "title": "Pescara, mare e monti",
+   "text": "Weekend a Pescara, Italia, da Bergamo senza ferie. Si parte sabato 13 febbraio alle 12:10 e si torna domenica 14 febbraio alle 18:35. 15 ore nette. 35,19 euro"
+  },
   "VRN-TIA-2027-02-13-2027-02-14": {
    "title": "Weekend in Albania da Verona",
    "text": "Si parte per Tirana da Verona sabato 13 febbraio alle 18:25 e si torna domenica 14 febbraio alle 22:40 senza ferie. Avrete 12 ore nette a 40,00 euro."
+  },
+  "TSF-TIA-2027-02-13-2027-02-14": {
+   "title": "Tirana, città di contrasti",
+   "text": "Weekend a Tirana, Albania, da Treviso senza ferie. Partenza sabato 13 febbraio alle 12:05, si ritorna domenica 14 febbraio alle 21:05. 17 ore nette. 40,23 euro."
+  },
+  "BGY-CTA-2027-02-19-2027-02-20": {
+   "title": "Etna in 2 giorni",
+   "text": "Si parte venerdì 19 febbraio alle 21:00 e si torna a casa sabato 20 febbraio alle 00:50 per un weekend a Catania, in Italia. 13 ore nette da godersi. Si vola da Bergamo. Il prezzo per questo viaggio è di 49,23 euro."
   },
   "TSF-TIA-2027-02-20-2027-02-21": {
    "title": "Weekend a Tirana dall'Italia",
    "text": "Si parte per Tirana da Treviso sabato 20 febbraio alle 18:10 e si torna domenica 21 febbraio alle 21:05 senza ferie. Avrete 11 ore nette a 40,98 euro."
   },
-  "BGY-NRN-2027-02-20-2027-02-21": {
-   "title": "Weekend a Düsseldorf in Germania",
-   "text": "Da Bergamo si parte per Düsseldorf sabato 20 febbraio alle 10:15 e si torna domenica 21 febbraio alle 21:05 senza ferie. Avrete 19 ore nette a 45,98 euro."
-  },
   "VRN-TIA-2027-02-20-2027-02-21": {
    "title": "Weekend in Albania da Verona",
    "text": "Si parte per Tirana da Verona sabato 20 febbraio alle 16:20 e si torna domenica 21 febbraio alle 18:35 senza ferie. Avrete 10 ore nette a 46,53 euro."
+  },
+  "BGY-NRN-2027-02-20-2027-02-21": {
+   "title": "Weekend a Düsseldorf in Germania",
+   "text": "Da Bergamo si parte per Düsseldorf sabato 20 febbraio alle 10:15 e si torna domenica 21 febbraio alle 21:05 senza ferie. Avrete 19 ore nette a 45,98 euro."
   },
   "BGY-PSR-2027-02-20-2027-02-21": {
    "title": "Weekend in Abruzzo tra sole e mare",
@@ -669,6 +637,34 @@
   "VRN-BRI-2027-03-12-2027-03-14": {
    "title": "Weekend nel sud",
    "text": "Si parte venerdì 12 marzo alle 22:30 da Verona e si torna a casa domenica 14 marzo alle 12:05. Un weekend senza ferie a Bari, con 15 ore nette da godersi. Si parte da Verona e si ritorna in Italia, per 45,53 euro"
+  },
+  "BGY-POZ-2026-12-04-2026-12-05": {
+   "title": "Weekend tra storia e birre",
+   "text": "Si parte venerdì 4 dicembre alle 08:30 da Bergamo e si torna sabato 5 dicembre alle 16:55 con 16 ore nette da godersi. Poznań, Polonia. Weekend lungo con 1 giorno di ferie."
+  },
+  "VRN-TIA-2026-12-11-2026-12-12": {
+   "title": "Tirana: storia e mare",
+   "text": "Da Verona si parte venerdì 11 dicembre alle 08:20 e si rientra sabato 12 dicembre alle 15:55. Tirana, Albania. Weekend lungo con 1 giorno di ferie."
+  },
+  "TSF-CRL-2026-12-11-2026-12-12": {
+   "title": "Weekend a Charleroi",
+   "text": "Da Treviso si parte venerdì 11 dicembre alle 12:55, tornando sabato 12 dicembre alle 19:30. Charleroi, Belgio. Weekend lungo con 1 giorno di ferie."
+  },
+  "BGY-BDS-2026-12-11-2026-12-12": {
+   "title": "Puglia e sole in inverno",
+   "text": "Da Bergamo si parte venerdì 11 dicembre alle 05:55 e si ritorna sabato 12 dicembre alle 20:25. Brindisi, Italia. Weekend lungo con 1 giorno di ferie."
+  },
+  "BGY-TIA-2026-12-11-2026-12-12": {
+   "title": "Tirana e i suoi tesori",
+   "text": "Da Bergamo si parte venerdì 11 dicembre alle 08:25 e si torna sabato 12 dicembre alle 19:55. Tirana, Albania. Weekend lungo con 1 giorno di ferie."
+  },
+  "BGY-CLJ-2026-12-11-2026-12-12": {
+   "title": "Cluj: tra castelli e leggende",
+   "text": "Da Bergamo si parte venerdì 11 dicembre alle 20:20 e si ritorna sabato 12 dicembre alle 23:45. Cluj, Romania. Weekend senza ferie."
+  },
+  "TSF-CRL-2026-12-13-2026-12-14": {
+   "title": "Weekend a Charleroi",
+   "text": "Si parte domenica 13 dicembre da Treviso e si torna lunedì 14 dicembre alle 11:55. Charleroi, Belgio. Weekend lungo con 1 giorno di ferie."
   }
  },
  "model": "Cloudflare Workers AI"
