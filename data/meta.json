@@ -1,13 +1,13 @@
 {
- "run_at": "2026-11-21T01:37:08+00:00",
+ "run_at": "2026-11-21T21:56:00+00:00",
  "sources": {
   "ryanair": {
    "enabled": true,
-   "cap": 160,
-   "calls": 42,
-   "ok": 42,
+   "cap": 118,
+   "calls": 0,
+   "ok": 0,
    "errors": 0,
-   "offers": 365,
+   "offers": 0,
    "last_error": null,
    "due_not_picked": null
   },
@@ -19,23 +19,12 @@
   },
   "kiwi": {
    "enabled": true,
-   "cap": 150,
-   "calls": 150,
-   "ok": 149,
-   "errors": 1,
-   "offers": 168,
-   "last_error": "HttpError: HTTP 503: upstream connect error or disconnect/reset before headers. retried and the latest reset reason: remote connection failure",
-   "routes": 30
+   "calls": 0,
+   "note": "tetto giornaliero già raggiunto"
   }
  },
  "warnings": [],
- "discards": {
-  "FIN-12": 147,
-  "JOB-09": 411,
-  "SEL-01": 440,
-  "SEL-02": 72,
-  "SEL-08": 175
- },
+ "discards": {},
  "coverage_ryanair": {
   "VRN": {
    "pairs": 159,
@@ -50,5 +39,5 @@
    "fresh": 159
   }
  },
- "seconds": 709
+ "seconds": 0
 }

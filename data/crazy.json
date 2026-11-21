@@ -54,6 +54,10 @@
    "title": "Weekend lungo a Trapani, mare e storia",
    "text": "Da Bergamo, si parte venerdì 4 dicembre alle 06:15 e si torna a casa domenica 6 dicembre alle 21:55. Con 1 giorno di ferie e 37 ore nette da godersi. 49,85 euro"
   },
+  "BGY-POZ-2026-12-04-2026-12-05": {
+   "title": "Weekend tra storia e birre",
+   "text": "Si parte venerdì 4 dicembre alle 08:30 da Bergamo e si torna sabato 5 dicembre alle 16:55 con 16 ore nette da godersi. Poznań, Polonia. Weekend lungo con 1 giorno di ferie."
+  },
   "TSF-TIA-2026-12-10-2026-12-12": {
    "title": "Weekend lungo a Tirana, mare e divertimento",
    "text": "Da Treviso, si parte giovedì 10 dicembre alle 18:05 e si torna a casa sabato 12 dicembre alle 21:40. Con 1 giorno di ferie e 26 ore nette da godersi. 29,98 euro"
@@ -122,6 +126,10 @@
    "title": "Weekend lungo storico a Varsavia",
    "text": "Un weekend lungo a Varsavia in Polonia, partendo da Treviso venerdì 11 dicembre alle 16:20 e tornando a casa domenica 13 dicembre alle 13:00, con 18 ore nette da godersi. Con 1 giorno di ferie. 35,98 euro."
   },
+  "VRN-TIA-2026-12-11-2026-12-12": {
+   "title": "Tirana: storia e mare",
+   "text": "Da Verona si parte venerdì 11 dicembre alle 08:20 e si rientra sabato 12 dicembre alle 15:55. Tirana, Albania. Weekend lungo con 1 giorno di ferie."
+  },
   "BGY-CAG-2026-12-11-2026-12-12": {
    "title": "Weekend lungo al sole di Cagliari",
    "text": "Da Bergamo venerdì 11 dicembre alle 06:00 si parte per un weekend lungo a Cagliari in Italia, tornando a casa sabato 12 dicembre alle 19:10. 21 ore nette da godersi. Con 1 giorno di ferie. 38,96 euro."
@@ -158,6 +166,10 @@
    "title": "Weekend lungo a Saragozza, tra storia",
    "text": "Da Bergamo venerdì 11 dicembre alle 07:55 si parte per un weekend lungo a Saragozza in Spagna, tornando a casa domenica 13 dicembre alle 20:10. 34 ore nette da godersi. Con 1 giorno di ferie. 42,31 euro."
   },
+  "TSF-CRL-2026-12-11-2026-12-12": {
+   "title": "Weekend a Charleroi",
+   "text": "Da Treviso si parte venerdì 11 dicembre alle 12:55, tornando sabato 12 dicembre alle 19:30. Charleroi, Belgio. Weekend lungo con 1 giorno di ferie."
+  },
   "VRN-TIA-2026-12-11-2026-12-13": {
    "title": "Scopri Tirana, gioiello dei Balcani",
    "text": "Da Verona, si vola venerdì 11 dicembre alle 13:20 e si rientra domenica 13 dicembre alle 22:40. Un weekend lungo di 31 ore nette da godersi e 1 giorno di ferie. Il prezzo? 43,00 euro."
@@ -165,6 +177,14 @@
   "BGY-PSR-2026-12-11-2026-12-13": {
    "title": "Weekend lungo a Pescara, mare e sole",
    "text": "Da Bergamo venerdì 11 dicembre alle 15:55 si parte per un weekend lungo a Pescara in Italia, tornando a casa domenica 13 dicembre alle 18:35. 25 ore nette da godersi. Con 1 giorno di ferie. 45,98 euro."
+  },
+  "BGY-BDS-2026-12-11-2026-12-12": {
+   "title": "Puglia e sole in inverno",
+   "text": "Da Bergamo si parte venerdì 11 dicembre alle 05:55 e si ritorna sabato 12 dicembre alle 20:25. Brindisi, Italia. Weekend lungo con 1 giorno di ferie."
+  },
+  "BGY-TIA-2026-12-11-2026-12-12": {
+   "title": "Tirana e i suoi tesori",
+   "text": "Da Bergamo si parte venerdì 11 dicembre alle 08:25 e si torna sabato 12 dicembre alle 19:55. Tirana, Albania. Weekend lungo con 1 giorno di ferie."
   },
   "TSF-ALC-2026-12-11-2026-12-14": {
    "title": "Alicante, sole e mare",
@@ -181,6 +201,10 @@
   "BGY-TIA-2026-12-11-2026-12-13": {
    "title": "Weekend lungo a Tirana, tra storia",
    "text": "Da Bergamo venerdì 11 dicembre alle 15:05 si parte per un weekend lungo a Tirana in Albania, tornando a casa domenica 13 dicembre alle 12:40. 19 ore nette da godersi. Con 1 giorno di ferie. 45,98 euro."
+  },
+  "BGY-CLJ-2026-12-11-2026-12-12": {
+   "title": "Cluj: tra castelli e leggende",
+   "text": "Da Bergamo si parte venerdì 11 dicembre alle 20:20 e si ritorna sabato 12 dicembre alle 23:45. Cluj, Romania. Weekend senza ferie."
   },
   "VRN-BRI-2026-12-11-2026-12-13": {
    "title": "Weekend al mare di Bari",
@@ -229,6 +253,10 @@
   "TSF-WMI-2026-12-13-2026-12-14": {
    "title": "Weekend a Varsavia, con 1 giorno di ferie",
    "text": "Si parte per un weekend lungo a Varsavia, da Treviso domenica 13 dicembre alle 13:25 e si torna a casa lunedì 14 dicembre alle 14:45. 9 ore nette, 40,98 euro"
+  },
+  "TSF-CRL-2026-12-13-2026-12-14": {
+   "title": "Weekend a Charleroi",
+   "text": "Si parte domenica 13 dicembre da Treviso e si torna lunedì 14 dicembre alle 11:55. Charleroi, Belgio. Weekend lungo con 1 giorno di ferie."
   },
   "TSF-AGP-2026-12-17-2026-12-19": {
    "title": "Sol e playas, con 1 giorno di ferie",
@@ -637,34 +665,6 @@
   "VRN-BRI-2027-03-12-2027-03-14": {
    "title": "Weekend nel sud",
    "text": "Si parte venerdì 12 marzo alle 22:30 da Verona e si torna a casa domenica 14 marzo alle 12:05. Un weekend senza ferie a Bari, con 15 ore nette da godersi. Si parte da Verona e si ritorna in Italia, per 45,53 euro"
-  },
-  "BGY-POZ-2026-12-04-2026-12-05": {
-   "title": "Weekend tra storia e birre",
-   "text": "Si parte venerdì 4 dicembre alle 08:30 da Bergamo e si torna sabato 5 dicembre alle 16:55 con 16 ore nette da godersi. Poznań, Polonia. Weekend lungo con 1 giorno di ferie."
-  },
-  "VRN-TIA-2026-12-11-2026-12-12": {
-   "title": "Tirana: storia e mare",
-   "text": "Da Verona si parte venerdì 11 dicembre alle 08:20 e si rientra sabato 12 dicembre alle 15:55. Tirana, Albania. Weekend lungo con 1 giorno di ferie."
-  },
-  "TSF-CRL-2026-12-11-2026-12-12": {
-   "title": "Weekend a Charleroi",
-   "text": "Da Treviso si parte venerdì 11 dicembre alle 12:55, tornando sabato 12 dicembre alle 19:30. Charleroi, Belgio. Weekend lungo con 1 giorno di ferie."
-  },
-  "BGY-BDS-2026-12-11-2026-12-12": {
-   "title": "Puglia e sole in inverno",
-   "text": "Da Bergamo si parte venerdì 11 dicembre alle 05:55 e si ritorna sabato 12 dicembre alle 20:25. Brindisi, Italia. Weekend lungo con 1 giorno di ferie."
-  },
-  "BGY-TIA-2026-12-11-2026-12-12": {
-   "title": "Tirana e i suoi tesori",
-   "text": "Da Bergamo si parte venerdì 11 dicembre alle 08:25 e si torna sabato 12 dicembre alle 19:55. Tirana, Albania. Weekend lungo con 1 giorno di ferie."
-  },
-  "BGY-CLJ-2026-12-11-2026-12-12": {
-   "title": "Cluj: tra castelli e leggende",
-   "text": "Da Bergamo si parte venerdì 11 dicembre alle 20:20 e si ritorna sabato 12 dicembre alle 23:45. Cluj, Romania. Weekend senza ferie."
-  },
-  "TSF-CRL-2026-12-13-2026-12-14": {
-   "title": "Weekend a Charleroi",
-   "text": "Si parte domenica 13 dicembre da Treviso e si torna lunedì 14 dicembre alle 11:55. Charleroi, Belgio. Weekend lungo con 1 giorno di ferie."
   }
  },
  "model": "Cloudflare Workers AI"
