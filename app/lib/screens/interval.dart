@@ -178,7 +178,7 @@ class _DateField extends StatelessWidget {
       );
 }
 
-/// What was found: how many offers, from which price, the cheapest cities; tap to open the list.
+/// What was found: how many offers, from which price, the cheapest cities; tap to open them by country.
 class _ResultRow extends StatelessWidget {
   const _ResultRow({required this.label, required this.offers});
   final String label;
@@ -201,7 +201,7 @@ class _ResultRow extends StatelessWidget {
         onTap: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => OffersScreen(section: 'Calendario', path: ['Intervalli', label], offers: offers),
+            builder: (_) => CountriesScreen(section: 'Calendario', path: ['Intervalli', label], offers: offers),
           ),
         ),
         child: Container(
