@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../common.dart';
 import '../data.dart';
 import 'days.dart';
+import 'interval.dart';
 import 'offers.dart';
 import 'settings.dart';
 
@@ -180,7 +181,7 @@ class BridgesCard extends StatelessWidget {
   }
 }
 
-/// The two alternative widgets of the Calendar: day carousel (main tab) and bridges.
+/// The alternative widgets of the Calendar: day carousel (main tab), bridges and date intervals.
 class CalendarPanel extends StatefulWidget {
   const CalendarPanel({super.key, required this.cal, required this.offers});
   final Json cal;
@@ -199,15 +200,21 @@ class _CalendarPanelState extends State<CalendarPanel> {
       padding: const EdgeInsets.fromLTRB(12, 12, 12, 8),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         SegmentTabs(
-          tabs: const [(Icons.view_week_outlined, 'Giorni'), (Icons.celebration_outlined, 'Ponti')],
+          tabs: const [
+            (Icons.view_week_outlined, 'Giorni'),
+            (Icons.celebration_outlined, 'Ponti'),
+            (Icons.date_range_outlined, 'Intervalli'),
+          ],
           selected: _tab,
           onChanged: (i) => setState(() => _tab = i),
         ),
         const SizedBox(height: 12),
         if (_tab == 0)
           DayStrip(cal: widget.cal, offers: widget.offers)
+        else if (_tab == 1)
+          BridgesCard(cal: widget.cal, offers: widget.offers)
         else
-          BridgesCard(cal: widget.cal, offers: widget.offers),
+          IntervalCard(offers: widget.offers),
       ]),
     );
   }

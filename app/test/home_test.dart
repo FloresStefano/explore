@@ -19,7 +19,10 @@ void main() {
     expect(find.text('IL MONDO È TROPPO PICCOLO'), findsOneWidget);
     expect(find.text('PER NON GIRARLO TUTTO'), findsOneWidget);
     expect(find.text('Non hai più scuse!'), findsOneWidget);
-    expect(find.text('Il prossimo weekend inizia tra'), findsAny);
+    // The countdown line depends on the day the test runs.
+    expect(
+        find.text(isWeekendNow(DateTime.now()) ? 'È weekend! Sei ancora a casa?' : 'Il prossimo weekend inizia tra'),
+        findsAny);
     await tester.ensureVisible(find.text('Scopri le destinazioni'));
     await tester.pump(const Duration(milliseconds: 300));
     await tester.tap(find.text('Scopri le destinazioni'));
