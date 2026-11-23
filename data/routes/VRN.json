@@ -75,7 +75,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-22",
+   "last_confirmed": "2026-11-23",
    "name": "Bari",
    "city": "Bari",
    "country": "Italia",
@@ -96,7 +96,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-22",
+   "last_confirmed": "2026-11-23",
    "name": "Cagliari",
    "city": "Cagliari",
    "country": "Italia",
@@ -431,7 +431,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-22",
+   "last_confirmed": "2026-11-23",
    "name": "Lamezia",
    "city": "Lamezia",
    "country": "Italia",
@@ -474,7 +474,7 @@
     "2027-03"
    ],
    "seasonal": false,
-   "last_confirmed": "2026-11-22",
+   "last_confirmed": "2026-11-23",
    "name": "Trapani-Marsala",
    "city": "Trapani",
    "country": "Italia",
@@ -500,5 +500,5 @@
   }
  },
  "ryanair_updated": "2026-11-16",
- "updated": "2026-11-22"
+ "updated": "2026-11-23"
 }

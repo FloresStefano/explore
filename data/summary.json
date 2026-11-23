@@ -1,12 +1,12 @@
 {
- "run_at": "2026-11-22T00:29:52+00:00",
- "generated": "2026-11-22",
- "offers": 4147,
+ "run_at": "2026-11-23T00:58:29+00:00",
+ "generated": "2026-11-23",
+ "offers": 4145,
  "destinations": 84,
  "countries": 30,
  "by_type": {
   "weekend+": {
-   "offers": 3011,
+   "offers": 3009,
    "min_price": 29.98,
    "cheapest": {
     "from": "VRN",
@@ -66,13 +66,13 @@
  "top_countries": [
   {
    "country": "Albania",
-   "offers": 402,
+   "offers": 401,
    "min_price": 29.98,
    "cities": [
     "Tirana"
    ],
    "types": {
-    "weekend+": 297,
+    "weekend+": 296,
     "weekend": 50,
     "ponte": 55
    }
@@ -95,7 +95,7 @@
   },
   {
    "country": "Italia",
-   "offers": 812,
+   "offers": 811,
    "min_price": 30.54,
    "cities": [
     "Lamezia",
@@ -103,19 +103,19 @@
     "Pescara",
     "Palermo",
     "Bari",
-    "Olbia",
     "Trapani",
-    "Catania"
+    "Catania",
+    "Olbia"
    ],
    "types": {
-    "weekend+": 607,
+    "weekend+": 606,
     "weekend": 136,
     "ponte": 69
    }
   },
   {
    "country": "Polonia",
-   "offers": 333,
+   "offers": 334,
    "min_price": 31.32,
    "cities": [
     "Katowice",
@@ -127,7 +127,7 @@
     "Lodz"
    ],
    "types": {
-    "weekend+": 253,
+    "weekend+": 254,
     "weekend": 38,
     "ponte": 42
    }
@@ -208,14 +208,14 @@
     "Siviglia"
    ],
    "types": {
-    "weekend+": 320,
+    "weekend+": 321,
     "ponte": 32,
-    "weekend": 94
+    "weekend": 93
    }
   },
   {
    "country": "Germania",
-   "offers": 132,
+   "offers": 134,
    "min_price": 38.98,
    "cities": [
     "Düsseldorf",
@@ -224,8 +224,8 @@
    ],
    "types": {
     "weekend+": 84,
-    "ponte": 12,
-    "weekend": 36
+    "weekend": 38,
+    "ponte": 12
    }
   }
  ],
@@ -344,7 +344,7 @@
    "nights": 2,
    "type": "weekend+",
    "leave_days": 1,
-   "price": 32.49,
+   "price": 32.64,
    "airlines": [
     "Ryanair"
    ],
@@ -473,21 +473,6 @@
    "useful_hours": 37.0
   },
   {
-   "from": "BGY",
-   "to": "Pescara",
-   "country": "Italia",
-   "out": "2026-12-18",
-   "ret": "2026-12-20",
-   "nights": 2,
-   "type": "weekend+",
-   "leave_days": 1,
-   "price": 32.49,
-   "airlines": [
-    "Ryanair"
-   ],
-   "useful_hours": 33.4
-  },
-  {
    "from": "VRN",
    "to": "Lamezia",
    "country": "Italia",
@@ -501,6 +486,21 @@
     "Ryanair"
    ],
    "useful_hours": 36.2
+  },
+  {
+   "from": "BGY",
+   "to": "Pescara",
+   "country": "Italia",
+   "out": "2026-12-18",
+   "ret": "2026-12-20",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "price": 32.64,
+   "airlines": [
+    "Ryanair"
+   ],
+   "useful_hours": 33.4
   },
   {
    "from": "BGY",
@@ -564,7 +564,7 @@
   }
  ],
  "airlines": {
-  "Ryanair": 3624,
+  "Ryanair": 3622,
   "Wizz Air Malta": 371,
   "Volotea": 85,
   "Wizz Air": 55,
@@ -575,15 +575,15 @@
  },
  "sources": {
   "ryanair": {
-   "calls": 62,
-   "ok": 62,
+   "calls": 7,
+   "ok": 7,
    "errors": 0
   },
   "skiplagged": {},
   "skiplagged_route": {},
   "kiwi": {
-   "calls": 150,
-   "ok": 150,
+   "calls": 0,
+   "ok": 0,
    "errors": 0
   }
  }
