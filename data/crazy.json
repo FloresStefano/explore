@@ -1,14 +1,10 @@
 {
- "updated": "2026-11-23",
+ "updated": "2026-11-24",
  "version": 3,
  "items": {
   "VRN-SUF-2026-11-27-2026-11-28": {
    "title": "Weekend lungo a Lamezia, mare e relax",
    "text": "Si parte da Verona venerdì 27 novembre alle 08:05 e si torna a casa sabato 28 novembre alle 22:30. Si sfruttano 22 ore nette con 1 giorno di ferie. 44,98 euro"
-  },
-  "BGY-SUF-2026-11-27-2026-11-28": {
-   "title": "Lamezia in tre giorni, aria di mare",
-   "text": "Un weekend lungo da Bergamo, si parte venerdì 27 novembre alle 07:40 e si torna a casa sabato 28 novembre alle 22:00. Si sfruttano 22 ore nette con 1 giorno di ferie. 40,31 euro"
   },
   "TSF-TIA-2026-12-03-2026-12-05": {
    "title": "Tirana, un weekend lungo",
@@ -17,14 +13,6 @@
   "BGY-TNG-2026-12-03-2026-12-05": {
    "title": "Weekend a Tangeri: sapori e storia",
    "text": "Da Bergamo si parte giovedì 3 dicembre alle 21:25 e si torna sabato 5 dicembre alle 23:25. Con 1 giorno di ferie si hanno 24 ore nette da godersi. Il viaggio costa 48,98 euro."
-  },
-  "TSF-MLA-2026-12-04-2026-12-05": {
-   "title": "Weekend lungo a Malta, mare e storia",
-   "text": "Da Treviso, si parte venerdì 4 dicembre alle 07:15 e si torna a casa sabato 5 dicembre alle 13:45. Con 1 giorno di ferie e 14 ore nette da godersi. 37,16 euro"
-  },
-  "VRN-BHX-2026-12-04-2026-12-05": {
-   "title": "Weekend lungo a Birmingham, divertimento e storia",
-   "text": "Si parte da Verona venerdì 4 dicembre alle 10:20 e si torna a casa sabato 5 dicembre alle 13:00. Con 1 giorno di ferie e 9 ore nette da godersi. 46,12 euro"
   },
   "TSF-PMI-2026-12-04-2026-12-06": {
    "title": "Weekend a Palma, sole e divertimento",
@@ -37,10 +25,6 @@
   "VRN-TPS-2026-12-04-2026-12-06": {
    "title": "Weekend lungo a Trapani, mare e storie",
    "text": "Da Verona, si parte venerdì 4 dicembre alle 12:35 e si torna a casa domenica 6 dicembre alle 13:10. Con 1 giorno di ferie e 22 ore nette da godersi. 36,99 euro"
-  },
-  "BGY-POZ-2026-12-04-2026-12-05": {
-   "title": "Weekend tra storia e birre",
-   "text": "Si parte venerdì 4 dicembre alle 08:30 da Bergamo e si torna sabato 5 dicembre alle 16:55 con 16 ore nette da godersi. Poznań, Polonia. Weekend lungo con 1 giorno di ferie."
   },
   "TSF-TIA-2026-12-10-2026-12-12": {
    "title": "Weekend lungo a Tirana, mare e divertimento",
@@ -74,21 +58,25 @@
    "title": "Weekend lungo a Marsiglia, cultura e divertimento",
    "text": "Si parte da Bergamo venerdì 11 dicembre alle 07:35 e si torna a casa domenica 13 dicembre alle 23:50. Con 1 giorno di ferie e 39 ore nette da godersi. 29,98 euro"
   },
-  "VRN-SUF-2026-12-11-2026-12-12": {
-   "title": "Weekend lungo sul sole di Lamezia",
-   "text": "Da Verona venerdì 11 dicembre alle 08:05 si parte per un weekend lungo a Lamezia in Italia, tornando a casa sabato 12 dicembre alle 22:30. Si hanno 22 ore nette da godersi. Con 1 giorno di ferie. 38,90 euro."
-  },
   "VRN-TIA-2026-12-11-2026-12-12": {
    "title": "Tirana: storia e mare",
    "text": "Da Verona si parte venerdì 11 dicembre alle 08:20 e si rientra sabato 12 dicembre alle 15:55. Tirana, Albania. Weekend lungo con 1 giorno di ferie."
   },
-  "BGY-CAG-2026-12-11-2026-12-12": {
-   "title": "Weekend lungo al sole di Cagliari",
-   "text": "Da Bergamo venerdì 11 dicembre alle 06:00 si parte per un weekend lungo a Cagliari in Italia, tornando a casa sabato 12 dicembre alle 19:10. 21 ore nette da godersi. Con 1 giorno di ferie. 38,96 euro."
+  "BGY-POZ-2026-12-11-2026-12-12": {
+   "title": "Weekend lungo a Poznań, storia e cultura",
+   "text": "Si parte da Bergamo venerdì 11 dicembre alle 08:15 e si torna a casa sabato 12 dicembre alle 16:55. Con 1 giorno di ferie e 16 ore nette da godersi. 33,98 euro"
   },
   "VRN-SUF-2026-12-11-2026-12-13": {
    "title": "Weekend lungo al sole di Lamezia",
    "text": "Da Verona venerdì 11 dicembre alle 08:05 si parte per un weekend lungo a Lamezia in Italia, tornando a casa domenica 13 dicembre alle 22:30. 36 ore nette da godersi. Con 1 giorno di ferie. 38,90 euro."
+  },
+  "TSF-TIA-2026-12-11-2026-12-12": {
+   "title": "Weekend lungo a Tirana, mare e relax",
+   "text": "Da Treviso, si parte venerdì 11 dicembre alle 16:45 e si torna a casa sabato 12 dicembre alle 21:40. Con 1 giorno di ferie e 13 ore nette da godersi. 29,98 euro"
+  },
+  "VRN-SUF-2026-12-11-2026-12-12": {
+   "title": "Weekend lungo sul sole di Lamezia",
+   "text": "Da Verona venerdì 11 dicembre alle 08:05 si parte per un weekend lungo a Lamezia in Italia, tornando a casa sabato 12 dicembre alle 22:30. Si hanno 22 ore nette da godersi. Con 1 giorno di ferie. 38,90 euro."
   },
   "TSF-WMI-2026-12-11-2026-12-13": {
    "title": "Weekend lungo storico a Varsavia",
@@ -98,33 +86,33 @@
    "title": "Weekend lungo al sole di Lamezia",
    "text": "Dalla mattina di venerdì 11 dicembre alle 05:45 da Bergamo, si parte per Lamezia in Italia e si ritorna a casa sabato 12 dicembre alle 13:10. 15 ore nette da godersi. Con 1 giorno di ferie. 36,99 euro."
   },
-  "TSF-TIA-2026-12-11-2026-12-12": {
-   "title": "Weekend lungo a Tirana, mare e relax",
-   "text": "Da Treviso, si parte venerdì 11 dicembre alle 16:45 e si torna a casa sabato 12 dicembre alle 21:40. Con 1 giorno di ferie e 13 ore nette da godersi. 29,98 euro"
+  "VRN-TPS-2026-12-11-2026-12-13": {
+   "title": "Weekend lungo a Trapani, mare e divertimento",
+   "text": "Da Verona, si parte venerdì 11 dicembre alle 12:35 e si torna a casa domenica 13 dicembre alle 13:10. Con 1 giorno di ferie e 22 ore nette da godersi. 35,98 euro"
   },
   "TSF-MLA-2026-12-11-2026-12-12": {
    "title": "Weekend lungo di mare e sole",
    "text": "Si parte con un weekend lungo da Treviso venerdì 11 dicembre alle 07:15 per raggiungere Malta, e si torna a casa sabato 12 dicembre alle 13:45. 14 ore nette da godersi. Con 1 giorno di ferie. 37,98 euro."
   },
-  "BGY-POZ-2026-12-11-2026-12-12": {
-   "title": "Weekend lungo a Poznań, storia e cultura",
-   "text": "Si parte da Bergamo venerdì 11 dicembre alle 08:15 e si torna a casa sabato 12 dicembre alle 16:55. Con 1 giorno di ferie e 16 ore nette da godersi. 33,98 euro"
-  },
-  "VRN-TPS-2026-12-11-2026-12-13": {
-   "title": "Weekend lungo a Trapani, mare e divertimento",
-   "text": "Da Verona, si parte venerdì 11 dicembre alle 12:35 e si torna a casa domenica 13 dicembre alle 13:10. Con 1 giorno di ferie e 22 ore nette da godersi. 35,98 euro"
+  "BGY-CAG-2026-12-11-2026-12-12": {
+   "title": "Weekend lungo al sole di Cagliari",
+   "text": "Da Bergamo venerdì 11 dicembre alle 06:00 si parte per un weekend lungo a Cagliari in Italia, tornando a casa sabato 12 dicembre alle 19:10. 21 ore nette da godersi. Con 1 giorno di ferie. 38,96 euro."
   },
   "TSF-PMI-2026-12-11-2026-12-13": {
    "title": "Weekend a Palma, tra mare e tapas",
    "text": "Da Treviso venerdì 11 dicembre alle 21:10 si parte per un weekend a Palma in Spagna, tornando a casa domenica 13 dicembre alle 14:45. 17 ore nette da godersi. Senza ferie. 40,98 euro."
   },
-  "TSF-CRL-2026-12-11-2026-12-12": {
-   "title": "Weekend a Charleroi",
-   "text": "Da Treviso si parte venerdì 11 dicembre alle 12:55, tornando sabato 12 dicembre alle 19:30. Charleroi, Belgio. Weekend lungo con 1 giorno di ferie."
+  "BGY-BRI-2026-12-11-2026-12-12": {
+   "title": "Weekend lungo a Bari con il mare",
+   "text": "Da Bergamo venerdì 11 dicembre alle 05:45 si parte per un weekend lungo a Bari in Italia, tornando a casa sabato 12 dicembre alle 22:35. 25 ore nette da godersi. Con 1 giorno di ferie. 41,98 euro."
   },
   "BGY-ZAZ-2026-12-11-2026-12-13": {
    "title": "Weekend lungo a Saragozza, tra storia",
    "text": "Da Bergamo venerdì 11 dicembre alle 07:55 si parte per un weekend lungo a Saragozza in Spagna, tornando a casa domenica 13 dicembre alle 20:10. 34 ore nette da godersi. Con 1 giorno di ferie. 42,31 euro."
+  },
+  "TSF-CRL-2026-12-11-2026-12-12": {
+   "title": "Weekend a Charleroi",
+   "text": "Da Treviso si parte venerdì 11 dicembre alle 12:55, tornando sabato 12 dicembre alle 19:30. Charleroi, Belgio. Weekend lungo con 1 giorno di ferie."
   },
   "TSF-TLS-2026-12-11-2026-12-13": {
    "title": "Weekend lungo tra i castelli di Tolosa",
@@ -134,10 +122,6 @@
    "title": "Cluj: tra castelli e leggende",
    "text": "Si parte da Bergamo venerdì 11 dicembre alle 20:20 e si torna lunedì 14 dicembre alle 23:05. Con 1 giorno di ferie si hanno 40 ore nette da godersi. Il viaggio costa 46,10 euro."
   },
-  "BGY-BDS-2026-12-11-2026-12-12": {
-   "title": "Puglia e sole in inverno",
-   "text": "Da Bergamo si parte venerdì 11 dicembre alle 05:55 e si ritorna sabato 12 dicembre alle 20:25. Brindisi, Italia. Weekend lungo con 1 giorno di ferie."
-  },
   "BGY-TIA-2026-12-11-2026-12-12": {
    "title": "Tirana e i suoi tesori",
    "text": "Da Bergamo si parte venerdì 11 dicembre alle 08:25 e si torna sabato 12 dicembre alle 19:55. Tirana, Albania. Weekend lungo con 1 giorno di ferie."
@@ -146,17 +130,9 @@
    "title": "Alicante, sole e mare",
    "text": "Con 1 giorno di ferie si parte da Treviso venerdì 11 dicembre alle 20:05 e si torna lunedì 14 dicembre alle 15:15. 31 ore nette da godersi a 46,98 euro"
   },
-  "BGY-BRI-2026-12-11-2026-12-12": {
-   "title": "Weekend lungo a Bari con il mare",
-   "text": "Da Bergamo venerdì 11 dicembre alle 05:45 si parte per un weekend lungo a Bari in Italia, tornando a casa sabato 12 dicembre alle 22:35. 25 ore nette da godersi. Con 1 giorno di ferie. 41,98 euro."
-  },
   "BGY-PSR-2026-12-11-2026-12-13": {
    "title": "Weekend lungo a Pescara, mare e sole",
    "text": "Da Bergamo venerdì 11 dicembre alle 15:55 si parte per un weekend lungo a Pescara in Italia, tornando a casa domenica 13 dicembre alle 18:35. 25 ore nette da godersi. Con 1 giorno di ferie. 45,98 euro."
-  },
-  "BGY-CLJ-2026-12-11-2026-12-12": {
-   "title": "Cluj: tra castelli e leggende",
-   "text": "Da Bergamo si parte venerdì 11 dicembre alle 20:20 e si ritorna sabato 12 dicembre alle 23:45. Cluj, Romania. Weekend senza ferie."
   },
   "TSF-TIA-2026-12-12-2026-12-14": {
    "title": "Weekend lungo a Tirana, tra storia",
@@ -202,10 +178,6 @@
    "title": "Katowice: cultura e natura polacca",
    "text": "Si parte da Bergamo domenica 13 dicembre alle 15:10 e si torna lunedì 14 dicembre alle 15:55. Con 1 giorno di ferie si hanno 8 ore nette da godersi. Il viaggio costa 31,32 euro."
   },
-  "BGY-CAG-2026-12-13-2026-12-14": {
-   "title": "Weekend a Cagliari: sole e mare",
-   "text": "Da Bergamo si parte domenica 13 dicembre alle 07:05 e si torna lunedì 14 dicembre alle 22:05. Con 1 giorno di ferie si hanno 23 ore nette da godersi. Il viaggio costa 31,99 euro."
-  },
   "VRN-TIA-2026-12-13-2026-12-14": {
    "title": "Balcani con 1 giorno di ferie",
    "text": "In Albania si parte domenica 13 dicembre alle 08:25 e si torna a casa lunedì 14 dicembre alle 22:15 da Verona. Weekend lungo con 1 giorno di ferie, 22 ore nette da godersi. 31,98 euro"
@@ -214,17 +186,13 @@
    "title": "Weekend a Varsavia, con 1 giorno di ferie",
    "text": "Si parte per un weekend lungo a Varsavia, da Treviso domenica 13 dicembre alle 13:25 e si torna a casa lunedì 14 dicembre alle 14:45. 9 ore nette, 40,98 euro"
   },
-  "TSF-CRL-2026-12-13-2026-12-14": {
-   "title": "Weekend a Charleroi",
-   "text": "Si parte domenica 13 dicembre da Treviso e si torna lunedì 14 dicembre alle 11:55. Charleroi, Belgio. Weekend lungo con 1 giorno di ferie."
+  "BGY-CAG-2026-12-13-2026-12-14": {
+   "title": "Weekend a Cagliari: sole e mare",
+   "text": "Da Bergamo si parte domenica 13 dicembre alle 07:05 e si torna lunedì 14 dicembre alle 22:05. Con 1 giorno di ferie si hanno 23 ore nette da godersi. Il viaggio costa 31,99 euro."
   },
   "TSF-TIA-2026-12-17-2026-12-19": {
    "title": "Tirana: tra storia e modernità",
    "text": "Si parte da Treviso giovedì 17 dicembre alle 18:05 e si torna sabato 19 dicembre alle 15:35. Con 1 giorno di ferie si hanno 19 ore nette da godersi. Il viaggio costa 40,73 euro."
-  },
-  "TSF-MLA-2026-12-18-2026-12-19": {
-   "title": "Spettacolo di Malta, con 1 giorno di ferie",
-   "text": "Da Treviso si parte venerdì 18 dicembre alle 07:15 per Malta e si torna sabato 19 dicembre alle 13:45. Weekend lungo con 1 giorno di ferie, 14 ore nette. 36,31 euro"
   },
   "TSF-MLA-2026-12-18-2026-12-20": {
    "title": "Weekend lungo a Malta, con 1 giorno di ferie",
@@ -234,6 +202,10 @@
    "title": "Sole sardo, con 1 giorno di ferie",
    "text": "Un weekend lungo a Cagliari con 1 giorno di ferie. Si parte venerdì 18 dicembre alle 07:55 da Verona e si torna domenica 20 dicembre alle 15:25. 30 ore nette, 41,99 euro"
   },
+  "TSF-WMI-2026-12-18-2026-12-20": {
+   "title": "Weekend lungo a Varsavia",
+   "text": "Si parte da Treviso venerdì 18 dicembre alle 16:20 e si torna a casa domenica 20 dicembre alle 13:00 con 18 ore nette da godersi. Varsavia, capitale della Polonia, è ricca di storia e cultura. Il viaggio è un weekend lungo con 1 giorno di ferie. Il prezzo? 48,98 euro."
+  },
   "TSF-MLA-2026-12-19-2026-12-20": {
    "title": "Weekend a Malta, senza ferie",
    "text": "Partenza per Malta sabato 19 dicembre alle 14:40 da Treviso e ritorno domenica 20 dicembre alle 16:35. 9 ore nette, 40,98 euro"
@@ -241,18 +213,6 @@
   "TSF-MLA-2026-12-19-2026-12-21": {
    "title": "Weekend lungo a Malta, con 1 giorno di ferie",
    "text": "Da Treviso si parte sabato 19 dicembre alle 14:40 per Malta e si torna lunedì 21 dicembre alle 15:00. Weekend lungo con 1 giorno di ferie, 22 ore nette. 33,98 euro"
-  },
-  "BGY-WMI-2026-12-23-2026-12-26": {
-   "title": "Natale a Varsavia, con 1 giorno di ferie",
-   "text": "Si parte per Varsavia mercoledì 23 dicembre alle 22:00 da Bergamo e si torna sabato 26 dicembre alle 21:25. Ponte con 1 giorno di ferie, 37 ore nette da godersi. 43,98 euro"
-  },
-  "BGY-PSR-2027-01-01-2027-01-03": {
-   "title": "Capodanno a Pescara, senza ferie",
-   "text": "Da Bergamo si parte per Pescara venerdì 1 gennaio alle 07:50 e si torna domenica 3 gennaio alle 10:15. Ponte senza ferie, 26 ore nette. 47,79 euro"
-  },
-  "BGY-WMI-2027-01-06-2027-01-10": {
-   "title": "Epifania a Varsavia, con 2 giorni di ferie",
-   "text": "Un ponte a Varsavia con 2 giorni di ferie da Bergamo. Si parte mercoledì 6 gennaio alle 22:00 e si torna domenica 10 gennaio alle 16:15. 46 ore nette, 46,85 euro"
   },
   "TSF-CRL-2027-01-07-2027-01-09": {
    "title": "Weekend lungo a Charleroi, con 1 giorno di ferie",
@@ -262,6 +222,10 @@
    "title": "Weekend lungo a Breslavia, con 1 giorno di ferie",
    "text": "Da Treviso si parte venerdì 8 gennaio alle 09:40 per Breslavia e si torna domenica 10 gennaio alle 10:35. Weekend lungo con 1 giorno di ferie, 24 ore nette. 39,90 euro"
   },
+  "TSF-MLA-2027-01-08-2027-01-10": {
+   "title": "Weekend lungo a Malta, con 1 giorno di ferie",
+   "text": "Da Treviso si parte venerdì 8 gennaio alle 07:15 per Malta e si torna domenica 10 gennaio alle 16:35. Weekend lungo con 1 giorno di ferie, 31 ore nette. 40,98 euro"
+  },
   "TSF-BUD-2027-01-08-2027-01-11": {
    "title": "Weekend lungo a Budapest, con 1 giorno di ferie",
    "text": "Da Treviso si parte venerdì 8 gennaio alle 20:30 per Budapest e si torna lunedì 11 gennaio alle 16:20. Weekend lungo con 1 giorno di ferie, 33 ore nette. 39,98 euro"
@@ -270,25 +234,17 @@
    "title": "Weekend a Charleroi, con 1 giorno di ferie",
    "text": "Si parte per Charleroi venerdì 8 gennaio alle 08:20 da Treviso e si torna sabato 9 gennaio alle 13:15. Weekend lungo con 1 giorno di ferie, 13 ore nette. 40,57 euro"
   },
-  "TSF-MLA-2027-01-08-2027-01-10": {
-   "title": "Weekend lungo a Malta, con 1 giorno di ferie",
-   "text": "Da Treviso si parte venerdì 8 gennaio alle 07:15 per Malta e si torna domenica 10 gennaio alle 16:35. Weekend lungo con 1 giorno di ferie, 31 ore nette. 40,98 euro"
-  },
   "TSF-MLA-2027-01-08-2027-01-09": {
    "title": "Weekend a Malta, con 1 giorno di ferie",
    "text": "Si parte per Malta venerdì 8 gennaio alle 07:15 da Treviso e si torna sabato 9 gennaio alle 13:45. Weekend lungo con 1 giorno di ferie, 14 ore nette. 44,98 euro"
   },
-  "TSF-BVA-2027-01-08-2027-01-10": {
-   "title": "Weekend a Parigi: romanticismo e cultura",
-   "text": "Da Treviso si parte venerdì 8 gennaio alle 13:10 e si torna domenica 10 gennaio alle 11:45. Con 1 giorno di ferie si hanno 20 ore nette da godersi. Il viaggio costa 49,98 euro."
+  "TSF-MLA-2027-01-09-2027-01-11": {
+   "title": "Malta: sole e storia antica",
+   "text": "Si parte da Treviso sabato 9 gennaio alle 11:00 e si torna lunedì 11 gennaio alle 15:00. Con 1 giorno di ferie si hanno 25 ore nette da godersi. Il viaggio costa 39,98 euro."
   },
   "TSF-MLA-2027-01-09-2027-01-10": {
    "title": "Weekend a Malta, senza ferie",
    "text": "Da Treviso si parte sabato 9 gennaio alle 11:00 per Malta e si torna domenica 10 gennaio alle 16:35. 13 ore nette, 39,98 euro"
-  },
-  "TSF-MLA-2027-01-09-2027-01-11": {
-   "title": "Malta: sole e storia antica",
-   "text": "Si parte da Treviso sabato 9 gennaio alle 11:00 e si torna lunedì 11 gennaio alle 15:00. Con 1 giorno di ferie si hanno 25 ore nette da godersi. Il viaggio costa 39,98 euro."
   },
   "BGY-CRL-2027-01-09-2027-01-10": {
    "title": "Weekend a Charleroi, senza ferie",
@@ -650,9 +606,49 @@
    "title": "Weekend nel sud",
    "text": "Si parte venerdì 12 marzo alle 22:30 da Verona e si torna a casa domenica 14 marzo alle 12:05. Un weekend senza ferie a Bari, con 15 ore nette da godersi. Si parte da Verona e si ritorna in Italia, per 45,53 euro"
   },
-  "TSF-WMI-2026-12-18-2026-12-20": {
-   "title": "Weekend lungo a Varsavia",
-   "text": "Si parte da Treviso venerdì 18 dicembre alle 16:20 e si torna a casa domenica 20 dicembre alle 13:00 con 18 ore nette da godersi. Varsavia, capitale della Polonia, è ricca di storia e cultura. Il viaggio è un weekend lungo con 1 giorno di ferie. Il prezzo? 48,98 euro."
+  "BGY-PMO-2026-12-11-2026-12-12": {
+   "title": "Weekend lungo a Palermo con la ferie",
+   "text": "Si parte da Bergamo venerdì 11 dicembre alle 06:30 e si torna a casa sabato 12 dicembre alle 16:10. Con 1 giorno di ferie e 17 ore nette da godersi. Prezzo 44,20 euro. Per chi ama il sole e il mare d'inverno."
+  },
+  "BGY-WMI-2026-12-11-2026-12-12": {
+   "title": "Weekend lungo Varsavia capitale affascinante",
+   "text": "Da Bergamo si parte venerdì 11 dicembre alle 08:50 e si torna sabato 12 dicembre alle 21:25. Con 1 giorno di ferie e 20 ore nette da godersi. Prezzo 45,53 euro. Per chi ama la storia e la cultura."
+  },
+  "BGY-MLA-2026-12-11-2026-12-12": {
+   "title": "Weekend lungo a Malta con la ferie",
+   "text": "Da Bergamo si parte venerdì 11 dicembre alle 15:35 e si torna sabato 12 dicembre alle 22:10. Con 1 giorno di ferie e 14 ore nette da godersi. Prezzo 49,98 euro. Per chi ama il sole e il mare."
+  },
+  "BGY-SUF-2026-12-13-2026-12-14": {
+   "title": "Weekend lungo a Lamezia con la ferie",
+   "text": "Si parte da Bergamo domenica 13 dicembre alle 08:25 e si torna a casa lunedì 14 dicembre alle 13:50. Con 1 giorno di ferie e 13 ore nette da godersi. Prezzo 36,42 euro. Per chi ama il caldo e i paesaggi."
+  },
+  "BGY-CRL-2027-01-08-2027-01-10": {
+   "title": "Weekend a Charleroi città del piacere",
+   "text": "Da Bergamo si parte venerdì 8 gennaio alle 21:10 e si torna a casa domenica 10 gennaio alle 15:35. Senza ferie e 18 ore nette da godersi. Prezzo 33,98 euro. Per chi ama la birra e i musei."
+  },
+  "TSF-WMI-2027-01-08-2027-01-10": {
+   "title": "Weekend lungo a Varsavia con ferie",
+   "text": "Da Treviso si parte venerdì 8 gennaio alle 16:20 e si torna a casa domenica 10 gennaio alle 13:00. Con 1 giorno di ferie e 18 ore nette da godersi. Prezzo 33,98 euro. Per chi ama la storia e la cultura."
+  },
+  "TSF-CRL-2027-01-09-2027-01-11": {
+   "title": "Weekend lungo a Charleroi con ferie",
+   "text": "Si parte da Treviso sabato 9 gennaio alle 16:00 e si torna a casa lunedì 11 gennaio alle 20:10. Con 1 giorno di ferie e 26 ore nette da godersi. Prezzo 34,67 euro. Per chi ama i musei e la birra."
+  },
+  "TSF-BUD-2027-01-09-2027-01-11": {
+   "title": "Weekend lungo a Budapest con ferie",
+   "text": "Da Treviso si parte sabato 9 gennaio alle 15:20 e si torna a casa lunedì 11 gennaio alle 16:20. Con 1 giorno di ferie e 23 ore nette da godersi. Prezzo 43,98 euro. Per chi ama i bagni termali e i castelli."
+  },
+  "TSF-VIE-2027-01-09-2027-01-11": {
+   "title": "Weekend lungo a Vienna con ferie",
+   "text": "Si parte da Treviso sabato 9 gennaio alle 08:40 e si torna a casa lunedì 11 gennaio alle 11:30. Con 1 giorno di ferie e 25 ore nette da godersi. Prezzo 46,98 euro. Per chi ama la musica e i palazzi."
+  },
+  "VRN-TIA-2027-01-24-2027-01-25": {
+   "title": "Weekend lungo a Tirana con ferie",
+   "text": "Da Verona si parte domenica 24 gennaio alle 19:00 e si torna a casa lunedì 25 gennaio alle 22:15. Con 1 giorno di ferie e 11 ore nette da godersi. Prezzo 34,98 euro. Per chi ama i castelli e i panorami."
+  },
+  "BGY-WMI-2027-03-24-2027-03-27": {
+   "title": "Ponte a Varsavia per Pasqua",
+   "text": "Da Bergamo si parte mercoledì 24 marzo alle 22:00 e si torna a casa sabato 27 marzo alle 21:25. Con 2 giorni di ferie e 37 ore nette da godersi. Vacanze di Pasqua (scuole). Prezzo 45,76 euro. Per chi ama la storia e la cultura."
   }
  },
  "model": "Cloudflare Workers AI"

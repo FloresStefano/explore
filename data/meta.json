@@ -1,13 +1,13 @@
 {
- "run_at": "2026-11-23T00:58:29+00:00",
+ "run_at": "2026-11-24T04:51:36+00:00",
  "sources": {
   "ryanair": {
    "enabled": true,
    "cap": 160,
-   "calls": 7,
-   "ok": 7,
+   "calls": 129,
+   "ok": 129,
    "errors": 0,
-   "offers": 60,
+   "offers": 689,
    "last_error": null,
    "due_not_picked": null
   },
@@ -20,34 +20,35 @@
   "kiwi": {
    "enabled": true,
    "cap": 150,
-   "calls": 0,
-   "ok": 0,
+   "calls": 30,
+   "ok": 30,
    "errors": 0,
-   "offers": 0,
+   "offers": 9,
    "last_error": null,
    "routes": 30
   }
  },
  "warnings": [],
  "discards": {
-  "FIN-12": 55,
-  "JOB-09": 20,
-  "SEL-01": 46,
-  "SEL-02": 2
+  "FIN-12": 295,
+  "JOB-09": 1454,
+  "SEL-01": 527,
+  "SEL-02": 52,
+  "SEL-08": 111
  },
  "coverage_ryanair": {
   "VRN": {
-   "pairs": 158,
-   "fresh": 158
+   "pairs": 160,
+   "fresh": 160
   },
   "BGY": {
-   "pairs": 158,
-   "fresh": 158
+   "pairs": 160,
+   "fresh": 160
   },
   "TSF": {
-   "pairs": 158,
-   "fresh": 158
+   "pairs": 160,
+   "fresh": 160
   }
  },
- "seconds": 16
+ "seconds": 359
 }
