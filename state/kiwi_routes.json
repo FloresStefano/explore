@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-18",
+ "checked": "2026-11-25",
  "routes": {
   "BGY-BEG": {
    "price": 56.0,
@@ -8,14 +8,14 @@
    ]
   },
   "BGY-CAI": {
-   "price": 224.0,
+   "price": 220.0,
    "airlines": [
     "Air Arabia Egypt",
     "Nile Air"
    ]
   },
   "BGY-CLJ": {
-   "price": 34.0,
+   "price": 33.0,
    "airlines": [
     "Wizz Air Malta"
    ]
@@ -27,13 +27,13 @@
    ]
   },
   "BGY-CPH": {
-   "price": 86.0,
+   "price": 82.0,
    "airlines": [
     "Norwegian Air Sweden"
    ]
   },
   "BGY-CRA": {
-   "price": 39.0,
+   "price": 38.0,
    "airlines": [
     "Wizz Air Malta"
    ]
@@ -45,7 +45,7 @@
    ]
   },
   "BGY-HEL": {
-   "price": 167.0,
+   "price": 88.0,
    "airlines": [
     "Norwegian Air Sweden"
    ]
@@ -57,37 +57,37 @@
    ]
   },
   "BGY-OLB": {
-   "price": 59.0,
+   "price": 48.0,
    "airlines": [
     "Volotea"
    ]
   },
   "BGY-OTP": {
-   "price": 45.0,
+   "price": 39.0,
    "airlines": [
     "Wizz Air Malta"
    ]
   },
   "BGY-RMO": {
-   "price": 58.0,
+   "price": 53.0,
    "airlines": [
     "Wizz Air Malta"
    ]
   },
   "BGY-SAW": {
-   "price": 147.0,
+   "price": 143.0,
    "airlines": [
     "AJet"
    ]
   },
   "BGY-SCV": {
-   "price": 51.0,
+   "price": 50.0,
    "airlines": [
     "Wizz Air Malta"
    ]
   },
   "BGY-SHJ": {
-   "price": 503.0,
+   "price": 485.0,
    "airlines": [
     "Air Arabia"
    ]
@@ -99,20 +99,20 @@
    ]
   },
   "BGY-SSH": {
-   "price": 333.0,
+   "price": 321.0,
    "airlines": [
     "Air Cairo",
     "Neos Air"
    ]
   },
   "BGY-TIA": {
-   "price": 29.0,
+   "price": 30.0,
    "airlines": [
     "Wizz Air Malta"
    ]
   },
   "BGY-TOS": {
-   "price": 191.0,
+   "price": 167.0,
    "airlines": [
     "Norwegian Air Shuttle"
    ]
@@ -130,19 +130,19 @@
    ]
   },
   "TSF-IAS": {
-   "price": 60.0,
+   "price": 57.0,
    "airlines": [
     "Wizz Air Malta"
    ]
   },
   "TSF-OTP": {
-   "price": 48.0,
+   "price": 47.0,
    "airlines": [
     "Wizz Air Malta"
    ]
   },
   "TSF-SCV": {
-   "price": 46.0,
+   "price": 48.0,
    "airlines": [
     "Wizz Air Malta"
    ]
@@ -154,52 +154,53 @@
    ]
   },
   "VRN-BCN": {
-   "price": 49.0,
+   "price": 47.0,
+   "airlines": [
+    "Volotea"
+   ]
+  },
+  "VRN-BIO": {
+   "price": 381.0,
    "airlines": [
     "Volotea"
    ]
   },
   "VRN-CMN": {
-   "price": 148.0,
+   "price": 150.0,
    "airlines": [
     "Royal Air Maroc"
    ]
   },
   "VRN-CTA": {
-   "price": 41.0,
+   "price": 44.0,
    "airlines": [
     "Volotea",
     "Wizz Air Malta"
    ]
   },
   "VRN-FRA": {
-   "price": 224.0,
+   "price": 240.0,
    "airlines": [
-    "ITA Airways",
+    "Air Dolomiti",
     "Lufthansa"
    ]
   },
   "VRN-LGW": {
-   "price": 106.0,
+   "price": 98.0,
    "airlines": [
     "easyJet"
    ]
   },
-  "VRN-MAD": {
-   "price": 289.0,
-   "airlines": [
-    "Volotea"
-   ]
-  },
   "VRN-MUC": {
-   "price": 226.0,
+   "price": 295.0,
    "airlines": [
+    "Air Dolomiti",
     "ITA Airways",
     "Lufthansa"
    ]
   },
   "VRN-OLB": {
-   "price": 49.0,
+   "price": 50.0,
    "airlines": [
     "Volotea"
    ]
@@ -211,43 +212,43 @@
    ]
   },
   "VRN-PMO": {
-   "price": 57.0,
+   "price": 48.0,
    "airlines": [
     "Volotea"
    ]
   },
   "VRN-PRG": {
-   "price": 78.0,
+   "price": 116.0,
    "airlines": [
     "Volotea"
    ]
   },
   "VRN-RMF": {
-   "price": 424.0,
+   "price": 450.0,
    "airlines": [
     "Neos Air"
    ]
   },
   "VRN-RMO": {
-   "price": 58.0,
+   "price": 53.0,
    "airlines": [
     "Wizz Air Malta"
    ]
   },
   "VRN-SSH": {
-   "price": 390.0,
+   "price": 393.0,
    "airlines": [
     "Neos Air"
    ]
   },
   "VRN-TIA": {
-   "price": 29.0,
+   "price": 30.0,
    "airlines": [
     "Wizz Air Malta"
    ]
   },
   "VRN-TLV": {
-   "price": 282.0,
+   "price": 264.0,
    "airlines": [
     "El Al Israel Airlines"
    ]
