@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "offers": [
   {
    "origin": "TSF",
@@ -102,6 +102,55 @@
     "eur_km": 0.047,
     "eur_h": 0.89,
     "life": 77
+   }
+  },
+  {
+   "origin": "BGY",
+   "destination": "PSR",
+   "out_date": "2026-12-18",
+   "ret_date": "2026-12-20",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "leave_dates": [
+    "2026-12-18"
+   ],
+   "outbound": {
+    "from": "BGY",
+    "to": "PSR",
+    "flight": "FR2322",
+    "airline": "Ryanair",
+    "departure": "2026-12-18T07:50+01:00",
+    "arrival": "2026-12-18T09:00+01:00"
+   },
+   "inbound": {
+    "from": "PSR",
+    "to": "BGY",
+    "flight": "FR2323",
+    "airline": "Ryanair",
+    "departure": "2026-12-20T17:25+01:00",
+    "arrival": "2026-12-20T18:35+01:00"
+   },
+   "airlines": [
+    "Ryanair"
+   ],
+   "price": 30.85,
+   "currency": "EUR",
+   "fare": "base, senza bagaglio",
+   "useful_hours": 33.4,
+   "price_per_hour": 0.92,
+   "unmissable": false,
+   "source": "ryanair",
+   "observed_at": "2026-11-26",
+   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-18&dateIn=2026-12-20&isReturn=true&originIata=BGY&destinationIata=PSR",
+   "city": "Pescara",
+   "country": "Italia",
+   "country_code": "it",
+   "kpi": {
+    "km": 508,
+    "eur_km": 0.061,
+    "eur_h": 0.92,
+    "life": 75
    }
   },
   {
@@ -301,52 +350,52 @@
    }
   },
   {
-   "origin": "BGY",
-   "destination": "PSR",
-   "out_date": "2026-12-18",
-   "ret_date": "2026-12-20",
+   "origin": "VRN",
+   "destination": "SUF",
+   "out_date": "2027-01-29",
+   "ret_date": "2027-01-31",
    "nights": 2,
    "type": "weekend+",
    "leave_days": 1,
    "leave_dates": [
-    "2026-12-18"
+    "2027-01-29"
    ],
    "outbound": {
-    "from": "BGY",
-    "to": "PSR",
-    "flight": "FR2322",
+    "from": "VRN",
+    "to": "SUF",
+    "flight": "FR8877",
     "airline": "Ryanair",
-    "departure": "2026-12-18T07:50+01:00",
-    "arrival": "2026-12-18T09:00+01:00"
+    "departure": "2027-01-29T08:05+01:00",
+    "arrival": "2027-01-29T09:40+01:00"
    },
    "inbound": {
-    "from": "PSR",
-    "to": "BGY",
-    "flight": "FR2323",
+    "from": "SUF",
+    "to": "VRN",
+    "flight": "FR1291",
     "airline": "Ryanair",
-    "departure": "2026-12-20T17:25+01:00",
-    "arrival": "2026-12-20T18:35+01:00"
+    "departure": "2027-01-31T20:55+01:00",
+    "arrival": "2027-01-31T22:30+01:00"
    },
    "airlines": [
     "Ryanair"
    ],
-   "price": 32.64,
+   "price": 36.23,
    "currency": "EUR",
    "fare": "base, senza bagaglio",
-   "useful_hours": 33.4,
-   "price_per_hour": 0.98,
+   "useful_hours": 36.2,
+   "price_per_hour": 1.0,
    "unmissable": false,
    "source": "ryanair",
-   "observed_at": "2026-11-23",
-   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2026-12-18&dateIn=2026-12-20&isReturn=true&originIata=BGY&destinationIata=PSR",
-   "city": "Pescara",
+   "observed_at": "2026-11-26",
+   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-29&dateIn=2027-01-31&isReturn=true&originIata=VRN&destinationIata=SUF",
+   "city": "Lamezia",
    "country": "Italia",
    "country_code": "it",
    "kpi": {
-    "km": 508,
-    "eur_km": 0.064,
-    "eur_h": 0.98,
-    "life": 75
+    "km": 845,
+    "eur_km": 0.043,
+    "eur_h": 1.0,
+    "life": 76
    }
   },
   {
@@ -575,14 +624,14 @@
    "airlines": [
     "Ryanair"
    ],
-   "price": 40.58,
+   "price": 40.6,
    "currency": "EUR",
    "fare": "base, senza bagaglio",
    "useful_hours": 38.0,
    "price_per_hour": 1.07,
    "unmissable": false,
    "source": "ryanair",
-   "observed_at": "2026-11-19",
+   "observed_at": "2026-11-26",
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-12&dateIn=2027-02-14&isReturn=true&originIata=BGY&destinationIata=CLJ",
    "city": "Cluj",
    "country": "Romania",
@@ -592,104 +641,6 @@
     "eur_km": 0.038,
     "eur_h": 1.07,
     "life": 77
-   }
-  },
-  {
-   "origin": "VRN",
-   "destination": "SUF",
-   "out_date": "2027-01-22",
-   "ret_date": "2027-01-24",
-   "nights": 2,
-   "type": "weekend+",
-   "leave_days": 1,
-   "leave_dates": [
-    "2027-01-22"
-   ],
-   "outbound": {
-    "from": "VRN",
-    "to": "SUF",
-    "flight": "FR8877",
-    "airline": "Ryanair",
-    "departure": "2027-01-22T08:05+01:00",
-    "arrival": "2027-01-22T09:40+01:00"
-   },
-   "inbound": {
-    "from": "SUF",
-    "to": "VRN",
-    "flight": "FR1291",
-    "airline": "Ryanair",
-    "departure": "2027-01-24T20:55+01:00",
-    "arrival": "2027-01-24T22:30+01:00"
-   },
-   "airlines": [
-    "Ryanair"
-   ],
-   "price": 38.94,
-   "currency": "EUR",
-   "fare": "base, senza bagaglio",
-   "useful_hours": 36.2,
-   "price_per_hour": 1.08,
-   "unmissable": false,
-   "source": "ryanair",
-   "observed_at": "2026-11-25",
-   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-22&dateIn=2027-01-24&isReturn=true&originIata=VRN&destinationIata=SUF",
-   "city": "Lamezia",
-   "country": "Italia",
-   "country_code": "it",
-   "kpi": {
-    "km": 845,
-    "eur_km": 0.046,
-    "eur_h": 1.08,
-    "life": 76
-   }
-  },
-  {
-   "origin": "VRN",
-   "destination": "BRI",
-   "out_date": "2027-02-12",
-   "ret_date": "2027-02-15",
-   "nights": 3,
-   "type": "weekend+",
-   "leave_days": 1,
-   "leave_dates": [
-    "2027-02-15"
-   ],
-   "outbound": {
-    "from": "VRN",
-    "to": "BRI",
-    "flight": "FR3997",
-    "airline": "Ryanair",
-    "departure": "2027-02-12T22:30+01:00",
-    "arrival": "2027-02-12T23:55+01:00"
-   },
-   "inbound": {
-    "from": "BRI",
-    "to": "VRN",
-    "flight": "FR3996",
-    "airline": "Ryanair",
-    "departure": "2027-02-15T20:30+01:00",
-    "arrival": "2027-02-15T21:55+01:00"
-   },
-   "airlines": [
-    "Ryanair"
-   ],
-   "price": 41.86,
-   "currency": "EUR",
-   "fare": "base, senza bagaglio",
-   "useful_hours": 38.5,
-   "price_per_hour": 1.09,
-   "unmissable": false,
-   "source": "ryanair",
-   "observed_at": "2026-11-19",
-   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-12&dateIn=2027-02-15&isReturn=true&originIata=VRN&destinationIata=BRI",
-   "city": "Bari",
-   "country": "Italia",
-   "country_code": "it",
-   "kpi": {
-    "km": 671,
-    "eur_km": 0.062,
-    "eur_h": 1.09,
-    "life": 69
    }
   },
   {
@@ -841,6 +792,60 @@
   },
   {
    "origin": "BGY",
+   "destination": "NRN",
+   "out_date": "2027-02-06",
+   "ret_date": "2027-02-09",
+   "nights": 3,
+   "type": "ponte",
+   "leave_days": 2,
+   "leave_dates": [
+    "2027-02-08",
+    "2027-02-09"
+   ],
+   "holidays": [
+    "Carnevale (scuole)"
+   ],
+   "needs_parent_leave": true,
+   "outbound": {
+    "from": "BGY",
+    "to": "NRN",
+    "flight": "FR3460",
+    "airline": "Ryanair",
+    "departure": "2027-02-06T10:15+01:00",
+    "arrival": "2027-02-06T12:00+01:00"
+   },
+   "inbound": {
+    "from": "NRN",
+    "to": "BGY",
+    "flight": "FR3461",
+    "airline": "Ryanair",
+    "departure": "2027-02-09T13:15+01:00",
+    "arrival": "2027-02-09T14:45+01:00"
+   },
+   "airlines": [
+    "Ryanair"
+   ],
+   "price": 47.16,
+   "currency": "EUR",
+   "fare": "base, senza bagaglio",
+   "useful_hours": 40.2,
+   "price_per_hour": 1.17,
+   "unmissable": false,
+   "source": "ryanair",
+   "observed_at": "2026-11-26",
+   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-06&dateIn=2027-02-09&isReturn=true&originIata=BGY&destinationIata=NRN",
+   "city": "Düsseldorf",
+   "country": "Germania",
+   "country_code": "de",
+   "kpi": {
+    "km": 709,
+    "eur_km": 0.067,
+    "eur_h": 1.17,
+    "life": 71
+   }
+  },
+  {
+   "origin": "BGY",
    "destination": "CRA",
    "out_date": "2027-01-29",
    "ret_date": "2027-02-01",
@@ -886,6 +891,55 @@
     "eur_km": 0.035,
     "eur_h": 1.2,
     "life": 66
+   }
+  },
+  {
+   "origin": "VRN",
+   "destination": "BRI",
+   "out_date": "2027-02-12",
+   "ret_date": "2027-02-15",
+   "nights": 3,
+   "type": "weekend+",
+   "leave_days": 1,
+   "leave_dates": [
+    "2027-02-15"
+   ],
+   "outbound": {
+    "from": "VRN",
+    "to": "BRI",
+    "flight": "FR3997",
+    "airline": "Ryanair",
+    "departure": "2027-02-12T22:30+01:00",
+    "arrival": "2027-02-12T23:55+01:00"
+   },
+   "inbound": {
+    "from": "BRI",
+    "to": "VRN",
+    "flight": "FR3996",
+    "airline": "Ryanair",
+    "departure": "2027-02-15T20:30+01:00",
+    "arrival": "2027-02-15T21:55+01:00"
+   },
+   "airlines": [
+    "Ryanair"
+   ],
+   "price": 46.62,
+   "currency": "EUR",
+   "fare": "base, senza bagaglio",
+   "useful_hours": 38.5,
+   "price_per_hour": 1.21,
+   "unmissable": false,
+   "source": "ryanair",
+   "observed_at": "2026-11-26",
+   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-12&dateIn=2027-02-15&isReturn=true&originIata=VRN&destinationIata=BRI",
+   "city": "Bari",
+   "country": "Italia",
+   "country_code": "it",
+   "kpi": {
+    "km": 671,
+    "eur_km": 0.07,
+    "eur_h": 1.21,
+    "life": 69
    }
   },
   {
@@ -939,55 +993,6 @@
   },
   {
    "origin": "BGY",
-   "destination": "BDS",
-   "out_date": "2027-02-05",
-   "ret_date": "2027-02-07",
-   "nights": 2,
-   "type": "weekend+",
-   "leave_days": 1,
-   "leave_dates": [
-    "2027-02-05"
-   ],
-   "outbound": {
-    "from": "BGY",
-    "to": "BDS",
-    "flight": "FR2864",
-    "airline": "Ryanair",
-    "departure": "2027-02-05T05:55+01:00",
-    "arrival": "2027-02-05T07:35+01:00"
-   },
-   "inbound": {
-    "from": "BDS",
-    "to": "BGY",
-    "flight": "FR858",
-    "airline": "Ryanair",
-    "departure": "2027-02-07T22:05+01:00",
-    "arrival": "2027-02-07T23:45+01:00"
-   },
-   "airlines": [
-    "Ryanair"
-   ],
-   "price": 48.04,
-   "currency": "EUR",
-   "fare": "base, senza bagaglio",
-   "useful_hours": 39.5,
-   "price_per_hour": 1.22,
-   "unmissable": false,
-   "source": "ryanair",
-   "observed_at": "2026-11-19",
-   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-05&dateIn=2027-02-07&isReturn=true&originIata=BGY&destinationIata=BDS",
-   "city": "Brindisi",
-   "country": "Italia",
-   "country_code": "it",
-   "kpi": {
-    "km": 870,
-    "eur_km": 0.055,
-    "eur_h": 1.22,
-    "life": 78
-   }
-  },
-  {
-   "origin": "BGY",
    "destination": "WRO",
    "out_date": "2027-02-13",
    "ret_date": "2027-02-15",
@@ -1016,14 +1021,14 @@
    "airlines": [
     "Ryanair"
    ],
-   "price": 41.58,
+   "price": 41.98,
    "currency": "EUR",
    "fare": "base, senza bagaglio",
    "useful_hours": 34.0,
-   "price_per_hour": 1.22,
+   "price_per_hour": 1.23,
    "unmissable": false,
    "source": "ryanair",
-   "observed_at": "2026-11-19",
+   "observed_at": "2026-11-26",
    "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-13&dateIn=2027-02-15&isReturn=true&originIata=BGY&destinationIata=WRO",
    "city": "Breslavia",
    "country": "Polonia",
@@ -1031,7 +1036,7 @@
    "kpi": {
     "km": 803,
     "eur_km": 0.052,
-    "eur_h": 1.22,
+    "eur_h": 1.23,
     "life": 75
    }
   },
@@ -1334,52 +1339,52 @@
    }
   },
   {
-   "origin": "BGY",
-   "destination": "NRN",
-   "out_date": "2027-02-20",
-   "ret_date": "2027-02-22",
+   "origin": "VRN",
+   "destination": "CAG",
+   "out_date": "2027-01-29",
+   "ret_date": "2027-01-31",
    "nights": 2,
    "type": "weekend+",
    "leave_days": 1,
    "leave_dates": [
-    "2027-02-22"
+    "2027-01-29"
    ],
    "outbound": {
-    "from": "BGY",
-    "to": "NRN",
-    "flight": "FR3460",
+    "from": "VRN",
+    "to": "CAG",
+    "flight": "FR322",
     "airline": "Ryanair",
-    "departure": "2027-02-20T10:15+01:00",
-    "arrival": "2027-02-20T12:00+01:00"
+    "departure": "2027-01-29T07:55+01:00",
+    "arrival": "2027-01-29T09:25+01:00"
    },
    "inbound": {
-    "from": "NRN",
-    "to": "BGY",
-    "flight": "FR3461",
+    "from": "CAG",
+    "to": "VRN",
+    "flight": "FR321",
     "airline": "Ryanair",
-    "departure": "2027-02-22T19:50+01:00",
-    "arrival": "2027-02-22T21:20+01:00"
+    "departure": "2027-01-31T14:00+01:00",
+    "arrival": "2027-01-31T15:25+01:00"
    },
    "airlines": [
     "Ryanair"
    ],
-   "price": 41.98,
+   "price": 39.17,
    "currency": "EUR",
    "fare": "base, senza bagaglio",
-   "useful_hours": 32.8,
-   "price_per_hour": 1.28,
+   "useful_hours": 29.6,
+   "price_per_hour": 1.32,
    "unmissable": false,
    "source": "ryanair",
-   "observed_at": "2026-11-20",
-   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-20&dateIn=2027-02-22&isReturn=true&originIata=BGY&destinationIata=NRN",
-   "city": "Düsseldorf",
-   "country": "Germania",
-   "country_code": "de",
+   "observed_at": "2026-11-26",
+   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-29&dateIn=2027-01-31&isReturn=true&originIata=VRN&destinationIata=CAG",
+   "city": "Cagliari",
+   "country": "Italia",
+   "country_code": "it",
    "kpi": {
-    "km": 709,
-    "eur_km": 0.059,
-    "eur_h": 1.28,
-    "life": 75
+    "km": 700,
+    "eur_km": 0.056,
+    "eur_h": 1.32,
+    "life": 73
    }
   },
   {
@@ -1928,6 +1933,55 @@
   },
   {
    "origin": "BGY",
+   "destination": "OTP",
+   "out_date": "2027-02-04",
+   "ret_date": "2027-02-07",
+   "nights": 3,
+   "type": "weekend+",
+   "leave_days": 1,
+   "leave_dates": [
+    "2027-02-05"
+   ],
+   "outbound": {
+    "from": "BGY",
+    "to": "OTP",
+    "flight": "FR259",
+    "airline": "Ryanair",
+    "departure": "2027-02-04T18:35+01:00",
+    "arrival": "2027-02-04T21:45+02:00"
+   },
+   "inbound": {
+    "from": "OTP",
+    "to": "BGY",
+    "flight": "FR260",
+    "airline": "Ryanair",
+    "departure": "2027-02-07T10:40+02:00",
+    "arrival": "2027-02-07T12:00+01:00"
+   },
+   "airlines": [
+    "Ryanair"
+   ],
+   "price": 40.78,
+   "currency": "EUR",
+   "fare": "base, senza bagaglio",
+   "useful_hours": 28.7,
+   "price_per_hour": 1.42,
+   "unmissable": false,
+   "source": "ryanair",
+   "observed_at": "2026-11-26",
+   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-04&dateIn=2027-02-07&isReturn=true&originIata=BGY&destinationIata=OTP",
+   "city": "Bucarest",
+   "country": "Romania",
+   "country_code": "ro",
+   "kpi": {
+    "km": 1290,
+    "eur_km": 0.032,
+    "eur_h": 1.42,
+    "life": 66
+   }
+  },
+  {
+   "origin": "BGY",
    "destination": "LUX",
    "out_date": "2027-01-16",
    "ret_date": "2027-01-18",
@@ -2080,51 +2134,56 @@
   },
   {
    "origin": "BGY",
-   "destination": "OTP",
-   "out_date": "2027-02-05",
-   "ret_date": "2027-02-07",
+   "destination": "IAS",
+   "out_date": "2027-02-06",
+   "ret_date": "2027-02-08",
    "nights": 2,
-   "type": "weekend+",
-   "leave_days": 1,
+   "type": "ponte",
+   "leave_days": 2,
    "leave_dates": [
-    "2027-02-05"
+    "2027-02-08",
+    "2027-02-09"
    ],
+   "holidays": [
+    "Carnevale (scuole)"
+   ],
+   "needs_parent_leave": true,
    "outbound": {
     "from": "BGY",
-    "to": "OTP",
-    "flight": "FR259",
+    "to": "IAS",
+    "flight": "FR3112",
     "airline": "Ryanair",
-    "departure": "2027-02-05T05:45+01:00",
-    "arrival": "2027-02-05T08:55+02:00"
+    "departure": "2027-02-06T19:25+01:00",
+    "arrival": "2027-02-06T22:40+02:00"
    },
    "inbound": {
-    "from": "OTP",
+    "from": "IAS",
     "to": "BGY",
-    "flight": "FR260",
+    "flight": "FR3113",
     "airline": "Ryanair",
-    "departure": "2027-02-07T10:40+02:00",
-    "arrival": "2027-02-07T12:00+01:00"
+    "departure": "2027-02-08T23:30+02:00",
+    "arrival": "2027-02-09T00:55+01:00"
    },
    "airlines": [
     "Ryanair"
    ],
-   "price": 38.98,
+   "price": 40.38,
    "currency": "EUR",
    "fare": "base, senza bagaglio",
-   "useful_hours": 26.8,
-   "price_per_hour": 1.45,
+   "useful_hours": 27.5,
+   "price_per_hour": 1.47,
    "unmissable": false,
    "source": "ryanair",
-   "observed_at": "2026-11-19",
-   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-05&dateIn=2027-02-07&isReturn=true&originIata=BGY&destinationIata=OTP",
-   "city": "Bucarest",
+   "observed_at": "2026-11-26",
+   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-02-06&dateIn=2027-02-08&isReturn=true&originIata=BGY&destinationIata=IAS",
+   "city": "IASI",
    "country": "Romania",
    "country_code": "ro",
    "kpi": {
-    "km": 1290,
-    "eur_km": 0.03,
-    "eur_h": 1.45,
-    "life": 72
+    "km": 1380,
+    "eur_km": 0.029,
+    "eur_h": 1.47,
+    "life": 71
    }
   },
   {
@@ -2227,49 +2286,147 @@
   },
   {
    "origin": "BGY",
-   "destination": "IAS",
-   "out_date": "2027-03-12",
-   "ret_date": "2027-03-14",
+   "destination": "SOF",
+   "out_date": "2026-12-12",
+   "ret_date": "2026-12-14",
    "nights": 2,
    "type": "weekend+",
    "leave_days": 1,
    "leave_dates": [
-    "2027-03-12"
+    "2026-12-14"
    ],
    "outbound": {
     "from": "BGY",
-    "to": "IAS",
-    "flight": "W43672",
-    "airline": "Wizz Air Malta",
-    "departure": "2027-03-12T07:55+01:00",
-    "arrival": "2027-03-12T11:30+02:00"
+    "to": "SOF",
+    "flight": "W64352",
+    "airline": "Wizz Air",
+    "departure": "2026-12-12T08:20+01:00",
+    "arrival": "2026-12-12T11:20+02:00"
    },
    "inbound": {
-    "from": "IAS",
+    "from": "SOF",
     "to": "BGY",
-    "flight": "W43671",
-    "airline": "Wizz Air Malta",
-    "departure": "2027-03-14T21:20+02:00",
-    "arrival": "2027-03-14T22:50+01:00"
+    "flight": "W64389",
+    "airline": "Wizz Air",
+    "departure": "2026-12-14T20:00+02:00",
+    "arrival": "2026-12-14T21:15+01:00"
    },
    "airlines": [
-    "Wizz Air Malta"
+    "Wizz Air"
    ],
-   "price": 52.0,
+   "price": 50.0,
    "currency": "EUR",
    "fare": "tariffa minima Kiwi.com, prezzo indicativo",
-   "useful_hours": 34.8,
-   "price_per_hour": 1.49,
+   "useful_hours": 33.7,
+   "price_per_hour": 1.48,
    "unmissable": false,
    "source": "kiwi",
-   "observed_at": "2026-11-21",
-   "link": "https://kiwi.com/u/nm3zsdhszy",
-   "city": "IASI",
-   "country": "Romania",
-   "country_code": "ro",
+   "observed_at": "2026-11-26",
+   "link": "https://kiwi.com/u/py25gxyjms",
+   "city": "Sofia",
+   "country": "Bulgaria",
+   "country_code": "bg",
    "kpi": {
-    "km": 1380,
-    "eur_km": 0.038,
+    "km": 1136,
+    "eur_km": 0.044,
+    "eur_h": 1.48,
+    "life": 75
+   }
+  },
+  {
+   "origin": "VRN",
+   "destination": "CTA",
+   "out_date": "2027-01-29",
+   "ret_date": "2027-01-31",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "leave_dates": [
+    "2027-01-29"
+   ],
+   "outbound": {
+    "from": "VRN",
+    "to": "CTA",
+    "flight": "FR5018",
+    "airline": "Ryanair",
+    "departure": "2027-01-29T12:50+01:00",
+    "arrival": "2027-01-29T14:35+01:00"
+   },
+   "inbound": {
+    "from": "CTA",
+    "to": "VRN",
+    "flight": "FR5028",
+    "airline": "Ryanair",
+    "departure": "2027-01-31T20:40+01:00",
+    "arrival": "2027-01-31T22:30+01:00"
+   },
+   "airlines": [
+    "Ryanair"
+   ],
+   "price": 46.38,
+   "currency": "EUR",
+   "fare": "base, senza bagaglio",
+   "useful_hours": 31.1,
+   "price_per_hour": 1.49,
+   "unmissable": false,
+   "source": "ryanair",
+   "observed_at": "2026-11-26",
+   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-29&dateIn=2027-01-31&isReturn=true&originIata=VRN&destinationIata=CTA",
+   "city": "Catania",
+   "country": "Italia",
+   "country_code": "it",
+   "kpi": {
+    "km": 948,
+    "eur_km": 0.049,
+    "eur_h": 1.49,
+    "life": 74
+   }
+  },
+  {
+   "origin": "BGY",
+   "destination": "BDS",
+   "out_date": "2027-03-20",
+   "ret_date": "2027-03-22",
+   "nights": 2,
+   "type": "weekend+",
+   "leave_days": 1,
+   "leave_dates": [
+    "2027-03-22"
+   ],
+   "outbound": {
+    "from": "BGY",
+    "to": "BDS",
+    "flight": "FR2858",
+    "airline": "Ryanair",
+    "departure": "2027-03-20T08:25+01:00",
+    "arrival": "2027-03-20T10:05+01:00"
+   },
+   "inbound": {
+    "from": "BDS",
+    "to": "BGY",
+    "flight": "FR858",
+    "airline": "Ryanair",
+    "departure": "2027-03-22T20:55+01:00",
+    "arrival": "2027-03-22T22:35+01:00"
+   },
+   "airlines": [
+    "Ryanair"
+   ],
+   "price": 53.24,
+   "currency": "EUR",
+   "fare": "base, senza bagaglio",
+   "useful_hours": 35.8,
+   "price_per_hour": 1.49,
+   "unmissable": false,
+   "source": "ryanair",
+   "observed_at": "2026-11-20",
+   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-03-20&dateIn=2027-03-22&isReturn=true&originIata=BGY&destinationIata=BDS",
+   "city": "Brindisi",
+   "country": "Italia",
+   "country_code": "it",
+   "kpi": {
+    "km": 870,
+    "eur_km": 0.061,
     "eur_h": 1.49,
     "life": 76
    }
@@ -2321,153 +2478,6 @@
     "eur_km": 0.038,
     "eur_h": 1.5,
     "life": 69
-   }
-  },
-  {
-   "origin": "BGY",
-   "destination": "TRF",
-   "out_date": "2027-01-23",
-   "ret_date": "2027-01-25",
-   "nights": 2,
-   "type": "weekend+",
-   "leave_days": 1,
-   "leave_dates": [
-    "2027-01-25"
-   ],
-   "outbound": {
-    "from": "BGY",
-    "to": "TRF",
-    "flight": "FR3587",
-    "airline": "Ryanair",
-    "departure": "2027-01-23T06:10+01:00",
-    "arrival": "2027-01-23T08:45+01:00"
-   },
-   "inbound": {
-    "from": "TRF",
-    "to": "BGY",
-    "flight": "FR3588",
-    "airline": "Ryanair",
-    "departure": "2027-01-25T15:35+01:00",
-    "arrival": "2027-01-25T18:10+01:00"
-   },
-   "airlines": [
-    "Ryanair"
-   ],
-   "price": 47.98,
-   "currency": "EUR",
-   "fare": "base, senza bagaglio",
-   "useful_hours": 31.8,
-   "price_per_hour": 1.51,
-   "unmissable": false,
-   "source": "ryanair",
-   "observed_at": "2026-11-25",
-   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-23&dateIn=2027-01-25&isReturn=true&originIata=BGY&destinationIata=TRF",
-   "city": "Sandefjord",
-   "country": "Norvegia",
-   "country_code": "no",
-   "kpi": {
-    "km": 1503,
-    "eur_km": 0.032,
-    "eur_h": 1.51,
-    "life": 74
-   }
-  },
-  {
-   "origin": "VRN",
-   "destination": "CTA",
-   "out_date": "2027-03-13",
-   "ret_date": "2027-03-15",
-   "nights": 2,
-   "type": "weekend+",
-   "leave_days": 1,
-   "leave_dates": [
-    "2027-03-15"
-   ],
-   "outbound": {
-    "from": "VRN",
-    "to": "CTA",
-    "flight": "V71741",
-    "airline": "Volotea",
-    "departure": "2027-03-13T08:00+01:00",
-    "arrival": "2027-03-13T09:45+01:00"
-   },
-   "inbound": {
-    "from": "CTA",
-    "to": "VRN",
-    "flight": "V71740",
-    "airline": "Volotea",
-    "departure": "2027-03-15T10:25+01:00",
-    "arrival": "2027-03-15T12:15+01:00"
-   },
-   "airlines": [
-    "Volotea"
-   ],
-   "price": 39.0,
-   "currency": "EUR",
-   "fare": "tariffa minima Kiwi.com, prezzo indicativo",
-   "useful_hours": 25.7,
-   "price_per_hour": 1.52,
-   "unmissable": false,
-   "source": "kiwi",
-   "observed_at": "2026-11-21",
-   "link": "https://kiwi.com/u/k6sjjh2442",
-   "city": "Catania",
-   "country": "Italia",
-   "country_code": "it",
-   "kpi": {
-    "km": 948,
-    "eur_km": 0.041,
-    "eur_h": 1.52,
-    "life": 71
-   }
-  },
-  {
-   "origin": "BGY",
-   "destination": "STN",
-   "out_date": "2027-01-15",
-   "ret_date": "2027-01-18",
-   "nights": 3,
-   "type": "weekend+",
-   "leave_days": 1,
-   "leave_dates": [
-    "2027-01-18"
-   ],
-   "outbound": {
-    "from": "BGY",
-    "to": "STN",
-    "flight": "FR2739",
-    "airline": "Ryanair",
-    "departure": "2027-01-15T18:20+01:00",
-    "arrival": "2027-01-15T19:25+00:00"
-   },
-   "inbound": {
-    "from": "STN",
-    "to": "BGY",
-    "flight": "FR2734",
-    "airline": "Ryanair",
-    "departure": "2027-01-18T19:50+00:00",
-    "arrival": "2027-01-18T22:45+01:00"
-   },
-   "airlines": [
-    "Ryanair"
-   ],
-   "price": 59.98,
-   "currency": "EUR",
-   "fare": "base, senza bagaglio",
-   "useful_hours": 39.4,
-   "price_per_hour": 1.52,
-   "unmissable": false,
-   "source": "ryanair",
-   "observed_at": "2026-11-25",
-   "link": "https://www.ryanair.com/it/it/trip/flights/select?adults=1&teens=0&children=0&infants=0&dateOut=2027-01-15&dateIn=2027-01-18&isReturn=true&originIata=BGY&destinationIata=STN",
-   "city": "Londra",
-   "country": "Regno Unito",
-   "country_code": "gb",
-   "kpi": {
-    "km": 977,
-    "eur_km": 0.061,
-    "eur_h": 1.52,
-    "life": 71
    }
   }
  ]
